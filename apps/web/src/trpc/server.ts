@@ -2,7 +2,7 @@ import "server-only"
 
 import { createTRPCProxyClient, httpBatchLink } from "@trpc/client"
 
-import { AppRouter } from "packages/api/src"
+import { AppRouter } from "@airneis/api"
 import SuperJSON from "superjson"
 import getUrl from "@/trpc/shared"
 
