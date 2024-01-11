@@ -127,10 +127,7 @@
     "no-undef-init": "error",
     "no-undefined": "error",
     "@next/next/no-html-link-for-pages": ["error", "apps/web/"],
-    "no-underscore-dangle": [
-      "error",
-      { "allowFunctionParams": false, "allow": ["_def"] }
-    ],
+    "no-underscore-dangle": ["error", { "allowFunctionParams": false }],
     "no-unneeded-ternary": ["error", { "defaultAssignment": false }],
     "no-unused-expressions": ["error", { "enforceForJSX": true }],
     "no-unused-vars": ["error", { "varsIgnorePattern": "_" }],
