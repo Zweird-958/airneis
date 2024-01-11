@@ -6,7 +6,8 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +16,8 @@
     "@trpc/client": "^10.45.0",
     "@trpc/server": "^10.45.0",
     "superjson": "^2.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
   }
 }
