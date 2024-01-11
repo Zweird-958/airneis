@@ -1,6 +1,7 @@
 "use client"
 
 import { api } from "@/trpc/client"
+import getUrl from "@/trpc/shared"
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { httpBatchLink } from "@trpc/react-query"
@@ -11,17 +12,6 @@ type Props = {
   children: ReactNode
 }
 
-const getBaseUrl = () => {
-  if (typeof window !== "undefined") {
-    return ""
-  }
-
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`
-  }
-
-  return `http://localhost:${process.env.PORT ?? 3000}`
-}
 const TRPCProvider = (props: Props) => {
   const { children } = props
   const [queryClient] = useState(() => new QueryClient())
@@ -30,7 +20,7 @@ const TRPCProvider = (props: Props) => {
       transformer: superjson,
       links: [
         httpBatchLink({
-          url: `${getBaseUrl()}/api/trpc`,
+          url: getUrl(),
         }),
       ],
     }),
