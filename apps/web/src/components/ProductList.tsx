@@ -1,5 +1,6 @@
 "use client"
-import { api } from "@/trpc/client"
+
+import api from "@/trpc/client"
 
 const Product = () => {
   const { data: products } = api.products.all.useQuery()
