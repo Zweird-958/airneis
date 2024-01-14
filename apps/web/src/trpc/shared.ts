@@ -9,6 +9,4 @@ const getBaseUrl = () => {
 
   return `http://localhost:${process.env.PORT ?? 3000}`
 }
-const getUrl = () => `${getBaseUrl()}/api/trpc`
-
-export default getUrl
+export const getUrl = () => `${getBaseUrl()}/api/trpc`
