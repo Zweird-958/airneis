@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss"
-import baseConfig from "@airneis/tailwind"
+
+import baseConfig from "../../tailwind.config"
 
 const config: Config = {
   content: ["./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
