@@ -10,7 +10,7 @@ const Home = async () => {
 
   return (
     <div>
-      <p className="text-xl">Server</p>
+      <p className="text-primary text-xl">Server</p>
       {products.result.map(({ id, name }) => (
         <p key={id}>{name}</p>
       ))}

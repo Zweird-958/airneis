@@ -21,6 +21,7 @@
     "superjson": "^2.2.1"
   },
   "devDependencies": {
+    "@airneis/tailwind": "^1.0.0",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",

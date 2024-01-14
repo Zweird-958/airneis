@@ -9,7 +9,9 @@ export default function Index() {
   return (
     <SafeAreaView>
       <Stack.Screen options={{ title: "Home Page" }} />
-      <Text className="text-center text-5xl font-bold">Airneis</Text>
+      <Text className="text-primary text-center text-5xl font-bold">
+        Airneis
+      </Text>
 
       <FlatList
         data={data?.result}

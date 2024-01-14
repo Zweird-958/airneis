@@ -36,6 +36,7 @@
   "keywords": [],
   "workspaces": [
     "packages/*",
-    "apps/*"
+    "apps/*",
+    "tooling/*"
   ]
 }
