@@ -1,5 +1,6 @@
-import { appRouter, createTRPCContext } from "@airneis/api"
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch"
+
+import { appRouter, createTRPCContext } from "@airneis/api"
 
 const setCorsHeaders = (res: Response) => {
   res.headers.set("Access-Control-Allow-Origin", "*")

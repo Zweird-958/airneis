@@ -1,12 +1,12 @@
 "use client"
 
-import api from "@/trpc/client"
-import { getUrl } from "@/trpc/shared"
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { httpBatchLink } from "@trpc/react-query"
 import { ReactNode, useState } from "react"
 import superjson from "superjson"
+
+import api from "@/trpc/client"
+import { getUrl } from "@/trpc/shared"
 
 type Props = {
   children: ReactNode

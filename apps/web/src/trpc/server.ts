@@ -1,13 +1,13 @@
-import "server-only"
-
 import { createTRPCProxyClient, httpBatchLink } from "@trpc/client"
+import "server-only"
+import superjson from "superjson"
 
 import { AppRouter } from "@airneis/api"
-import SuperJSON from "superjson"
+
 import { getUrl } from "@/trpc/shared"
 
 const api = createTRPCProxyClient<AppRouter>({
-  transformer: SuperJSON,
+  transformer: superjson,
   links: [
     httpBatchLink({
       url: getUrl(),

@@ -1,8 +1,9 @@
-import Constants from "expo-constants"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { httpBatchLink } from "@trpc/react-query"
+import Constants from "expo-constants"
 import { ReactNode, useState } from "react"
 import superjson from "superjson"
-import { httpBatchLink } from "@trpc/react-query"
+
 import api from "@/utils/api"
 
 type Props = {

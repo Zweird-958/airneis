@@ -1,7 +1,8 @@
-import api from "@/utils/api"
 import { Stack } from "expo-router"
 import { FlatList, Text } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
+
+import api from "@/utils/api"
 
 export default function Index() {
   const { data } = api.products.all.useQuery()

@@ -1,5 +1,5 @@
-import { Knex } from "knex"
 import { config as dotenv } from "dotenv"
+import { Knex } from "knex"
 
 dotenv({ path: "../../.env" })
 

@@ -1,5 +1,5 @@
+import { type AppRouter, appRouter } from "./root"
 import { createCallerFactory, createTRPCContext } from "./trpc"
-import { appRouter, type AppRouter } from "./root"
 
 export { createTRPCContext }
 export { appRouter, type AppRouter }
