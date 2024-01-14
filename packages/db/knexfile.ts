@@ -1,7 +1,6 @@
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
-module.exports = {
+import { Knex } from "knex"
+
+const config: Knex.Config = {
   client: "pg",
   connection: process.env.DATABASE_URL,
   migrations: {
@@ -13,3 +12,5 @@ module.exports = {
     loadExtensions: [".ts"],
   },
 }
+
+export default config
