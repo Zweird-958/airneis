@@ -10,7 +10,6 @@
     "types": ["nativewind/types"]
   },
   "include": [
-    "../../**/*.ts",
     "src",
     "*.ts",
     "index.tsx",
