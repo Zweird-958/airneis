@@ -19,7 +19,7 @@ const getBaseUrl = () => {
     )
   }
 
-  return `http://localhost:3000`
+  return `http://${localhost}:3000`
 }
 const TRPCProvider = (props: Props) => {
   const { children } = props
