@@ -19,7 +19,8 @@
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "superjson": "^2.2.1"
+    "superjson": "^2.2.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@airneis/tailwind": "^1.0.0",
