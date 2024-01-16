@@ -15,6 +15,9 @@ npm i
 # Populer les variables d'environnement
 # Un `.env.example` a été mis à disposition à la racine du projet
 cp .env.example .env
+
+# Lier les fichiers d'environnement aux apps
+npm run env-symlink
 ```
 
 ## Développement
