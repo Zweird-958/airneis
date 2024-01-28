@@ -2,11 +2,11 @@ version: "3.8"
 services:
   postgres:
     image: "postgres:16-alpine"
-    restart: always
+    restart: "always"
     environment:
-      - POSTGRES_USER=$DATABASE_USERNAME
-      - POSTGRES_PASSWORD=$DATABASE_PASSWORD
-      - POSTGRES_DB=$DATABASE_NAME
+      - "POSTGRES_USER=$DATABASE_USERNAME"
+      - "POSTGRES_PASSWORD=$DATABASE_PASSWORD"
+      - "POSTGRES_DB=$DATABASE_NAME"
     ports:
       - "$DATABASE_PORT:5432"
     volumes:
@@ -14,10 +14,10 @@ services:
 
   meilisearch:
     image: "getmeili/meilisearch:v1.6"
-    restart: always
+    restart: "always"
     environment:
-      - MEILI_MASTER_KEY=$MEILISEARCH_MASTER_KEY
-      - MEILI_ENV=$NODE_ENV
+      - "MEILI_MASTER_KEY=$MEILISEARCH_MASTER_KEY"
+      - "MEILI_ENV=$NODE_ENV"
     ports:
       - "$MEILISEARCH_PORT:7700"
     volumes:
@@ -25,7 +25,7 @@ services:
 
   redis:
     image: "redis:7-alpine"
-    restart: always
+    restart: "always"
     ports:
       - "$REDIS_PORT:6379"
     volumes:
