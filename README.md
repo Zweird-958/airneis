@@ -5,7 +5,7 @@
 ### Prérequis
 
 - [Docker](https://docs.docker.com/install/)
-- [Node.js](https://nodejs.org/en/download/)
+- [Node.js v20.9.0](https://nodejs.org/dist/v20.9.0/)
 
 ### Initialisation
 
