@@ -11,18 +11,24 @@
   },
   "dependencies": {
     "@airneis/api": "^1.0.0",
+    "@airneis/config": "^1.0.0",
+    "@airneis/types": "^1.0.0",
+    "@formatjs/intl-localematcher": "^0.5.4",
     "@tanstack/react-query": "^4.36.1",
     "@trpc/client": "^10.45.0",
     "@trpc/react-query": "^10.45.0",
     "@trpc/server": "^10.45.0",
+    "negotiator": "^0.6.3",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
     "superjson": "^2.2.1",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@airneis/tailwind": "^1.0.0",
+    "@types/negotiator": "^0.6.3",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
