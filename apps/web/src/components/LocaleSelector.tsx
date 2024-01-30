@@ -7,7 +7,7 @@ import type { Locale } from "@airneis/types/Locale"
 
 import useLocale from "@/hooks/useLocale"
 
-const ChangeLocale = () => {
+const LocaleSelector = () => {
   const { changeLocale, locale } = useLocale()
   const handleChangeLanguage: MouseEventHandler<HTMLButtonElement> = async (
     event,
@@ -34,4 +34,4 @@ const ChangeLocale = () => {
     </div>
   )
 }
-export default ChangeLocale
+export default LocaleSelector
