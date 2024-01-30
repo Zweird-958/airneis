@@ -1,14 +1,16 @@
-type ExtractKeys<S extends string> =
-  S extends `${string}{${infer Key}}${infer Rest}`
-    ? Key | ExtractKeys<Rest>
-    : never
+import type {
+  ExtractKeys,
+  TranslationInterpolator,
+} from "@airneis/types/Locale"
 
 const translationInterpolator = <T extends string>(
   translation: T,
-  values: Record<ExtractKeys<T>, string | number>,
+  values: TranslationInterpolator<T>,
 ) =>
-  translation.replace(/\{([^{}]+)\}/gu, (_, key: ExtractKeys<T>) =>
-    String(values[key]),
-  )
+  values
+    ? translation.replace(/\{([^{}]+)\}/gu, (_, key: ExtractKeys<T>) =>
+        String(values[key]),
+      )
+    : translation
 
 export default translationInterpolator

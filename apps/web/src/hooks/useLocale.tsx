@@ -1,10 +1,11 @@
 import { usePathname, useRouter } from "next/navigation"
 import { useCallback, useEffect } from "react"
 
-import { Locale } from "@airneis/types/Locale"
+import type { Locale } from "@airneis/types/Locale"
 
 import useLocaleStore from "@/stores/locale"
 import getTranslations from "@/utils/locale/getTranslations"
+import translationInterpolator from "@/utils/locale/translationInterpolator"
 
 const useLocale = () => {
   const { setLocale, setTranslations, locale, ...localeStore } =
@@ -33,6 +34,12 @@ const useLocale = () => {
     })()
   }, [changeLocale, pathname, setLocale, setTranslations])
 
-  return { setLocale, changeLocale, locale, ...localeStore }
+  return {
+    setLocale,
+    changeLocale,
+    t: translationInterpolator,
+    locale,
+    ...localeStore,
+  }
 }
 export default useLocale
