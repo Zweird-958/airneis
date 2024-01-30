@@ -3,7 +3,7 @@ import { create } from "zustand"
 import config from "@airneis/config/shared"
 import { Locale } from "@airneis/types/Locale"
 
-import common from "@/locales/en/common.json"
+import common from "@/locales/en/common"
 
 type LocaleStore = {
   locale: Locale
