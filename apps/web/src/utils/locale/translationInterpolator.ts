@@ -7,10 +7,8 @@ const translationInterpolator = <T extends string>(
   translation: T,
   values: TranslationInterpolator<T>,
 ) =>
-  values
-    ? translation.replace(/\{([^{}]+)\}/gu, (_, key: ExtractKeys<T>) =>
-        String(values[key]),
-      )
-    : translation
+  translation.replace(/\{([^{}]+)\}/gu, (_, key: ExtractKeys<T>) =>
+    String(values[key]),
+  )
 
 export default translationInterpolator
