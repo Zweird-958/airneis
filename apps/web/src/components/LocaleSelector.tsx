@@ -9,9 +9,7 @@ import useLocale from "@/hooks/useLocale"
 
 const LocaleSelector = () => {
   const { changeLocale, locale } = useLocale()
-  const handleChangeLanguage: MouseEventHandler<HTMLButtonElement> = async (
-    event,
-  ) => {
+  const handleChange: MouseEventHandler<HTMLButtonElement> = async (event) => {
     const language = event.currentTarget.getAttribute("data-locale") as Locale
 
     await changeLocale(language)
@@ -23,7 +21,7 @@ const LocaleSelector = () => {
         <div key={language} className="flex gap-1">
           <button
             data-locale={language}
-            onClick={handleChangeLanguage}
+            onClick={handleChange}
             className={locale === language ? "underline" : ""}
           >
             {language.toUpperCase()}
