@@ -19,7 +19,8 @@ const useLocale = () => {
       }
 
       setLocale(newLocale)
-      setTranslations(await getTranslations(newLocale))
+      const { t: _, ...translations } = await getTranslations(newLocale)
+      setTranslations(translations)
       const [path] = pathname.split("/")
       router.replace(`/${newLocale}${path ?? ""}`)
     },
