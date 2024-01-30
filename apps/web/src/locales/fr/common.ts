@@ -1,7 +1,5 @@
-const common = {
+export default {
   hello: "Bonjour {name}",
   server: "Serveur",
   client: "Client",
-}
-
-export default common
+} as const
