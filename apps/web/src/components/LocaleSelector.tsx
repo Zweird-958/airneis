@@ -1,11 +1,21 @@
 "use client"
 
+import { MouseEventHandler } from "react"
+
 import config from "@airneis/config/shared"
+import { Locale } from "@airneis/types/Locale"
 
 import useLocale from "@/hooks/useLocale"
 
 const ChangeLocale = () => {
-  const { handleChangeLanguage, locale } = useLocale()
+  const { changeLocale, locale } = useLocale()
+  const handleChangeLanguage: MouseEventHandler<HTMLButtonElement> = async (
+    event,
+  ) => {
+    const language = event.currentTarget.getAttribute("data-locale") as Locale
+
+    await changeLocale(language)
+  }
 
   return (
     <div className="flex gap-1">

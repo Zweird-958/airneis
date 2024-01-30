@@ -1,5 +1,5 @@
 import { usePathname, useRouter } from "next/navigation"
-import { MouseEventHandler, useCallback, useEffect } from "react"
+import { useCallback, useEffect } from "react"
 
 import { Locale } from "@airneis/types/Locale"
 
@@ -24,13 +24,6 @@ const useLocale = () => {
     },
     [locale, pathname, router, setLocale, setTranslations],
   )
-  const handleChangeLanguage: MouseEventHandler<HTMLButtonElement> = async (
-    event,
-  ) => {
-    const language = event.currentTarget.getAttribute("data-locale") as Locale
-
-    await changeLocale(language)
-  }
 
   useEffect(() => {
     void (async () => {
@@ -40,6 +33,6 @@ const useLocale = () => {
     })()
   }, [changeLocale, pathname, setLocale, setTranslations])
 
-  return { setLocale, handleChangeLanguage, locale, ...localeStore }
+  return { setLocale, changeLocale, locale, ...localeStore }
 }
 export default useLocale
