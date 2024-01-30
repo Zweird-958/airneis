@@ -35,7 +35,6 @@
     "superjson": "^2.2.1"
   },
   "devDependencies": {
-    "@airneis/tailwind": "^1.0.0",
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.14",
     "@types/react-native": "^0.73.0",

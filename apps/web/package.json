@@ -27,7 +27,6 @@
     "zustand": "^4.5.0"
   },
   "devDependencies": {
-    "@airneis/tailwind": "^1.0.0",
     "@types/negotiator": "^0.6.3",
     "@types/react": "^18",
     "@types/react-dom": "^18",

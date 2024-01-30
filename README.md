@@ -4,7 +4,8 @@
 
 ### Prérequis
 
-- [Node.js](https://nodejs.org/en/download/)
+- [Docker](https://docs.docker.com/install/)
+- [Node.js v20.9.0](https://nodejs.org/dist/v20.9.0/)
 
 ### Initialisation
 
@@ -21,6 +22,12 @@ npm run env-symlink
 ```
 
 ## Développement
+
+### Démarer les services Docker
+
+```bash
+docker compose up
+```
 
 ### Démarrer le serveur
 

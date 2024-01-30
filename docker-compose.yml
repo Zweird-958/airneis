@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  postgres:
+    image: "postgres:16-alpine"
+    restart: "always"
+    environment:
+      - "POSTGRES_USER=$DATABASE_USERNAME"
+      - "POSTGRES_PASSWORD=$DATABASE_PASSWORD"
+      - "POSTGRES_DB=$DATABASE_NAME"
+    ports:
+      - "$DATABASE_PORT:5432"
+    volumes:
+      - "./data/postgres:/var/lib/postgresql/data"
+
+  meilisearch:
+    image: "getmeili/meilisearch:v1.6"
+    restart: "always"
+    environment:
+      - "MEILI_MASTER_KEY=$MEILISEARCH_MASTER_KEY"
+      - "MEILI_ENV=$NODE_ENV"
+    ports:
+      - "$MEILISEARCH_PORT:7700"
+    volumes:
+      - "./data/meilisearch:/meili_data"
+
+  redis:
+    image: "redis:7-alpine"
+    restart: "always"
+    ports:
+      - "$REDIS_PORT:6379"
+    volumes:
+      - "./data/redis:/data"
