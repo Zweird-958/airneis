@@ -14,7 +14,7 @@ export const middleware = (request: NextRequest) => {
     return null
   }
 
-  const { headers } = request
+  const { headers, url } = request
   const languages = new Negotiator({
     headers: { "accept-language": headers.get("Accept-Language") ?? "" },
   }).languages()
@@ -24,7 +24,7 @@ export const middleware = (request: NextRequest) => {
     sharedConfig.fallbackLng,
   )
 
-  return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url))
+  return NextResponse.redirect(new URL(`/${locale}${pathname}`, url))
 }
 
 export const config = {
