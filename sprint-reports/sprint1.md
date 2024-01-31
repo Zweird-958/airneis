@@ -41,7 +41,7 @@ PROJECT INITIALIZATION
   - Description: `Faced several issues during the set up`
   - Commitment:
     - Who: `Julien + Vitor`
-    - What: `Can't read .env on front`
+    - What: `Couldn't read .env file on frontend`
     - When: `30/01`
 
 ### Questions
