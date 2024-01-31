@@ -1,45 +1,45 @@
 ## Sprint `[02/01-31/01]`
 
-SETUP OF THE PROJECT
+PROJECT INITIALIZATION
 
 ### Positive reviews
 
 - Review 1
-  - Description: `SETUP repo`
+  - Description: `Set up repo`
   - Commitment:
     - Who: `Julien + Vitor + Léon`
-    - What: `initialize repo, setup docker and setup gitflow`
+    - What: `Initialize repo, set up Docker and Gitflow`
     - When: `14/01`
 - Review 2
-  - Description: `add recommanded extensions`
+  - Description: `Add VSCode config`
   - Commitment:
     - Who: `Vitor`
-    - What: `create .vscode`
+    - What: `Added recommended extensions and settings`
     - When: `29/01`
 - Review 3
-  - Description: `handle translations on web`
+  - Description: `Set up i18n on web`
   - Commitment:
     - Who: `Julien`
-    - What: `handle translations on web`
+    - What: `Internationalized web app`
     - When: `30/01`
 - Review 4
-  - Description: `stack`
+  - Description: `Tech stack summary`
   - Commitment:
     - Who: `Bruno`
-    - What: `review and write stack`
+    - What: `Reviewed and wrote the tech stack summary`
     - When: `10/01`
 - Review 5
-  - Description: `ticketing system`
+  - Description: `Ticketing system`
   - Commitment:
     - Who: `Léon`
-    - What: `set up a ticket system (us, bug, technical), document centralization and a structure between tickets and commits`
+    - What: `Set up a ticketing system system (US, bugs and technical tickets), centralized documents and structured tickets/commits`
     - When: `07/01`
 
 ### Negative reviews
 
 - Review 1
-	- Description: `Problems during setup`
-	- Commitment:
+  - Description: `Faced several issues during the set up`
+  - Commitment:
     - Who: `Julien + Vitor`
     - What: `Can't read .env on front`
     - When: `30/01`
@@ -47,16 +47,16 @@ SETUP OF THE PROJECT
 ### Questions
 
 - Question 1
-  - Description: `Products are same between each language ?`
+  - Description: `Should products be multilingual?`
   - Commitment:
     - Who: `All`
-    - What: `create a product per language`
+    - What: `1 product per language or 1 product with multiple translations`
     - When: `?`
 
 ### Ideas
 
 - Idea 1
-  - Description: `Handle translation for products and categories`
+  - Description: `Handle translations for products and categories`
   - Commitment:
     - Who: `All`
     - What: `Create a table product name/description and category name`
@@ -67,4 +67,4 @@ SETUP OF THE PROJECT
 - `Julien`
 - `Vitor`
 - `Bruno`
-- `Leon`
+- `Léon`
