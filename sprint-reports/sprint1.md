@@ -8,7 +8,7 @@ SETUP OF THE PROJECT
   - Description: `SETUP repo`
   - Commitment:
     - Who: `Julien + Vitor + Léon`
-    - What: `initialize repo`
+    - What: `initialize repo, setup docker and setup gitflow`
     - When: `14/01`
 - Review 2
   - Description: `add recommanded extensions`
@@ -26,13 +26,13 @@ SETUP OF THE PROJECT
   - Description: `stack`
   - Commitment:
     - Who: `Bruno`
-    - What: `review and right stack`
+    - What: `review and write stack`
     - When: `10/01`
 - Review 5
   - Description: `systeme ticketing `
   - Commitment:
     - Who: `Léon`
-    - What: `set up a ticket system (us, bug, technical), document centralization and a structure between tickets and commits and setup gitflow`
+    - What: `set up a ticket system (us, bug, technical), document centralization and a structure between tickets and commits`
     - When: `07/01`
 
 ### Negative reviews
