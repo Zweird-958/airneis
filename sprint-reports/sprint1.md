@@ -29,7 +29,7 @@ SETUP OF THE PROJECT
     - What: `review and write stack`
     - When: `10/01`
 - Review 5
-  - Description: `systeme ticketing `
+  - Description: `ticketing system`
   - Commitment:
     - Who: `Léon`
     - What: `set up a ticket system (us, bug, technical), document centralization and a structure between tickets and commits`
