@@ -1,5 +1,12 @@
 # airneis
 
+### Contributeurs
+
+- Julien HAMEL (Zweird-958) <julienhamel.h@gmail.com>
+- Léon CARIOU (theghost013) <cariouleon@gmail.com>
+- Bruno GOMES PEIXOTO (SeRiice) <bruno.gomespeixoto1@gmail.com>
+- Vitor GOMES DE SOUSA (rd-xx) <vitor.gdsousa28@gmail.com>
+  
 ## Installation
 
 ### Prérequis
