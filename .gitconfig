@@ -1,0 +1,6 @@
+[gitflow "prefix"]
+    feature = feature/
+    release = release/
+    hotfix = bugfix/
+    support = support/
+    versiontag = V
