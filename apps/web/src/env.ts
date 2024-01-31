@@ -13,6 +13,11 @@ const schema = z.object({
   NEXT_PUBLIC_MEILISEARCH_URL: z.string().url(),
   NEXT_PUBLIC_MEILISEARCH_PUBLIC_KEY: z.string(),
 })
-const env = schema.parse(process.env)
+const env = schema.parse({
+  PORT: process.env.PORT,
+  VERCEL_URL: process.env.VERCEL_URL,
+  NEXT_PUBLIC_MEILISEARCH_URL: process.env.NEXT_PUBLIC_MEILISEARCH_URL,
+  NEXT_PUBLIC_MEILISEARCH_PUBLIC_KEY: process.env.NEXT_PUBLIC_MEILISEARCH_URL,
+})
 
 export default env
