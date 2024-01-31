@@ -1,13 +1,17 @@
 "use client"
 
+import useLocale from "@/hooks/useLocale"
 import api from "@/trpc/client"
 
 const Product = () => {
   const { data: products } = api.products.all.useQuery()
+  const {
+    translations: { common },
+  } = useLocale()
 
   return (
     <div>
-      <p className="text-xl">Client</p>
+      <p className="text-xl text-primary">{common.client}</p>
       {products?.result.map(({ id, name }) => <p key={id}>{name}</p>)}
     </div>
   )

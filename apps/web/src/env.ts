@@ -5,9 +5,9 @@ const schema = z.object({
 
   // Vercel
   VERCEL_URL: z
-  .string()
-  .optional()
-  .transform((v) => v && `https://${v}`),
+    .string()
+    .optional()
+    .transform((v) => v && `https://${v}`),
 
   // Meilisearch
   NEXT_PUBLIC_MEILISEARCH_URL: z.string().url(),
