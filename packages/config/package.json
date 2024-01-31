@@ -1,18 +1,19 @@
 {
-  "name": "@airneis/types",
+  "name": "@airneis/config",
   "version": "1.0.0",
   "description": "",
   "exports": {
-    ".": "./src/index.ts",
-    "./*": "./src/*.ts"
+    "./shared": "./src/shared.ts"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "typecheck": "tsc --noEmit"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@airneis/types": "^1.0.0"
+  },
   "devDependencies": {
     "typescript": "^5.3.3"
   }
