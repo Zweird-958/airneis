@@ -6,7 +6,7 @@
 - Léon CARIOU (theghost013) <cariouleon@gmail.com>
 - Bruno GOMES PEIXOTO (SeRiice) <bruno.gomespeixoto1@gmail.com>
 - Vitor GOMES DE SOUSA (rd-xx) <vitor.gdsousa28@gmail.com>
-  
+
 ## Installation
 
 ### Prérequis
@@ -47,4 +47,25 @@ npm run mobile:ios
 
 # Android
 npm run mobile:android
+```
+
+### Base de données
+
+```bash
+
+# Éxecuter les migrations
+npm run db:migrate
+
+# Annuler les migrations
+npm run db:migrate:down
+
+# Créer une migration
+npm run db:migrate:make <migration_name>
+
+# Exécuter les seeds
+npm run db:seed
+
+# Créer un seed
+npm run db:seed:make <seed_name>
+
 ```
