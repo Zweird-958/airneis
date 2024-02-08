@@ -9,6 +9,7 @@ const config: Knex.Config = {
   migrations: {
     directory: "./src/migrations",
     loadExtensions: [".ts"],
+    stub: "./src/migration.stub",
   },
   seeds: {
     directory: "./src/seeds",
