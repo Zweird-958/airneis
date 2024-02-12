@@ -33,7 +33,6 @@ export const up = async (db: Knex): Promise<void> => {
     table.text("address").notNullable()
     table.text("postalCode").notNullable()
     table.text("city").notNullable()
-    // J'estime que ce n'est pas indispensable de le fournir mais c'est toujours bien s'il le fait
     table.text("phoneNumber")
     table.boolean("isFavorite").defaultTo(false)
     table
@@ -47,7 +46,7 @@ export const up = async (db: Knex): Promise<void> => {
   await db.schema.createTable("orders", (table) => {
     table.uuid("id", { primaryKey: true }).defaultTo(db.fn.uuid())
     table.timestamps(true, true, true)
-    table.enum("status", ["ANNULÉE", "LIVRÉE", "EN COURS"]).notNullable()
+    table.enum("status", ["CANCELLED", "DELIVERED", "ONGOING"]).notNullable()
     table.double("total").notNullable()
     table.float("vat").notNullable()
     table.integer("quantity").notNullable()
@@ -67,7 +66,6 @@ export const up = async (db: Knex): Promise<void> => {
   await db.schema.createTable("carts", (table) => {
     table.uuid("id", { primaryKey: true }).defaultTo(db.fn.uuid())
     table.timestamps(true, true, true)
-    // Doit-on conserver ce champ unique puisque techniquement un utilisateur ne peut avoir qu'un seul panier ?
     table
       .uuid("userId")
       .unique()
@@ -99,8 +97,7 @@ export const up = async (db: Knex): Promise<void> => {
   await db.schema.createTable("products", (table) => {
     table.uuid("id", { primaryKey: true }).defaultTo(db.fn.uuid())
     table.timestamps(true, true, true)
-    // Doit-on garder la contraite unique pour un nom de produit ?
-    table.text("name").unique().notNullable()
+    table.text("name").notNullable()
     table.text("description").notNullable()
     table.integer("stock").notNullable()
     table.double("price").notNullable()
