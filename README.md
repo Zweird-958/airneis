@@ -2,6 +2,8 @@
 
 ### Contributeurs
 
+- [Notion](https://www.notion.so/5032283075074531a905ae196c0db0f8?v=27b4acb3b75d4338affe8306150984a3&pvs=4)
+
 - Julien HAMEL (Zweird-958) <julienhamel.h@gmail.com>
 - Léon CARIOU (theghost013) <cariouleon@gmail.com>
 - Bruno GOMES PEIXOTO (SeRiice) <bruno.gomespeixoto1@gmail.com>
