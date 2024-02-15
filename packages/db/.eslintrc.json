@@ -1,0 +1,17 @@
+{
+  "extends": "../../.eslintrc.json",
+  "overrides": [
+    {
+      "files": ["./src/entities/**/*.ts"],
+      "rules": {
+        "new-cap": "off"
+      }
+    },
+    {
+      "files": ["./src/migrations/**/*.ts"],
+      "rules": {
+        "require-await": "off"
+      }
+    }
+  ]
+}

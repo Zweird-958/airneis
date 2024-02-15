@@ -1,4 +1,12 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["."]
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noEmit": false,
+    "paths": {
+      "@/*": ["packages/db/src/*"],
+    },
+  },
+  "include": ["./src/**/*.ts"],
 }

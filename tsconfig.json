@@ -17,8 +17,12 @@
     "outDir": "./build",
     "baseUrl": "./",
     "composite": true,
-    "noErrorTruncation": true
+    "noErrorTruncation": true,
+  },
+  "ts-node": {
+    "esm": true,
+    "transpileOnly": true,
   },
   "include": ["./**/*.ts"],
-  "exclude": ["node_modules", "build"]
+  "exclude": ["node_modules", "build"],
 }
