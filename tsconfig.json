@@ -18,6 +18,8 @@
     "baseUrl": "./",
     "composite": true,
     "noErrorTruncation": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
   },
   "ts-node": {
     "esm": true,

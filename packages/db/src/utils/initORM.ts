@@ -1,17 +1,32 @@
-import { MikroORM } from "@mikro-orm/postgresql"
+import {
+  EntityManager,
+  MikroORM,
+  SqlEntityRepository,
+} from "@mikro-orm/postgresql"
 
-import { Services } from "@/index"
-import config from "@/mikro-orm.config"
+import { User } from "../entities/User"
+import config from "../mikro-orm.config"
 
-let cache: Promise<Services> | null = null
+let cache: Services | null = null
 
-const initORM = async (): Promise<Services> => {
+interface Services {
+  orm: MikroORM
+  em: EntityManager
+  user: SqlEntityRepository<User>
+}
+
+const initORM = async () => {
+  if (cache) {
+    return cache
+  }
+
   const orm = await MikroORM.init(config)
 
-  cache ||= Promise.resolve({
+  cache ||= {
     orm,
     em: orm.em,
-  })
+    user: orm.em.getRepository(User),
+  }
 
   return cache
 }
