@@ -1,7 +1,7 @@
 import {
   EntityManager,
+  EntityRepository,
   MikroORM,
-  SqlEntityRepository,
 } from "@mikro-orm/postgresql"
 
 import { User } from "../entities/User"
@@ -12,7 +12,7 @@ let cache: Services | null = null
 interface Services {
   orm: MikroORM
   em: EntityManager
-  user: SqlEntityRepository<User>
+  user: EntityRepository<User>
 }
 
 const initORM = async () => {
