@@ -1,13 +1,11 @@
 import { initTRPC } from "@trpc/server"
 import superjson from "superjson"
 
-import { em, user } from "@airneis/db"
+import { em, entities } from "@airneis/db"
 
 export const createTRPCContext = () => ({
   em,
-  models: {
-    user,
-  },
+  entities,
 })
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
