@@ -9,7 +9,6 @@ export default defineConfig({
   port: env.DATABASE_PORT,
   user: env.DATABASE_USERNAME,
   password: env.DATABASE_PASSWORD,
-
   entities: ["../../build/packages/db/src/entities/*.js"],
   entitiesTs: ["src/entities/*.ts"],
 

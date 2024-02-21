@@ -6,12 +6,7 @@
       "rules": {
         "new-cap": "off"
       }
-    },
-    {
-      "files": ["./src/migrations/**/*.ts"],
-      "rules": {
-        "require-await": "off"
-      }
     }
-  ]
+  ],
+  "ignorePatterns": ["src/migrations/**/*.ts"]
 }

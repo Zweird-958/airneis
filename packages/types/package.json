@@ -1,9 +1,9 @@
 {
   "name": "@airneis/types",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "exports": {
-    ".": "./src/index.ts",
     "./*": "./src/*.ts"
   },
   "scripts": {

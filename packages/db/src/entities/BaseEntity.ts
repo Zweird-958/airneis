@@ -5,9 +5,13 @@ export abstract class BaseEntity {
   @PrimaryKey({ type: "uuid", defaultRaw: "gen_random_uuid()" })
   id = uuid()
 
-  @Property({ defaultRaw: "now()" })
+  @Property({ type: "timestamptz", defaultRaw: "now()" })
   createdAt = new Date()
 
-  @Property({ onUpdate: () => new Date(), defaultRaw: "now()" })
+  @Property({
+    type: "timestamptz",
+    defaultRaw: "now()",
+    onUpdate: () => new Date(),
+  })
   updatedAt = new Date()
 }
