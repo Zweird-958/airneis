@@ -5,7 +5,7 @@ import { SeedManager } from "@mikro-orm/seeder"
 import env from "./env.js"
 
 export default defineConfig({
-  host: "localhost",
+  host: env.DATABASE_HOST,
   dbName: env.DATABASE_NAME,
   port: env.DATABASE_PORT,
   user: env.DATABASE_USERNAME,
