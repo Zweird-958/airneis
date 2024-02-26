@@ -2,7 +2,7 @@
 
 import { MouseEventHandler } from "react"
 
-import config from "@airneis/config/shared"
+import config from "@airneis/config"
 import type { Locale } from "@airneis/types/Locale"
 
 import useLocale from "@/hooks/useLocale"
