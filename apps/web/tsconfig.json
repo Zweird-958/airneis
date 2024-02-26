@@ -7,12 +7,12 @@
     "baseUrl": "../../",
     "plugins": [
       {
-        "name": "next"
-      }
+        "name": "next",
+      },
     ],
     "paths": {
-      "@/*": ["apps/web/src/*"]
-    }
+      "@/*": ["apps/web/src/*"],
+    },
   },
   "include": [
     "../../tailwind.config.ts",
@@ -20,6 +20,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "**/*.json"
-  ]
+    "**/*.json",
+  ],
 }
