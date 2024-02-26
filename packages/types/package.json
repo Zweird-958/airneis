@@ -1,11 +1,8 @@
 {
   "name": "@airneis/types",
-  "type": "module",
   "version": "1.0.0",
   "description": "",
-  "exports": {
-    "./*": "./src/*.ts"
-  },
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "typecheck": "tsc --noEmit"

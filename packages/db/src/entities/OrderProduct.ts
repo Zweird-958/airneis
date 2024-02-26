@@ -1,7 +1,7 @@
 import { Entity, ManyToOne, Property, type Rel } from "@mikro-orm/core"
 
-import { Order } from "./Order.js"
-import { Product } from "./Product.js"
+import { Order } from "./Order"
+import { Product } from "./Product"
 
 @Entity({ tableName: "link_orders_products" })
 export class OrderProduct {

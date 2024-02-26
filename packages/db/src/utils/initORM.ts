@@ -43,26 +43,22 @@ const initORM = async () => {
   }
 
   const orm = await MikroORM.init(config)
-  const {
-    em,
-    em: { getRepository },
-  } = orm
 
   cache ||= {
     orm,
-    em,
+    em: orm.em,
     entities: {
-      address: getRepository(Address),
-      cart: getRepository(Cart),
-      category: getRepository(Category),
-      deliveryCountry: getRepository(DeliveryCountry),
-      image: getRepository(Image),
-      material: getRepository(Material),
-      message: getRepository(Message),
-      order: getRepository(Order),
-      orderProduct: getRepository(OrderProduct),
-      product: getRepository(Product),
-      user: getRepository(User),
+      address: orm.em.getRepository(Address),
+      cart: orm.em.getRepository(Cart),
+      category: orm.em.getRepository(Category),
+      deliveryCountry: orm.em.getRepository(DeliveryCountry),
+      image: orm.em.getRepository(Image),
+      material: orm.em.getRepository(Material),
+      message: orm.em.getRepository(Message),
+      order: orm.em.getRepository(Order),
+      orderProduct: orm.em.getRepository(OrderProduct),
+      product: orm.em.getRepository(Product),
+      user: orm.em.getRepository(User),
     },
   }
 

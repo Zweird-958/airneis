@@ -1,8 +1,8 @@
-import { Entity, ManyToOne, Property } from "@mikro-orm/core"
+import { Entity, ManyToOne, Opt, Property } from "@mikro-orm/core"
 
-import { DeliveryCountry } from "./DeliveryCountry.js"
-import { SoftBaseEntity } from "./SoftBaseEntity.js"
-import { User } from "./User.js"
+import { DeliveryCountry } from "./DeliveryCountry"
+import { SoftBaseEntity } from "./SoftBaseEntity"
+import { User } from "./User"
 
 @Entity({ tableName: "addresses" })
 export class Address extends SoftBaseEntity {
@@ -19,22 +19,24 @@ export class Address extends SoftBaseEntity {
   city: string
 
   @Property({ type: "text", nullable: true, default: null })
-  phoneNumber: string | null
+  phoneNumber: string | null = null
 
   @Property({ type: "boolean", nullable: false, default: false })
-  isFavorite: boolean
+  isFavorite: boolean & Opt = false
 
   @ManyToOne({ entity: () => DeliveryCountry })
-  country!: DeliveryCountry
+  country: DeliveryCountry
 
   @ManyToOne({ entity: () => User })
-  user!: User
+  user: User
 
   constructor({
     fullName,
     address,
     postalCode,
     city,
+    country,
+    user,
     phoneNumber = null,
     isFavorite = false,
   }: {
@@ -42,7 +44,9 @@ export class Address extends SoftBaseEntity {
     address: string
     postalCode: string
     city: string
-    phoneNumber: string | null
+    country: DeliveryCountry
+    user: User
+    phoneNumber?: string | null
     isFavorite?: boolean
   }) {
     super()
@@ -50,6 +54,8 @@ export class Address extends SoftBaseEntity {
     this.address = address
     this.postalCode = postalCode
     this.city = city
+    this.country = country
+    this.user = user
     this.phoneNumber = phoneNumber
     this.isFavorite = isFavorite
   }

@@ -1,9 +1,9 @@
 import { Collection, Entity, ManyToMany, Property } from "@mikro-orm/core"
 
-import { Locale } from "@airneis/types/Locale"
+import { Locale } from "@airneis/types"
 
-import { BaseEntity } from "./BaseEntity.js"
-import { Product } from "./Product.js"
+import { BaseEntity } from "./BaseEntity"
+import { Product } from "./Product"
 
 @Entity({ tableName: "materials" })
 export class Material extends BaseEntity {

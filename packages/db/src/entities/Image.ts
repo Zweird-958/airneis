@@ -1,6 +1,6 @@
 import { Entity, Property } from "@mikro-orm/core"
 
-import { BaseEntity } from "./BaseEntity.js"
+import { BaseEntity } from "./BaseEntity"
 
 @Entity({ tableName: "images" })
 export class Image extends BaseEntity {

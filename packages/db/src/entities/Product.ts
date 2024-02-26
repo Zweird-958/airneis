@@ -6,13 +6,13 @@ import {
   Property,
 } from "@mikro-orm/core"
 
-import { Locale } from "@airneis/types/Locale"
+import { Locale } from "@airneis/types"
 
-import { Category } from "./Category.js"
-import { Image } from "./Image.js"
-import { Material } from "./Material.js"
-import { OrderProduct } from "./OrderProduct.js"
-import { SoftBaseEntity } from "./SoftBaseEntity.js"
+import { Category } from "./Category"
+import { Image } from "./Image"
+import { Material } from "./Material"
+import { OrderProduct } from "./OrderProduct"
+import { SoftBaseEntity } from "./SoftBaseEntity"
 
 @Entity({ tableName: "products" })
 export class Product extends SoftBaseEntity {

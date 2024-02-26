@@ -8,12 +8,12 @@ import {
   type Rel,
 } from "@mikro-orm/core"
 
-import { OrderStatus } from "@airneis/types/Order"
+import { OrderStatus } from "@airneis/types"
 
-import { Address } from "./Address.js"
-import { BaseEntity } from "./BaseEntity.js"
-import { OrderProduct } from "./OrderProduct.js"
-import { User } from "./User.js"
+import { Address } from "./Address"
+import { BaseEntity } from "./BaseEntity"
+import { OrderProduct } from "./OrderProduct"
+import { User } from "./User"
 
 @Entity({ tableName: "orders" })
 export class Order extends BaseEntity {

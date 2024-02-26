@@ -1,17 +1,17 @@
-import { PrimaryKey, Property } from "@mikro-orm/core"
-import { uuid } from "uuidv4"
+import { Opt, PrimaryKey, Property } from "@mikro-orm/core"
+import { randomUUID } from "crypto"
 
 export abstract class BaseEntity {
   @PrimaryKey({ type: "uuid", defaultRaw: "gen_random_uuid()" })
-  id = uuid()
+  id: string & Opt = randomUUID()
 
   @Property({ type: "timestamptz", defaultRaw: "now()" })
-  createdAt = new Date()
+  createdAt: Date & Opt = new Date()
 
   @Property({
     type: "timestamptz",
     defaultRaw: "now()",
     onUpdate: () => new Date(),
   })
-  updatedAt = new Date()
+  updatedAt: Date & Opt = new Date()
 }

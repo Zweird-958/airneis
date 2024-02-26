@@ -1,9 +1,9 @@
 import { Collection, Entity, OneToMany, Property } from "@mikro-orm/core"
 
-import { Address } from "./Address.js"
-import { Cart } from "./Cart.js"
-import { Order } from "./Order.js"
-import { SoftBaseEntity } from "./SoftBaseEntity.js"
+import { Address } from "./Address"
+import { Cart } from "./Cart"
+import { Order } from "./Order"
+import { SoftBaseEntity } from "./SoftBaseEntity"
 
 @Entity({ tableName: "users" })
 export class User extends SoftBaseEntity {

@@ -1,4 +1,4 @@
-import type { Locale } from "@airneis/types/Locale"
+import type { Locale } from "@airneis/types"
 
 import LocaleSelector from "@/components/LocaleSelector"
 import ProductList from "@/components/ProductList"

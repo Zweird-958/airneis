@@ -6,11 +6,11 @@ import {
   Property,
 } from "@mikro-orm/core"
 
-import { Locale } from "@airneis/types/Locale"
+import { Locale } from "@airneis/types"
 
-import { BaseEntity } from "./BaseEntity.js"
-import { Image } from "./Image.js"
-import { Product } from "./Product.js"
+import { BaseEntity } from "./BaseEntity"
+import { Image } from "./Image"
+import { Product } from "./Product"
 
 @Entity({ tableName: "categories" })
 export class Category extends BaseEntity {

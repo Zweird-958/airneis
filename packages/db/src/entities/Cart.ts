@@ -1,7 +1,7 @@
 import { Entity, ManyToOne, Property, type Rel } from "@mikro-orm/core"
 
-import { Product } from "./Product.js"
-import { User } from "./User.js"
+import { Product } from "./Product"
+import { User } from "./User"
 
 @Entity({ tableName: "carts" })
 export class Cart {
