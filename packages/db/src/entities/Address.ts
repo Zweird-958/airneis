@@ -1,4 +1,4 @@
-import { Entity, ManyToOne, Opt, Property } from "@mikro-orm/core"
+import { Entity, ManyToOne, OptionalProps, Property } from "@mikro-orm/core"
 
 import { DeliveryCountry } from "./DeliveryCountry"
 import { SoftBaseEntity } from "./SoftBaseEntity"
@@ -6,6 +6,8 @@ import { User } from "./User"
 
 @Entity({ tableName: "addresses" })
 export class Address extends SoftBaseEntity {
+  [OptionalProps]?: "isFavorite" | "phoneNumber"
+
   @Property({ type: "text", nullable: false })
   fullName: string
 
@@ -22,7 +24,7 @@ export class Address extends SoftBaseEntity {
   phoneNumber: string | null = null
 
   @Property({ type: "boolean", nullable: false, default: false })
-  isFavorite: boolean & Opt = false
+  isFavorite = false
 
   @ManyToOne({ entity: () => DeliveryCountry })
   country: DeliveryCountry
@@ -37,8 +39,6 @@ export class Address extends SoftBaseEntity {
     city,
     country,
     user,
-    phoneNumber = null,
-    isFavorite = false,
   }: {
     fullName: string
     address: string
@@ -46,8 +46,6 @@ export class Address extends SoftBaseEntity {
     city: string
     country: DeliveryCountry
     user: User
-    phoneNumber?: string | null
-    isFavorite?: boolean
   }) {
     super()
     this.fullName = fullName
@@ -56,7 +54,5 @@ export class Address extends SoftBaseEntity {
     this.city = city
     this.country = country
     this.user = user
-    this.phoneNumber = phoneNumber
-    this.isFavorite = isFavorite
   }
 }

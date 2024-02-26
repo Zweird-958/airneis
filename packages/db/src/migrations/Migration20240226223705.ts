@@ -1,6 +1,6 @@
 import { Migration } from "@mikro-orm/migrations"
 
-export class Migration20240226151251 extends Migration {
+export class Migration20240226223705 extends Migration {
   async up(): Promise<void> {
     this.addSql(
       'create table "delivery_countries" ("id" uuid not null default gen_random_uuid(), "created_at" timestamptz not null default now(), "updated_at" timestamptz not null default now(), "name" text not null, "vat" real not null, constraint "delivery_countries_pkey" primary key ("id"));',
@@ -47,8 +47,9 @@ export class Migration20240226151251 extends Migration {
       'create table "link_categories_products" ("category_id" uuid not null, "product_id" uuid not null, constraint "link_categories_products_pkey" primary key ("category_id", "product_id"));',
     )
 
+    this.addSql("create type \"user_roles\" as enum ('ADMIN', 'USER');")
     this.addSql(
-      'create table "users" ("id" uuid not null default gen_random_uuid(), "created_at" timestamptz not null default now(), "updated_at" timestamptz not null default now(), "deleted_at" timestamptz null, "first_name" text not null, "last_name" text not null, "email" text not null, "password" text not null, constraint "users_pkey" primary key ("id"));',
+      'create table "users" ("id" uuid not null default gen_random_uuid(), "created_at" timestamptz not null default now(), "updated_at" timestamptz not null default now(), "deleted_at" timestamptz null, "first_name" text not null, "last_name" text not null, "email" text not null, "password" text not null, "role" "user_roles" not null default \'USER\', constraint "users_pkey" primary key ("id"));',
     )
     this.addSql(
       'alter table "users" add constraint "users_email_unique" unique ("email");',
@@ -220,6 +221,8 @@ export class Migration20240226151251 extends Migration {
     this.addSql('drop table if exists "orders" cascade;')
 
     this.addSql('drop table if exists "link_orders_products" cascade;')
+
+    this.addSql('drop type "user_roles";')
 
     this.addSql('drop type "order_status";')
   }

@@ -84,6 +84,10 @@
       "checks": [],
       "foreignKeys": {},
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -152,6 +156,10 @@
       "checks": [],
       "foreignKeys": {},
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -261,6 +269,10 @@
         }
       },
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -339,6 +351,10 @@
       "checks": [],
       "foreignKeys": {},
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -425,6 +441,10 @@
       "checks": [],
       "foreignKeys": {},
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -531,6 +551,10 @@
       "checks": [],
       "foreignKeys": {},
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -604,6 +628,10 @@
         }
       },
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -677,6 +705,10 @@
         }
       },
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -750,6 +782,10 @@
         }
       },
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -837,6 +873,21 @@
           "primary": false,
           "nullable": false,
           "mappedType": "text"
+        },
+        "role": {
+          "name": "role",
+          "type": "user_roles",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "nativeEnumName": "user_roles",
+          "default": "'USER'",
+          "enumItems": [
+            "ADMIN",
+            "USER"
+          ],
+          "mappedType": "enum"
         }
       },
       "name": "users",
@@ -866,6 +917,10 @@
       "checks": [],
       "foreignKeys": {},
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -946,6 +1001,10 @@
         }
       },
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -1115,6 +1174,10 @@
         }
       },
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -1271,6 +1334,10 @@
         }
       },
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -1360,6 +1427,10 @@
         }
       },
       "nativeEnums": {
+        "user_roles": [
+          "ADMIN",
+          "USER"
+        ],
         "order_status": [
           "CANCELLED",
           "ONGOING",
@@ -1369,6 +1440,10 @@
     }
   ],
   "nativeEnums": {
+    "user_roles": [
+      "ADMIN",
+      "USER"
+    ],
     "order_status": [
       "CANCELLED",
       "ONGOING",
