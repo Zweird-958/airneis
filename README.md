@@ -1,6 +1,6 @@
 # airneis
 
-### Contributeurs
+## Contributeurs
 
 - Julien HAMEL (Zweird-958) <julienhamel.h@gmail.com>
 - Léon CARIOU (theghost013) <cariouleon@gmail.com>
@@ -36,7 +36,14 @@ npm run env-symlink
 docker compose up
 ```
 
-### Démarrer le serveur
+### Initialiser la base de données
+
+```bash
+# Exécuter les migrations
+npm run db migration:up
+```
+
+### Démarrer les applications
 
 ```bash
 # Web
