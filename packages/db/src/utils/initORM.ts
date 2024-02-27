@@ -20,7 +20,6 @@ import config from "../mikro-orm.config"
 let cache: Services | null = null
 
 interface Services {
-  orm: MikroORM
   em: EntityManager
   entities: {
     address: EntityRepository<Address>
@@ -45,7 +44,6 @@ const initORM = async () => {
   const orm = await MikroORM.init(config)
 
   cache ||= {
-    orm,
     em: orm.em,
     entities: {
       address: orm.em.getRepository(Address),
