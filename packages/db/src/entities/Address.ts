@@ -1,13 +1,14 @@
-import { Entity, ManyToOne, OptionalProps, Property } from "@mikro-orm/core"
+import { Entity, ManyToOne, Property } from "@mikro-orm/core"
 
 import { DeliveryCountry } from "./DeliveryCountry"
 import { SoftBaseEntity } from "./SoftBaseEntity"
 import { User } from "./User"
 
 @Entity({ tableName: "addresses" })
-export class Address extends SoftBaseEntity {
-  [OptionalProps]?: "isFavorite" | "phoneNumber"
-
+export class Address extends SoftBaseEntity<
+  Address,
+  "phoneNumber" | "isFavorite"
+> {
   @Property({ type: "text", nullable: false })
   fullName: string
 

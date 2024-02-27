@@ -1,11 +1,4 @@
-import {
-  Collection,
-  Entity,
-  Enum,
-  OneToMany,
-  OptionalProps,
-  Property,
-} from "@mikro-orm/core"
+import { Collection, Entity, Enum, OneToMany, Property } from "@mikro-orm/core"
 
 import { UserRoles } from "@airneis/types"
 
@@ -15,9 +8,7 @@ import { Order } from "./Order"
 import { SoftBaseEntity } from "./SoftBaseEntity"
 
 @Entity({ tableName: "users" })
-export class User extends SoftBaseEntity {
-  [OptionalProps]?: "role"
-
+export class User extends SoftBaseEntity<User, "role"> {
   @Property({ type: "text", nullable: false })
   firstName: string
 
