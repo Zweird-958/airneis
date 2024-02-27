@@ -1,7 +1,4 @@
-import type {
-  ExtractKeys,
-  TranslationInterpolator,
-} from "@airneis/types/Locale"
+import type { ExtractKeys, TranslationInterpolator } from "@airneis/types"
 
 const translationInterpolator = <T extends string>(
   translation: T,

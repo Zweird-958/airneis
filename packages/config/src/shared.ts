@@ -1,4 +1,4 @@
-import type { Locale } from "@airneis/types/Locale"
+import type { Locale } from "@airneis/types"
 
 type Config = {
   languageKeys: [Locale, ...Locale[]]
