@@ -1,4 +1,4 @@
-import type { Locale } from "@airneis/types/Locale"
+import type { Locale } from "@airneis/types"
 import { translationInterpolator } from "@airneis/utils"
 
 import common from "@/locales/en/common"

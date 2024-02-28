@@ -2,7 +2,7 @@ import { getItemAsync, setItemAsync } from "expo-secure-store"
 import { useCallback, useEffect } from "react"
 
 import { localeSchema } from "@airneis/schemas"
-import type { Locale } from "@airneis/types/Locale"
+import type { Locale } from "@airneis/types"
 import { translationInterpolator } from "@airneis/utils"
 
 import useLocaleStore from "@/stores/locale"
