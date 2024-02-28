@@ -1,27 +1,16 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { httpBatchLink } from "@trpc/react-query"
-import Constants from "expo-constants"
 import { ReactNode, useState } from "react"
 import superjson from "superjson"
 
 import api from "@/utils/api"
+import env from "@/env"
 
 type Props = {
   children: ReactNode
 }
 
-const getBaseUrl = () => {
-  const debuggerHost = Constants.expoConfig?.hostUri
-  const localhost = debuggerHost?.split(":")[0]
 
-  if (!localhost) {
-    throw new Error(
-      "Failed to get localhost. Please point to your production server.",
-    )
-  }
-
-  return `http://${localhost}:3000`
-}
 const TRPCProvider = (props: Props) => {
   const { children } = props
   const [queryClient] = useState(() => new QueryClient())
@@ -30,7 +19,7 @@ const TRPCProvider = (props: Props) => {
       transformer: superjson,
       links: [
         httpBatchLink({
-          url: `${getBaseUrl()}/api/trpc`,
+          url: `${env.EXPO_PUBLIC_API_URL}/api/trpc`,
         }),
       ],
     }),

@@ -18,7 +18,7 @@
     "typecheck": "npm run typecheck -ws --if-present",
     "check": "npm run lint && npm run typecheck && npm run format",
     "clear": "git clean -xdf node_modules apps/web/.next apps/mobile/.expo && rm -f package-lock.json",
-    "env-symlink": "ln -sf $PWD/.env ./apps/web"
+    "env-symlink": "ln -sf $PWD/.env ./apps/web && ln -sf $PWD/.env ./apps/mobile"
   },
   "author": "",
   "license": "ISC",
