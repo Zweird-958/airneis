@@ -1,0 +1,12 @@
+{
+  "extends": "../../.eslintrc.json",
+  "overrides": [
+    {
+      "files": ["./src/entities/**/*.ts"],
+      "rules": {
+        "new-cap": "off"
+      }
+    }
+  ],
+  "ignorePatterns": ["src/migrations/**/*.ts"]
+}

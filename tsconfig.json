@@ -17,8 +17,14 @@
     "outDir": "./build",
     "baseUrl": "./",
     "composite": true,
-    "noErrorTruncation": true
+    "noErrorTruncation": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+  },
+  "ts-node": {
+    "esm": true,
+    "transpileOnly": true,
   },
   "include": ["./**/*.ts"],
-  "exclude": ["node_modules", "build"]
+  "exclude": ["node_modules", "build"],
 }
