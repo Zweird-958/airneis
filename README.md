@@ -1,6 +1,6 @@
 # airneis
 
-### Contributeurs
+## Contributeurs
 
 - [Notion](https://www.notion.so/5032283075074531a905ae196c0db0f8?v=27b4acb3b75d4338affe8306150984a3&pvs=4)
 
@@ -38,7 +38,14 @@ npm run env-symlink
 docker compose up
 ```
 
-### Démarrer le serveur
+### Initialiser la base de données
+
+```bash
+# Exécuter les migrations
+npm run db migration:up
+```
+
+### Démarrer les applications
 
 ```bash
 # Web

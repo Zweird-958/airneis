@@ -1,7 +1,7 @@
 import { create } from "zustand"
 
+import type { Locale } from "@airneis/types"
 import config from "@airneis/config"
-import type { Locale } from "@airneis/types/Locale"
 
 import common from "@/locales/en/common"
 

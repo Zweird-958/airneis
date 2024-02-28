@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { ReactNode } from "react"
 
-import type { Locale } from "@airneis/types/Locale"
+import type { Locale } from "@airneis/types"
 
 import "./globals.css"
 import Providers from "./providers"

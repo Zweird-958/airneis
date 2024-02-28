@@ -1,7 +1,7 @@
 import { usePathname, useRouter } from "next/navigation"
 import { useCallback, useEffect } from "react"
 
-import type { Locale } from "@airneis/types/Locale"
+import type { Locale } from "@airneis/types"
 import { translationInterpolator } from "@airneis/utils"
 
 import useLocaleStore from "@/stores/locale"
