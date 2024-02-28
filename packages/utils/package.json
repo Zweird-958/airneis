@@ -1,5 +1,5 @@
 {
-  "name": "@airneis/config",
+  "name": "@airneis/utils",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -9,10 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@airneis/types": "^1.0.0"
-  },
   "devDependencies": {
-    "typescript": "^5.3.3"
+    "@airneis/types": "^1.0.0"
   }
 }
