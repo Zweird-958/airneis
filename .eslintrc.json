@@ -122,7 +122,6 @@
     "no-return-assign": ["error", "always"],
     "no-script-url": "error",
     "no-sequences": "error",
-    "no-shadow": "error",
     "no-throw-literal": "error",
     "no-undef-init": "error",
     "no-undefined": "error",
@@ -233,7 +232,8 @@
     "space-before-blocks": "error",
     "semi": ["error", "never"],
     "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-shadow": "error"
   },
   "settings": {
     "react": {

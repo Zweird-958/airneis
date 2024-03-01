@@ -13,6 +13,7 @@
     "@airneis/api": "^1.0.0",
     "@airneis/config": "^1.0.0",
     "@airneis/types": "^1.0.0",
+    "@airneis/utils": "^1.0.0",
     "@formatjs/intl-localematcher": "^0.5.4",
     "@tanstack/react-query": "^4.36.1",
     "@trpc/client": "^10.45.0",

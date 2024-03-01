@@ -18,7 +18,7 @@ const RootLayout = () => {
 
   return (
     <Providers>
-      <GestureHandlerRootView style={{ flex: 1 }}>
+      <GestureHandlerRootView className="flex-1">
         <Drawer
           screenOptions={{
             drawerPosition: "right",
