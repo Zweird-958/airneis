@@ -4,10 +4,15 @@ import {
   DrawerItem,
 } from "@react-navigation/drawer"
 
+import useLocale from "@/hooks/useLocale"
+
 const DrawerContent = (props: DrawerContentComponentProps) => {
+  const {
+    translations: { common },
+  } = useLocale()
   const DRAWER_ITEMS = [
     {
-      label: "Home",
+      label: common.home,
       screen: "index",
     },
   ]
