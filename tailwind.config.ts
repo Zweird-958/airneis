@@ -1,11 +1,11 @@
 import type { Config } from "tailwindcss"
 
 const config: Config = {
-  content: ["src/**/*.{ts,tsx}"],
+  content: [],
   theme: {
     extend: {
-      colors: {
-        primary: "#ff0000",
+      borderRadius: {
+        default: "0.5rem",
       },
     },
   },

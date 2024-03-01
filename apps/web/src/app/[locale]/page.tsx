@@ -1,5 +1,6 @@
 import type { Locale } from "@airneis/types"
 
+import GenericsShowcase from "@/components/GenericsShowcase"
 import LocaleSelector from "@/components/LocaleSelector"
 import ProductList from "@/components/ProductList"
 import api from "@/trpc/server"
@@ -31,6 +32,8 @@ const Home = async (props: PageProps) => {
         <p key={id}>{name}</p>
       ))}
       <ProductList />
+      <hr className="mb-4" />
+      <GenericsShowcase />
     </div>
   )
 }
