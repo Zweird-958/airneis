@@ -8,6 +8,7 @@ import { webConfig } from "@airneis/config"
 import { signInSchema } from "@airneis/schemas"
 
 import config from "../config"
+import env from "../env"
 import { createTRPCRouter, publicProcedure } from "../trpc"
 
 const userRouter = createTRPCRouter({
@@ -39,14 +40,12 @@ const userRouter = createTRPCRouter({
             },
           },
         },
-        config.security.jwt.secret,
+        env.JWT_SECRET,
         { expiresIn: config.security.jwt.expiresIn },
       )
-      const cookieJwt = jsonwebtoken.sign(
-        { payload: jwt },
-        config.security.jwt.secret,
-        { expiresIn: config.security.jwt.expiresIn },
-      )
+      const cookieJwt = jsonwebtoken.sign({ payload: jwt }, env.JWT_SECRET, {
+        expiresIn: config.security.jwt.expiresIn,
+      })
 
       cookies().set(webConfig.security.session.cookie.key, cookieJwt, {
         path: "/",
