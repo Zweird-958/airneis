@@ -1,3 +1,1 @@
-import translationInterpolator from "./src/translationInterpolator"
-
-export { translationInterpolator }
+export * from "./src/translationInterpolator"
