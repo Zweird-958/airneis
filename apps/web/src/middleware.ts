@@ -2,7 +2,7 @@ import { match } from "@formatjs/intl-localematcher"
 import Negotiator from "negotiator"
 import { NextRequest, NextResponse } from "next/server"
 
-import sharedConfig from "@airneis/config/shared"
+import { sharedConfig } from "@airneis/config"
 
 export const middleware = (request: NextRequest) => {
   const { pathname } = request.nextUrl

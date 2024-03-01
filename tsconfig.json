@@ -19,12 +19,12 @@
     "composite": true,
     "noErrorTruncation": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "experimentalDecorators": true
   },
   "ts-node": {
     "esm": true,
-    "transpileOnly": true,
+    "transpileOnly": true
   },
   "include": ["./**/*.ts"],
-  "exclude": ["node_modules", "build"],
+  "exclude": ["node_modules", "build"]
 }

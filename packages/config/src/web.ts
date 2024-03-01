@@ -10,7 +10,7 @@ const schema = z.object({
     }),
   }),
 })
-const config = schema.parse({
+export const webConfig = schema.parse({
   security: {
     session: {
       cookie: {
@@ -20,5 +20,3 @@ const config = schema.parse({
     },
   },
 })
-
-export default config

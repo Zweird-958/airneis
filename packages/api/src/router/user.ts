@@ -4,7 +4,7 @@ import jsonwebtoken from "jsonwebtoken"
 import ms from "ms"
 import { cookies } from "next/headers"
 
-import webConfig from "@airneis/config/web"
+import { webConfig } from "@airneis/config"
 import { signInSchema } from "@airneis/schemas"
 
 import config from "../config"

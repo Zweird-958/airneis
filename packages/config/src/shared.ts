@@ -5,9 +5,7 @@ type Config = {
   fallbackLng: Locale
 }
 
-const config: Config = {
+export const sharedConfig: Config = {
   languageKeys: ["en", "fr"],
   fallbackLng: "en",
 }
-
-export default config
