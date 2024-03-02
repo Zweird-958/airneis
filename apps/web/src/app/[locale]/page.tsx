@@ -3,6 +3,7 @@ import type { Locale } from "@airneis/types"
 import GenericsShowcase from "@/components/GenericsShowcase"
 import LocaleSelector from "@/components/LocaleSelector"
 import ProductList from "@/components/ProductList"
+import TestForm from "@/components/forms/TestForm"
 import api from "@/trpc/server"
 import getTranslations from "@/utils/locale/getTranslations"
 
@@ -24,7 +25,7 @@ const Home = async (props: PageProps) => {
   }
 
   return (
-    <div>
+    <div className="m-4">
       <LocaleSelector />
       <p>{t(common.hello, { name: "Airneis" })}</p>
       <p className="text-primary text-xl">{common.server}</p>
@@ -32,8 +33,10 @@ const Home = async (props: PageProps) => {
         <p key={id}>{name}</p>
       ))}
       <ProductList />
-      <hr className="mb-4" />
+      <hr className="my-4" />
       <GenericsShowcase />
+      <hr className="my-4" />
+      <TestForm />
     </div>
   )
 }

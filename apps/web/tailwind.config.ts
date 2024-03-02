@@ -6,17 +6,22 @@ const config: Config = {
   content: ["./src/app/**/*.tsx", "./src/components/**/*.tsx"],
   theme: {
     extend: {
-      borderColor: {
-        default: "var(--border)",
-      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
-        card: "var(--card)",
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        error: "hsl(var(--error))",
+        card: "hsl(var(--card))",
+      },
+      borderColor: {
+        default: "hsl(var(--border))",
       },
     },
   },

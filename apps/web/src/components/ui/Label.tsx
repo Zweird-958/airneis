@@ -5,7 +5,7 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react"
 
 import { cn } from "@/utils/cn"
 
-export const Label = forwardRef<
+const Label = forwardRef<
   ElementRef<typeof LabelPrimitive.Root>,
   ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
 >(({ className, ...props }, ref) => (
@@ -16,3 +16,5 @@ export const Label = forwardRef<
   />
 ))
 Label.displayName = LabelPrimitive.Root.displayName
+
+export default Label

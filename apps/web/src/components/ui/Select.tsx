@@ -22,7 +22,7 @@ export const Select = forwardRef<
       >
         <SelectPrimitive.Value placeholder={forms.selectPlaceholder} />
         <SelectPrimitive.Icon>
-          <ChevronDownIcon className="size-4" />
+          <ChevronDownIcon className="size-4 text-muted-foreground" />
         </SelectPrimitive.Icon>
       </SelectPrimitive.Trigger>
       <SelectPrimitive.Portal>
@@ -32,13 +32,13 @@ export const Select = forwardRef<
           sideOffset={2}
         >
           <SelectPrimitive.ScrollUpButton className="flex items-center justify-center py-1">
-            <ChevronUpIcon className="size-4" />
+            <ChevronUpIcon className="size-4 text-muted-foreground" />
           </SelectPrimitive.ScrollUpButton>
           <SelectPrimitive.Viewport className="p-2 h-[var(--radix-select-trigger-height)] min-w-[var(--radix-select-trigger-width)]">
             {children}
           </SelectPrimitive.Viewport>
           <SelectPrimitive.ScrollDownButton className="flex items-center justify-center py-1">
-            <ChevronDownIcon className="size-4" />
+            <ChevronDownIcon className="size-4 text-muted-foreground" />
           </SelectPrimitive.ScrollDownButton>
         </SelectPrimitive.Content>
       </SelectPrimitive.Portal>
@@ -58,7 +58,7 @@ export const SelectItem = forwardRef<
   >
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     <SelectPrimitive.ItemIndicator>
-      <CheckIcon className="size-4" />
+      <CheckIcon className="size-4 text-muted-foreground" />
     </SelectPrimitive.ItemIndicator>
   </SelectPrimitive.Item>
 ))
