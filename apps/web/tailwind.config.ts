@@ -6,6 +6,9 @@ const config: Config = {
   content: ["./src/app/**/*.tsx", "./src/components/**/*.tsx"],
   theme: {
     extend: {
+      borderColor: {
+        default: "var(--border)",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

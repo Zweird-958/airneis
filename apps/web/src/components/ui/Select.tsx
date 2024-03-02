@@ -18,7 +18,7 @@ export const Select = forwardRef<
     <SelectPrimitive.Root {...props}>
       <SelectPrimitive.Trigger
         ref={ref}
-        className="h-10 w-full bg-card border border-border py-2 rounded-default px-3 text-sm disabled:cursor-not-allowed focus-visible:outline-none disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-primary flex items-center justify-between"
+        className="h-10 w-full bg-card border border-default py-2 rounded-default px-3 text-sm disabled:cursor-not-allowed focus-visible:outline-none disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-primary flex items-center justify-between"
       >
         <SelectPrimitive.Value placeholder={forms.selectPlaceholder} />
         <SelectPrimitive.Icon>
@@ -27,7 +27,7 @@ export const Select = forwardRef<
       </SelectPrimitive.Trigger>
       <SelectPrimitive.Portal>
         <SelectPrimitive.Content
-          className="relative max-h-96 min-w-[8rem] overflow-hidden rounded-default shadow-lg border border-border bg-card"
+          className="relative max-h-96 min-w-[8rem] overflow-hidden rounded-default shadow-lg border border-default bg-card"
           position="popper"
           sideOffset={2}
         >
