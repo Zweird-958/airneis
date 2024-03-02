@@ -1,9 +1,11 @@
+import { Button } from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
 import { Select, SelectItem } from "@/components/ui/Select"
 
 const GenericsShowcase = () => (
   <div className="flex flex-col gap-8 mx-4">
     <Input />
+    <Button>Click me</Button>
     <div className="max-w-96">
       <Select>
         {new Array(20).fill(null).map((_, i) => (

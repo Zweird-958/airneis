@@ -6,10 +6,10 @@
   :root {
     --background: hsl(220, 14%, 96%);
     --foreground: black;
-
-    --card: white;
-
     --primary: hsl(270, 59%, 58%);
+    --primary-foreground: white;
+    --error: hsl(339, 90%, 51%);
     --border: hsl(220, 13%, 91%);
+    --card: white;
   }
 }

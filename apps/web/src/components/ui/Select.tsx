@@ -54,7 +54,7 @@ export const SelectItem = forwardRef<
   <SelectPrimitive.Item
     {...props}
     ref={ref}
-    className="relative flex justify-between w-full cursor-default select-none items-center rounded-default py-1.5 px-3 text-sm outline-none focus:bg-primary focus:text-white data-[disabled]:opacity-50"
+    className="relative flex justify-between w-full cursor-default select-none items-center rounded-default py-1.5 px-3 text-sm outline-none focus:bg-primary focus:text-primary-foreground data-[disabled]:opacity-50"
   >
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     <SelectPrimitive.ItemIndicator>
