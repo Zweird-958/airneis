@@ -4,39 +4,47 @@ import * as SelectPrimitive from "@radix-ui/react-select"
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react"
 
+import useLocale from "@/hooks/useLocale"
+
 export const Select = forwardRef<
   ElementRef<typeof SelectPrimitive.Root>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
->(({ children, ...props }, ref) => (
-  <SelectPrimitive.Root {...props}>
-    <SelectPrimitive.Trigger
-      ref={ref}
-      className="h-10 w-full bg-card border border-border py-2 rounded-default px-3 text-sm disabled:cursor-not-allowed focus-visible:outline-none disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-primary flex items-center justify-between"
-    >
-      <SelectPrimitive.Value placeholder="Select an option" />
-      <SelectPrimitive.Icon>
-        <ChevronDownIcon className="size-4" />
-      </SelectPrimitive.Icon>
-    </SelectPrimitive.Trigger>
-    <SelectPrimitive.Portal>
-      <SelectPrimitive.Content
-        className="relative max-h-96 min-w-[8rem] overflow-hidden rounded-default shadow-lg border border-border bg-card"
-        position="popper"
-        sideOffset={2}
+>(({ children, ...props }, ref) => {
+  const {
+    translations: { forms },
+  } = useLocale()
+
+  return (
+    <SelectPrimitive.Root {...props}>
+      <SelectPrimitive.Trigger
+        ref={ref}
+        className="h-10 w-full bg-card border border-border py-2 rounded-default px-3 text-sm disabled:cursor-not-allowed focus-visible:outline-none disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-primary flex items-center justify-between"
       >
-        <SelectPrimitive.ScrollUpButton className="flex items-center justify-center py-1">
-          <ChevronUpIcon className="size-4" />
-        </SelectPrimitive.ScrollUpButton>
-        <SelectPrimitive.Viewport className="p-2 h-[var(--radix-select-trigger-height)] min-w-[var(--radix-select-trigger-width)]">
-          {children}
-        </SelectPrimitive.Viewport>
-        <SelectPrimitive.ScrollDownButton className="flex items-center justify-center py-1">
+        <SelectPrimitive.Value placeholder={forms.selectPlaceholder} />
+        <SelectPrimitive.Icon>
           <ChevronDownIcon className="size-4" />
-        </SelectPrimitive.ScrollDownButton>
-      </SelectPrimitive.Content>
-    </SelectPrimitive.Portal>
-  </SelectPrimitive.Root>
-))
+        </SelectPrimitive.Icon>
+      </SelectPrimitive.Trigger>
+      <SelectPrimitive.Portal>
+        <SelectPrimitive.Content
+          className="relative max-h-96 min-w-[8rem] overflow-hidden rounded-default shadow-lg border border-border bg-card"
+          position="popper"
+          sideOffset={2}
+        >
+          <SelectPrimitive.ScrollUpButton className="flex items-center justify-center py-1">
+            <ChevronUpIcon className="size-4" />
+          </SelectPrimitive.ScrollUpButton>
+          <SelectPrimitive.Viewport className="p-2 h-[var(--radix-select-trigger-height)] min-w-[var(--radix-select-trigger-width)]">
+            {children}
+          </SelectPrimitive.Viewport>
+          <SelectPrimitive.ScrollDownButton className="flex items-center justify-center py-1">
+            <ChevronDownIcon className="size-4" />
+          </SelectPrimitive.ScrollDownButton>
+        </SelectPrimitive.Content>
+      </SelectPrimitive.Portal>
+    </SelectPrimitive.Root>
+  )
+})
 Select.displayName = SelectPrimitive.Root.displayName
 
 export const SelectItem = forwardRef<

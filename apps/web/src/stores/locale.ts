@@ -4,6 +4,7 @@ import config from "@airneis/config/shared"
 import type { Locale } from "@airneis/types"
 
 import common from "@/locales/en/common"
+import forms from "@/locales/en/forms"
 
 type LocaleStore = {
   locale: Locale
@@ -14,6 +15,7 @@ type LocaleStore = {
 
 const defaultTranslation = {
   common,
+  forms,
 }
 const useLocaleStore = create<LocaleStore>((set) => ({
   locale: config.fallbackLng,
