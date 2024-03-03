@@ -8,7 +8,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler"
 import Providers from "@/app/providers"
 import DrawerContent from "@/components/drawer/DrawerContent"
 
-import "../global.css"
+import "../globals.css"
 
 const RootLayout = () => {
   const navigation = useNavigation()

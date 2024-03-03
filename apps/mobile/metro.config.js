@@ -15,6 +15,6 @@ config.resolver.nodeModulesPaths = [
 ]
 
 module.exports = withNativeWind(config, {
-  input: "./src/global.css",
+  input: "./src/globals.css",
   configPath: "./tailwind.config.ts",
 })
