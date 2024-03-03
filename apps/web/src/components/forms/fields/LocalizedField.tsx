@@ -1,5 +1,6 @@
-import config from "packages/config"
 import { Control, FieldValues, Path } from "react-hook-form"
+
+import config from "@airneis/config"
 
 import {
   FormControl,

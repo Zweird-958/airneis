@@ -1,5 +1,6 @@
-import { localizedSchema } from "packages/schemas"
 import { z } from "zod"
+
+import { localizedSchema } from "./locales"
 
 export const createCategorySchema = z.object({
   name: localizedSchema,
