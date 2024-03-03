@@ -20,11 +20,6 @@ const CreateCategoryForm = () => {
   const { mutateAsync } = api.categories.create.useMutation()
   const form = useForm<CreateCategoryInput>({
     resolver: zodResolver(createCategorySchema),
-    // DefaultValues: {
-    //   name: localizedFieldDefaultValues,
-    //   description: localizedFieldDefaultValues,
-    //   imageUrl: "",
-    // },
     defaultValues: {
       name: { en: "Furniture", fr: "Meubles" },
       description: { en: "Beautiful furniture", fr: "Beaux meubles" },
