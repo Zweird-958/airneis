@@ -3,7 +3,11 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { SubmitHandler, useForm } from "react-hook-form"
 
-import { CreateCategoryInput, createCategorySchema } from "@airneis/schemas"
+import {
+  CreateCategoryInput,
+  createCategorySchema,
+  localizedFieldDefaultValues,
+} from "@airneis/schemas"
 
 import Button from "@/components/ui/Button"
 import { Form } from "@/components/ui/Form"
@@ -21,9 +25,9 @@ const CreateCategoryForm = () => {
   const form = useForm<CreateCategoryInput>({
     resolver: zodResolver(createCategorySchema),
     defaultValues: {
-      name: { en: "Furniture", fr: "Meubles" },
-      description: { en: "Beautiful furniture", fr: "Beaux meubles" },
-      imageUrl: "https://i.imgur.com/wv8oHrd.png",
+      name: localizedFieldDefaultValues,
+      description: localizedFieldDefaultValues,
+      imageUrl: "",
     },
   })
   const onSubmit: SubmitHandler<CreateCategoryInput> = async (values) => {
