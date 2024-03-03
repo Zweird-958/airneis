@@ -4,8 +4,6 @@ import config from "@airneis/config"
 import type { Locale } from "@airneis/types"
 
 import common from "@/locales/en/common"
-import forms from "@/locales/en/forms"
-import zodErrors from "@/locales/en/zodErrors"
 
 type LocaleStore = {
   locale: Locale
@@ -16,8 +14,6 @@ type LocaleStore = {
 
 const defaultTranslation = {
   common,
-  forms,
-  zodErrors: zodErrors as Record<string, Record<string, string>>,
 }
 const useLocaleStore = create<LocaleStore>((set) => ({
   locale: config.fallbackLng,

@@ -25,7 +25,7 @@ const RootLayout = (props: Props) => {
 
   return (
     <Providers>
-      <html lang={locale}>
+      <html lang={locale} className="bg-background">
         <body>{children}</body>
       </html>
     </Providers>

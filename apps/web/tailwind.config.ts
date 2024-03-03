@@ -3,10 +3,7 @@ import type { Config } from "tailwindcss"
 import baseConfig from "../../tailwind.config"
 
 const config: Config = {
-  content: [
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/app/**/*.tsx", "./src/components/**/*.tsx"],
   theme: {},
   plugins: [],
   presets: [baseConfig],
