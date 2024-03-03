@@ -18,7 +18,7 @@ const Header = (props: Props) => {
   }
 
   return (
-    <header className="w-full shadow-md">
+    <header className="sticky top-0 bg-white w-full border-b">
       <div className="flex justify-between items-center w-full px-4 py-2">
         <h1 className="font-bold text-xl">ÀIRNEIS</h1>
         <nav>

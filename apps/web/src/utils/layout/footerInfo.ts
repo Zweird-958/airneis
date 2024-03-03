@@ -1,5 +1,3 @@
-import { Facebook, Instagram, Linkedin } from "lucide-react"
-
 import common from "@/locales/en/common"
 
 type FooterLink = {
@@ -25,14 +23,17 @@ export const footerLink: FooterLink = [
 export const footerSocial = [
   {
     href: "https://www.linkedin.com",
-    Icon: Linkedin,
+    src: "/logo/linkedin.svg",
+    alt: "linkedin",
   },
   {
     href: "https://www.instagram.com",
-    Icon: Instagram,
+    src: "/logo/instagram.svg",
+    alt: "instagram",
   },
   {
     href: "https://www.facebook.com",
-    Icon: Facebook,
+    src: "/logo/facebook.svg",
+    alt: "facebook",
   },
 ]

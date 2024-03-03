@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 
 import useDevice from "@/hooks/useDevice"
@@ -16,7 +17,7 @@ const Menu = () => {
   const device = useDevice()
 
   return (
-    <nav className="w-full flex flex-col gap-2 px-4 py-2 border-t">
+    <nav className="absolute bg-white w-full flex flex-col gap-2 px-4 py-2 border-t">
       {headerLink.map(({ href, common }) => (
         <Link key={href} href={href}>
           {header[common]}
@@ -30,9 +31,9 @@ const Menu = () => {
             </Link>
           ))}
           <div className="flex gap-2">
-            {footerSocial.map(({ href, Icon }) => (
+            {footerSocial.map(({ href, src, alt }) => (
               <Link key={href} href={href}>
-                <Icon />
+                <Image src={src} alt={alt} width={30} height={30} />
               </Link>
             ))}
           </div>
