@@ -3,7 +3,6 @@ import { translationInterpolator } from "@airneis/utils"
 
 import type common from "@/locales/en/common"
 import type forms from "@/locales/en/forms"
-import translationInterpolator from "@/utils/locale/translationInterpolator"
 
 type Key = "common" | "forms"
 
