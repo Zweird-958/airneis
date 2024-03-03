@@ -17,7 +17,7 @@ const Home = async (props: PageProps) => {
   const {
     params: { locale },
   } = props
-  const products = await api.products.all.query()
+  const products = await api.product.all.query()
   const { common, t } = await getTranslations(locale)
 
   if (!products) {

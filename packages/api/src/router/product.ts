@@ -1,6 +1,6 @@
 import { createTRPCRouter, publicProcedure } from "../trpc"
 
-const productsRouter = createTRPCRouter({
+const productRouter = createTRPCRouter({
   all: publicProcedure.query(() => ({
     result: [
       { id: 1, name: "Product 1" },
@@ -9,4 +9,4 @@ const productsRouter = createTRPCRouter({
   })),
 })
 
-export default productsRouter
+export default productRouter

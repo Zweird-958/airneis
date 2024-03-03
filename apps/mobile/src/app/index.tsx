@@ -7,7 +7,7 @@ import useLocale from "@/hooks/useLocale"
 import api from "@/utils/api"
 
 export default function Index() {
-  const { data } = api.products.all.useQuery()
+  const { data } = api.product.all.useQuery()
   const {
     translations: { common },
     t,

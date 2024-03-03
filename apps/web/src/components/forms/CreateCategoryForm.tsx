@@ -23,7 +23,7 @@ const CreateCategoryForm = () => {
   const {
     translations: { forms },
   } = useLocale()
-  const { mutateAsync } = api.categories.create.useMutation({
+  const { mutateAsync } = api.category.create.useMutation({
     onSuccess: () => {
       alert("Category created")
     },
