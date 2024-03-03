@@ -9,7 +9,11 @@ import Button from "@/components/ui/Button"
 import { Form } from "@/components/ui/Form"
 
 const testSchema = z.object({
-  username: z.string().min(3).max(6),
+  username: z
+    .string()
+    .trim()
+    .min(3, { message: "length" })
+    .max(10, { message: "length" }),
 })
 
 type TestFormSchema = z.infer<typeof testSchema>
