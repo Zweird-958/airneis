@@ -21,7 +21,16 @@ const CreateCategoryForm = () => {
   const {
     translations: { forms },
   } = useLocale()
-  const { mutateAsync } = api.categories.create.useMutation()
+  const { mutateAsync } = api.categories.create.useMutation({
+    onSuccess: () => {
+      // eslint-disable-next-line no-alert -- Will be replaced with a toast in the future
+      alert("Category created")
+    },
+    onError: () => {
+      // eslint-disable-next-line no-alert -- Will be replaced with a toast in the future
+      alert("Error creating category")
+    },
+  })
   const form = useForm<CreateCategoryInput>({
     resolver: zodResolver(createCategorySchema),
     defaultValues: {
