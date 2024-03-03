@@ -25,11 +25,9 @@ const TestForm = () => {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <UsernameField control={form.control} />
-        <Button>Submit</Button>
-      </form>
+    <Form ctx={form} onSubmit={onSubmit} className="space-y-6">
+      <UsernameField control={form.control} />
+      <Button>Submit</Button>
     </Form>
   )
 }

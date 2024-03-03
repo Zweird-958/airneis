@@ -1,13 +1,6 @@
 import { Control, FieldValues, Path } from "react-hook-form"
 
-import {
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/Form"
+import { FormField, FormItem } from "@/components/ui/Form"
 import Input from "@/components/ui/Input"
 import useLocale from "@/hooks/useLocale"
 
@@ -25,13 +18,8 @@ const UsernameField = <T extends FieldValues>({ control }: Props<T>) => {
       control={control}
       name={"username" as Path<T>}
       render={({ field }) => (
-        <FormItem>
-          <FormLabel>{forms.username}</FormLabel>
-          <FormControl>
-            <Input {...field} />
-          </FormControl>
-          <FormDescription>Test description.</FormDescription>
-          <FormMessage />
+        <FormItem label={forms.username} description="Test description.">
+          <Input {...field} />
         </FormItem>
       )}
     />
