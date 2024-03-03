@@ -28,7 +28,7 @@ const RootLayout = (props: Props) => {
 
   return (
     <Providers>
-      <html lang={locale}>
+      <html lang={locale} className="bg-background">
         <body className="flex flex-col justify-between w-full min-h-screen">
           <Header />
           <main className="grow">{children}</main>
