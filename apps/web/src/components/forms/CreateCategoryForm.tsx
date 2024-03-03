@@ -4,16 +4,13 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { TRPCClientError } from "@trpc/client"
 import { SubmitHandler, useForm } from "react-hook-form"
 
-import {
-  CreateCategoryInput,
-  createCategorySchema,
-  localizedFieldDefaultValues,
-} from "@airneis/schemas"
+import { CreateCategoryInput, createCategorySchema } from "@airneis/schemas"
 
 import Button from "@/components/ui/Button"
 import { Form } from "@/components/ui/Form"
 import useLocale from "@/hooks/useLocale"
 import api from "@/trpc/client"
+import fieldDefaultValues from "@/utils/locale/fieldDefaultValues"
 
 import ImageField from "./fields/ImageField"
 import LocalizedField from "./fields/LocalizedField"
@@ -40,8 +37,8 @@ const CreateCategoryForm = () => {
   const form = useForm<CreateCategoryInput>({
     resolver: zodResolver(createCategorySchema),
     defaultValues: {
-      name: localizedFieldDefaultValues,
-      description: localizedFieldDefaultValues,
+      name: fieldDefaultValues,
+      description: fieldDefaultValues,
       imageUrl: "",
     },
   })
