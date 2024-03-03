@@ -1,6 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
+import { TRPCClientError } from "@trpc/client"
 import { SubmitHandler, useForm } from "react-hook-form"
 
 import {
@@ -17,17 +18,22 @@ import api from "@/trpc/client"
 import ImageField from "./fields/ImageField"
 import LocalizedField from "./fields/LocalizedField"
 
+/* eslint-disable no-alert -- Will be replaced with toasts in the future */
 const CreateCategoryForm = () => {
   const {
     translations: { forms },
   } = useLocale()
   const { mutateAsync } = api.categories.create.useMutation({
     onSuccess: () => {
-      // eslint-disable-next-line no-alert -- Will be replaced with a toast in the future
       alert("Category created")
     },
-    onError: () => {
-      // eslint-disable-next-line no-alert -- Will be replaced with a toast in the future
+    onError: (error) => {
+      if (error instanceof TRPCClientError) {
+        alert(error.message)
+
+        return
+      }
+
       alert("Error creating category")
     },
   })

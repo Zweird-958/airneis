@@ -1,3 +1,5 @@
+import { TRPCError } from "@trpc/server"
+
 import { createCategorySchema } from "@airneis/schemas"
 import { Locale } from "@airneis/types"
 
@@ -7,6 +9,17 @@ const categoriesRouter = createTRPCRouter({
   create: publicProcedure
     .input(createCategorySchema)
     .mutation(async ({ ctx, input }) => {
+      const categoryExists = await ctx.entities.category.findOne({
+        name: input.name,
+      })
+
+      if (categoryExists) {
+        throw new TRPCError({
+          code: "CONFLICT",
+          message: "Category already exists",
+        })
+      }
+
       const image = ctx.entities.image.create({ url: input.imageUrl })
 
       /**
