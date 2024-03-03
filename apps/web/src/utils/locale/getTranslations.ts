@@ -3,6 +3,7 @@ import { translationInterpolator } from "@airneis/utils"
 
 import type common from "@/locales/en/common"
 import type forms from "@/locales/en/forms"
+import type zodErrors from "@/locales/en/zodErrors"
 
 type Key = "common" | "forms" | "zodErrors"
 
@@ -14,7 +15,7 @@ const getLocales = async <T>(key: Key, locale: Locale) => {
 const getTranslations = async (locale: Locale) => ({
   common: await getLocales<typeof common>("common", locale),
   forms: await getLocales<typeof forms>("forms", locale),
-  zodErrors: await getLocales<typeof forms>("zodErrors", locale),
+  zodErrors: await getLocales<typeof zodErrors>("zodErrors", locale),
   t: translationInterpolator,
 })
 
