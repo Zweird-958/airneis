@@ -20,11 +20,14 @@ export const FormMessage = forwardRef<
 
     const fieldErrors = zodErrors[name]
 
-    if (!fieldErrors || !fieldErrors[error.message]) {
+    if (
+      !fieldErrors ||
+      (!fieldErrors[error.message] && !fieldErrors[error.type])
+    ) {
       return String(error.message)
     }
 
-    return fieldErrors[error.message]
+    return fieldErrors[error.message] ?? fieldErrors[error.type]
   }, [children, error, name, zodErrors])
 
   if (!body) {
