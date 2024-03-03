@@ -12,6 +12,7 @@
   "dependencies": {
     "@airneis/api": "^1.0.0",
     "@airneis/config": "^1.0.0",
+    "@airneis/schemas": "^1.0.0",
     "@airneis/types": "^1.0.0",
     "@airneis/utils": "^1.0.0",
     "@formatjs/intl-localematcher": "^0.5.4",
