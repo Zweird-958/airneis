@@ -1,4 +1,4 @@
 export default {
-  hello: "Hello {name}",
   changeLanguage: "Change language to {language}",
+  home: "Home",
 } as const
