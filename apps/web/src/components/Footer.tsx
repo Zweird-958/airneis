@@ -15,33 +15,31 @@ const Footer = () => {
   } = useLocale()
   const device = useDevice()
 
-  if (!device) {
+  if (!device?.isAboveTablet) {
     return null
   }
 
   return (
-    device.isAboveTablet && (
-      <footer className="w-full border-t">
-        <div className="flex justify-between items-center w-full px-4 py-2">
-          <nav>
-            <ul className="flex gap-4">
-              {footerLink.map(({ href, common }) => (
-                <li key={href}>
-                  <Link href={href}>{footer[common]}</Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <div className="flex gap-2">
-            {footerSocial.map(({ href, src, alt }) => (
-              <Link key={href} href={href}>
-                <Image src={src} alt={alt} width={30} height={30} />
-              </Link>
+    <footer className="w-full border-t">
+      <div className="flex justify-between items-center w-full px-4 py-2">
+        <nav>
+          <ul className="flex gap-4">
+            {footerLink.map(({ href, common }) => (
+              <li key={href}>
+                <Link href={href}>{footer[common]}</Link>
+              </li>
             ))}
-          </div>
+          </ul>
+        </nav>
+        <div className="flex gap-2">
+          {footerSocial.map(({ href, src, alt }) => (
+            <Link key={href} href={href}>
+              <Image src={src} alt={alt} width={30} height={30} />
+            </Link>
+          ))}
         </div>
-      </footer>
-    )
+      </div>
+    </footer>
   )
 }
 
