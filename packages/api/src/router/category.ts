@@ -8,9 +8,9 @@ import { createTRPCRouter, publicProcedure } from "../trpc"
 const categoryRouter = createTRPCRouter({
   create: publicProcedure
     .input(createCategorySchema)
-    .mutation(async ({ ctx, input }) => {
+    .mutation(async ({ ctx, input: { name, imageUrl, description } }) => {
       const categoryExists = await ctx.entities.category.findOne({
-        name: input.name,
+        name,
       })
 
       if (categoryExists) {
@@ -20,7 +20,7 @@ const categoryRouter = createTRPCRouter({
         })
       }
 
-      const image = ctx.entities.image.create({ url: input.imageUrl })
+      const image = ctx.entities.image.create({ url: imageUrl })
 
       /**
        * See https://github.com/colinhacks/zod/discussions/2069
@@ -28,8 +28,8 @@ const categoryRouter = createTRPCRouter({
        * This is a workaround for a bug in zod where it doesn't correctly infer the type of Record<Locale, string>
        */
       ctx.entities.category.create({
-        name: input.name as Record<Locale, string>,
-        description: input.description as Record<Locale, string>,
+        name: name as Record<Locale, string>,
+        description: description as Record<Locale, string>,
         image,
       })
 
