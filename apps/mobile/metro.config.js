@@ -13,8 +13,6 @@ config.resolver.nodeModulesPaths = [
   path.resolve(projectRoot, "node_modules"),
   path.resolve(workspaceRoot, "node_modules"),
 ]
-// eslint-disable-next-line camelcase
-config.resolver.unstable_enablePackageExports = true
 
 module.exports = withNativeWind(config, {
   input: "./src/global.css",
