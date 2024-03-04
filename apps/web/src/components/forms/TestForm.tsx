@@ -18,13 +18,13 @@ const testSchema = z.object({
 
 type TestFormSchema = z.infer<typeof testSchema>
 
+/* eslint-disable no-alert -- Will be replaced with toasts in the future */
 const TestForm = () => {
   const form = useForm<TestFormSchema>({
     resolver: zodResolver(testSchema),
     defaultValues: { username: "" },
   })
   const onSubmit: SubmitHandler<TestFormSchema> = (values) => {
-    // eslint-disable-next-line no-alert -- Will be removed in the future
     alert(`Submitted with ${JSON.stringify(values)}`)
   }
 

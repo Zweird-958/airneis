@@ -1,4 +1,11 @@
 export default {
   selectPlaceholder: "Select an option",
   username: "Username",
+  name: "Name",
+  description: "Description",
+  image: {
+    label: "Image",
+    description: "Image URL",
+  },
+  create: "Create",
 } as const
