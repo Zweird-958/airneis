@@ -8,4 +8,7 @@ export default {
     description: "URL de l'image",
   },
   create: "Créer",
+  email: "Email",
+  password: "Mot de passe",
+  signIn: "Se connecter",
 } as const

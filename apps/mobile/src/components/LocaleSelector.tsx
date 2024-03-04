@@ -1,7 +1,7 @@
 import clsx from "clsx"
 import { Pressable, Text, View } from "react-native"
 
-import config from "@airneis/config"
+import { sharedConfig } from "@airneis/config"
 
 import useLocale from "@/hooks/useLocale"
 
@@ -15,7 +15,7 @@ const LocaleSelector = () => {
 
   return (
     <View className="flex flex-row justify-center gap-2">
-      {config.languageKeys.map((key) => (
+      {sharedConfig.languageKeys.map((key) => (
         <Pressable
           key={key}
           onPress={() => changeLocale(key)}

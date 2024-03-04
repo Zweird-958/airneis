@@ -11,4 +11,10 @@ export default {
   description: {
     too_small: "Description can not be empty",
   },
+  email: {
+    invalid_string: "Invalid email",
+  },
+  password: {
+    too_small: "Password must be at least 8 characters",
+  },
 } as const

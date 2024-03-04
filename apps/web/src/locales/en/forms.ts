@@ -8,4 +8,7 @@ export default {
     description: "Image URL",
   },
   create: "Create",
+  email: "Email",
+  password: "Password",
+  signIn: "Sign In",
 } as const

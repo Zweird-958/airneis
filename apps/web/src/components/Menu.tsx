@@ -5,6 +5,7 @@ import Link from "next/link"
 
 import useDevice from "@/hooks/useDevice"
 import useLocale from "@/hooks/useLocale"
+import useSession from "@/hooks/useSession"
 import { footerLink, footerSocial } from "@/utils/layout/footerInfo"
 import { headerLink } from "@/utils/layout/headerInfo"
 
@@ -15,10 +16,16 @@ const Menu = () => {
     },
   } = useLocale()
   const device = useDevice()
+  const { session } = useSession()
+  const visibleHeaderLinks = headerLink.filter(
+    ({ visibleOn }) =>
+      visibleOn === "both" ||
+      (session ? visibleOn === "auth" : visibleOn === "unAuth"),
+  )
 
   return (
     <nav className="absolute bg-white w-full flex flex-col gap-2 px-4 py-2 border-t">
-      {headerLink.map(({ href, common }) => (
+      {visibleHeaderLinks.map(({ href, common }) => (
         <Link key={href} href={href}>
           {header[common]}
         </Link>
