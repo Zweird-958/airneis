@@ -32,7 +32,12 @@ PROJECT STARTING POINT
     - What: `Continue to follow said practices`
     - When: `sprint2`
 
-ON
+- Review 5
+  - Description: `Team remained focused and motivated`
+  - Commitment:
+    - Who: `Bruno`
+    - What: `Despite the issues (ORM, project setup), we managed to stay welded`
+    - When: `sprint2`
 
 ## Negative reviews
 
