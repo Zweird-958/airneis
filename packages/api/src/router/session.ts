@@ -4,7 +4,6 @@ import jsonwebtoken from "jsonwebtoken"
 import ms from "ms"
 import { cookies } from "next/headers"
 
-import { webConfig } from "@airneis/config"
 import { signInSchema } from "@airneis/schemas"
 
 import config from "../config"
@@ -47,11 +46,11 @@ const sessionRouter = createTRPCRouter({
         expiresIn: config.security.jwt.expiresIn,
       })
 
-      cookies().set(webConfig.security.session.cookie.key, cookieJwt, {
+      cookies().set(config.security.jwt.cookie.key, cookieJwt, {
         path: "/",
         sameSite: "strict",
         httpOnly: true,
-        secure: webConfig.security.session.cookie.secure,
+        secure: config.security.jwt.cookie.secure,
         expires: Date.now() + ms(config.security.jwt.expiresIn),
       })
 
