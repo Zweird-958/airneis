@@ -1,17 +1,10 @@
-import type { Locale } from "@airneis/types"
-
 import GenericsShowcase from "@/components/GenericsShowcase"
 import LocaleSelector from "@/components/LocaleSelector"
 import ProductList from "@/components/ProductList"
 import TestForm from "@/components/forms/TestForm"
 import api from "@/trpc/server"
+import { PageProps } from "@/types/common"
 import getTranslations from "@/utils/locale/getTranslations"
-
-type PageProps = {
-  params: {
-    locale: Locale
-  }
-}
 
 const Home = async (props: PageProps) => {
   const {

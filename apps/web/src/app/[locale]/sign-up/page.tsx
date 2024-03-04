@@ -1,6 +1,5 @@
-import { PageProps } from "packages/types"
-
 import SignUpForm from "@/components/forms/SignUpForms"
+import { PageProps } from "@/types/common"
 import getTranslations from "@/utils/locale/getTranslations"
 
 const SignUp = async ({ params: { locale } }: PageProps) => {
