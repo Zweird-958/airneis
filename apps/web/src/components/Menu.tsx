@@ -5,6 +5,7 @@ import Link from "next/link"
 
 import useDevice from "@/hooks/useDevice"
 import useLocale from "@/hooks/useLocale"
+import useSession from "@/hooks/useSession"
 import { footerLink, footerSocial } from "@/utils/layout/footerInfo"
 import { headerLink } from "@/utils/layout/headerInfo"
 
@@ -15,14 +16,18 @@ const Menu = () => {
     },
   } = useLocale()
   const device = useDevice()
+  const { session } = useSession()
 
   return (
     <nav className="absolute bg-white w-full flex flex-col gap-2 px-4 py-2 border-t">
-      {headerLink.map(({ href, common }) => (
-        <Link key={href} href={href}>
-          {header[common]}
-        </Link>
-      ))}
+      {headerLink.map(
+        ({ href, common, unAuth }) =>
+          !(unAuth && session) && (
+            <Link key={href} href={href}>
+              {header[common]}
+            </Link>
+          ),
+      )}
       {!device?.isAboveTablet && (
         <>
           {footerLink.map(({ href, common }) => (

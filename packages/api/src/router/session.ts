@@ -11,8 +11,8 @@ import config from "../config"
 import env from "../env"
 import { createTRPCRouter, publicProcedure } from "../trpc"
 
-const userRouter = createTRPCRouter({
-  signIn: publicProcedure.input(signInSchema).mutation(
+const sessionRouter = createTRPCRouter({
+  create: publicProcedure.input(signInSchema).mutation(
     async ({
       input: { email, password },
       ctx: {
@@ -60,4 +60,4 @@ const userRouter = createTRPCRouter({
   ),
 })
 
-export default userRouter
+export default sessionRouter
