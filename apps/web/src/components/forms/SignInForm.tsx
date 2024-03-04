@@ -41,7 +41,7 @@ const SignInForm = () => {
     <Form ctx={form} onSubmit={onSubmit} className="space-y-6">
       <EmailField control={form.control} />
       <PasswordField control={form.control} />
-      <Button>{forms.signIn}</Button>
+      <Button type="submit">{forms.signIn}</Button>
     </Form>
   )
 }
