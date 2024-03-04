@@ -25,7 +25,7 @@ const SignInForm = () => {
   const {
     translations: { forms },
   } = useLocale()
-  const { mutate } = api.session.create.useMutation()
+  const { mutate } = api.sessions.create.useMutation()
   const { signIn } = useSession()
   const router = useRouter()
   const onSubmit: SubmitHandler<SignInFormSchema> = (values) => {
