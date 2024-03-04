@@ -20,7 +20,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="w-full border-t z-10">
+    <footer className="w-full border-t z-10 bg-background">
       <div className="flex justify-between items-center w-full px-4 py-2">
         <nav>
           <ul className="flex gap-4">
