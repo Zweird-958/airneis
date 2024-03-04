@@ -7,6 +7,6 @@ export const localeSchema = z
   .catch(sharedConfig.fallbackLng)
 
 export const signInSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
+  email: z.string().email({ message: "invalid" }),
+  password: z.string().min(8, { message: "length" }),
 })
