@@ -5,7 +5,7 @@ import { Locale } from "@airneis/types"
 
 import { createTRPCRouter, publicProcedure } from "../trpc"
 
-const categoryRouter = createTRPCRouter({
+const categoriesRouter = createTRPCRouter({
   create: publicProcedure
     .input(createCategorySchema)
     .mutation(async ({ ctx, input: { name, imageUrl, description } }) => {
@@ -39,4 +39,4 @@ const categoryRouter = createTRPCRouter({
     }),
 })
 
-export default categoryRouter
+export default categoriesRouter

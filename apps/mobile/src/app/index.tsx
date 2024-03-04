@@ -5,7 +5,7 @@ import LocaleSelector from "@/components/LocaleSelector"
 import api from "@/utils/api"
 
 export default function Index() {
-  const { data } = api.product.all.useQuery()
+  const { data } = api.products.all.useQuery()
 
   return (
     <SafeAreaView>

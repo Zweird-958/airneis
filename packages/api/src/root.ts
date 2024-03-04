@@ -1,10 +1,10 @@
-import categoryRouter from "./router/category"
-import productRouter from "./router/product"
+import categoriesRouter from "./router/categories"
+import productsRouter from "./router/products"
 import { createTRPCRouter } from "./trpc"
 
 export const appRouter = createTRPCRouter({
-  product: productRouter,
-  category: categoryRouter,
+  products: productsRouter,
+  categories: categoriesRouter,
 })
 
 export type AppRouter = typeof appRouter

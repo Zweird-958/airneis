@@ -4,7 +4,7 @@ import useLocale from "@/hooks/useLocale"
 import api from "@/trpc/client"
 
 const Product = () => {
-  const { data: products } = api.product.all.useQuery()
+  const { data: products } = api.products.all.useQuery()
   const {
     translations: { common },
   } = useLocale()
