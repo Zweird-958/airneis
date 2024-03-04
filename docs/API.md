@@ -4,11 +4,11 @@
 
 ### Create
 
-Create a new session. (sign in)
+Creates a new session. (sign in)
 
 #### Possible errors
 
-- `UNAUTHORIZED` if user send invalid credentials
+- `UNAUTHORIZED` if the credentials are invalid
 
 ## Category
 
