@@ -12,9 +12,9 @@ export default {
     too_small: "Description can not be empty",
   },
   email: {
-    invalid: "Invalid email",
+    invalid_string: "Invalid email",
   },
   password: {
-    length: "Password must be at least 8 characters",
+    too_small: "Password must be at least 8 characters",
   },
 } as const
