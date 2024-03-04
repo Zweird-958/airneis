@@ -7,4 +7,5 @@ export default {
     label: "Image",
     description: "Image URL",
   },
+  create: "Create",
 } as const

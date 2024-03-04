@@ -18,7 +18,7 @@ import LocalizedField from "./fields/LocalizedField"
 /* eslint-disable no-alert -- Will be replaced with toasts in the future */
 const CreateCategoryForm = () => {
   const {
-    translations: { forms },
+    translations: { categories, forms },
   } = useLocale()
   const { mutateAsync } = api.category.create.useMutation({
     onSuccess: () => {
@@ -31,7 +31,7 @@ const CreateCategoryForm = () => {
         return
       }
 
-      alert("Error creating category")
+      alert(categories.errors.create)
     },
   })
   const form = useForm<CreateCategoryInput>({
@@ -55,7 +55,7 @@ const CreateCategoryForm = () => {
         label={forms.description}
       />
       <ImageField control={form.control} />
-      <Button>Create</Button>
+      <Button>{forms.create}</Button>
     </Form>
   )
 }
