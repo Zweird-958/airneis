@@ -15,6 +15,11 @@ const useSession = () => {
 
     setSession(payload)
   }
+  const signOut = () => {
+    localStorage.removeItem(config.session.localStorageKey)
+
+    setSession(null)
+  }
 
   useEffect(() => {
     const jwt = localStorage.getItem(config.session.localStorageKey)
@@ -27,7 +32,7 @@ const useSession = () => {
     setSession(payload)
   }, [setSession])
 
-  return { session, signIn }
+  return { session, signIn, signOut }
 }
 
 export default useSession
