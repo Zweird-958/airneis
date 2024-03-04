@@ -27,6 +27,7 @@
     "@types/bcrypt": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/ms": "^0.7.34",
+    "@airneis/types": "^1.0.0",
     "typescript": "^5.3.3"
   }
 }

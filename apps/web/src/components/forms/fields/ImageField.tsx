@@ -8,7 +8,7 @@ type Props<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>
 }
 
-const UsernameField = <TFieldValues extends FieldValues>({
+const ImageField = <TFieldValues extends FieldValues>({
   control,
 }: Props<TFieldValues>) => {
   const {
@@ -18,9 +18,12 @@ const UsernameField = <TFieldValues extends FieldValues>({
   return (
     <FormField
       control={control}
-      name={"username" as Path<TFieldValues>}
+      name={"imageUrl" as Path<TFieldValues>}
       render={({ field }) => (
-        <FormItem label={forms.username} description="Test description.">
+        <FormItem
+          label={forms.image.label}
+          description={forms.image.description}
+        >
           <Input {...field} />
         </FormItem>
       )}
@@ -28,4 +31,4 @@ const UsernameField = <TFieldValues extends FieldValues>({
   )
 }
 
-export default UsernameField
+export default ImageField
