@@ -3,6 +3,9 @@ import { ReactNode } from "react"
 
 import type { Locale } from "@airneis/types"
 
+import Footer from "@/components/Footer"
+import Header from "@/components/Header"
+
 import "./globals.css"
 import Providers from "./providers"
 
@@ -25,8 +28,12 @@ const RootLayout = (props: Props) => {
 
   return (
     <Providers>
-      <html lang={locale}>
-        <body>{children}</body>
+      <html lang={locale} className="bg-background">
+        <body className="flex flex-col justify-between w-full min-h-screen">
+          <Header />
+          <main className="grow">{children}</main>
+          <Footer />
+        </body>
       </html>
     </Providers>
   )
