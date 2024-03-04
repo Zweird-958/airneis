@@ -1,7 +1,7 @@
 import { HTMLAttributes, forwardRef, useMemo } from "react"
 
-import useLocale from "@/hooks/useLocale"
 import { cn } from "@/utils/cn"
+import useTranslations from "@/utils/i18n/client"
 
 import { useFormField } from "."
 
@@ -10,9 +10,7 @@ export const FormMessage = forwardRef<
   HTMLAttributes<HTMLParagraphElement>
 >(({ className, children, ...props }, ref) => {
   const { name, error, formMessageId } = useFormField()
-  const {
-    translations: { zodErrors },
-  } = useLocale()
+  const { zodErrors } = useTranslations()
   const body = useMemo(() => {
     if (!error?.message) {
       return children

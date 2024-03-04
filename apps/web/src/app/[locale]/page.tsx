@@ -5,7 +5,7 @@ import LocaleSelector from "@/components/LocaleSelector"
 import ProductList from "@/components/ProductList"
 import TestForm from "@/components/forms/TestForm"
 import api from "@/trpc/server"
-import getTranslations from "@/utils/locale/getTranslations"
+import useTranslations from "@/utils/i18n"
 
 type PageProps = {
   params: {
@@ -18,7 +18,7 @@ const Home = async (props: PageProps) => {
     params: { locale },
   } = props
   const products = await api.products.all.query()
-  const { common, t } = await getTranslations(locale)
+  const { common, t } = useTranslations(locale)
 
   if (!products) {
     return <p>nothin</p>

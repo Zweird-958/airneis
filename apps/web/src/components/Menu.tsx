@@ -4,16 +4,14 @@ import Image from "next/image"
 import Link from "next/link"
 
 import useDevice from "@/hooks/useDevice"
-import useLocale from "@/hooks/useLocale"
+import useTranslations from "@/utils/i18n/client"
 import { footerLink, footerSocial } from "@/utils/layout/footerInfo"
 import { headerLink } from "@/utils/layout/headerInfo"
 
 const Menu = () => {
   const {
-    translations: {
-      common: { header, footer },
-    },
-  } = useLocale()
+    common: { header, footer },
+  } = useTranslations()
   const device = useDevice()
 
   return (

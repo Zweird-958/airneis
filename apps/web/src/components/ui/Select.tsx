@@ -4,15 +4,13 @@ import * as SelectPrimitive from "@radix-ui/react-select"
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react"
 
-import useLocale from "@/hooks/useLocale"
+import useTranslations from "@/utils/i18n/client"
 
 export const Select = forwardRef<
   ElementRef<typeof SelectPrimitive.Root>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
 >(({ children, ...props }, ref) => {
-  const {
-    translations: { forms },
-  } = useLocale()
+  const { forms } = useTranslations()
 
   return (
     <SelectPrimitive.Root {...props}>

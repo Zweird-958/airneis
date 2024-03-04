@@ -4,15 +4,13 @@ import Image from "next/image"
 import Link from "next/link"
 
 import useDevice from "@/hooks/useDevice"
-import useLocale from "@/hooks/useLocale"
+import useTranslations from "@/utils/i18n/client"
 import { footerLink, footerSocial } from "@/utils/layout/footerInfo"
 
 const Footer = () => {
   const {
-    translations: {
-      common: { footer },
-    },
-  } = useLocale()
+    common: { footer },
+  } = useTranslations()
   const device = useDevice()
 
   if (!device?.isAboveTablet) {

@@ -5,12 +5,16 @@ import { MouseEventHandler } from "react"
 import config from "@airneis/config"
 import type { Locale } from "@airneis/types"
 
-import useLocale from "@/hooks/useLocale"
+import useTranslations from "@/utils/i18n/client"
 
 const LocaleSelector = () => {
-  const { changeLocale, locale } = useLocale()
+  const { changeLocale, locale } = useTranslations()
   const handleChange: MouseEventHandler<HTMLButtonElement> = async (event) => {
     const language = event.currentTarget.getAttribute("data-locale") as Locale
+
+    if (language === locale) {
+      return
+    }
 
     await changeLocale(language)
   }

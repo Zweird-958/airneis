@@ -1,7 +1,7 @@
 export default {
   hello: "Bonjour {name}",
   server: "Serveur",
-  client: "Client",
+  client: "Client fr",
   header: {
     home: "Accueil",
   },

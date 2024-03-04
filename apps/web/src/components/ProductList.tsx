@@ -1,13 +1,11 @@
 "use client"
 
-import useLocale from "@/hooks/useLocale"
 import api from "@/trpc/client"
+import useTranslations from "@/utils/i18n/client"
 
 const Product = () => {
   const { data: products } = api.products.all.useQuery()
-  const {
-    translations: { common },
-  } = useLocale()
+  const { common } = useTranslations()
 
   return (
     <div>
