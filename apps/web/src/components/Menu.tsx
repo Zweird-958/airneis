@@ -17,17 +17,19 @@ const Menu = () => {
   } = useLocale()
   const device = useDevice()
   const { session } = useSession()
+  const visibleHeaderLinks = headerLink.filter(
+    ({ visibleOn }) =>
+      visibleOn === "both" ||
+      (session ? visibleOn === "auth" : visibleOn === "unAuth"),
+  )
 
   return (
     <nav className="absolute bg-white w-full flex flex-col gap-2 px-4 py-2 border-t">
-      {headerLink.map(
-        ({ href, common, unAuth }) =>
-          !(unAuth && session) && (
-            <Link key={href} href={href}>
-              {header[common]}
-            </Link>
-          ),
-      )}
+      {visibleHeaderLinks.map(({ href, common }) => (
+        <Link key={href} href={href}>
+          {header[common]}
+        </Link>
+      ))}
       {!device?.isAboveTablet && (
         <>
           {footerLink.map(({ href, common }) => (
