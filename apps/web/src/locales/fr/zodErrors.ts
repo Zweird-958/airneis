@@ -5,4 +5,10 @@ export default {
   imageUrl: {
     invalid_string: "Lien invalide",
   },
+  name: {
+    too_small: "Le nom ne peut pas être vide",
+  },
+  description: {
+    too_small: "La description ne peut pas être vide",
+  },
 } as const
