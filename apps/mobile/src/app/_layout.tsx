@@ -7,6 +7,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler"
 
 import Providers from "@/app/providers"
 import DrawerContent from "@/components/drawer/DrawerContent"
+import ForegroundIcon from "@/components/ui/ForegroundIcon"
 
 import "../globals.css"
 
@@ -18,7 +19,7 @@ const RootLayout = () => {
 
   return (
     <Providers>
-      <GestureHandlerRootView className="flex-1">
+      <GestureHandlerRootView style={{ flex: 1 }}>
         <Drawer
           screenOptions={{
             drawerPosition: "right",
@@ -28,13 +29,13 @@ const RootLayout = () => {
             headerRight: () => (
               <View className="flex-row gap-3 px-4">
                 <TouchableOpacity>
-                  <SearchIcon className="text-foreground" />
+                  <ForegroundIcon as={SearchIcon} />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                  <ShoppingCartIcon className="text-foreground" />
+                  <ForegroundIcon as={ShoppingCartIcon} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={openDrawer}>
-                  <MenuIcon className="text-foreground" />
+                  <ForegroundIcon as={MenuIcon} />
                 </TouchableOpacity>
               </View>
             ),
