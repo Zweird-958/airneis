@@ -4,7 +4,7 @@ import type { JwtPayload } from "@airneis/types"
 
 type SessionStore = {
   session: JwtPayload | null
-  setSession: (token: JwtPayload) => void
+  setSession: (session: JwtPayload) => void
 }
 
 const useSessionStore = create<SessionStore>((set) => ({
