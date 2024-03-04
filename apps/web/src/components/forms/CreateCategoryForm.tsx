@@ -55,7 +55,7 @@ const CreateCategoryForm = () => {
         label={forms.description}
       />
       <ImageField control={form.control} />
-      <Button>{forms.create}</Button>
+      <Button type="submit">{forms.create}</Button>
     </Form>
   )
 }
