@@ -1,14 +1,12 @@
 {
   "name": "@airneis/db",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "private": true,
   "main": "./src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "db": "mikro-orm"
+    "db": "mikro-orm",
+    "typecheck": "tsc --noEmit"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@mikro-orm/core": "^6.1.5",
     "@mikro-orm/postgresql": "^6.1.5"
