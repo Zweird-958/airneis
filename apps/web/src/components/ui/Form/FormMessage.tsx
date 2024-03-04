@@ -10,7 +10,9 @@ export const FormMessage = forwardRef<
   HTMLAttributes<HTMLParagraphElement>
 >(({ className, children, ...props }, ref) => {
   const { name, error, formMessageId } = useFormField()
-  const { zodErrors } = useTranslations()
+  const { zodErrors } = useTranslations() as {
+    zodErrors: Record<string, Record<string, string>>
+  }
   const body = useMemo(() => {
     if (!error?.message) {
       return children
