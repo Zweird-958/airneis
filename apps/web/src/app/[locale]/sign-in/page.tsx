@@ -1,8 +1,7 @@
 import { Metadata } from "next"
 
-import type { PageProps } from "@airneis/types"
-
 import SignInForm from "@/components/forms/SignInForm"
+import { PageProps } from "@/types/common"
 import getTranslations from "@/utils/locale/getTranslations"
 
 export const generateMetadata = async ({
