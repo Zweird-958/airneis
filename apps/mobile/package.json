@@ -11,9 +11,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@airneis/api": "^1.0.0",
-    "@airneis/schemas": "^1.0.0",
-    "@airneis/utils": "^1.0.0",
+    "@airneis/api": "^0.1.0",
+    "@airneis/schemas": "^0.1.0",
+    "@airneis/utils": "^0.1.0",
     "@expo/vector-icons": "^14.0.0",
     "@react-navigation/drawer": "^6.6.9",
     "@react-navigation/native": "^6.1.9",

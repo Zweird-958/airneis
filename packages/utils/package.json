@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@airneis/types": "^1.0.0",
+    "@airneis/types": "^0.1.0",
     "typescript": "^5.3.3"
   }
 }
