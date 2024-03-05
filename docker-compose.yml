@@ -32,10 +32,7 @@ services:
       - "./data/redis:/data"
 
   s3:
-    build:
-      dockerfile_inline: |
-        FROM localstack/localstack:s3-latest
-        RUN pip install awscli-local[ver1]
+    image: localstack/localstack:s3-latest
     ports:
       - "4566:4566"
     volumes:
