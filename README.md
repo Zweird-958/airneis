@@ -48,11 +48,8 @@ npm run db migration:up
 ### Initialiser le bucket S3
 
 ```bash
-docker exec -it airneis-s3-1 sh -c "awslocal s3api create-bucket --bucket $BUCKET_NAME"
+npx dotenv -- docker exec -it airneis-s3-1 sh -c "awslocal s3api create-bucket --bucket $S3_BUCKET"
 ```
-
-> [!WARNING]  
-> Il faut remplacer `$BUCKET_NAME` par la valeur de `S3_BUCKET` dans le fichier `.env`
 
 ### Démarrer les applications
 
