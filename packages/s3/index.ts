@@ -4,7 +4,7 @@ import env from "./src/env"
 
 export const s3 = new S3Client({
   region: "auto",
-  endpoint: env.LOCALSTACK_S3_URL,
+  endpoint: env.S3_URL,
   credentials: {
     accessKeyId: "",
     secretAccessKey: "",
