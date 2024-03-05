@@ -4,11 +4,13 @@ import { FormField, FormItem } from "@/components/ui/Form"
 import Input from "@/components/ui/Input"
 import useLocale from "@/hooks/useLocale"
 
-type Props<T extends FieldValues> = {
-  control: Control<T>
+type Props<TFieldValues extends FieldValues> = {
+  control: Control<TFieldValues>
 }
 
-const EmailField = <T extends FieldValues>({ control }: Props<T>) => {
+const EmailField = <TFieldValues extends FieldValues>({
+  control,
+}: Props<TFieldValues>) => {
   const {
     translations: { forms },
   } = useLocale()
@@ -16,7 +18,7 @@ const EmailField = <T extends FieldValues>({ control }: Props<T>) => {
   return (
     <FormField
       control={control}
-      name={"email" as Path<T>}
+      name={"email" as Path<TFieldValues>}
       render={({ field }) => (
         <FormItem label={forms.email}>
           <Input {...field} />
