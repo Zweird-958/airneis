@@ -10,10 +10,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@airneis/api": "^1.0.0",
-    "@airneis/config": "^1.0.0",
-    "@airneis/schemas": "^1.0.0",
-    "@airneis/utils": "^1.0.0",
+    "@airneis/api": "^0.1.0",
+    "@airneis/config": "^0.1.0",
+    "@airneis/schemas": "^0.1.0",
+    "@airneis/utils": "^0.1.0",
     "@formatjs/intl-localematcher": "^0.5.4",
     "@hookform/resolvers": "^3.3.4",
     "@radix-ui/react-label": "^2.0.2",
@@ -38,7 +38,7 @@
     "zustand": "^4.5.0"
   },
   "devDependencies": {
-    "@airneis/types": "^1.0.0",
+    "@airneis/types": "^0.1.0",
     "@types/negotiator": "^0.6.3",
     "@types/react": "^18",
     "@types/react-dom": "^18",
