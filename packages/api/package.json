@@ -15,7 +15,7 @@
   "dependencies": {
     "@airneis/config": "^1.0.0",
     "@airneis/db": "^1.0.0",
-    "@airneis/s3": "^1.0.0",
+    "@airneis/s3": "^0.1.0",
     "@airneis/schemas": "^1.0.0",
     "@trpc/client": "^10.45.0",
     "@trpc/server": "^10.45.0",
