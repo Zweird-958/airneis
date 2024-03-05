@@ -8,7 +8,7 @@ type Props<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>
 }
 
-const FirsNameField = <TFieldValues extends FieldValues>({
+const FirstNameField = <TFieldValues extends FieldValues>({
   control,
 }: Props<TFieldValues>) => {
   const {
@@ -28,4 +28,4 @@ const FirsNameField = <TFieldValues extends FieldValues>({
   )
 }
 
-export default FirsNameField
+export default FirstNameField
