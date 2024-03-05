@@ -34,7 +34,7 @@ services:
   s3:
     image: "localstack/localstack:s3-latest"
     ports:
-      - "4566:4566"
+      - "$S3_PORT:4566"
     volumes:
       - "./data/s3:/var/lib/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
