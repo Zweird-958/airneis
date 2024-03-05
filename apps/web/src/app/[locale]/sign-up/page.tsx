@@ -1,6 +1,6 @@
 import { PageProps } from "@airneis/types"
 
-import SignUpForm from "@/components/forms/SignUpForms"
+import SignUpForm from "@/components/forms/SignUpForm"
 import getTranslations from "@/utils/locale/getTranslations"
 
 const SignUp = async ({ params: { locale } }: PageProps) => {
