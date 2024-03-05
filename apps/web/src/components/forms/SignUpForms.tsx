@@ -3,9 +3,8 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { z } from "zod"
 
-import { signUpSchema } from "@airneis/schemas"
+import { SignUpInput, signUpSchema } from "@airneis/schemas"
 
 import EmailField from "@/components/forms/fields/EmailField"
 import FirsNameField from "@/components/forms/fields/FirstNameField"
@@ -16,11 +15,9 @@ import { Form } from "@/components/ui/Form"
 import useLocale from "@/hooks/useLocale"
 import api from "@/trpc/client"
 
-type SignUpFormSchema = z.infer<typeof signUpSchema>
-
 const SignUpForm = () => {
   const router = useRouter()
-  const form = useForm<SignUpFormSchema>({
+  const form = useForm<SignUpInput>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
       email: "",
@@ -33,7 +30,7 @@ const SignUpForm = () => {
     translations: { forms },
   } = useLocale()
   const { mutate } = api.users.create.useMutation()
-  const onSubmit: SubmitHandler<SignUpFormSchema> = (values) => {
+  const onSubmit: SubmitHandler<SignUpInput> = (values) => {
     mutate(values, {
       onSuccess: () => {
         router.push("/sign-in")
@@ -47,7 +44,7 @@ const SignUpForm = () => {
       <LastNameField control={form.control} />
       <EmailField control={form.control} />
       <PasswordField control={form.control} />
-      <Button>{forms.signUp}</Button>
+      <Button type="submit">{forms.signUp}</Button>
     </Form>
   )
 }

@@ -1,7 +1,9 @@
 import { hash } from "bcrypt"
-import { createTRPCRouter, publicProcedure } from "packages/api/src/trpc"
 
 import { signUpSchema } from "@airneis/schemas"
+
+import env from "../env"
+import { createTRPCRouter, publicProcedure } from "../trpc"
 
 const usersRouter = createTRPCRouter({
   create: publicProcedure
@@ -13,7 +15,7 @@ const usersRouter = createTRPCRouter({
         return false
       }
 
-      const hashedPassword = await hash(input.password, 12)
+      const hashedPassword = await hash(input.password, env.HASH_SALT_COUNT)
 
       ctx.entities.user.create({
         email: input.email,
