@@ -1,6 +1,6 @@
 import { create } from "zustand"
 
-import config from "@airneis/config"
+import { sharedConfig } from "@airneis/config"
 import type { Locale } from "@airneis/types"
 
 import categories from "@/locales/en/categories"
@@ -22,7 +22,7 @@ const defaultTranslation = {
   zodErrors: zodErrors as Record<string, Record<string, string>>,
 }
 const useLocaleStore = create<LocaleStore>((set) => ({
-  locale: config.fallbackLng,
+  locale: sharedConfig.fallbackLng,
   setLocale: (locale: Locale) => set({ locale }),
   translations: defaultTranslation,
   setTranslations: (translations: typeof defaultTranslation) =>

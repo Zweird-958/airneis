@@ -2,7 +2,7 @@
 
 import { MouseEventHandler } from "react"
 
-import config from "@airneis/config"
+import { sharedConfig } from "@airneis/config"
 import type { Locale } from "@airneis/types"
 
 import useLocale from "@/hooks/useLocale"
@@ -17,7 +17,7 @@ const LocaleSelector = () => {
 
   return (
     <div className="flex gap-1">
-      {config.languageKeys.map((language: string, index: number) => (
+      {sharedConfig.languageKeys.map((language: string, index: number) => (
         <div key={language} className="flex gap-1">
           <button
             data-locale={language}
@@ -26,7 +26,7 @@ const LocaleSelector = () => {
           >
             {language.toUpperCase()}
           </button>
-          <p>{index !== config.languageKeys.length - 1 && "/"}</p>
+          <p>{index !== sharedConfig.languageKeys.length - 1 && "/"}</p>
         </div>
       ))}
     </div>

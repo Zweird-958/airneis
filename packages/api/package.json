@@ -1,28 +1,27 @@
 {
   "name": "@airneis/api",
-  "version": "1.0.0",
-  "description": "",
-  "exports": {
-    ".": "./src/index.ts"
-  },
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "typecheck": "tsc --noEmit"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@airneis/db": "^1.0.0",
-    "@airneis/schemas": "^1.0.0",
+    "@airneis/config": "^0.1.0",
+    "@airneis/db": "^0.1.0",
+    "@airneis/schemas": "^0.1.0",
     "@trpc/client": "^10.45.0",
     "@trpc/server": "^10.45.0",
     "bcrypt": "^5.1.1",
-    "superjson": "^2.2.1"
+    "jsonwebtoken": "^9.0.2",
+    "superjson": "^2.2.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@airneis/types": "^1.0.0",
     "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/ms": "^0.7.34",
+    "@airneis/types": "^0.1.0",
     "typescript": "^5.3.3"
   }
 }

@@ -1,6 +1,6 @@
 import { Control, FieldValues, Path } from "react-hook-form"
 
-import config from "@airneis/config"
+import { sharedConfig } from "@airneis/config"
 
 import {
   FormControl,
@@ -25,7 +25,7 @@ const LocalizedField = <TFieldValues extends FieldValues>({
 }: Props<TFieldValues>) => (
   <div className="space-y-2">
     <Label>{label}</Label>
-    {config.languageKeys.map((lang) => (
+    {sharedConfig.languageKeys.map((lang) => (
       <FormField
         key={lang}
         control={control}

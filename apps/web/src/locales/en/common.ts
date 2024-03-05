@@ -4,10 +4,15 @@ export default {
   client: "Client",
   header: {
     home: "Home",
+    signIn: "Sign In",
   },
   footer: {
     tos: "Terms of Service",
     legalNotice: "Legal Notice",
     contact: "Contact",
+  },
+  signIn: {
+    title: "Sign In",
+    description: "Sign in to your account",
   },
 } as const
