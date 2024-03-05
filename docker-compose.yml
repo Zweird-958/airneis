@@ -32,7 +32,7 @@ services:
       - "./data/redis:/data"
 
   s3:
-    image: localstack/localstack:s3-latest
+    image: "localstack/localstack:s3-latest"
     ports:
       - "4566:4566"
     volumes:
