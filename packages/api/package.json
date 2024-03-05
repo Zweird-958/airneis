@@ -21,6 +21,10 @@
     "superjson": "^2.2.1"
   },
   "devDependencies": {
+<<<<<<< HEAD
+=======
+    "@airneis/types": "^1.0.0",
+>>>>>>> 024d1441d165ad40a3e35db80a68550316fcb1ee
     "@types/bcrypt": "^5.0.2",
     "typescript": "^5.3.3"
   }

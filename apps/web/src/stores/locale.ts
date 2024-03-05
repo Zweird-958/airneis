@@ -3,6 +3,7 @@ import { create } from "zustand"
 import config from "@airneis/config"
 import type { Locale } from "@airneis/types"
 
+import categories from "@/locales/en/categories"
 import common from "@/locales/en/common"
 import forms from "@/locales/en/forms"
 import zodErrors from "@/locales/en/zodErrors"
@@ -15,6 +16,7 @@ type LocaleStore = {
 }
 
 const defaultTranslation = {
+  categories,
   common,
   forms,
   zodErrors: zodErrors as Record<string, Record<string, string>>,
