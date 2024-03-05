@@ -10,8 +10,8 @@ const schema = z.object({
 
   // Security
   JWT_SECRET: z.string(),
-  HASH_SALT_COUNT: z.number(),
-  PASSWORD_HASHING_DURATION: z.number(),
+  HASH_SALT_COUNT: z.coerce.number(),
+  PASSWORD_HASHING_DURATION: z.coerce.number(),
 })
 const env = schema.parse({
   NEXT_PUBLIC_MEILISEARCH_URL: process.env.NEXT_PUBLIC_MEILISEARCH_URL,
