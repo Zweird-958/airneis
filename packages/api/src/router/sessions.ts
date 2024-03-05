@@ -5,6 +5,7 @@ import ms from "ms"
 import { cookies } from "next/headers"
 
 import { signInSchema } from "@airneis/schemas"
+import { sleep } from "@airneis/utils"
 
 import config from "../config"
 import env from "../env"
@@ -21,6 +22,8 @@ const sessionsRouter = createTRPCRouter({
       const user = await UserEntity.findOne({ email })
 
       if (!user) {
+        await sleep(env.PASSWORD_HASHING_DURATION)
+
         throw new TRPCError({ code: "UNAUTHORIZED" })
       }
 
