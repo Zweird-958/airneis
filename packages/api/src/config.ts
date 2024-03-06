@@ -8,6 +8,7 @@ const schema = z.object({
         key: z.string(),
         secure: z.boolean(),
       }),
+      hashingDuration: z.number(),
     }),
   }),
 })
@@ -19,6 +20,7 @@ const config = schema.parse({
         key: "sessionJsonWebToken",
         secure: process.env.NODE_ENV !== "development",
       },
+      hashingDuration: 1000,
     },
   },
 })

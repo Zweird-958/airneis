@@ -3,6 +3,7 @@ import { hash } from "bcrypt"
 import { signUpSchema } from "@airneis/schemas"
 import { sleep } from "@airneis/utils"
 
+import config from "../config"
 import env from "../env"
 import { createTRPCRouter, publicProcedure } from "../trpc"
 
@@ -14,7 +15,7 @@ const usersRouter = createTRPCRouter({
         const user = await ctx.entities.user.findOne({ email })
 
         if (user) {
-          await sleep(env.PASSWORD_HASHING_DURATION)
+          await sleep(config.security.jwt.hashingDuration)
 
           return true
         }

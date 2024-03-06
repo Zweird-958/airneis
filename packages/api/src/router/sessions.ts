@@ -22,7 +22,7 @@ const sessionsRouter = createTRPCRouter({
       const user = await UserEntity.findOne({ email })
 
       if (!user) {
-        await sleep(env.PASSWORD_HASHING_DURATION)
+        await sleep(config.security.jwt.hashingDuration)
 
         throw new TRPCError({ code: "UNAUTHORIZED" })
       }
