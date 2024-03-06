@@ -16,7 +16,7 @@ const usersRouter = createTRPCRouter({
         if (user) {
           await sleep(env.PASSWORD_HASHING_DURATION)
 
-          return false
+          return true
         }
 
         const hashedPassword = await hash(password, env.HASH_SALT_COUNT)
