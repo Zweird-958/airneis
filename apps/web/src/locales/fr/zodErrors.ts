@@ -12,9 +12,9 @@ export default {
     too_small: "La description ne peut pas être vide",
   },
   email: {
-    invalid: "Email invalide",
+    invalid_string: "Email invalide",
   },
   password: {
-    length: "Votre mot de passe doit contenir au moins 8 caractères",
+    too_small: "Votre mot de passe doit contenir au moins 8 caractères",
   },
 } as const

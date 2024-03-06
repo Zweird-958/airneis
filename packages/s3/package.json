@@ -1,13 +1,14 @@
 {
-  "name": "@airneis/utils",
+  "name": "@airneis/s3",
   "version": "0.1.0",
-  "private": true,
   "main": "index.ts",
   "scripts": {
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.525.0"
+  },
   "devDependencies": {
-    "@airneis/types": "^0.1.0",
     "typescript": "^5.3.3"
   }
 }
