@@ -8,7 +8,7 @@ import { translationInterpolator } from "@airneis/utils"
 import { translations } from "@/utils/i18n/settings"
 
 const useTranslations = () => {
-  const { locale } = useParams() as { locale: Locale }
+  const { locale } = useParams<{ locale: Locale }>()
   const pathname = usePathname()
   const router = useRouter()
   const changeLocale = (newLocale: Locale) => {
