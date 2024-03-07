@@ -11,9 +11,9 @@ import EmailField from "@/components/forms/fields/EmailField"
 import PasswordField from "@/components/forms/fields/PasswordField"
 import Button from "@/components/ui/Button"
 import { Form } from "@/components/ui/Form"
-import useLocale from "@/hooks/useLocale"
 import useSession from "@/hooks/useSession"
 import api from "@/trpc/client"
+import useTranslations from "@/utils/i18n/client"
 
 type SignInFormSchema = z.infer<typeof signInSchema>
 
@@ -22,9 +22,7 @@ const SignInForm = () => {
     resolver: zodResolver(signInSchema),
     defaultValues: { email: "", password: "" },
   })
-  const {
-    translations: { forms },
-  } = useLocale()
+  const { forms } = useTranslations()
   const { mutate } = api.sessions.create.useMutation()
   const { signIn } = useSession()
   const router = useRouter()

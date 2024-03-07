@@ -8,8 +8,8 @@ import { CreateCategoryInput, createCategorySchema } from "@airneis/schemas"
 
 import Button from "@/components/ui/Button"
 import { Form } from "@/components/ui/Form"
-import useLocale from "@/hooks/useLocale"
 import api from "@/trpc/client"
+import useTranslations from "@/utils/i18n/client"
 import fieldDefaultValues from "@/utils/locale/fieldDefaultValues"
 
 import ImageField from "./fields/ImageField"
@@ -17,9 +17,7 @@ import LocalizedField from "./fields/LocalizedField"
 
 /* eslint-disable no-alert -- Will be replaced with toasts in the future */
 const CreateCategoryForm = () => {
-  const {
-    translations: { categories, forms },
-  } = useLocale()
+  const { categories, forms } = useTranslations()
   const { mutateAsync } = api.categories.create.useMutation({
     onSuccess: () => {
       alert("Category created")
