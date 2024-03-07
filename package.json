@@ -6,7 +6,6 @@
     "node": "20.9.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "web": "npm run dev -w \"apps/web\"",
     "mobile:ios": "npm run ios -w \"apps/mobile\"",
     "mobile:android": "npm run android -w \"apps/mobile\"",
@@ -23,12 +22,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20.10.8",
     "@typescript-eslint/eslint-plugin": "^6.18.1",
     "@typescript-eslint/parser": "^6.18.1",
+    "dotenv-cli": "^7.3.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1",

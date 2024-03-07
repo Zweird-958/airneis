@@ -1,8 +1,8 @@
-## Sprint `[02/01-31/01]`
+# Sprint `[02/01-31/01]`
 
 PROJECT INITIALIZATION
 
-### Positive reviews
+## Positive reviews
 
 - Review 1
   - Description: `Set up repo`
@@ -35,7 +35,7 @@ PROJECT INITIALIZATION
     - What: `Set up a ticketing system system (US, bugs and technical tickets), centralized documents and structured tickets/commits`
     - When: `07/01`
 
-### Negative reviews
+## Negative reviews
 
 - Review 1
   - Description: `Faced several issues during the set up`
@@ -44,7 +44,7 @@ PROJECT INITIALIZATION
     - What: `Couldn't read .env file on frontend`
     - When: `30/01`
 
-### Questions
+## Questions
 
 - Question 1
   - Description: `Should products be multilingual?`
@@ -53,7 +53,7 @@ PROJECT INITIALIZATION
     - What: `1 product per language or 1 product with multiple translations`
     - When: `?`
 
-### Ideas
+## Ideas
 
 - Idea 1
   - Description: `Handle translations for products and categories`
@@ -62,7 +62,7 @@ PROJECT INITIALIZATION
     - What: `Create a table product name/description and category name`
     - When: `sprint2`
 
-### Participants
+## Participants
 
 - `Julien`
 - `Vitor`

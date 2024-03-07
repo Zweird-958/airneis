@@ -18,13 +18,19 @@ export const FormMessage = forwardRef<
       return children
     }
 
-    const fieldErrors = zodErrors[name]
+    const [fieldName] = name.split(".")
+    const fieldErrors = zodErrors[fieldName]
+    /**
+     * Gets the error message based either on the error message (custom) or the error type
+     */
+    const customErrorMessage =
+      fieldErrors?.[error.message] ?? fieldErrors?.[error.type]
 
-    if (!fieldErrors || !fieldErrors[error.message]) {
+    if (!customErrorMessage) {
       return String(error.message)
     }
 
-    return fieldErrors[error.message]
+    return customErrorMessage
   }, [children, error, name, zodErrors])
 
   if (!body) {

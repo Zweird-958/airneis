@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import useDevice from "@/hooks/useDevice"
+import useSession from "@/hooks/useSession"
 import useTranslations from "@/utils/i18n/client"
 import { footerLink, footerSocial } from "@/utils/layout/footerInfo"
 import { headerLink } from "@/utils/layout/headerInfo"
@@ -13,10 +14,16 @@ const Menu = () => {
     common: { header, footer },
   } = useTranslations()
   const device = useDevice()
+  const { session } = useSession()
+  const visibleHeaderLinks = headerLink.filter(
+    ({ visibleOn }) =>
+      visibleOn === "both" ||
+      (session ? visibleOn === "auth" : visibleOn === "unAuth"),
+  )
 
   return (
     <nav className="absolute bg-white w-full flex flex-col gap-2 px-4 py-2 border-t">
-      {headerLink.map(({ href, common }) => (
+      {visibleHeaderLinks.map(({ href, common }) => (
         <Link key={href} href={href}>
           {header[common]}
         </Link>
