@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { ClientLink } from "@/components/ui/Link"
 import useDevice from "@/hooks/useDevice"
 import useLocale from "@/hooks/useLocale"
 import useSession from "@/hooks/useSession"
@@ -26,22 +27,22 @@ const Menu = () => {
   return (
     <nav className="absolute bg-white w-full flex flex-col gap-2 px-4 py-2 border-t">
       {visibleHeaderLinks.map(({ href, common }) => (
-        <Link key={href} href={href}>
+        <ClientLink key={href} href={href}>
           {header[common]}
-        </Link>
+        </ClientLink>
       ))}
       {!device?.isAboveTablet && (
         <>
           {footerLink.map(({ href, common }) => (
-            <Link key={href} href={href}>
+            <ClientLink key={href} href={href}>
               {footer[common]}
-            </Link>
+            </ClientLink>
           ))}
           <div className="flex gap-2">
             {footerSocial.map(({ href, src, alt }) => (
-              <Link key={href} href={href}>
+              <ClientLink key={href} href={href}>
                 <Image src={src} alt={alt} width={30} height={30} />
-              </Link>
+              </ClientLink>
             ))}
           </div>
         </>

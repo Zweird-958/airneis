@@ -1,4 +1,4 @@
-export type Locale = "en" | "fr"
+export type { Locale } from "@airneis/config"
 export type ExtractKeys<T extends string> =
   T extends `${string}{${infer Key}}${infer Rest}`
     ? Key | ExtractKeys<Rest>

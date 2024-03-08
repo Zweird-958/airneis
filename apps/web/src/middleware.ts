@@ -4,6 +4,14 @@ import { NextRequest, NextResponse } from "next/server"
 
 import { sharedConfig } from "@airneis/config"
 
+const getLocale = ({ headers }: NextRequest) => {
+  const languages = new Negotiator({
+    headers: { "accept-language": headers.get("Accept-Language") ?? "" },
+  }).languages()
+
+  return match(languages, sharedConfig.languageKeys, sharedConfig.fallbackLng)
+}
+
 export const middleware = (request: NextRequest) => {
   const { pathname } = request.nextUrl
   const pathnameHasLocale = sharedConfig.languageKeys.some(
@@ -14,17 +22,11 @@ export const middleware = (request: NextRequest) => {
     return null
   }
 
-  const { headers, url } = request
-  const languages = new Negotiator({
-    headers: { "accept-language": headers.get("Accept-Language") ?? "" },
-  }).languages()
-  const locale = match(
-    languages,
-    sharedConfig.languageKeys,
-    sharedConfig.fallbackLng,
-  )
+  const { url } = request
 
-  return NextResponse.redirect(new URL(`/${locale}${pathname}`, url))
+  return NextResponse.redirect(
+    new URL(`/${getLocale(request)}${pathname}`, url),
+  )
 }
 
 export const config = {

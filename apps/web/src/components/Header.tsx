@@ -1,10 +1,10 @@
 "use client"
 
 import { MenuIcon, Search, ShoppingCart, X } from "lucide-react"
-import Link from "next/link"
 import { useState } from "react"
 
 import Menu from "@/components/Menu"
+import { ClientLink } from "@/components/ui/Link"
 
 type Props = {
   filledCart?: boolean
@@ -27,12 +27,12 @@ const Header = (props: Props) => {
               <Search className="hover:cursor-pointer" />
             </li>
             <li className="relative">
-              <Link href={"/cart"}>
+              <ClientLink href={"/cart"}>
                 <ShoppingCart />
                 {filledCart && (
                   <div className="absolute top-0 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full" />
                 )}
-              </Link>
+              </ClientLink>
             </li>
             <li>
               {displayMenu ? (
