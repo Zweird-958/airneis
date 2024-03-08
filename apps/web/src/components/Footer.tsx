@@ -3,7 +3,6 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { ClientLink } from "@/components/ui/Link"
 import useDevice from "@/hooks/useDevice"
 import useLocale from "@/hooks/useLocale"
 import { footerLink, footerSocial } from "@/utils/layout/footerInfo"
@@ -27,16 +26,16 @@ const Footer = () => {
           <ul className="flex gap-4">
             {footerLink.map(({ href, common }) => (
               <li key={href}>
-                <ClientLink href={href}>{footer[common]}</ClientLink>
+                <Link href={href}>{footer[common]}</Link>
               </li>
             ))}
           </ul>
         </nav>
         <div className="flex gap-2">
           {footerSocial.map(({ href, src, alt }) => (
-            <ClientLink key={href} href={href}>
+            <Link key={href} href={href}>
               <Image src={src} alt={alt} width={30} height={30} />
-            </ClientLink>
+            </Link>
           ))}
         </div>
       </div>
