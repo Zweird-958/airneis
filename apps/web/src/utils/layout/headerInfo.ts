@@ -1,8 +1,6 @@
-import common from "@/locales/en/common"
-
 type HeaderLink = {
   href: string
-  common: keyof typeof common.header
+  common: string
   visibleOn: "auth" | "unAuth" | "both"
 }[]
 
