@@ -5,10 +5,11 @@ import Test from "@/components/Test"
 import TestForm from "@/components/forms/TestForm"
 import { useTranslation } from "@/i18n"
 import api from "@/trpc/server"
+import { PageProps } from "@/types/common"
 
-const Home = async () => {
+const Home = async ({ params: { locale } }: PageProps) => {
   const products = await api.products.all.query()
-  const { t } = await useTranslation("common", "zodErrors")
+  const { t } = await useTranslation(locale, "common", "zodErrors")
 
   if (!products) {
     return <p>nothin</p>

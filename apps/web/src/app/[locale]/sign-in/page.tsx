@@ -1,29 +1,28 @@
 import { Metadata } from "next"
 
 import SignInForm from "@/components/forms/SignInForm"
-import { PageProps } from "@/types/common"
-import getTranslations from "@/utils/locale/getTranslations"
+import { useTranslation } from "@/i18n"
+import type { PageProps } from "@/types/common"
 
 export const generateMetadata = async ({
   params: { locale },
 }: PageProps): Promise<Metadata> => {
-  const {
-    common: { signIn },
-  } = await getTranslations(locale)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { t } = await useTranslation(locale)
 
   return {
-    title: signIn.title,
-    description: signIn.description,
+    title: t("signIn.title"),
+    description: t("signIn.title"),
   }
 }
 const SignIn = async ({ params: { locale } }: PageProps) => {
-  const { forms } = await getTranslations(locale)
+  const { t } = await useTranslation(locale, "forms")
 
   return (
     <div className="h-screen flex items-center justify-center w-full absolute top-0 px-4">
       <div className="max-w-96 mx-auto rounded-default p-4 bg-card w-full">
         <h1 className="text-center text-xl text-primary font-semibold">
-          {forms.signIn}
+          {t("signIn")}
         </h1>
         <SignInForm />
       </div>

@@ -2,7 +2,7 @@ import { Control, FieldValues, Path } from "react-hook-form"
 
 import { FormField, FormItem } from "@/components/ui/Form"
 import Input from "@/components/ui/Input"
-import useLocale from "@/hooks/useLocale"
+import { useTranslation } from "@/i18n/client"
 
 type Props<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>
@@ -11,16 +11,14 @@ type Props<TFieldValues extends FieldValues> = {
 const UsernameField = <TFieldValues extends FieldValues>({
   control,
 }: Props<TFieldValues>) => {
-  const {
-    translations: { forms },
-  } = useLocale()
+  const { t } = useTranslation("forms")
 
   return (
     <FormField
       control={control}
       name={"username" as Path<TFieldValues>}
       render={({ field }) => (
-        <FormItem label={forms.username} description="Test description.">
+        <FormItem label={t("username")} description="Test description.">
           <Input {...field} />
         </FormItem>
       )}
