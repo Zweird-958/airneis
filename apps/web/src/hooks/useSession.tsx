@@ -9,6 +9,7 @@ import config from "@/utils/config"
 
 const useSession = () => {
   const { session, setSession } = useSessionStore()
+  const { mutateAsync } = api.sessions.delete.useMutation()
   const signIn = (jwt: string) => {
     localStorage.setItem(config.session.localStorageKey, jwt)
 
@@ -17,7 +18,7 @@ const useSession = () => {
     setSession(payload)
   }
   const signOut = useCallback(async () => {
-    await api.sessions.delete.useMutation()
+    await mutateAsync()
     localStorage.removeItem(config.session.localStorageKey)
 
     setSession(null)
