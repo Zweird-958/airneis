@@ -14,7 +14,7 @@ import {
 import { sharedConfig } from "@airneis/config"
 import { Locale } from "@airneis/types"
 
-import { Namespace } from "@/utils/config"
+import config, { Namespace } from "@/utils/config"
 
 import { getOptions } from "./settings"
 
@@ -42,7 +42,9 @@ i18next
 
 export function useTranslation(...ns: Namespace[]) {
   const { locale } = useParams<{ locale: Locale }>()
-  const ret = useTranslationOrg(ns)
+  const ret = useTranslationOrg(
+    ns.length > 0 ? ns : config.locale.defaultNamespace,
+  )
   const { i18n } = ret
   const [activeLang, setActiveLang] = useState(i18n.resolvedLanguage)
 
