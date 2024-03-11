@@ -11,5 +11,5 @@ export const getOptions = (
   lng,
   fallbackNS: config.locale.defaultNamespace,
   defaultNS: config.locale.defaultNamespace,
-  ns,
+  ns: ns.length ? ns : config.locale.defaultNamespace,
 })
