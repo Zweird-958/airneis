@@ -1,35 +1,56 @@
+import { router } from "expo-router"
 import React from "react"
-import { useForm } from "react-hook-form"
-import 
+import { SubmitHandler, useForm } from "react-hook-form"
+import { z } from "zod"
+
+import { signInSchema } from "@airneis/schemas"
 
 import { Button } from "@/components/ui/Button"
-import api from "@/trpc/client"
+import FormContainer from "@/components/ui/Form/Form"
+import { FormField } from "@/components/ui/Form/FormField"
+import useLocale from "@/hooks/useLocale"
+import useSession from "@/hooks/useSession"
+import api from "@/utils/api"
 
-const MyForm: React.FC = () => {
-  const form = useForm<SignInFormSchema>({
-    resolver: zodResolver(signInSchema),
+type SignInFormSchema = z.infer<typeof signInSchema>
+
+export const SignInForm: React.FC = () => {
+  const { signIn } = useSession()
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInFormSchema>({
     defaultValues: { email: "", password: "" },
   })
   const {
-    translations: { forms },
+    translations: { common },
   } = useLocale()
-  const router = useRouter()
   const { mutate } = api.sessions.create.useMutation()
   const onSubmit: SubmitHandler<SignInFormSchema> = (values) => {
     mutate(values, {
       onSuccess: (data) => {
         signIn(data)
-        router.push("/")
+        router.replace("/")
       },
     })
   }
+
   return (
     <FormContainer>
-      <InputField name="username" placeholder="Username" />
-      <InputField name="password" placeholder="Password" />
-      <Button label="Submit" />
+      <FormField
+        control={control}
+        name="email"
+        placeholder={common.email}
+        errors={errors.email?.message}
+      />
+      <FormField
+        control={control}
+        name="password"
+        placeholder={common.password}
+        errors={errors.password?.message}
+      />
+      <Button label="Submit" onPress={handleSubmit(onSubmit)} />
     </FormContainer>
   )
 }
-
-export default MyForm
