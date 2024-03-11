@@ -20,7 +20,7 @@ const initI18next = async (lng: Locale, ...ns: Namespace[]) => {
       ),
     )
     .use(ICU)
-    .init(getOptions(lng, ...ns))
+    .init({ ...getOptions(...ns), lng })
 
   return i18nInstance
 }

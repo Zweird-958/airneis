@@ -32,8 +32,6 @@ i18next
   .use(ICU)
   .init({
     ...getOptions(),
-    // eslint-disable-next-line no-undefined
-    lng: undefined,
     detection: {
       order: ["path", "htmlTag", "cookie", "navigator"],
     },
