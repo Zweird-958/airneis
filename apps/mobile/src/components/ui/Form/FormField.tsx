@@ -1,32 +1,37 @@
 import React from "react"
 import { Controller, useFormContext } from "react-hook-form"
-import { TextInput } from "react-native"
-import tw from "tailwind-react-native-classnames"
+import { Text, TextInput, View } from "react-native"
 
 interface InputFieldProps {
   name: string
   placeholder: string
+  errors: string | undefined
 }
 
-const InputField: React.FC<InputFieldProps> = ({ name, placeholder }) => {
+export const FormField: React.FC<InputFieldProps> = ({
+  name,
+  placeholder,
+  errors,
+}) => {
   const { control } = useFormContext()
 
   return (
-    <Controller
-      control={control}
-      render={({ field: { onChange, onBlur, value } }) => (
-        <TextInput
-          style={tw`border border-gray-300 p-2 rounded-md`}
-          onBlur={onBlur}
-          onChangeText={onChange}
-          value={value}
-          placeholder={placeholder}
-        />
-      )}
-      name={name}
-      defaultValue=""
-    />
+    <View>
+      <Controller
+        control={control}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput
+            className="border-2 border-gray-300 rounded-md p-2"
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+            placeholder={placeholder}
+          />
+        )}
+        name={name}
+        defaultValue=""
+      />
+      {errors && <Text className="text-red-500">{errors}</Text>}
+    </View>
   )
 }
-
-export default InputField
