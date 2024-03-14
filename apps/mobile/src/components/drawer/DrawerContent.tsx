@@ -15,6 +15,10 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
       label: common.home,
       screen: "index",
     },
+    {
+      label: common.signIn,
+      screen: "sign-in",
+    },
   ]
 
   return (

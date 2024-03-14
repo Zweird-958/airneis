@@ -1,9 +1,10 @@
+import JWT from "expo-jwt"
 import * as SecureStore from "expo-secure-store"
-import jsonwebtoken from "jsonwebtoken"
 import { useEffect } from "react"
 
 import type { RawJwt } from "@airneis/types"
 
+import env from "@/env"
 import useSessionStore from "@/stores/session"
 import config from "@/utils/config"
 
@@ -12,7 +13,7 @@ const useSession = () => {
   const signIn = async (jwt: string) => {
     await SecureStore.setItemAsync(config.session.localStorageKey, jwt)
 
-    const { payload } = jsonwebtoken.decode(jwt) as RawJwt
+    const { payload } = JWT.decode(jwt, env.JWT_SECRET) as RawJwt
 
     setSession(payload)
   }
@@ -25,7 +26,7 @@ const useSession = () => {
         return
       }
 
-      const { payload } = jsonwebtoken.decode(jwt) as RawJwt
+      const { payload } = JWT.decode(jwt, env.JWT_SECRET) as RawJwt
       setSession(payload)
     }
 

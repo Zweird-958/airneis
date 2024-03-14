@@ -1,21 +1,18 @@
-import { router } from "expo-router"
+/* eslint-disable capitalized-comments */
 import React from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
+import { View } from "react-native"
 import { z } from "zod"
 
 import { signInSchema } from "@airneis/schemas"
 
 import { Button } from "@/components/ui/Button"
-import FormContainer from "@/components/ui/Form/Form"
 import { FormField } from "@/components/ui/Form/FormField"
 import useLocale from "@/hooks/useLocale"
-import useSession from "@/hooks/useSession"
-import api from "@/utils/api"
 
 type SignInFormSchema = z.infer<typeof signInSchema>
 
 export const SignInForm: React.FC = () => {
-  const { signIn } = useSession()
   const {
     control,
     handleSubmit,
@@ -26,18 +23,20 @@ export const SignInForm: React.FC = () => {
   const {
     translations: { common },
   } = useLocale()
-  const { mutate } = api.sessions.create.useMutation()
+  // const { mutate } = api.sessions.create.useMutation()
   const onSubmit: SubmitHandler<SignInFormSchema> = (values) => {
-    mutate(values, {
-      onSuccess: (data) => {
-        signIn(data)
-        router.replace("/")
-      },
-    })
+    // mutate(values, {
+    //   onSuccess: (data) => {
+    //     signIn(data)
+    //     router.replace("/")
+    //   },
+    // })
+    // eslint-disable-next-line no-console
+    console.log(values)
   }
 
   return (
-    <FormContainer>
+    <View>
       <FormField
         control={control}
         name="email"
@@ -51,6 +50,6 @@ export const SignInForm: React.FC = () => {
         errors={errors.password?.message}
       />
       <Button label="Submit" onPress={handleSubmit(onSubmit)} />
-    </FormContainer>
+    </View>
   )
 }
