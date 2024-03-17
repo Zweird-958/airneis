@@ -38,21 +38,27 @@ export const PaginationItem = ({
 }
 
 type PaginationProps = {
-  page: number
+  page: number | null
   href: string
   totalPages: number
 }
 
 export const Pagination = ({ page, href, totalPages }: PaginationProps) => (
   <nav className="flex gap-4">
-    {Array.from({ length: config.pagination.step }, (_, i) => page - 1 - i)
+    {Array.from(
+      { length: config.pagination.step },
+      (_, i) => (page ?? totalPages) - 1 - i,
+    )
       .sort()
       .map(
         (prev) =>
           prev > 0 && <PaginationItem key={prev} href={href} page={prev} />,
       )}
-    <PaginationItem href={href} page={page} variant="disabled" />
-    {Array.from({ length: config.pagination.step }, (_, i) => page + 1 + i)
+    {page && <PaginationItem href={href} page={page} variant="disabled" />}
+    {Array.from(
+      { length: config.pagination.step },
+      (_, i) => (page ? page + 1 : totalPages) + i,
+    )
       .sort()
       .map(
         (next) =>

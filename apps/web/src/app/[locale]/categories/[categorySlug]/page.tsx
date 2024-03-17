@@ -43,14 +43,21 @@ const Category = async ({
 
       <div className="flex flex-col gap-8 max-w-product-list px-4 items-center">
         <h2 className="text-center">{category.description}</h2>
+        {category.products.length === 0 && (
+          <div className="bg-card p-4 rounded-lg">
+            <p className="text-center">
+              There are no products in this category yet.
+            </p>
+          </div>
+        )}
         <div className="flex flex-wrap justify-center gap-product">
           {category.products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
         <Pagination
-          page={pageParsed}
-          href={`/en/category/${categorySlug}`}
+          page={pageParsed <= totalPages ? pageParsed : null}
+          href={`/en/categories/${categorySlug}`}
           totalPages={totalPages}
         />
       </div>
