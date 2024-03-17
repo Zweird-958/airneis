@@ -1,6 +1,10 @@
 import { z } from "zod"
 
 const schema = z.object({
+  pagination: z.object({
+    itemsPerPage: z.number(),
+  }),
+  currency: z.enum(["EUR", "USD"]),
   security: z.object({
     jwt: z.object({
       expiresIn: z.string(),
@@ -12,6 +16,10 @@ const schema = z.object({
   }),
 })
 const config = schema.parse({
+  pagination: {
+    itemsPerPage: 12,
+  },
+  currency: "EUR",
   security: {
     jwt: {
       expiresIn: "2d",

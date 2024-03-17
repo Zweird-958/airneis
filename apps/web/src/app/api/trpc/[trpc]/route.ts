@@ -1,6 +1,8 @@
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch"
+import { NextRequest } from "next/server"
 
 import { appRouter, createTRPCContext } from "@airneis/api"
+import { localeSchema } from "@airneis/schemas"
 
 const setCorsHeaders = (res: Response) => {
   res.headers.set("Access-Control-Allow-Origin", "*")
@@ -17,12 +19,13 @@ export const OPTIONS = () => {
 
   return response
 }
-const handler = async (req: Request) => {
+const handler = async (req: NextRequest) => {
+  const langCookie = req.cookies.get("lang")?.value
   const response = await fetchRequestHandler({
     endpoint: "/api/trpc",
     router: appRouter,
     req,
-    createContext: () => createTRPCContext(),
+    createContext: () => createTRPCContext(localeSchema.parse(langCookie)),
   })
 
   setCorsHeaders(response)
