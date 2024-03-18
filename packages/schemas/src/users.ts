@@ -7,13 +7,15 @@ export const signInSchema = z.object({
   password: z.string().min(8),
 })
 export const signUpSchema = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
+  firstName: z.string().min(1),
+  lastName: z.string().min(1),
   email: emailSchema,
   password: z
     .string()
     .min(8)
-    .regex(/(?=.*\p{Lu})(?=.*\p{Ll})(?=.*\d)(?=.*[^\d\p{L}]).*/u),
+    .regex(/(?=.*\p{Lu})(?=.*\p{Ll})(?=.*\d)(?=.*[^\d\p{L}]).*/u, {
+      message: "regex",
+    }),
 })
 
 export type SignUpInput = z.infer<typeof signUpSchema>

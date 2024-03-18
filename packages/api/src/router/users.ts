@@ -1,3 +1,4 @@
+import { TRPCError } from "@trpc/server"
 import { hash } from "bcrypt"
 
 import { signUpSchema } from "@airneis/schemas"
@@ -17,7 +18,7 @@ const usersRouter = createTRPCRouter({
         if (user) {
           await sleep(config.security.jwt.hashingDuration)
 
-          return true
+          throw new TRPCError({ code: "UNAUTHORIZED" })
         }
 
         const hashedPassword = await hash(password, env.HASH_SALT_COUNT)
