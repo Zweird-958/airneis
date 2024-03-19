@@ -1,10 +1,8 @@
 import { create } from "zustand"
 
-import type { JwtPayload } from "@airneis/types"
-
 type SessionStore = {
-  session: JwtPayload | null
-  setSession: (session: JwtPayload) => void
+  session: string | null
+  setSession: (session: string) => void
 }
 
 const useSessionStore = create<SessionStore>((set) => ({
