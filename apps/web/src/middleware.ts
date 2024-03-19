@@ -30,20 +30,20 @@ export const middleware = (request: NextRequest) => {
   } = request
 
   if (
-    !sharedConfig.languageKeys.some((loc) => pathname.startsWith(`/${loc}`))
+    !sharedConfig.languageKeys.some((lang) => pathname.startsWith(`/${lang}`))
   ) {
     return NextResponse.redirect(
       new URL(`/${getLocale(request)}${pathname}`, url),
     )
   }
 
-  const lngInReferer = sharedConfig.languageKeys.find((l) =>
-    pathname.startsWith(`/${l}`),
+  const langInReferer = sharedConfig.languageKeys.find((lang) =>
+    pathname.startsWith(`/${lang}`),
   )
   const response = NextResponse.next()
 
-  if (lngInReferer) {
-    response.cookies.set(webConfig.locale.cookieKey, lngInReferer)
+  if (langInReferer) {
+    response.cookies.set(webConfig.locale.cookieKey, langInReferer)
   }
 
   return response
