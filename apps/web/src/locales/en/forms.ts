@@ -11,4 +11,5 @@ export default {
   email: "Email",
   password: "Password",
   signIn: "Sign In",
+  unexpectedError: "An unexpected error occurred",
 } as const

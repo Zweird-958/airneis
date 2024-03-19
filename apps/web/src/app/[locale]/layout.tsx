@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ReactNode } from "react"
+import { Toaster } from "sonner"
 
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
@@ -26,6 +27,7 @@ const RootLayout = (props: Props) => {
     <Providers>
       <html lang={locale} className="bg-background">
         <body className="flex flex-col justify-between w-full min-h-screen">
+          <Toaster richColors closeButton position="top-right" />
           <Header />
           <main className="grow">{children}</main>
           <Footer />
