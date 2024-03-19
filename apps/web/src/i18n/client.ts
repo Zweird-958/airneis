@@ -38,7 +38,7 @@ i18next
     preload: runsOnServerSide ? sharedConfig.languageKeys : [],
   })
 
-export function useTranslation(...ns: Namespace[]) {
+export const useTranslation = (...ns: Namespace[]) => {
   const { locale } = useParams<{ locale: Locale }>()
   const ret = useTranslationOrg(
     ns.length > 0 ? ns : config.locale.defaultNamespace,
