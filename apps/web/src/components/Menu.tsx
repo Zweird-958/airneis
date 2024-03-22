@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import Button from "@/components/ui/Button"
 import useDevice from "@/hooks/useDevice"
 import useLocale from "@/hooks/useLocale"
 import useSession from "@/hooks/useSession"
@@ -16,7 +17,7 @@ const Menu = () => {
     },
   } = useLocale()
   const device = useDevice()
-  const { session } = useSession()
+  const { session, signOut } = useSession()
   const visibleHeaderLinks = headerLink.filter(
     ({ visibleOn }) =>
       visibleOn === "both" ||
@@ -30,6 +31,7 @@ const Menu = () => {
           {header[common]}
         </Link>
       ))}
+      {session && <Button onClick={signOut}>{header.signOut}</Button>}
       {!device?.isAboveTablet && (
         <>
           {footerLink.map(({ href, common }) => (

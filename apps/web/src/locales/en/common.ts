@@ -6,6 +6,7 @@ export default {
     home: "Home",
     signIn: "Sign In",
     signUp: "Sign Up",
+    signOut: "Sign Out",
   },
   footer: {
     tos: "Terms of Service",

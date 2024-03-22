@@ -6,6 +6,7 @@ export default {
     home: "Accueil",
     signIn: "Se connecter",
     signUp: "S'inscrire",
+    signOut: "Se déconnecter",
   },
   footer: {
     tos: "Conditions d'utilisation",
