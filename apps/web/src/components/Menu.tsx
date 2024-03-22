@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import Button from "@/components/ui/Button"
 import useDevice from "@/hooks/useDevice"
 import useSession from "@/hooks/useSession"
 import { useTranslation } from "@/i18n/client"
@@ -12,7 +13,7 @@ import { headerLink } from "@/utils/layout/headerInfo"
 const Menu = () => {
   const { t } = useTranslation()
   const device = useDevice()
-  const { session } = useSession()
+  const { session, signOut } = useSession()
   const visibleHeaderLinks = headerLink.filter(
     ({ visibleOn }) =>
       visibleOn === "both" ||
@@ -26,6 +27,7 @@ const Menu = () => {
           {t(`header.${common}`)}
         </Link>
       ))}
+      {session && <Button onClick={signOut}>{t("header.signOut")}</Button>}
       {!device?.isAboveTablet && (
         <>
           {footerLink.map(({ href, common }) => (

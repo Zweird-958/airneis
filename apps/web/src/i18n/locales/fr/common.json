@@ -4,7 +4,8 @@
   "client": "Client",
   "header": {
     "home": "Accueil",
-    "signIn": "Se connecter"
+    "signIn": "Se connecter",
+    "signOut": "Se déconnecter"
   },
   "footer": {
     "tos": "Conditions d'utilisation",
