@@ -18,7 +18,7 @@ const usersRouter = createTRPCRouter({
         if (user) {
           await sleep(config.security.jwt.hashingDuration)
 
-          throw new TRPCError({ code: "UNAUTHORIZED" })
+          return true
         }
 
         const hashedPassword = await hash(password, env.HASH_SALT_COUNT)
