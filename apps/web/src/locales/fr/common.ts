@@ -5,6 +5,7 @@ export default {
   header: {
     home: "Accueil",
     signIn: "Se connecter",
+    signOut: "Se déconnecter",
   },
   footer: {
     tos: "Conditions d'utilisation",
