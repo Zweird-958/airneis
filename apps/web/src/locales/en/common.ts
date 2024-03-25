@@ -5,6 +5,7 @@ export default {
   header: {
     home: "Home",
     signIn: "Sign In",
+    signUp: "Sign Up",
     signOut: "Sign Out",
   },
   footer: {

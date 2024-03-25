@@ -16,5 +16,13 @@ export default {
   },
   password: {
     too_small: "Password must be at least 8 characters",
+    regex:
+      "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character",
+  },
+  lastName: {
+    too_small: "Last name can not be empty",
+  },
+  firstName: {
+    too_small: "First name can not be empty",
   },
 } as const
