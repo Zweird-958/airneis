@@ -4,15 +4,13 @@ import * as SelectPrimitive from "@radix-ui/react-select"
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react"
 
-import useLocale from "@/hooks/useLocale"
+import { useTranslation } from "@/i18n/client"
 
 export const Select = forwardRef<
   ElementRef<typeof SelectPrimitive.Root>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
 >(({ children, ...props }, ref) => {
-  const {
-    translations: { forms },
-  } = useLocale()
+  const { t } = useTranslation("forms")
 
   return (
     <SelectPrimitive.Root {...props}>
@@ -20,7 +18,7 @@ export const Select = forwardRef<
         ref={ref}
         className="h-10 w-full bg-card border border-default py-2 rounded-default px-3 text-sm disabled:cursor-not-allowed focus-visible:outline-none disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-primary flex items-center justify-between"
       >
-        <SelectPrimitive.Value placeholder={forms.selectPlaceholder} />
+        <SelectPrimitive.Value placeholder={t("selectPlaceholder")} />
         <SelectPrimitive.Icon>
           <ChevronDownIcon className="size-4 text-muted-foreground" />
         </SelectPrimitive.Icon>

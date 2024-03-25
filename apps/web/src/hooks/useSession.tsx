@@ -1,13 +1,15 @@
 import jsonwebtoken from "jsonwebtoken"
-import { useEffect } from "react"
+import { useCallback, useEffect } from "react"
 
 import type { RawJwt } from "@airneis/types"
 
 import useSessionStore from "@/stores/session"
+import api from "@/trpc/client"
 import config from "@/utils/config"
 
 const useSession = () => {
   const { session, setSession } = useSessionStore()
+  const { mutateAsync } = api.sessions.delete.useMutation()
   const signIn = (jwt: string) => {
     localStorage.setItem(config.session.localStorageKey, jwt)
 
@@ -15,6 +17,12 @@ const useSession = () => {
 
     setSession(payload)
   }
+  const signOut = useCallback(async () => {
+    await mutateAsync()
+    localStorage.removeItem(config.session.localStorageKey)
+
+    setSession(null)
+  }, [])
 
   useEffect(() => {
     const jwt = localStorage.getItem(config.session.localStorageKey)
@@ -27,7 +35,7 @@ const useSession = () => {
     setSession(payload)
   }, [setSession])
 
-  return { session, signIn }
+  return { session, signIn, signOut }
 }
 
 export default useSession
