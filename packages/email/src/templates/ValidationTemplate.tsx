@@ -15,14 +15,11 @@ import * as React from "react"
 import baseConfig from "../../../../tailwind.config"
 
 type Props = {
-  name?: string
-  href?: string
+  name: string
+  href: string
 }
 
-export const ValidationTemplate = ({
-  name = "Test",
-  href = "https://www.google.com",
-}: Props) => (
+export const ValidationTemplate = ({ name, href }: Props) => (
   <Html>
     <Head>
       <Font fontFamily="Arial" fallbackFontFamily="Arial" />
