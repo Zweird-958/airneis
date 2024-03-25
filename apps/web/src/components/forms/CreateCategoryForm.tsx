@@ -8,7 +8,7 @@ import { CreateCategoryInput, createCategorySchema } from "@airneis/schemas"
 
 import Button from "@/components/ui/Button"
 import { Form } from "@/components/ui/Form"
-import useLocale from "@/hooks/useLocale"
+import { useTranslation } from "@/i18n/client"
 import api from "@/trpc/client"
 import fieldDefaultValues from "@/utils/locale/fieldDefaultValues"
 
@@ -17,9 +17,7 @@ import LocalizedField from "./fields/LocalizedField"
 
 /* eslint-disable no-alert -- Will be replaced with toasts in the future */
 const CreateCategoryForm = () => {
-  const {
-    translations: { categories, forms },
-  } = useLocale()
+  const { t } = useTranslation("categories", "forms")
   const { mutateAsync } = api.categories.create.useMutation({
     onSuccess: () => {
       alert("Category created")
@@ -31,7 +29,7 @@ const CreateCategoryForm = () => {
         return
       }
 
-      alert(categories.errors.create)
+      alert(t("categories:errors.create"))
     },
   })
   const form = useForm<CreateCategoryInput>({
@@ -48,14 +46,18 @@ const CreateCategoryForm = () => {
 
   return (
     <Form ctx={form} onSubmit={onSubmit} className="space-y-6">
-      <LocalizedField control={form.control} name="name" label={forms.name} />
+      <LocalizedField
+        control={form.control}
+        name="name"
+        label={t("forms:name")}
+      />
       <LocalizedField
         control={form.control}
         name="description"
-        label={forms.description}
+        label={t("forms:description")}
       />
       <ImageField control={form.control} />
-      <Button type="submit">{forms.create}</Button>
+      <Button type="submit">{t("forms:create")}</Button>
     </Form>
   )
 }

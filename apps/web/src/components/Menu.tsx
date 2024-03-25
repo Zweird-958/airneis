@@ -5,17 +5,13 @@ import Link from "next/link"
 
 import Button from "@/components/ui/Button"
 import useDevice from "@/hooks/useDevice"
-import useLocale from "@/hooks/useLocale"
 import useSession from "@/hooks/useSession"
+import { useTranslation } from "@/i18n/client"
 import { footerLink, footerSocial } from "@/utils/layout/footerInfo"
 import { headerLink } from "@/utils/layout/headerInfo"
 
 const Menu = () => {
-  const {
-    translations: {
-      common: { header, footer },
-    },
-  } = useLocale()
+  const { t } = useTranslation()
   const device = useDevice()
   const { session, signOut } = useSession()
   const visibleHeaderLinks = headerLink.filter(
@@ -28,15 +24,15 @@ const Menu = () => {
     <nav className="absolute bg-white w-full flex flex-col gap-2 px-4 py-2 border-t">
       {visibleHeaderLinks.map(({ href, common }) => (
         <Link key={href} href={href}>
-          {header[common]}
+          {t(`header.${common}`)}
         </Link>
       ))}
-      {session && <Button onClick={signOut}>{header.signOut}</Button>}
+      {session && <Button onClick={signOut}>{t("header.signOut")}</Button>}
       {!device?.isAboveTablet && (
         <>
           {footerLink.map(({ href, common }) => (
             <Link key={href} href={href}>
-              {footer[common]}
+              {t(`footer.${common}`)}
             </Link>
           ))}
           <div className="flex gap-2">

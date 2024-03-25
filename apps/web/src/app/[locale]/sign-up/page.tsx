@@ -1,13 +1,13 @@
 import SignUpForm from "@/components/forms/SignUpForm"
 import { FormLayout } from "@/components/ui/Form/FormLayout"
+import { useTranslation } from "@/i18n"
 import { PageProps } from "@/types/common"
-import getTranslations from "@/utils/locale/getTranslations"
 
 const SignUp = async ({ params: { locale } }: PageProps) => {
-  const { forms } = await getTranslations(locale)
+  const { t } = await useTranslation(locale, "forms")
 
   return (
-    <FormLayout labelForm={forms.signUp}>
+    <FormLayout labelForm={t("signUp")}>
       <SignUpForm />
     </FormLayout>
   )

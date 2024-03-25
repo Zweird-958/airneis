@@ -1,31 +1,25 @@
 "use client"
 
-import { MouseEventHandler } from "react"
+import Link from "next/link"
 
 import { sharedConfig } from "@airneis/config"
-import type { Locale } from "@airneis/types"
 
-import useLocale from "@/hooks/useLocale"
+import { useTranslation } from "@/i18n/client"
 
 const LocaleSelector = () => {
-  const { changeLocale, locale } = useLocale()
-  const handleChange: MouseEventHandler<HTMLButtonElement> = async (event) => {
-    const language = event.currentTarget.getAttribute("data-locale") as Locale
-
-    await changeLocale(language)
-  }
+  const { locale } = useTranslation()
 
   return (
     <div className="flex gap-1">
       {sharedConfig.languageKeys.map((language: string, index: number) => (
         <div key={language} className="flex gap-1">
-          <button
+          <Link
             data-locale={language}
-            onClick={handleChange}
+            href={`/${language}`}
             className={locale === language ? "underline" : ""}
           >
             {language.toUpperCase()}
-          </button>
+          </Link>
           <p>{index !== sharedConfig.languageKeys.length - 1 && "/"}</p>
         </div>
       ))}

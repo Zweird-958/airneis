@@ -12,7 +12,7 @@ import LastNameField from "@/components/forms/fields/LastNameField"
 import PasswordField from "@/components/forms/fields/PasswordField"
 import Button from "@/components/ui/Button"
 import { Form } from "@/components/ui/Form"
-import useLocale from "@/hooks/useLocale"
+import { useTranslation } from "@/i18n/client"
 import api from "@/trpc/client"
 
 const SignUpForm = () => {
@@ -26,9 +26,7 @@ const SignUpForm = () => {
       lastName: "",
     },
   })
-  const {
-    translations: { forms },
-  } = useLocale()
+  const { t } = useTranslation("forms")
   const { mutate } = api.users.create.useMutation()
   const onSubmit: SubmitHandler<SignUpInput> = (values) => {
     mutate(values, {
@@ -44,7 +42,7 @@ const SignUpForm = () => {
       <LastNameField control={form.control} />
       <EmailField control={form.control} />
       <PasswordField control={form.control} />
-      <Button type="submit">{forms.signUp}</Button>
+      <Button type="submit">{t("signUp")}</Button>
     </Form>
   )
 }
