@@ -53,12 +53,13 @@ export const useTranslation = (...ns: Namespace[]) => {
 
     setActiveLang(i18n.resolvedLanguage)
   }, [activeLang, i18n.resolvedLanguage])
+
   useEffect(() => {
-    void i18n.changeLanguage(locale)
+    i18n.changeLanguage(locale)
   }, [locale, i18n])
 
   if (runsOnServerSide && i18n.resolvedLanguage !== locale) {
-    void i18n.changeLanguage(locale)
+    i18n.changeLanguage(locale)
   }
 
   return { ...ret, locale }
