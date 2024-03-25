@@ -1,7 +1,7 @@
 import { getItemAsync, setItemAsync } from "expo-secure-store"
 import { useCallback, useEffect } from "react"
 
-import { localeSchema } from "@airneis/schemas"
+import { localeFallbackSchema } from "@airneis/schemas"
 import type { Locale } from "@airneis/types"
 import { translationInterpolator } from "@airneis/utils"
 
@@ -29,7 +29,7 @@ const useLocale = () => {
   useEffect(() => {
     void (async () => {
       const localeStored = await getItemAsync(config.localeStoreKey)
-      const currentLocale = localeSchema.parse(localeStored)
+      const currentLocale = localeFallbackSchema.parse(localeStored)
       setLocale(currentLocale)
       setTranslations(getTranslations(currentLocale))
     })()
