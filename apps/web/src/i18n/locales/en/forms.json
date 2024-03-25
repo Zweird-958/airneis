@@ -10,5 +10,8 @@
   "create": "Create",
   "email": "Email",
   "password": "Password",
-  "signIn": "Sign In"
+  "firstName": "First name",
+  "lastName": "Last name",
+  "signIn": "Sign In",
+  "signUp": "Sign up"
 }

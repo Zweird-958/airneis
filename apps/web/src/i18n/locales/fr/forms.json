@@ -10,5 +10,8 @@
   "create": "Créer",
   "email": "Email",
   "password": "Mot de passe",
-  "signIn": "Se connecter"
+  "firstName": "Prénom",
+  "lastName": "Nom",
+  "signIn": "Se connecter",
+  "signUp": "Inscription"
 }

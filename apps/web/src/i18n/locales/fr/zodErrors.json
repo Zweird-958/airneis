@@ -15,6 +15,13 @@
     "invalid_string": "Email invalide"
   },
   "password": {
-    "too_small": "Votre mot de passe doit contenir au moins 8 caractères"
+    "too_small": "Votre mot de passe doit contenir au moins 8 caractères",
+    "regex": "Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial"
+  },
+  "lastName": {
+    "too_small": "Le nom ne peut pas être vide"
+  },
+  "firstName": {
+    "too_small": "Le prénom ne peut pas être vide"
   }
 }

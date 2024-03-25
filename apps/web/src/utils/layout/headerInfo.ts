@@ -15,4 +15,9 @@ export const headerLink: HeaderLink = [
     common: "signIn",
     visibleOn: "unAuth",
   },
+  {
+    href: "/sign-up",
+    common: "signUp",
+    visibleOn: "unAuth",
+  },
 ]

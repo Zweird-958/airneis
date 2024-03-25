@@ -5,7 +5,8 @@
   "header": {
     "home": "Home",
     "signIn": "Sign In",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "signUp": "Sign Up"
   },
   "footer": {
     "tos": "Terms of Service",
