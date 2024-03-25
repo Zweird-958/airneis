@@ -34,6 +34,7 @@ i18next
     ...getOptions(),
     detection: {
       order: ["path", "htmlTag", "cookie", "navigator"],
+      lookupCookie: config.locale.cookieKey,
     },
     preload: runsOnServerSide ? sharedConfig.languageKeys : [],
   })
