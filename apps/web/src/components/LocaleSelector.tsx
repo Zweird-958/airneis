@@ -7,7 +7,7 @@ import { sharedConfig } from "@airneis/config"
 import { useTranslation } from "@/i18n/client"
 
 const LocaleSelector = () => {
-  const { locale } = useTranslation("common")
+  const { locale } = useTranslation()
 
   return (
     <div className="flex gap-1">
