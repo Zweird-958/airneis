@@ -1,5 +1,6 @@
-import Link, { LinkProps } from "next/link"
+import type { LinkProps } from "next/link"
 
+import Link from "@/components/ui/Link"
 import { cn } from "@/utils/cn"
 import config from "@/utils/config"
 

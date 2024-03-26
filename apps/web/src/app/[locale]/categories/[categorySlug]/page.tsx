@@ -58,7 +58,7 @@ const Category = async ({
 
         <Pagination
           page={pageParsed <= totalPages ? pageParsed : null}
-          href={`/${locale}/categories/${categorySlug}`}
+          href={`/categories/${categorySlug}`}
           totalPages={totalPages}
         />
       </div>

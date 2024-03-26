@@ -1,10 +1,10 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
 
 import type { Product } from "@airneis/types"
 
+import Link from "@/components/ui/Link"
 import { useTranslation } from "@/i18n/client"
 
 const ProductCard = ({ product }: { product: Product }) => {
