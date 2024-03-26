@@ -1,7 +1,9 @@
+import { headers } from "next/headers"
 import Image from "next/image"
 
 import ProductCard from "@/components/products/ProductCard"
 import { Pagination } from "@/components/ui/Pagination"
+import { useTranslation } from "@/i18n"
 import api from "@/trpc/server"
 import { PageProps } from "@/types/common"
 
@@ -15,7 +17,7 @@ type Props = {
 } & PageProps
 
 const Category = async ({
-  params: { categorySlug },
+  params: { categorySlug, locale },
   searchParams: { page },
 }: Props) => {
   const pageParsed = parseInt(page ?? "1", 10)
@@ -26,6 +28,8 @@ const Category = async ({
     slug: categorySlug,
     page: pageParsed,
   })
+  const { t } = await useTranslation(locale, "categories")
+  console.log(headers().get("Locale"))
 
   return (
     <div className="flex flex-col gap-8 pb-2 items-center">
@@ -45,19 +49,18 @@ const Category = async ({
         <h2 className="text-center">{category.description}</h2>
         {category.products.length === 0 && (
           <div className="bg-card p-4 rounded-lg">
-            <p className="text-center">
-              There are no products in this category yet.
-            </p>
+            <p className="text-center">{t("empty")}</p>
           </div>
         )}
         <div className="flex flex-wrap justify-center gap-product">
           {category.products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} locale={locale} />
           ))}
         </div>
+
         <Pagination
           page={pageParsed <= totalPages ? pageParsed : null}
-          href={`/en/categories/${categorySlug}`}
+          href={`/${locale}/categories/${categorySlug}`}
           totalPages={totalPages}
         />
       </div>
