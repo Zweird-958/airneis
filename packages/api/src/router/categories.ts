@@ -45,12 +45,8 @@ const categoriesRouter = createTRPCRouter({
     .input(getCategorySchema)
     .query(async ({ ctx: { entities, lang }, input: { slug, page } }) => {
       const category = await entities.category.findOne(
-        {
-          slug,
-        },
-        {
-          populate: ["image"],
-        },
+        { slug },
+        { populate: ["image"] },
       )
 
       if (!category) {
