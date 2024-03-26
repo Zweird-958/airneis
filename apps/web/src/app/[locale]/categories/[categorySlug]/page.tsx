@@ -46,7 +46,7 @@ const Category = async ({
       <div className="flex flex-col gap-8 max-w-product-list px-4 items-center">
         <h2 className="text-center">{category.description}</h2>
         {category.products.length === 0 && (
-          <div className="bg-card p-4 rounded-lg">
+          <div className="bg-card p-4 rounded-default">
             <p className="text-center">{t("empty")}</p>
           </div>
         )}

@@ -29,7 +29,7 @@ export const PaginationItem = ({
         query: { page },
       }}
       className={cn(
-        "flex justify-center items-center rounded-lg sm:w-12 sm:h-12 w-10 h-10",
+        "flex justify-center items-center rounded-default sm:w-12 sm:h-12 w-10 h-10",
         PAGINATION_VARIANTS[variant],
       )}
     >
