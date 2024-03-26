@@ -8,7 +8,7 @@ type Props<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>
 }
 
-const PasswordField = <TFieldValues extends FieldValues>({
+const FirstNameField = <TFieldValues extends FieldValues>({
   control,
 }: Props<TFieldValues>) => {
   const { t } = useTranslation("forms")
@@ -16,14 +16,14 @@ const PasswordField = <TFieldValues extends FieldValues>({
   return (
     <FormField
       control={control}
-      name={"password" as Path<TFieldValues>}
+      name={"firstName" as Path<TFieldValues>}
       render={({ field }) => (
-        <FormItem label={t("password")}>
-          <Input {...field} type="password" />
+        <FormItem label={t("firstName")}>
+          <Input {...field} />
         </FormItem>
       )}
     />
   )
 }
 
-export default PasswordField
+export default FirstNameField

@@ -3,28 +3,50 @@ import Negotiator from "negotiator"
 import { NextRequest, NextResponse } from "next/server"
 
 import { sharedConfig } from "@airneis/config"
+import { localeSchema } from "@airneis/schemas"
+import type { Locale } from "@airneis/types"
+
+import webConfig from "@/utils/config"
+
+const getLocale = ({ headers, cookies }: NextRequest) =>
+  localeSchema
+    .catch(() => {
+      const languages = new Negotiator({
+        headers: { "accept-language": headers.get("Accept-Language") ?? "" },
+      }).languages()
+
+      return match(
+        languages,
+        sharedConfig.languageKeys,
+        sharedConfig.fallbackLng,
+      ) as Locale
+    })
+    .parse(cookies.get(webConfig.locale.cookieKey)?.value)
 
 export const middleware = (request: NextRequest) => {
-  const { pathname } = request.nextUrl
-  const pathnameHasLocale = sharedConfig.languageKeys.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
-  )
+  const {
+    nextUrl: { pathname },
+    url,
+  } = request
 
-  if (pathnameHasLocale) {
-    return null
+  if (
+    !sharedConfig.languageKeys.some((lang) => pathname.startsWith(`/${lang}`))
+  ) {
+    return NextResponse.redirect(
+      new URL(`/${getLocale(request)}${pathname}`, url),
+    )
   }
 
-  const { headers, url } = request
-  const languages = new Negotiator({
-    headers: { "accept-language": headers.get("Accept-Language") ?? "" },
-  }).languages()
-  const locale = match(
-    languages,
-    sharedConfig.languageKeys,
-    sharedConfig.fallbackLng,
+  const langInReferer = sharedConfig.languageKeys.find((lang) =>
+    pathname.startsWith(`/${lang}`),
   )
+  const response = NextResponse.next()
 
-  return NextResponse.redirect(new URL(`/${locale}${pathname}`, url))
+  if (langInReferer) {
+    response.cookies.set(webConfig.locale.cookieKey, langInReferer)
+  }
+
+  return response
 }
 
 export const config = {

@@ -1,11 +1,11 @@
-import type { Locale } from "@airneis/types"
+import { z } from "zod"
 
-type Config = {
-  languageKeys: [Locale, ...Locale[]]
-  fallbackLng: Locale
-}
+export const languages = ["en", "fr"] as const
+const schema = z.object({
+  languageKeys: z.array(z.enum(languages)),
+  fallbackLng: z.enum(languages).default("en"),
+})
 
-export const sharedConfig: Config = {
-  languageKeys: ["en", "fr"],
-  fallbackLng: "en",
-}
+export type Locale = z.infer<typeof schema>["fallbackLng"]
+
+export const sharedConfig = schema.parse({ languageKeys: languages })
