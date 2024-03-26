@@ -1,4 +1,3 @@
-import { headers } from "next/headers"
 import Image from "next/image"
 
 import ProductCard from "@/components/products/ProductCard"
@@ -29,7 +28,6 @@ const Category = async ({
     page: pageParsed,
   })
   const { t } = await useTranslation(locale, "categories")
-  console.log(headers().get("Locale"))
 
   return (
     <div className="flex flex-col gap-8 pb-2 items-center">
@@ -54,7 +52,7 @@ const Category = async ({
         )}
         <div className="flex flex-wrap justify-center gap-product">
           {category.products.map((product) => (
-            <ProductCard key={product.id} product={product} locale={locale} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
 

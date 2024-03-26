@@ -1,18 +1,14 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 
-import type { Locale, Product } from "@airneis/types"
+import type { Product } from "@airneis/types"
 
-import { useTranslation } from "@/i18n"
+import { useTranslation } from "@/i18n/client"
 
-const ProductCard = async ({
-  product,
-  locale,
-}: {
-  product: Product
-  locale: Locale
-}) => {
-  const { t } = await useTranslation(locale, "products")
+const ProductCard = ({ product }: { product: Product }) => {
+  const { t } = useTranslation("products")
 
   return (
     <Link
