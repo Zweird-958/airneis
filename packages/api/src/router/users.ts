@@ -1,4 +1,3 @@
-import { TRPCError } from "@trpc/server"
 import { hash } from "bcrypt"
 
 import { signUpSchema } from "@airneis/schemas"
