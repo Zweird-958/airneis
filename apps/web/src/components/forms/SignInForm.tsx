@@ -23,18 +23,19 @@ const SignInForm = () => {
     resolver: zodResolver(signInSchema),
     defaultValues: { email: "", password: "" },
   })
-  const { t } = useTranslation("forms")
-  const { onError } = useErrorHandler()
-  const { mutate } = api.sessions.create.useMutation()
   const { signIn } = useSession()
   const router = useRouter()
+  const { t } = useTranslation("forms")
+  const { onError } = useErrorHandler()
+  const { mutate } = api.sessions.create.useMutation({
+    onError,
+    onSuccess: (data) => {
+      signIn(data)
+      router.push("/")
+    },
+  })
   const onSubmit: SubmitHandler<SignInFormSchema> = (values) => {
-    mutate(values, {
-      onSuccess: (data) => {
-        signIn(data)
-        router.push("/")
-      },
-    })
+    mutate(values)
   }
 
   return (
