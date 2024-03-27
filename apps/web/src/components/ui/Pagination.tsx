@@ -2,7 +2,6 @@ import { type VariantProps, cva } from "class-variance-authority"
 import type { LinkProps } from "next/link"
 
 import Link from "@/components/ui/Link"
-import { cn } from "@/utils/cn"
 import config from "@/utils/config"
 
 const paginationVariants = cva(
@@ -22,12 +21,14 @@ const paginationVariants = cva(
 
 type PaginationItemProps = {
   page: number
+  className?: string
 } & LinkProps &
   VariantProps<typeof paginationVariants>
 
 export const PaginationItem = ({
   href,
   page,
+  className,
   color = "primary",
   ...props
 }: PaginationItemProps) => {
@@ -40,7 +41,7 @@ export const PaginationItem = ({
         pathname: href.toString(),
         query: { page },
       }}
-      className={paginationVariants({ color })}
+      className={paginationVariants({ color, className })}
     >
       {page}
     </Component>
