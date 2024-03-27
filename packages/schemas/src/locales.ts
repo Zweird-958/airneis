@@ -1,12 +1,9 @@
 import { z } from "zod"
 
-import { sharedConfig } from "@airneis/config"
+import { languages, sharedConfig } from "@airneis/config"
 
-export const localeSchema = z
-  .enum(sharedConfig.languageKeys)
-  .catch(sharedConfig.fallbackLng)
+export const localeSchema = z.enum(languages)
 
-export const localizedSchema = z.record(
-  z.enum(sharedConfig.languageKeys),
-  z.string().min(1),
-)
+export const localeFallbackSchema = localeSchema.catch(sharedConfig.fallbackLng)
+
+export const localizedSchema = z.record(localeSchema, z.string().min(1))

@@ -1,0 +1,17 @@
+{
+  "selectPlaceholder": "Select an option",
+  "username": "Username",
+  "name": "Name",
+  "description": "Description",
+  "image": {
+    "label": "Image",
+    "description": "Image URL"
+  },
+  "create": "Create",
+  "email": "Email",
+  "password": "Password",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "signIn": "Sign In",
+  "signUp": "Sign up"
+}

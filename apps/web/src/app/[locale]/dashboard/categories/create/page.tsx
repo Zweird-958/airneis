@@ -1,13 +1,13 @@
 import CreateCategoryForm from "@/components/forms/CreateCategoryForm"
+import { useTranslation } from "@/i18n"
 import { PageProps } from "@/types/common"
-import getTranslations from "@/utils/locale/getTranslations"
 
 const Page = async ({ params: { locale } }: PageProps) => {
-  const { categories } = await getTranslations(locale)
+  const { t } = await useTranslation(locale, "categories")
 
   return (
     <div className="mx-4">
-      <h1>{categories.create}</h1>
+      <h1>{t("create")}</h1>
       <CreateCategoryForm />
     </div>
   )

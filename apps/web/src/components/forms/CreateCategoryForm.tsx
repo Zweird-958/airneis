@@ -9,7 +9,7 @@ import { CreateCategoryInput, createCategorySchema } from "@airneis/schemas"
 import Button from "@/components/ui/Button"
 import { Form } from "@/components/ui/Form"
 import useErrorHandler from "@/hooks/useErrorHandler"
-import useLocale from "@/hooks/useLocale"
+import { useTranslation } from "@/i18n/client"
 import api from "@/trpc/client"
 import fieldDefaultValues from "@/utils/locale/fieldDefaultValues"
 
@@ -17,9 +17,7 @@ import ImageField from "./fields/ImageField"
 import LocalizedField from "./fields/LocalizedField"
 
 const CreateCategoryForm = () => {
-  const {
-    translations: { categories, forms },
-  } = useLocale()
+  const { t } = useTranslation("categories", "forms")
   const { onError } = useErrorHandler()
   const form = useForm<CreateCategoryInput>({
     resolver: zodResolver(createCategorySchema),
@@ -32,7 +30,7 @@ const CreateCategoryForm = () => {
   const { mutate } = api.categories.create.useMutation({
     onError,
     onSuccess: () => {
-      toast.success(categories.created)
+      toast.success(t("categories:created"))
       form.reset()
     },
   })
@@ -42,14 +40,18 @@ const CreateCategoryForm = () => {
 
   return (
     <Form ctx={form} onSubmit={onSubmit} className="space-y-6">
-      <LocalizedField control={form.control} name="name" label={forms.name} />
+      <LocalizedField
+        control={form.control}
+        name="name"
+        label={t("forms:name")}
+      />
       <LocalizedField
         control={form.control}
         name="description"
-        label={forms.description}
+        label={t("forms:description")}
       />
       <ImageField control={form.control} />
-      <Button type="submit">{forms.create}</Button>
+      <Button type="submit">{t("forms:create")}</Button>
     </Form>
   )
 }
