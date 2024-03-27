@@ -5,11 +5,11 @@ import Link from "@/components/ui/Link"
 import { cn } from "@/utils/cn"
 import config from "@/utils/config"
 
-const paginationVariants = cva(["font-semibold", "border", "rounded"], {
+const paginationVariants = cva("font-semibold border rounded", {
   variants: {
     color: {
-      primary: ["bg-primary", "text-primary-foreground"],
-      disabled: ["bg-disabled", "text-disabled-foreground"],
+      primary: "bg-primary text-primary-foreground",
+      disabled: "bg-disabled text-disabled-foreground",
     },
   },
   defaultVariants: {
