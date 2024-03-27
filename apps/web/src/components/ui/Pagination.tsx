@@ -1,25 +1,34 @@
+import { type VariantProps, cva } from "class-variance-authority"
 import type { LinkProps } from "next/link"
 
 import Link from "@/components/ui/Link"
 import { cn } from "@/utils/cn"
 import config from "@/utils/config"
 
-const PAGINATION_VARIANTS = {
-  primary: "bg-primary text-primary-foreground",
-  disabled: "bg-disabled text-disabled-foreground",
-}
+const paginationVariants = cva(["font-semibold", "border", "rounded"], {
+  variants: {
+    color: {
+      primary: ["bg-primary", "text-primary-foreground"],
+      disabled: ["bg-disabled", "text-disabled-foreground"],
+    },
+  },
+  defaultVariants: {
+    color: "primary",
+  },
+})
+
 type PaginationItemProps = {
   page: number
-  variant?: keyof typeof PAGINATION_VARIANTS
+  color?: VariantProps<typeof paginationVariants>["color"]
 } & LinkProps
 
 export const PaginationItem = ({
   href,
   page,
-  variant = "primary",
+  color = "primary",
   ...props
 }: PaginationItemProps) => {
-  const Component = variant === "disabled" ? "span" : Link
+  const Component = color === "disabled" ? "span" : Link
 
   return (
     <Component
@@ -30,7 +39,7 @@ export const PaginationItem = ({
       }}
       className={cn(
         "flex justify-center items-center rounded-default sm:w-12 sm:h-12 w-10 h-10",
-        PAGINATION_VARIANTS[variant],
+        paginationVariants({ color }),
       )}
     >
       {page}
@@ -55,7 +64,7 @@ export const Pagination = ({ page, href, totalPages }: PaginationProps) => (
         (prev) =>
           prev > 0 && <PaginationItem key={prev} href={href} page={prev} />,
       )}
-    {page && <PaginationItem href={href} page={page} variant="disabled" />}
+    {page && <PaginationItem href={href} page={page} color="disabled" />}
     {Array.from(
       { length: config.pagination.step },
       (_, i) => (page ? page + 1 : totalPages) + i,
