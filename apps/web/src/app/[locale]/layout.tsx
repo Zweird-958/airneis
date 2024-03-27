@@ -27,7 +27,7 @@ const RootLayout = (props: Props) => {
     <Providers>
       <html lang={locale} className="bg-background">
         <body className="flex flex-col justify-between w-full min-h-screen">
-          <Toaster richColors closeButton position="top-right" />
+          <Toaster richColors closeButton position="bottom-right" />
           <Header />
           <main className="grow">{children}</main>
           <Footer />
