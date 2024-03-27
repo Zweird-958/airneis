@@ -13,7 +13,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <Link
       href={`/products/${product.id}`}
-      className="w-full h-64 flex flex-col sm:w-product rounded-default bg-card"
+      className="h-64 flex flex-col rounded-default bg-card sm:w-80 w-full"
     >
       <div className="w-full h-52 relative">
         <Image

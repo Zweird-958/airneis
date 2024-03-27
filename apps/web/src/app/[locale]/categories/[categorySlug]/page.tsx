@@ -43,14 +43,14 @@ const Category = async ({
         </h1>
       </div>
 
-      <div className="flex flex-col gap-8 max-w-product-list px-4 items-center">
+      <div className="flex flex-col gap-8 max-w-[63.5rem] px-4 items-center">
         <h2 className="text-center">{category.description}</h2>
         {category.products.length === 0 && (
           <div className="bg-card p-4 rounded-default">
             <p className="text-center">{t("empty")}</p>
           </div>
         )}
-        <div className="flex flex-wrap justify-center gap-product">
+        <div className="flex flex-wrap justify-center gap-3">
           {category.products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
