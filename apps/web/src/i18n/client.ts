@@ -41,7 +41,7 @@ i18next
 
 export const useTranslation = (...ns: Namespace[]) => {
   const { locale } = useParams<{ locale: Locale }>()
-  const ret = useTranslationOrg(...ns)
+  const ret = useTranslationOrg(ns)
   const { i18n } = ret
   const [activeLang, setActiveLang] = useState(i18n.resolvedLanguage)
 
