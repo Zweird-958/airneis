@@ -1,6 +1,5 @@
 import { type VariantProps, cva } from "class-variance-authority"
 import type { LinkProps } from "next/link"
-import React, { FC } from "react"
 
 import Link from "@/components/ui/Link"
 import config from "@/utils/config"
