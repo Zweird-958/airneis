@@ -21,7 +21,6 @@ const CreateCategoryForm = () => {
     translations: { categories, forms },
   } = useLocale()
   const { onError } = useErrorHandler()
-  const { mutate } = api.categories.create.useMutation({ onError })
   const form = useForm<CreateCategoryInput>({
     resolver: zodResolver(createCategorySchema),
     defaultValues: {
@@ -30,13 +29,15 @@ const CreateCategoryForm = () => {
       imageUrl: "",
     },
   })
+  const { mutate } = api.categories.create.useMutation({
+    onError,
+    onSuccess: () => {
+      toast.success(categories.created)
+      form.reset()
+    },
+  })
   const onSubmit: SubmitHandler<CreateCategoryInput> = (values) => {
-    mutate(values, {
-      onSuccess: () => {
-        toast.success(categories.created)
-        form.reset()
-      },
-    })
+    mutate(values)
   }
 
   return (
