@@ -6,9 +6,11 @@ import { TRPCClientError } from "@trpc/client"
 import axios from "axios"
 import { ChangeEventHandler, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { z } from "zod"
 
-import { CreateCategoryInput, createCategorySchema } from "@airneis/schemas"
+import {
+  CreateCategoryInput,
+  createCategorySchemaWithoutImage,
+} from "@airneis/schemas"
 
 import Button from "@/components/ui/Button"
 import { Form } from "@/components/ui/Form"
@@ -45,12 +47,7 @@ const CreateCategoryForm = () => {
     },
   })
   const form = useForm<CreateCategoryInput>({
-    resolver: zodResolver(
-      z.object({
-        name: createCategorySchema.shape.name,
-        description: createCategorySchema.shape.description,
-      }),
-    ),
+    resolver: zodResolver(createCategorySchemaWithoutImage),
     defaultValues: {
       name: fieldDefaultValues,
       description: fieldDefaultValues,
