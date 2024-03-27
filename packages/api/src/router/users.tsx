@@ -1,10 +1,16 @@
+import { TRPCError } from "@trpc/server"
 import { hash } from "bcrypt"
-import jsonwebtoken from "jsonwebtoken"
+import jsonwebtoken, { JsonWebTokenError } from "jsonwebtoken"
 import { cookies } from "next/headers"
 import React from "react"
 
 import { ValidationTemplate } from "@airneis/email"
-import { localeFallbackSchema, signUpSchema } from "@airneis/schemas"
+import {
+  localeFallbackSchema,
+  signUpSchema,
+  validationAccountSchema,
+} from "@airneis/schemas"
+import { ValidationAccountJwt } from "@airneis/types"
 import { sleep } from "@airneis/utils"
 
 import config from "../config"
@@ -63,6 +69,30 @@ const usersRouter = createTRPCRouter({
         return true
       },
     ),
+  validateAccount: publicProcedure
+    .input(validationAccountSchema)
+    .mutation(async ({ ctx, input: { jwt } }) => {
+      try {
+        const {
+          payload: {
+            user: { id },
+          },
+        } = jsonwebtoken.verify(jwt, env.JWT_SECRET) as ValidationAccountJwt
+        const user = await ctx.entities.user.findOneOrFail({ id })
+
+        if (!user.isActive) {
+          user.isActive = true
+
+          await ctx.em.flush()
+        }
+      } catch (error) {
+        if (error instanceof JsonWebTokenError) {
+          throw new TRPCError({ code: "UNAUTHORIZED" })
+        }
+      }
+
+      return true
+    }),
 })
 
 export default usersRouter

@@ -17,5 +17,8 @@ export const signUpSchema = z.object({
       message: "regex",
     }),
 })
+export const validationAccountSchema = z.object({
+  jwt: z.string(),
+})
 
 export type SignUpInput = z.infer<typeof signUpSchema>
