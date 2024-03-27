@@ -12,14 +12,18 @@ import {
 } from "@react-email/components"
 import * as React from "react"
 
+import { Locale } from "@airneis/types"
+
 import baseConfig from "../../../../tailwind.config"
+import translations from "../translations"
 
 type Props = {
   name: string
+  locale: Locale
   href: string
 }
 
-export const ValidationTemplate = ({ name, href }: Props) => (
+export const ValidationTemplate = ({ name, locale, href }: Props) => (
   <Html>
     <Head>
       <Font fontFamily="Arial" fallbackFontFamily="Arial" />
@@ -27,32 +31,24 @@ export const ValidationTemplate = ({ name, href }: Props) => (
     <Body>
       <Tailwind config={baseConfig}>
         <Container className="bg-neutral-50 shadow-lg rounded-lg p-10">
-          <Heading as="h2" className="mt-0">{`🎉 Salut ${name},`}</Heading>
-          <Text>
-            {
-              "✨ Votre chez-vous mérite ce qu'il y a de mieux en termes de décoration, et nous sommes là pour vous aider à le réaliser. Mais avant de vous plonger dans notre sélection de meubles élégants, vous devez activer votre compte !"
-            }
-          </Text>
-          <Text>
-            {
-              "🪄 C'est simple comme bonjour : cliquez sur le lien ci-dessous pour commencer à faire de votre maison un véritable havre de paix :"
-            }
-          </Text>
+          <Heading as="h2" className="mt-0">
+            {`${translations.validationTemplate.heading[locale]} ${name},`}
+          </Heading>
+          <Text>{translations.validationTemplate.firstParagraph[locale]}</Text>
+          <Text>{translations.validationTemplate.secondParagraph[locale]}</Text>
           <Button
             href={href}
             className="bg-green-500 hover:bg-green-700 rounded-md px-4 py-2 text-white font-bold"
           >
-            {"Activer mon compte"}
+            {translations.validationTemplate.buttonText[locale]}
           </Button>
 
           <Text className="mt-12">
-            {
-              "🌈 Une fois que c'est fait, préparez-vous à découvrir des pièces uniques qui ne manqueront pas de faire sensation chez vous."
-            }
+            {translations.validationTemplate.thirdParagraph[locale]}
           </Text>
           <Hr />
           <Text className="whitespace-pre-line mb-0">
-            {"À très vite,\nL'équipe de Airneis 🏡"}
+            {translations.validationTemplate.signature[locale]}
           </Text>
         </Container>
       </Tailwind>

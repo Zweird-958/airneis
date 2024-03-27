@@ -4,7 +4,7 @@ import { cookies } from "next/headers"
 import React from "react"
 
 import { ValidationTemplate } from "@airneis/email"
-import { signUpSchema } from "@airneis/schemas"
+import { localeFallbackSchema, signUpSchema } from "@airneis/schemas"
 import { sleep } from "@airneis/utils"
 
 import config from "../config"
@@ -45,7 +45,7 @@ const usersRouter = createTRPCRouter({
           env.JWT_SECRET,
           { expiresIn: config.security.jwt.expiresIn },
         )
-        const lang = cookies().get("lang")
+        const locale = localeFallbackSchema.parse(cookies().get("lang")?.value)
 
         await ctx.resend.emails.send({
           from: env.RESEND_EMAIL_FROM,
@@ -54,7 +54,8 @@ const usersRouter = createTRPCRouter({
           react: (
             <ValidationTemplate
               name={firstName}
-              href={`http://localhost:3000/${lang?.value}/users/validateAccount/${jwt}`}
+              locale={locale}
+              href={`${env.VERCEL_URL}/${locale}/users/validateAccount/${jwt}`}
             />
           ),
         })
