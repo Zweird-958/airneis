@@ -5,17 +5,20 @@ import Link from "@/components/ui/Link"
 import { cn } from "@/utils/cn"
 import config from "@/utils/config"
 
-const paginationVariants = cva("font-semibold border rounded", {
-  variants: {
-    color: {
-      primary: "bg-primary text-primary-foreground",
-      disabled: "bg-disabled text-disabled-foreground",
+const paginationVariants = cva(
+  "flex justify-center items-center rounded-default sm:w-12 sm:h-12 w-10 h-10",
+  {
+    variants: {
+      color: {
+        primary: "bg-primary text-primary-foreground",
+        disabled: "bg-disabled text-disabled-foreground",
+      },
+    },
+    defaultVariants: {
+      color: "primary",
     },
   },
-  defaultVariants: {
-    color: "primary",
-  },
-})
+)
 
 type PaginationItemProps = {
   page: number
@@ -37,10 +40,7 @@ export const PaginationItem = ({
         pathname: href.toString(),
         query: { page },
       }}
-      className={cn(
-        "flex justify-center items-center rounded-default sm:w-12 sm:h-12 w-10 h-10",
-        paginationVariants({ color }),
-      )}
+      className={paginationVariants({ color })}
     >
       {page}
     </Component>
