@@ -1,5 +1,6 @@
 import { type VariantProps, cva } from "class-variance-authority"
 import type { LinkProps } from "next/link"
+import React, { FC } from "react"
 
 import Link from "@/components/ui/Link"
 import config from "@/utils/config"
@@ -22,7 +23,8 @@ const paginationVariants = cva(
 type PaginationItemProps = {
   page: number
   className?: string
-} & LinkProps &
+  href?: LinkProps["href"]
+} & Omit<LinkProps, "href"> &
   VariantProps<typeof paginationVariants>
 
 export const PaginationItem = ({
@@ -31,22 +33,23 @@ export const PaginationItem = ({
   className,
   color,
   ...props
-}: PaginationItemProps) => {
-  const Component = color === "disabled" ? "span" : Link
-
-  return (
-    <Component
+}: PaginationItemProps) =>
+  color === "disabled" ? (
+    <span {...props} className={paginationVariants({ color, className })}>
+      {page}
+    </span>
+  ) : (
+    <Link
       {...props}
       href={{
-        pathname: href.toString(),
+        pathname: href?.toString(),
         query: { page },
       }}
       className={paginationVariants({ color, className })}
     >
       {page}
-    </Component>
+    </Link>
   )
-}
 
 type PaginationProps = {
   page: number | null
@@ -65,7 +68,7 @@ export const Pagination = ({ page, href, totalPages }: PaginationProps) => (
         (prev) =>
           prev > 0 && <PaginationItem key={prev} href={href} page={prev} />,
       )}
-    {page && <PaginationItem href={href} page={page} color="disabled" />}
+    {page && <PaginationItem page={page} color="disabled" />}
     {Array.from(
       { length: config.pagination.step },
       (_, i) => (page ? page + 1 : totalPages) + i,
