@@ -1,29 +1,20 @@
-import { Control, FieldValues, Path } from "react-hook-form"
+import { ChangeEventHandler } from "react"
 
-import { FormField, FormItem } from "@/components/ui/Form"
+import Button from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
-import { useTranslation } from "@/i18n/client"
 
-type Props<TFieldValues extends FieldValues> = {
-  control: Control<TFieldValues>
+type Props = {
+  handleOnChange: ChangeEventHandler<HTMLInputElement>
 }
 
-const ImageField = <TFieldValues extends FieldValues>({
-  control,
-}: Props<TFieldValues>) => {
-  const { t } = useTranslation("forms")
-
-  return (
-    <FormField
-      control={control}
-      name={"imageUrl" as Path<TFieldValues>}
-      render={({ field }) => (
-        <FormItem label={t("image.label")} description={t("image.description")}>
-          <Input {...field} />
-        </FormItem>
-      )}
+const ImageField = ({ handleOnChange }: Props) => (
+  <Button asChild>
+    <Input
+      type="file"
+      accept="image/png, image/jpeg, image/jpg"
+      onChange={handleOnChange}
     />
-  )
-}
+  </Button>
+)
 
 export default ImageField
