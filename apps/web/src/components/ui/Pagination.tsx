@@ -19,8 +19,8 @@ const paginationVariants = cva("font-semibold border rounded", {
 
 type PaginationItemProps = {
   page: number
-  color?: VariantProps<typeof paginationVariants>["color"]
-} & LinkProps
+} & LinkProps &
+  VariantProps<typeof paginationVariants>
 
 export const PaginationItem = ({
   href,
