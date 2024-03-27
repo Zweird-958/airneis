@@ -29,7 +29,7 @@ export const PaginationItem = ({
   href,
   page,
   className,
-  color = "primary",
+  color,
   ...props
 }: PaginationItemProps) => {
   const Component = color === "disabled" ? "span" : Link
