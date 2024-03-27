@@ -44,18 +44,10 @@ const categoriesRouter = createTRPCRouter({
   get: publicProcedure
     .input(getCategorySchema)
     .query(async ({ ctx: { entities, lang }, input: { slug, page } }) => {
-      const category = await entities.category.findOne(
+      const category = await entities.category.findOneOrFail(
         { slug },
         { populate: ["image"] },
       )
-
-      if (!category) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "Category not found",
-        })
-      }
-
       const [products, count] = await entities.product.findAndCount(
         { categories: { slug } },
         {
