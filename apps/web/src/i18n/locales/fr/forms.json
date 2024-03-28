@@ -13,5 +13,8 @@
   "firstName": "Prénom",
   "lastName": "Nom",
   "signIn": "Se connecter",
-  "signUp": "Inscription"
+  "signUp": "Inscription",
+  "errors": {
+    "unexpected": "Une erreur inattendue s'est produite"
+  }
 }

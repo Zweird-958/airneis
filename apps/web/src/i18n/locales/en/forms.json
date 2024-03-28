@@ -13,5 +13,8 @@
   "firstName": "First name",
   "lastName": "Last name",
   "signIn": "Sign In",
-  "signUp": "Sign up"
+  "signUp": "Sign up",
+  "errors": {
+    "unexpected": "An unexpected error occurred"
+  }
 }

@@ -2,12 +2,10 @@ import { TRPCClientError, TRPCClientErrorBase } from "@trpc/client"
 import { DefaultErrorShape } from "@trpc/server"
 import { toast } from "sonner"
 
-import useLocale from "@/hooks/useLocale"
+import { useTranslation } from "@/i18n/client"
 
 const useErrorHandler = () => {
-  const {
-    translations: { forms },
-  } = useLocale()
+  const { t } = useTranslation("forms")
   const onError = (error: TRPCClientErrorBase<DefaultErrorShape>) => {
     if (error instanceof TRPCClientError) {
       toast.error(error.message)
@@ -15,7 +13,7 @@ const useErrorHandler = () => {
       return
     }
 
-    toast.error(forms.unexpectedError)
+    toast.error(t("unexpected"))
   }
 
   return {
