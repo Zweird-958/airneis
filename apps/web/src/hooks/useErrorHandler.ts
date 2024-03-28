@@ -13,7 +13,7 @@ const useErrorHandler = () => {
       return
     }
 
-    toast.error(t("unexpected"))
+    toast.error(t("errors.unexpected"))
   }
 
   return {
