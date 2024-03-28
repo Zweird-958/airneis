@@ -61,7 +61,7 @@ const usersRouter = createTRPCRouter({
             <ValidationTemplate
               name={firstName}
               locale={locale}
-              href={`${env.VERCEL_URL}/${locale}/users/validateAccount/${jwt}`}
+              href={`${env.VERCEL_URL}/${locale}/users/validate-account/${jwt}`}
             />
           ),
         })
