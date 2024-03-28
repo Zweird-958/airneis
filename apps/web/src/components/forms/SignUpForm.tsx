@@ -1,8 +1,8 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useRouter } from "next/navigation"
 import { SubmitHandler, useForm } from "react-hook-form"
+import { toast } from "sonner"
 
 import { SignUpInput, signUpSchema } from "@airneis/schemas"
 
@@ -17,7 +17,6 @@ import { useTranslation } from "@/i18n/client"
 import api from "@/trpc/client"
 
 const SignUpForm = () => {
-  const router = useRouter()
   const form = useForm<SignUpInput>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -32,7 +31,7 @@ const SignUpForm = () => {
   const { mutate } = api.users.create.useMutation({
     onError,
     onSuccess: () => {
-      router.push("/sign-in")
+      toast.success(t("signUp.success"), { duration: 5000 })
     },
   })
   const onSubmit: SubmitHandler<SignUpInput> = (values) => {
@@ -45,7 +44,7 @@ const SignUpForm = () => {
       <LastNameField control={form.control} />
       <EmailField control={form.control} />
       <PasswordField control={form.control} />
-      <Button type="submit">{t("signUp")}</Button>
+      <Button type="submit">{t("signUp.title")}</Button>
     </Form>
   )
 }
