@@ -25,7 +25,8 @@ const env = schema.parse({
   HASH_SALT_COUNT: process.env.HASH_SALT_COUNT,
   JWT_SECRET: process.env.JWT_SECRET,
   RESEND_EMAIL_FROM: process.env.RESEND_EMAIL_FROM,
-  VERCEL_URL: process.env.VERCEL_URL || "http://localhost:3000",
+  VERCEL_URL:
+    process.env.VERCEL_URL || `http://localhost:${process.env.PORT || 3000}`,
 })
 
 export default env
