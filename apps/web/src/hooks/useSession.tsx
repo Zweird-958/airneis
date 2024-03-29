@@ -22,7 +22,7 @@ const useSession = () => {
     localStorage.removeItem(config.session.localStorageKey)
 
     setSession(null)
-  }, [])
+  }, [mutateAsync, setSession])
 
   useEffect(() => {
     const jwt = localStorage.getItem(config.session.localStorageKey)

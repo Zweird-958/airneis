@@ -1,9 +1,8 @@
 "use client"
 
-import Link from "next/link"
-
 import { sharedConfig } from "@airneis/config"
 
+import Link from "@/components/ui/Link"
 import { useTranslation } from "@/i18n/client"
 
 const LocaleSelector = () => {
