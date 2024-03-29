@@ -1,4 +1,5 @@
 import { createTRPCProxyClient, httpBatchLink } from "@trpc/client"
+import { headers } from "next/headers"
 import "server-only"
 import superjson from "superjson"
 
@@ -11,6 +12,11 @@ const api = createTRPCProxyClient<AppRouter>({
   links: [
     httpBatchLink({
       url: getUrl(),
+      headers() {
+        const newHeaders = new Map(headers())
+
+        return Object.fromEntries(newHeaders)
+      },
     }),
   ],
 })
