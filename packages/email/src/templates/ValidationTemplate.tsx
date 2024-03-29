@@ -19,11 +19,11 @@ import { translations } from "../translations"
 
 type Props = {
   name: string
-  locale: Locale
+  lang: Locale
   href: string
 }
 
-export const ValidationTemplate = ({ name, locale, href }: Props) => (
+export const ValidationTemplate = ({ name, lang, href }: Props) => (
   <Html>
     <Head>
       <Font fontFamily="Arial" fallbackFontFamily="Arial" />
@@ -32,27 +32,27 @@ export const ValidationTemplate = ({ name, locale, href }: Props) => (
       <Tailwind config={baseConfig}>
         <Container className="bg-neutral-50 shadow-lg rounded-lg p-10">
           <Heading as="h2" className="mt-0">
-            {`${translations.validationTemplate.body.heading[locale]} ${name},`}
+            {`${translations.validationTemplate.body.heading[lang]} ${name},`}
           </Heading>
           <Text>
-            {translations.validationTemplate.body.firstParagraph[locale]}
+            {translations.validationTemplate.body.firstParagraph[lang]}
           </Text>
           <Text>
-            {translations.validationTemplate.body.secondParagraph[locale]}
+            {translations.validationTemplate.body.secondParagraph[lang]}
           </Text>
           <Button
             href={href}
             className="bg-green-500 hover:bg-green-700 rounded-md px-4 py-2 text-white font-bold"
           >
-            {translations.validationTemplate.body.buttonText[locale]}
+            {translations.validationTemplate.body.buttonText[lang]}
           </Button>
 
           <Text className="mt-12">
-            {translations.validationTemplate.body.thirdParagraph[locale]}
+            {translations.validationTemplate.body.thirdParagraph[lang]}
           </Text>
           <Hr />
           <Text className="whitespace-pre-line mb-0">
-            {translations.validationTemplate.body.signature[locale]}
+            {translations.validationTemplate.body.signature[lang]}
           </Text>
         </Container>
       </Tailwind>

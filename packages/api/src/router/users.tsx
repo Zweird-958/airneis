@@ -1,15 +1,10 @@
 import { TRPCError } from "@trpc/server"
 import { hash } from "bcrypt"
 import jsonwebtoken, { JsonWebTokenError } from "jsonwebtoken"
-import { cookies } from "next/headers"
 import React from "react"
 
 import { ValidationTemplate, translations } from "@airneis/email"
-import {
-  localeFallbackSchema,
-  signUpSchema,
-  validationAccountSchema,
-} from "@airneis/schemas"
+import { signUpSchema, validationAccountSchema } from "@airneis/schemas"
 import { ValidationAccountJwt } from "@airneis/types"
 import { sleep } from "@airneis/utils"
 
@@ -51,17 +46,17 @@ const usersRouter = createTRPCRouter({
           env.JWT_SECRET,
           { expiresIn: config.security.jwt.expiresIn },
         )
-        const locale = localeFallbackSchema.parse(cookies().get("lang")?.value)
+        const { lang } = ctx
 
         await ctx.resend.emails.send({
           from: env.RESEND_EMAIL_FROM,
           to: email,
-          subject: translations.validationTemplate.subject[locale],
+          subject: translations.validationTemplate.subject[lang],
           react: (
             <ValidationTemplate
               name={firstName}
-              locale={locale}
-              href={`${env.VERCEL_URL}/${locale}/users/validate-account/${jwt}`}
+              lang={lang}
+              href={`${env.VERCEL_URL}/${lang}/users/validate-account/${jwt}`}
             />
           ),
         })
