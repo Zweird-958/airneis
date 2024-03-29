@@ -1,6 +1,8 @@
 {
   "create": "Create category",
   "errors": {
+    "imageRequired": "The image is required",
+    "image": "An error occurred while uploading the image",
     "create": "An error occurred while creating the category"
   }
 }

@@ -1,15 +1,15 @@
 import { z } from "zod"
 
-import { imageSchema } from "./images"
 import { localizedSchema } from "./locales"
 
 export const createCategorySchema = z.object({
   name: localizedSchema,
   description: localizedSchema,
-  image: imageSchema,
+  imageUrl: z.string(),
 })
+
 export const createCategorySchemaWithoutImage = createCategorySchema.omit({
-  image: true,
+  imageUrl: true,
 })
 
 export type CreateCategoryInput = z.infer<

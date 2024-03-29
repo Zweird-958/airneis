@@ -70,22 +70,22 @@ const CreateCategoryForm = () => {
     }
   }
   const onSubmit: SubmitHandler<CreateCategoryInput> = async (values) => {
-    const formData = createFormData()
-
     try {
       if (!image) {
-        throw new Error("Image is required")
+        alert(t("categories:errors.imageRequired"))
+
+        return
       }
 
       const {
-        data: {
-          result: { buffer, type },
-        },
-      } = await uploadImage(formData)
+        data: { result: imageUrl },
+      } = await uploadImage(createFormData())
 
-      await mutateAsync({ image: { buffer, type }, ...values })
+      await mutateAsync({ ...values, imageUrl })
     } catch (error) {
-      // Handle with toast
+      if (!(error instanceof TRPCClientError)) {
+        alert(t("categories:errors.image"))
+      }
     }
   }
 

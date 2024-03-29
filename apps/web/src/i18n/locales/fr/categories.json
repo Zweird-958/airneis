@@ -1,6 +1,8 @@
 {
   "create": "Créer une catégorie",
   "errors": {
+    "imageRequired": "Une image est requis",
+    "image": "Une erreur s'est produite lors de l'envoi de l'image",
     "create": "Une erreur s'est produite lors de la création de la catégorie"
   }
 }

@@ -1,6 +1,6 @@
 import { z } from "zod"
 
 export const imageSchema = z.object({
-  buffer: z.string(),
+  buffer: z.instanceof(Buffer),
   type: z.string(),
 })
