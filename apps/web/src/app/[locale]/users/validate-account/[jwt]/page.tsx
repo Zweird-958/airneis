@@ -20,9 +20,11 @@ const DisplayMessage = ({
   message: string
   children?: ReactNode
 }) => (
-  <div className="bg-neutral-50 p-3 rounded-lg shadow-lg w-fit">
-    <p>{message}</p>
-    {children}
+  <div className="p-4">
+    <div className="bg-white p-3 rounded-lg shadow-lg w-fit">
+      <p>{message}</p>
+      {children}
+    </div>
   </div>
 )
 const Page = ({ params: { jwt } }: Props) => {
@@ -30,8 +32,7 @@ const Page = ({ params: { jwt } }: Props) => {
   const [triggerClock, setTriggerClock] = useState(false)
   const [count, setCount] = useState(5)
   const { t, locale } = useTranslation()
-  const { mutate, isSuccess, isError, isLoading } =
-    api.users.validateAccount.useMutation()
+  const { mutate, isSuccess, isError } = api.users.validateAccount.useMutation()
 
   useEffect(() => {
     mutate(
@@ -58,23 +59,25 @@ const Page = ({ params: { jwt } }: Props) => {
     }
   }, [count, locale, router])
 
-  return (
-    <div className="p-4">
-      {isLoading && <DisplayMessage message={t("validateAccount.loading")} />}
-      {isSuccess && (
-        <DisplayMessage message={t("validateAccount.success")}>
-          {triggerClock && (
-            <p>
-              {t("validateAccount.redirect", {
-                count,
-              })}
-            </p>
-          )}
-        </DisplayMessage>
-      )}
-      {isError && <DisplayMessage message={t("validateAccount.error")} />}
-    </div>
-  )
+  if (isError) {
+    return <DisplayMessage message={t("validateAccount.error")} />
+  }
+
+  if (isSuccess) {
+    return (
+      <DisplayMessage message={t("validateAccount.success")}>
+        {triggerClock && (
+          <p>
+            {t("validateAccount.redirect", {
+              count,
+            })}
+          </p>
+        )}
+      </DisplayMessage>
+    )
+  }
+
+  return <DisplayMessage message={t("validateAccount.loading")} />
 }
 
 export default Page
