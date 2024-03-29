@@ -2,7 +2,7 @@ import { z } from "zod"
 
 const schema = z.object({
   pagination: z.object({
-    itemsPerPage: z.number(),
+    itemsPerPage: z.number().min(1).max(50),
   }),
   currency: z.enum(["EUR", "USD"]),
   security: z.object({
