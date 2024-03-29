@@ -22,7 +22,7 @@ const handler = async (req: Request) => {
     endpoint: "/api/trpc",
     router: appRouter,
     req,
-    createContext: () => createTRPCContext(),
+    createContext: async () => await createTRPCContext(),
   })
 
   setCorsHeaders(response)

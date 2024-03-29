@@ -9,6 +9,7 @@
   "dependencies": {
     "@airneis/config": "^0.1.0",
     "@airneis/db": "^0.1.0",
+    "@airneis/redis": "^0.1.0",
     "@airneis/s3": "^0.1.0",
     "@airneis/schemas": "^0.1.0",
     "@trpc/client": "^10.45.0",
@@ -19,10 +20,10 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@airneis/types": "^0.1.0",
     "@types/bcrypt": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/ms": "^0.7.34",
-    "@airneis/types": "^0.1.0",
     "typescript": "^5.3.3"
   }
 }

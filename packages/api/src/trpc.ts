@@ -2,15 +2,23 @@ import { initTRPC } from "@trpc/server"
 import superjson from "superjson"
 
 import { em, entities } from "@airneis/db"
+import { redis } from "@airneis/redis"
 import { s3 } from "@airneis/s3"
 
 import withOrm from "./middlewares/withOrm"
 
-export const createTRPCContext = () => ({
-  em,
-  entities,
-  s3,
-})
+export const createTRPCContext = async () => {
+  if (!redis.isReady) {
+    await redis.connect()
+  }
+
+  return {
+    em,
+    entities,
+    s3,
+    redis,
+  }
+}
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
 })
