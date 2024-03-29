@@ -4,7 +4,7 @@ import jsonwebtoken, { JsonWebTokenError } from "jsonwebtoken"
 import { cookies } from "next/headers"
 import React from "react"
 
-import { ValidationTemplate } from "@airneis/email"
+import { ValidationTemplate, translations } from "@airneis/email"
 import {
   localeFallbackSchema,
   signUpSchema,
@@ -56,7 +56,7 @@ const usersRouter = createTRPCRouter({
         await ctx.resend.emails.send({
           from: env.RESEND_EMAIL_FROM,
           to: email,
-          subject: "Activate your account",
+          subject: translations.validationTemplate.subject[locale],
           react: (
             <ValidationTemplate
               name={firstName}
