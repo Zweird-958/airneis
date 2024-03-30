@@ -1,11 +1,12 @@
 import { z } from "zod"
 
+import { imageUrlSchema } from "./images"
 import { localizedSchema } from "./locales"
 
 export const createCategorySchema = z.object({
   name: localizedSchema,
   description: localizedSchema,
-  imageUrl: z.string(),
+  imageUrl: imageUrlSchema,
 })
 
 export const createCategorySchemaWithoutImage = createCategorySchema.omit({

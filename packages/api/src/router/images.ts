@@ -1,5 +1,5 @@
-import { PutObjectCommand } from "@airneis/s3"
-import { imageSchema } from "@airneis/schemas"
+import { DeleteObjectCommand, PutObjectCommand } from "@airneis/s3"
+import { imageSchema, imageUrlSchema } from "@airneis/schemas"
 
 import env from "../env"
 import { createTRPCRouter, publicProcedure } from "../trpc"
@@ -20,6 +20,18 @@ const imagesRouter = createTRPCRouter({
       )
 
       return `categories/${name}`
+    }),
+  delete: publicProcedure
+    .input(imageUrlSchema)
+    .mutation(async ({ ctx: { s3 }, input }) => {
+      await s3.send(
+        new DeleteObjectCommand({
+          Bucket: env.S3_BUCKET,
+          Key: input,
+        }),
+      )
+
+      return true
     }),
 })
 

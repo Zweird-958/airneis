@@ -27,18 +27,26 @@ import LocalizedField from "./fields/LocalizedField"
 const CreateCategoryForm = () => {
   const { t } = useTranslation("forms", "categories")
   const [image, setImage] = useState<File | null>(null)
+  const [imageUrl, setImageUrl] = useState<string | null>(null)
   const { mutateAsync: uploadImage } = useMutation({
     mutationKey: ["image"],
     mutationFn: async (formData: FormData) =>
       await axios.post<ImageResponse>("/api/image", formData),
+    onError: () => {
+      alert(t("categories:errors.image"))
+    },
   })
-  const { mutateAsync } = api.categories.create.useMutation({
+  const { mutateAsync: createCategory } = api.categories.create.useMutation({
     onSuccess: () => {
       alert("Category created")
     },
-    onError: (error) => {
+    onError: async (error) => {
       if (error instanceof TRPCClientError) {
         alert(error.message)
+
+        if (imageUrl) {
+          await deleteImage(imageUrl)
+        }
 
         return
       }
@@ -46,6 +54,7 @@ const CreateCategoryForm = () => {
       alert(t("categories:errors.create"))
     },
   })
+  const { mutateAsync: deleteImage } = api.images.delete.useMutation()
   const form = useForm<CreateCategoryInput>({
     resolver: zodResolver(createCategorySchemaWithoutImage),
     defaultValues: {
@@ -70,23 +79,18 @@ const CreateCategoryForm = () => {
     }
   }
   const onSubmit: SubmitHandler<CreateCategoryInput> = async (values) => {
-    try {
-      if (!image) {
-        alert(t("categories:errors.imageRequired"))
+    if (!image) {
+      alert(t("categories:errors.imageRequired"))
 
-        return
-      }
-
-      const {
-        data: { result: imageUrl },
-      } = await uploadImage(createFormData())
-
-      await mutateAsync({ ...values, imageUrl })
-    } catch (error) {
-      if (!(error instanceof TRPCClientError)) {
-        alert(t("categories:errors.image"))
-      }
+      return
     }
+
+    const {
+      data: { result },
+    } = await uploadImage(createFormData())
+    setImageUrl(result)
+
+    await createCategory({ ...values, imageUrl: result })
   }
 
   return (
