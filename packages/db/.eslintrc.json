@@ -2,9 +2,14 @@
   "extends": "../../.eslintrc.json",
   "overrides": [
     {
-      "files": ["./src/entities/**/*.ts"],
+      "files": [
+        "./src/entities/**/*.ts",
+        "./src/seeders/**/*.ts",
+        "./src/factories/**/*.ts"
+      ],
       "rules": {
-        "new-cap": "off"
+        "new-cap": "off",
+        "class-methods-use-this": "off"
       }
     }
   ],

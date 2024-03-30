@@ -15,7 +15,7 @@ import { OrderProduct } from "./OrderProduct"
 import { SoftBaseEntity } from "./SoftBaseEntity"
 
 @Entity({ tableName: "products" })
-export class Product extends SoftBaseEntity {
+export class Product extends SoftBaseEntity<Product, "priority"> {
   @Property({ type: "json", nullable: false })
   name: { [key in Locale]: string }
 
@@ -39,6 +39,9 @@ export class Product extends SoftBaseEntity {
     mappedBy: (material) => material.products,
   })
   materials = new Collection<Material>(this)
+
+  @Property({ type: "integer", nullable: true, default: null })
+  priority: number | null = null
 
   @ManyToMany({ entity: () => Image, pivotTable: "link_images_products" })
   images = new Collection<Image>(this)

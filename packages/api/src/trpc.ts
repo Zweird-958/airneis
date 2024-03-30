@@ -4,10 +4,11 @@ import superjson from "superjson"
 import { em, entities } from "@airneis/db"
 import { redis } from "@airneis/redis"
 import { s3 } from "@airneis/s3"
+import { Locale } from "@airneis/types"
 
 import withOrm from "./middlewares/withOrm"
 
-export const createTRPCContext = async () => {
+export const createTRPCContext = async (lang: Locale) => {
   if (!redis.isReady) {
     await redis.connect()
   }
@@ -17,6 +18,7 @@ export const createTRPCContext = async () => {
     entities,
     s3,
     redis,
+    lang,
   }
 }
 const t = initTRPC.context<typeof createTRPCContext>().create({

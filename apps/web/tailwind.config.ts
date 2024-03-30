@@ -4,7 +4,9 @@ import baseConfig from "../../tailwind.config"
 
 const config: Config = {
   content: ["./src/app/**/*.tsx", "./src/components/**/*.tsx"],
-  theme: {},
+  theme: {
+    extend: {},
+  },
   plugins: [],
   presets: [baseConfig],
 }

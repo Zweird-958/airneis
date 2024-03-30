@@ -205,6 +205,15 @@
           "primary": false,
           "nullable": false,
           "mappedType": "uuid"
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "text"
         }
       },
       "name": "categories",
@@ -214,6 +223,14 @@
           "columnNames": ["name"],
           "composite": false,
           "keyName": "categories_name_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": ["slug"],
+          "composite": false,
+          "keyName": "categories_slug_unique",
           "constraint": true,
           "primary": false,
           "unique": true
@@ -474,6 +491,16 @@
           "autoincrement": false,
           "primary": false,
           "nullable": false,
+          "mappedType": "integer"
+        },
+        "priority": {
+          "name": "priority",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "default": "null",
           "mappedType": "integer"
         }
       },
