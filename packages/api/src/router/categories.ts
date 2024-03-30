@@ -37,22 +37,17 @@ const categoriesRouter = createTRPCRouter({
       }
 
       const image = ctx.entities.image.create({ url: imageUrl })
-      const slug = slugify(name.en as string, {
-        lower: true,
-        replacement: "-",
-      })
 
       /**
        * See https://github.com/colinhacks/zod/discussions/2069
        *
        * This is a workaround for a bug in zod where it doesn't correctly infer the type of Record<Locale, string>
        */
-
       ctx.entities.category.create({
         name: name as Record<Locale, string>,
         description: description as Record<Locale, string>,
         image,
-        slug,
+        slug: slugify(name.en as string, { lower: true, replacement: "-" }),
       })
 
       await ctx.em.flush()
