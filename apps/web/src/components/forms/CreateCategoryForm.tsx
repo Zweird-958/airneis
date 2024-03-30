@@ -62,15 +62,6 @@ const CreateCategoryForm = () => {
       description: fieldDefaultValues,
     },
   })
-  const createFormData = () => {
-    const formData = new FormData()
-
-    if (image) {
-      formData.append("file", image)
-    }
-
-    return formData
-  }
   const handleFileUpload: ChangeEventHandler<HTMLInputElement> = (event) => {
     const file = event.target.files
 
@@ -85,9 +76,11 @@ const CreateCategoryForm = () => {
       return
     }
 
+    const formData = new FormData()
+    formData.append("file", image)
     const {
       data: { result },
-    } = await uploadImage(createFormData())
+    } = await uploadImage(formData)
     setImageUrl(result)
 
     await createCategory({ ...values, imageUrl: result })
