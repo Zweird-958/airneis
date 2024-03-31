@@ -21,7 +21,7 @@ const useCreateCategory = ({ image }: Props) => {
   const { mutateAsync: deleteImage } = api.images.delete.useMutation()
   const { mutateAsync: createCategory } = api.categories.create.useMutation({
     onSuccess: () => {
-      alert("created")
+      alert(t("created"))
     },
     onError: async (error) => {
       if (error instanceof TRPCClientError) {
