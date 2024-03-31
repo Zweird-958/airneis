@@ -98,7 +98,7 @@ const CreateCategoryForm = () => {
         name="description"
         label={t("forms:description")}
       />
-      <ImageField handleOnChange={handleFileUpload} />
+      <ImageField handleOnChange={handleFileUpload} fileName={image?.name} />
       <Button type="submit">{t("forms:create")}</Button>
     </Form>
   )
