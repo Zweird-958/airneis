@@ -39,7 +39,7 @@ export const FormMessage = forwardRef<
     <p
       ref={ref}
       id={formMessageId}
-      className={cn("text-sm font-medium text-error", className)}
+      className={cn("text-sm font-medium text-danger", className)}
       {...props}
     >
       {body}

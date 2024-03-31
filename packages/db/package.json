@@ -2,7 +2,7 @@
   "name": "@airneis/db",
   "version": "0.1.0",
   "private": true,
-  "main": "./src/index.ts",
+  "main": "index.ts",
   "scripts": {
     "db": "mikro-orm",
     "typecheck": "tsc --noEmit"
@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@airneis/types": "^0.1.0",
+    "@faker-js/faker": "^8.4.1",
     "@mikro-orm/cli": "^6.1.5",
     "@mikro-orm/migrations": "^6.1.5",
     "@mikro-orm/seeder": "^6.1.5",

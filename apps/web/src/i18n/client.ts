@@ -14,7 +14,7 @@ import {
 import { sharedConfig } from "@airneis/config"
 import { Locale } from "@airneis/types"
 
-import config, { Namespace } from "@/utils/config"
+import { Namespace } from "@/utils/config"
 
 import { getOptions } from "./settings"
 
@@ -34,7 +34,7 @@ i18next
     ...getOptions(),
     detection: {
       order: ["path", "htmlTag", "cookie", "navigator"],
-      lookupCookie: config.locale.cookieKey,
+      lookupCookie: sharedConfig.localeCookieKey,
     },
     preload: runsOnServerSide ? sharedConfig.languageKeys : [],
   })

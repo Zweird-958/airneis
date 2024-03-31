@@ -1,5 +1,6 @@
 {
   "create": "Créer une catégorie",
+  "empty": "Il n'y a pas de produits dans cette catégorie.",
   "created": "Catégorie créée",
   "errors": {
     "imageRequired": "Une image est requis",

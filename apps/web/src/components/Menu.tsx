@@ -1,9 +1,9 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
 
 import Button from "@/components/ui/Button"
+import Link from "@/components/ui/Link"
 import useDevice from "@/hooks/useDevice"
 import useSession from "@/hooks/useSession"
 import { useTranslation } from "@/i18n/client"
