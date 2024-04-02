@@ -30,18 +30,24 @@ export class Category extends BaseEntity {
   })
   products = new Collection<Product>(this)
 
+  @Property({ type: "text", nullable: false, unique: true })
+  slug: string
+
   constructor({
     name,
     description,
     image,
+    slug,
   }: {
     name: { [key in Locale]: string }
     description: { [key in Locale]: string }
     image: Image
+    slug: string
   }) {
     super()
     this.name = name
     this.description = description
     this.image = image
+    this.slug = slug
   }
 }

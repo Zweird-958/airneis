@@ -1,10 +1,10 @@
 "use client"
 
 import { MenuIcon, Search, ShoppingCart, X } from "lucide-react"
-import Link from "next/link"
 import { useState } from "react"
 
 import Menu from "@/components/Menu"
+import Link from "@/components/ui/Link"
 
 type Props = {
   filledCart?: boolean
