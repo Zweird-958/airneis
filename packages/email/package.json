@@ -1,0 +1,20 @@
+{
+  "name": "@airneis/email",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "dev": "email dev --dir ./src/templates",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-email/components": "0.0.15",
+    "dotenv": "^16.4.5",
+    "react-email": "2.1.0",
+    "resend": "^3.2.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@airneis/types": "^0.1.0"
+  }
+}
