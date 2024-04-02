@@ -4,5 +4,6 @@ export type Product = {
   price: string
   name: string
   outOfStock: boolean
+  slug: string
   imagesUrl: string[]
 } & Pick<ProductEntity, "id">
