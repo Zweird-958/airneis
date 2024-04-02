@@ -16,8 +16,8 @@ export class ProductFactory extends Factory<Product> {
         en: nameEN,
       },
       description: {
-        fr: fakerFR.commerce.productDescription(),
-        en: fakerEN.commerce.productDescription(),
+        fr: fakerFR.lorem.paragraphs({ min: 1, max: 5 }, "\n\n"),
+        en: fakerEN.lorem.paragraphs({ min: 1, max: 5 }, "\n\n"),
       },
       price: fakerEN.number.int({ min: 3000, max: 100000 }),
       stock: fakerEN.number.int({ min: 0, max: 10 }),
