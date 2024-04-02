@@ -16,8 +16,11 @@ const usersRouter = createTRPCRouter({
   create: publicProcedure
     .input(signUpSchema)
     .mutation(
-      async ({ ctx, input: { email, firstName, lastName, password } }) => {
-        const user = await ctx.entities.user.findOne({ email })
+      async ({
+        ctx: { entities, em, resend, lang },
+        input: { email, firstName, lastName, password },
+      }) => {
+        const user = await entities.user.findOne({ email })
 
         if (user) {
           await sleep(config.security.jwt.hashingDuration)
@@ -26,14 +29,14 @@ const usersRouter = createTRPCRouter({
         }
 
         const hashedPassword = await hash(password, env.HASH_SALT_COUNT)
-        const newUser = ctx.entities.user.create({
+        const newUser = entities.user.create({
           email,
           firstName,
           lastName,
           password: hashedPassword,
         })
 
-        await ctx.em.flush()
+        await em.flush()
 
         const jwt = jsonwebtoken.sign(
           {
@@ -46,9 +49,8 @@ const usersRouter = createTRPCRouter({
           env.JWT_SECRET,
           { expiresIn: config.security.jwt.expiresIn },
         )
-        const { lang } = ctx
 
-        await ctx.resend.emails.send({
+        await resend.emails.send({
           from: env.RESEND_EMAIL_FROM,
           to: email,
           subject: translations.validationTemplate.subject[lang],
@@ -66,19 +68,19 @@ const usersRouter = createTRPCRouter({
     ),
   validateAccount: publicProcedure
     .input(validationAccountSchema)
-    .mutation(async ({ ctx, input: { jwt } }) => {
+    .mutation(async ({ ctx: { entities, em }, input: { jwt } }) => {
       try {
         const {
           payload: {
             user: { id },
           },
         } = jsonwebtoken.verify(jwt, env.JWT_SECRET) as ValidationAccountJwt
-        const user = await ctx.entities.user.findOneOrFail({ id })
+        const user = await entities.user.findOneOrFail({ id })
 
         if (!user.isActive) {
           user.isActive = true
 
-          await ctx.em.flush()
+          await em.flush()
         }
       } catch (error) {
         if (error instanceof JsonWebTokenError) {
