@@ -11,6 +11,7 @@ import EmailField from "@/components/forms/fields/EmailField"
 import PasswordField from "@/components/forms/fields/PasswordField"
 import Button from "@/components/ui/Button"
 import { Form } from "@/components/ui/Form"
+import useErrorHandler from "@/hooks/useErrorHandler"
 import useSession from "@/hooks/useSession"
 import { useTranslation } from "@/i18n/client"
 import api from "@/trpc/client"
@@ -22,17 +23,19 @@ const SignInForm = () => {
     resolver: zodResolver(signInSchema),
     defaultValues: { email: "", password: "" },
   })
-  const { t } = useTranslation("forms")
-  const { mutate } = api.sessions.create.useMutation()
   const { signIn } = useSession()
   const router = useRouter()
+  const { t } = useTranslation("forms")
+  const { onError } = useErrorHandler()
+  const { mutate } = api.sessions.create.useMutation({
+    onError,
+    onSuccess: (data) => {
+      signIn(data)
+      router.push("/")
+    },
+  })
   const onSubmit: SubmitHandler<SignInFormSchema> = (values) => {
-    mutate(values, {
-      onSuccess: (data) => {
-        signIn(data)
-        router.push("/")
-      },
-    })
+    mutate(values)
   }
 
   return (
