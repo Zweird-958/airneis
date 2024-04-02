@@ -51,7 +51,7 @@ const Page = ({ params: { jwt } }: Props) => {
     }
 
     return () => null
-  }, [triggerClock, count])
+  }, [triggerClock])
 
   useEffect(() => {
     if (count === 0) {
