@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ReactNode } from "react"
+import { Toaster } from "sonner"
 
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
@@ -25,7 +26,20 @@ const RootLayout = (props: Props) => {
   return (
     <Providers>
       <html lang={locale} className="bg-background">
-        <body className="flex flex-col justify-between w-full min-h-screen">
+        <body className="flex flex-col justify-between w-full min-h-screen min-w-80">
+          <Toaster
+            closeButton
+            position="bottom-right"
+            toastOptions={{
+              classNames: {
+                default:
+                  "rounded-default border border-border bg-card shadow-lg",
+                closeButton: "bg-card",
+                error: "text-danger",
+                success: "text-success",
+              },
+            }}
+          />
           <Header />
           <main className="grow">{children}</main>
           <Footer />

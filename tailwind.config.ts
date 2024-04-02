@@ -25,6 +25,10 @@ const config: Config = {
           DEFAULT: "hsl(var(--danger))",
           foreground: "hsl(var(--danger-foreground))",
         },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
         card: "hsl(var(--card))",
         disabled: {
           DEFAULT: "hsl(var(--disabled))",

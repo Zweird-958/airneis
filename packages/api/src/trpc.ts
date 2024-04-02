@@ -2,6 +2,7 @@ import { initTRPC } from "@trpc/server"
 import superjson from "superjson"
 
 import { em, entities } from "@airneis/db"
+import { resend } from "@airneis/email"
 import { keys, redis } from "@airneis/redis"
 import { s3 } from "@airneis/s3"
 import { Locale } from "@airneis/types"
@@ -20,6 +21,7 @@ export const createTRPCContext = async (lang: Locale) => {
     redis,
     cacheKeys: keys,
     lang,
+    resend,
   }
 }
 const t = initTRPC.context<typeof createTRPCContext>().create({
