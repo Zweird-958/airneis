@@ -28,6 +28,12 @@ export class Product extends SoftBaseEntity<Product, "priority"> {
   @Property({ type: "integer", nullable: false })
   price: number
 
+  @Property({ type: "string", nullable: false, unique: true })
+  slug: string
+
+  @Property({ type: "integer", nullable: true, default: null })
+  priority: number | null = null
+
   @ManyToMany({
     entity: () => Category,
     mappedBy: (category) => category.products,
@@ -39,9 +45,6 @@ export class Product extends SoftBaseEntity<Product, "priority"> {
     mappedBy: (material) => material.products,
   })
   materials = new Collection<Material>(this)
-
-  @Property({ type: "integer", nullable: true, default: null })
-  priority: number | null = null
 
   @ManyToMany({ entity: () => Image, pivotTable: "link_images_products" })
   images = new Collection<Image>(this)
@@ -58,16 +61,19 @@ export class Product extends SoftBaseEntity<Product, "priority"> {
     description,
     stock,
     price,
+    slug,
   }: {
     name: { [key in Locale]: string }
     description: { [key in Locale]: string }
     stock: number
     price: number
+    slug: string
   }) {
     super()
     this.name = name
     this.description = description
     this.stock = stock
     this.price = price
+    this.slug = slug
   }
 }
