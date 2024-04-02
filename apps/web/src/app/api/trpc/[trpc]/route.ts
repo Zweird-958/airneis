@@ -30,8 +30,8 @@ const handler = async (req: NextRequest) => {
     endpoint: "/api/trpc",
     router: appRouter,
     req,
-    createContext: async () =>
-      await createTRPCContext(
+    createContext: () =>
+      createTRPCContext(
         localeSchema
           .catch(localeFallbackSchema.parse(langCookie))
           .parse(langSetCookie),
