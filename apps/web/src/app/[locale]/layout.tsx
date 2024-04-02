@@ -26,8 +26,20 @@ const RootLayout = (props: Props) => {
   return (
     <Providers>
       <html lang={locale} className="bg-background">
-        <body className="flex flex-col justify-between w-full min-h-screen">
-          <Toaster richColors closeButton position="bottom-right" />
+        <body className="flex flex-col justify-between w-full min-h-screen min-w-80">
+          <Toaster
+            closeButton
+            position="bottom-right"
+            toastOptions={{
+              classNames: {
+                default:
+                  "rounded-default border border-border bg-card shadow-lg",
+                closeButton: "bg-card",
+                error: "text-danger",
+                success: "text-success",
+              },
+            }}
+          />
           <Header />
           <main className="grow">{children}</main>
           <Footer />
