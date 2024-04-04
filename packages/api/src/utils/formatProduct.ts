@@ -1,7 +1,7 @@
 import { Product } from "@airneis/db"
 import { Locale } from "@airneis/types"
 
-import config from "../config"
+import formatPrice from "./formatPrice"
 
 const formatProduct = (
   { id, price, name, images, stock, priority, slug }: Product,
@@ -13,10 +13,7 @@ const formatProduct = (
   name: name[lang],
   priority,
   slug,
-  price: new Intl.NumberFormat(lang, {
-    style: "currency",
-    currency: config.currency,
-  }).format(price / 100),
+  price: formatPrice(lang, price),
 })
 
 export default formatProduct
