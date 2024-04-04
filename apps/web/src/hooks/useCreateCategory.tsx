@@ -3,6 +3,7 @@ import { TRPCClientError } from "@trpc/react-query"
 import axios from "axios"
 import { useState } from "react"
 import { SubmitHandler } from "react-hook-form"
+import { toast } from "sonner"
 
 import { CreateCategoryInput } from "@airneis/schemas"
 
@@ -14,18 +15,18 @@ type Props = {
   image: File | null
 }
 
-/* eslint-disable no-alert */
+
 const useCreateCategory = ({ image }: Props) => {
   const { t } = useTranslation("categories")
   const [imageUrl, setImageUrl] = useState<string | null>(null)
   const { mutateAsync: deleteImage } = api.images.delete.useMutation()
   const { mutateAsync: createCategory } = api.categories.create.useMutation({
     onSuccess: () => {
-      alert(t("created"))
+      toast.success(t("created"))
     },
     onError: async (error) => {
       if (error instanceof TRPCClientError) {
-        alert(error.message)
+        toast.error(error.message)
 
         if (imageUrl) {
           await deleteImage(imageUrl)
@@ -34,7 +35,7 @@ const useCreateCategory = ({ image }: Props) => {
         return
       }
 
-      alert(t("errors.create"))
+      toast.success(t("errors.create"))
     },
   })
   const { mutateAsync: uploadImage } = useMutation({
@@ -42,12 +43,12 @@ const useCreateCategory = ({ image }: Props) => {
     mutationFn: async (formData: FormData) =>
       await axios.post<ImageResponse>("/api/image", formData),
     onError: () => {
-      alert(t("errors.image"))
+      toast.error(t("errors.image"))
     },
   })
   const onSubmit: SubmitHandler<CreateCategoryInput> = async (values) => {
     if (!image) {
-      alert(t("errors.imageRequired"))
+      toast.error(t("errors.imageRequired"))
 
       return
     }
