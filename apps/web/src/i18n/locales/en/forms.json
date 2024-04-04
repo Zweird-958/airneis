@@ -12,5 +12,11 @@
   "firstName": "First name",
   "lastName": "Last name",
   "signIn": "Sign In",
-  "signUp": "Sign up"
+  "signUp": {
+    "title": "Sign up",
+    "success": "Your account was created successfully. A confirmation email has been sent to you."
+  },
+  "errors": {
+    "unexpected": "An unexpected error occurred"
+  }
 }

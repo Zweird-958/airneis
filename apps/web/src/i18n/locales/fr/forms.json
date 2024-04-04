@@ -12,5 +12,11 @@
   "firstName": "Prénom",
   "lastName": "Nom",
   "signIn": "Se connecter",
-  "signUp": "Inscription"
+  "signUp": {
+    "title": "Inscription",
+    "success": "Votre compte a bien été créé. Un email de confirmation vous a été envoyé."
+  },
+  "errors": {
+    "unexpected": "Une erreur inattendue s'est produite"
+  }
 }

@@ -8,7 +8,7 @@ import { Order } from "./Order"
 import { SoftBaseEntity } from "./SoftBaseEntity"
 
 @Entity({ tableName: "users" })
-export class User extends SoftBaseEntity<User, "role"> {
+export class User extends SoftBaseEntity<User, "role" | "isActive"> {
   @Property({ type: "text", nullable: false })
   firstName: string
 
@@ -20,6 +20,9 @@ export class User extends SoftBaseEntity<User, "role"> {
 
   @Property({ type: "text", nullable: false })
   password: string
+
+  @Property({ type: "boolean", nullable: false, default: false })
+  isActive = false
 
   @Enum({
     nullable: false,

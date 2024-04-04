@@ -3,5 +3,5 @@
     "jsx": "react"
   },
   "extends": "../../tsconfig.json",
-  "include": ["."]
+  "include": ["**/*.ts", "**/*.tsx", "../../tailwind.config.ts"]
 }
