@@ -11,7 +11,7 @@ const Footer = () => {
   const { t } = useTranslation()
   const device = useDevice()
 
-  if (!device?.isAboveTablet) {
+  if (!device?.isAboveLaptop) {
     return null
   }
 
