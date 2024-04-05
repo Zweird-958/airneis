@@ -1,0 +1,26 @@
+{
+  "hello": "Bonjour {name}",
+  "server": "Serveur",
+  "client": "Client",
+  "header": {
+    "home": "Accueil",
+    "signIn": "Se connecter",
+    "signOut": "Se déconnecter",
+    "signUp": "S'inscrire"
+  },
+  "footer": {
+    "tos": "Conditions d'utilisation",
+    "legalNotice": "Mentions légales",
+    "contact": "Contact"
+  },
+  "signIn": {
+    "title": "Connexion",
+    "description": "Connectez-vous à votre compte"
+  },
+  "validateAccount": {
+    "loading": "En cours d'activation ...",
+    "success": "Votre compte a été activé avec succès !",
+    "error": "Une erreur est survenue lors de l'activation de votre compte. Veuillez réessayer plus tard.",
+    "redirect": "Redirection vers la page de connexion dans {count}"
+  }
+}

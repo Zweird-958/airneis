@@ -11,8 +11,9 @@ import EmailField from "@/components/forms/fields/EmailField"
 import PasswordField from "@/components/forms/fields/PasswordField"
 import Button from "@/components/ui/Button"
 import { Form } from "@/components/ui/Form"
-import useLocale from "@/hooks/useLocale"
+import useErrorHandler from "@/hooks/useErrorHandler"
 import useSession from "@/hooks/useSession"
+import { useTranslation } from "@/i18n/client"
 import api from "@/trpc/client"
 
 type SignInFormSchema = z.infer<typeof signInSchema>
@@ -22,26 +23,26 @@ const SignInForm = () => {
     resolver: zodResolver(signInSchema),
     defaultValues: { email: "", password: "" },
   })
-  const {
-    translations: { forms },
-  } = useLocale()
-  const { mutate } = api.sessions.create.useMutation()
   const { signIn } = useSession()
   const router = useRouter()
+  const { t } = useTranslation("forms")
+  const { onError } = useErrorHandler()
+  const { mutate } = api.sessions.create.useMutation({
+    onError,
+    onSuccess: (data) => {
+      signIn(data.jwt)
+      router.push("/")
+    },
+  })
   const onSubmit: SubmitHandler<SignInFormSchema> = (values) => {
-    mutate(values, {
-      onSuccess: (data) => {
-        signIn(data.jwt)
-        router.push("/")
-      },
-    })
+    mutate(values)
   }
 
   return (
     <Form ctx={form} onSubmit={onSubmit} className="space-y-6">
       <EmailField control={form.control} />
       <PasswordField control={form.control} />
-      <Button type="submit">{forms.signIn}</Button>
+      <Button type="submit">{t("signIn")}</Button>
     </Form>
   )
 }

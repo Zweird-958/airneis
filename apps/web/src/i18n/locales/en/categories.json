@@ -1,0 +1,8 @@
+{
+  "create": "Create category",
+  "created": "Category created",
+  "empty": "There are no products in this category yet.",
+  "errors": {
+    "create": "An error occurred while creating the category"
+  }
+}

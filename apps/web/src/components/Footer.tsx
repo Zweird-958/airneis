@@ -1,18 +1,14 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
 
+import Link from "@/components/ui/Link"
 import useDevice from "@/hooks/useDevice"
-import useLocale from "@/hooks/useLocale"
+import { useTranslation } from "@/i18n/client"
 import { footerLink, footerSocial } from "@/utils/layout/footerInfo"
 
 const Footer = () => {
-  const {
-    translations: {
-      common: { footer },
-    },
-  } = useLocale()
+  const { t } = useTranslation()
   const device = useDevice()
 
   if (!device?.isAboveTablet) {
@@ -26,7 +22,7 @@ const Footer = () => {
           <ul className="flex gap-4">
             {footerLink.map(({ href, common }) => (
               <li key={href}>
-                <Link href={href}>{footer[common]}</Link>
+                <Link href={href}>{t(`footer.${common}`)}</Link>
               </li>
             ))}
           </ul>

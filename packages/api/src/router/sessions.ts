@@ -5,6 +5,7 @@ import ms from "ms"
 import { cookies } from "next/headers"
 
 import { signInSchema } from "@airneis/schemas"
+import { sleep } from "@airneis/utils"
 
 import config from "../config"
 import env from "../env"
@@ -18,9 +19,11 @@ const sessionsRouter = createTRPCRouter({
         entities: { user: UserEntity },
       },
     }) => {
-      const user = await UserEntity.findOne({ email })
+      const user = await UserEntity.findOne({ email, isActive: true })
 
       if (!user) {
+        await sleep(config.security.jwt.hashingDuration)
+
         throw new TRPCError({ code: "UNAUTHORIZED" })
       }
 
@@ -58,6 +61,17 @@ const sessionsRouter = createTRPCRouter({
       return { jwt, payload }
     },
   ),
+  delete: publicProcedure.mutation(async () => {
+    await cookies().set(config.security.jwt.cookie.key, "", {
+      path: "/",
+      sameSite: "strict",
+      httpOnly: true,
+      secure: config.security.jwt.cookie.secure,
+      expires: Date.now() - ms("10 years"),
+    })
+
+    return true
+  }),
 })
 
 export default sessionsRouter

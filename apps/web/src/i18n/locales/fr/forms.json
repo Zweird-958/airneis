@@ -1,0 +1,23 @@
+{
+  "selectPlaceholder": "Sélectionnez une option",
+  "username": "Nom d'utilisateur",
+  "name": "Nom",
+  "description": "Description",
+  "image": {
+    "label": "Image",
+    "description": "URL de l'image"
+  },
+  "create": "Créer",
+  "email": "Email",
+  "password": "Mot de passe",
+  "firstName": "Prénom",
+  "lastName": "Nom",
+  "signIn": "Se connecter",
+  "signUp": {
+    "title": "Inscription",
+    "success": "Votre compte a bien été créé. Un email de confirmation vous a été envoyé."
+  },
+  "errors": {
+    "unexpected": "Une erreur inattendue s'est produite"
+  }
+}

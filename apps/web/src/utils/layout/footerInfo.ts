@@ -1,8 +1,6 @@
-import common from "@/locales/en/common"
-
 type FooterLink = {
   href: string
-  common: keyof typeof common.footer
+  common: string
 }[]
 
 export const footerLink: FooterLink = [

@@ -13,8 +13,16 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --error: 339 90% 51%;
+    --danger: 0, 100%, 50%;
+    --danger-foreground: 0 0% 100%;
+
+    --success: 145.96 79.46% 43.92%;
+    --success-foreground: 0 0% 100%;
+
     --border: 220 13% 91%;
     --card: 0 0% 100%;
+
+    --disabled: 220 8.9% 46.1%;
+    --disabled-foreground: 0 0 100%;
   }
 }

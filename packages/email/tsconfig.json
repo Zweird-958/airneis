@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "jsx": "react"
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["**/*.ts", "**/*.tsx", "../../tailwind.config.ts"]
+}

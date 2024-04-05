@@ -7,6 +7,10 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@airneis/db": "^0.1.0",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@airneis/config": "^0.1.0"
   }
 }
