@@ -34,10 +34,8 @@ const sessionsRouter = createTRPCRouter({
       }
 
       const payload = {
-        user: {
-          id: user.id,
-          role: user.role,
-        },
+        id: user.id,
+        role: user.role,
       }
       const jwt = jsonwebtoken.sign(
         {
