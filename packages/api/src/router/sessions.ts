@@ -30,14 +30,15 @@ const sessionsRouter = createTRPCRouter({
         throw new TRPCError({ code: "UNAUTHORIZED" })
       }
 
+      const payload = {
+        user: {
+          id: user.id,
+          role: user.role,
+        },
+      }
       const jwt = jsonwebtoken.sign(
         {
-          payload: {
-            user: {
-              id: user.id,
-              role: user.role,
-            },
-          },
+          payload,
         },
         env.JWT_SECRET,
         { expiresIn: config.security.jwt.expiresIn },
@@ -54,7 +55,7 @@ const sessionsRouter = createTRPCRouter({
         expires: Date.now() + ms(config.security.jwt.expiresIn),
       })
 
-      return jwt
+      return { jwt, payload }
     },
   ),
 })

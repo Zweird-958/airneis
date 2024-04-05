@@ -2,7 +2,7 @@ import { SignInForm } from "@/components/forms/SignInForm"
 import FormContainer from "@/components/ui/Form/FormContainer"
 import useLocale from "@/hooks/useLocale"
 
-export const SignIn = () => {
+const SignIn = () => {
   const {
     translations: { common },
   } = useLocale()
@@ -13,3 +13,5 @@ export const SignIn = () => {
     </FormContainer>
   )
 }
+
+export default SignIn

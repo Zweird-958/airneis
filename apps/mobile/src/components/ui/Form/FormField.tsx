@@ -1,12 +1,14 @@
 import React from "react"
 import { Control, Controller, FieldValues, Path } from "react-hook-form"
-import { Text, TextInput, View } from "react-native"
+import { InputModeOptions, Text, TextInput, View } from "react-native"
 
 type Props<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>
   name: string
   placeholder: string
   errors: string | undefined
+  type: InputModeOptions
+  secureTextEntry: boolean
 }
 
 export const FormField = <TFieldValues extends FieldValues>({
@@ -14,6 +16,8 @@ export const FormField = <TFieldValues extends FieldValues>({
   name,
   placeholder,
   errors,
+  type,
+  secureTextEntry,
 }: Props<TFieldValues>) => (
   <View>
     <Controller
@@ -25,6 +29,8 @@ export const FormField = <TFieldValues extends FieldValues>({
           onChangeText={onChange}
           value={value}
           placeholder={placeholder}
+          inputMode={type}
+          secureTextEntry={secureTextEntry}
         />
       )}
       name={name as Path<TFieldValues>}

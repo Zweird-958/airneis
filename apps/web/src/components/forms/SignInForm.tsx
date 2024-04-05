@@ -31,7 +31,7 @@ const SignInForm = () => {
   const onSubmit: SubmitHandler<SignInFormSchema> = (values) => {
     mutate(values, {
       onSuccess: (data) => {
-        signIn(data)
+        signIn(data.jwt)
         router.push("/")
       },
     })

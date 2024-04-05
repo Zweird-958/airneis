@@ -1,4 +1,6 @@
+/* eslint-disable no-console */
 import * as SecureStore from "expo-secure-store"
+import { JwtPayload } from "packages/types"
 import { useEffect } from "react"
 
 import useSessionStore from "@/stores/session"
@@ -6,23 +8,23 @@ import config from "@/utils/config"
 
 const useSession = () => {
   const { session, setSession } = useSessionStore()
-  const signIn = async (jwt: string) => {
-    await SecureStore.setItemAsync(config.session.localStorageKey, jwt)
-
-    setSession(jwt)
+  const signIn = async (payload: JwtPayload) => {
+    await SecureStore.setItemAsync(
+      config.session.localStorageKey,
+      JSON.stringify(payload),
+    )
+    setSession(JSON.stringify(payload))
   }
 
   useEffect(() => {
-    const getSession = async () => {
-      const jwt = await SecureStore.getItemAsync(config.session.localStorageKey)
+    const payload = SecureStore.getItemAsync(config.session.localStorageKey)
 
-      if (jwt) {
-        setSession(jwt)
-      }
+    if (!payload) {
+      return
     }
 
-    getSession()
-  })
+    setSession(JSON.stringify(payload))
+  }, [setSession])
 
   return { session, signIn }
 }

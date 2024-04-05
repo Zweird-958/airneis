@@ -98,3 +98,4 @@ buck-out/
 # Expo
 .expo/
 web-build/
+/apps/mobile/%ProgramData%
