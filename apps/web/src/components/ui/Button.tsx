@@ -8,16 +8,20 @@ type Props = {
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button = forwardRef<HTMLButtonElement, Props>(
-  ({ className, asChild = false, ...props }, ref) => {
+  ({ className, disabled, asChild = false, ...props }, ref) => {
     const Component = asChild ? Slot : "button"
 
     return (
       <Component
         className={cn(
-          "bg-primary w-full rounded-default text-primary-foreground hover:bg-primary/90 py-2 px-3",
+          " w-full rounded-default py-2 px-3",
           className,
+          disabled
+            ? "bg-disabled text-disabled-foreground"
+            : "bg-primary hover:bg-primary/90 text-primary-foreground",
         )}
         ref={ref}
+        disabled={disabled}
         {...props}
       />
     )
