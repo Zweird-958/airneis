@@ -1,6 +1,5 @@
-import imagesRouter from "packages/api/src/router/images"
-
 import categoriesRouter from "./router/categories"
+import imagesRouter from "./router/images"
 import productsRouter from "./router/products"
 import sessionsRouter from "./router/sessions"
 import usersRouter from "./router/users"
