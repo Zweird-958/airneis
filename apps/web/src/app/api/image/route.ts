@@ -7,7 +7,7 @@ export const POST = async (req: NextRequest) => {
   const formData = await req.formData()
   const file = formData.get("file") as File
   const buffer = Buffer.from(await file.arrayBuffer())
-  const caller = createCaller(createTRPCContext(sharedConfig.fallbackLng))
+  const caller = createCaller(await createTRPCContext(sharedConfig.fallbackLng))
   const imageUrl = await caller.images.create({
     buffer,
     type: file.type,
