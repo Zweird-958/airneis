@@ -7,7 +7,7 @@ import { createTRPCRouter, publicProcedure } from "../trpc"
 const imagesRouter = createTRPCRouter({
   create: publicProcedure
     .input(imageSchema)
-    .mutation(async ({ ctx: { s3 }, input: { buffer, type } }) => {
+    .mutation(async ({ ctx: { s3 }, input: { buffer, type, folderName } }) => {
       const name = Date.now().toString()
 
       await s3.send(
@@ -19,7 +19,7 @@ const imagesRouter = createTRPCRouter({
         }),
       )
 
-      return `categories/${name}`
+      return `${folderName}/${name}`
     }),
   delete: publicProcedure
     .input(imageUrlSchema)

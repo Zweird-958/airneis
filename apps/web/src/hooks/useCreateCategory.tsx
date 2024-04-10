@@ -15,7 +15,6 @@ type Props = {
   image: File | null
 }
 
-
 const useCreateCategory = ({ image }: Props) => {
   const { t } = useTranslation("categories")
   const [imageUrl, setImageUrl] = useState<string | null>(null)
@@ -55,6 +54,7 @@ const useCreateCategory = ({ image }: Props) => {
 
     const formData = new FormData()
     formData.append("file", image)
+    formData.append("folderName", "categories")
     const {
       data: { result },
     } = await uploadImage(formData)
