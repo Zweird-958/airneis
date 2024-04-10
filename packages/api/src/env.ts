@@ -19,6 +19,7 @@ const schema = z.object({
   VERCEL_URL: z.string().url(),
 
   // S3
+  S3_URL: z.string().url(),
   S3_BUCKET: z.string(),
 })
 const env = schema.parse({
@@ -30,6 +31,7 @@ const env = schema.parse({
   RESEND_EMAIL_FROM: process.env.RESEND_EMAIL_FROM,
   VERCEL_URL:
     process.env.VERCEL_URL || `http://localhost:${process.env.PORT || 3000}`,
+  S3_URL: process.env.S3_URL,
   S3_BUCKET: process.env.S3_BUCKET,
 })
 
