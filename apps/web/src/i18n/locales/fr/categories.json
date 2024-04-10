@@ -2,9 +2,8 @@
   "create": "Créer une catégorie",
   "created": "Catégorie créée",
   "empty": "Il n'y a pas de produits dans cette catégorie.",
-  "created": "Catégorie créée",
   "errors": {
-    "imageRequired": "Une image est requis",
+    "imageRequired": "Une image est requise",
     "image": "Une erreur s'est produite lors de l'envoi de l'image",
     "create": "Une erreur s'est produite lors de la création de la catégorie"
   }
