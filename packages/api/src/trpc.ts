@@ -9,21 +9,15 @@ import { Locale } from "@airneis/types"
 
 import withOrm from "./middlewares/withOrm"
 
-export const createTRPCContext = async (lang: Locale) => {
-  if (!redis.isReady) {
-    await redis.connect()
-  }
-
-  return {
-    em,
-    entities,
-    s3,
-    redis,
-    cacheKeys: keys,
-    lang,
-    resend,
-  }
-}
+export const createTRPCContext = (lang: Locale) => ({
+  em,
+  entities,
+  s3,
+  redis,
+  cacheKeys: keys,
+  lang,
+  resend,
+})
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
 })
