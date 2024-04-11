@@ -22,6 +22,10 @@ const materialsRouter = createTRPCRouter({
       ctx.entities.material.create({
         name: name as Record<Locale, string>,
       })
+
+      await ctx.em.flush()
+
+      return true
     }),
 })
 

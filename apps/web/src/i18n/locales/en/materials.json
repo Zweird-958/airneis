@@ -1,0 +1,7 @@
+{
+  "create": "Create material",
+  "created": "Material created",
+  "errors": {
+    "create": "An error occurred while creating the material"
+  }
+}
