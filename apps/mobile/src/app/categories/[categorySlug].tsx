@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import { useLocalSearchParams } from "expo-router"
 import { FlatList, Image, Text, View } from "react-native"
 
