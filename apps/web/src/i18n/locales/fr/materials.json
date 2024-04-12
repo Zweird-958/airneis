@@ -1,7 +1,4 @@
 {
-  "create": "Créer une Materiel",
-  "created": "Materiel créée",
-  "errors": {
-    "create": "Une erreur s'est produite lors de la création de la catégorie"
-  }
+  "create": "Créer un matériau",
+  "created": "Matériau créé"
 }
