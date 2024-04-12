@@ -43,10 +43,8 @@ const Page = async ({ params: { productSlug: slug, locale } }: Props) => {
             ))}
           </div>
         </div>
-        <Button disabled={outOfStock} className="font-medium">
-          {outOfStock
-            ? t("outOfStock").toUpperCase()
-            : t("addToCart").toUpperCase()}
+        <Button disabled={outOfStock} className="font-medium uppercase">
+          {outOfStock ? t("outOfStock") : t("addToCart")}
         </Button>
       </div>
     </div>
