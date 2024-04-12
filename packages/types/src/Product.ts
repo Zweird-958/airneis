@@ -1,10 +1,8 @@
-import { Id } from "./Common"
+import { Product as DbProduct } from "@airneis/db"
 
 export type Product = {
-  id: Id
   price: string
   name: string
   outOfStock: boolean
-  slug: string
   imagesUrl: string[]
-}
+} & Pick<DbProduct, "id" | "slug">
