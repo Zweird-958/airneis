@@ -14,7 +14,7 @@ import { useTranslation } from "@/i18n/client"
 import api from "@/trpc/client"
 import fieldDefaultValues from "@/utils/locale/fieldDefaultValues"
 
-const CreateMateralForm = () => {
+const CreateMaterialForm = () => {
   const { t } = useTranslation("materials", "forms")
   const { onError } = useErrorHandler()
   const form = useForm<CreateMaterialInput>({
@@ -46,4 +46,4 @@ const CreateMateralForm = () => {
   )
 }
 
-export default CreateMateralForm
+export default CreateMaterialForm
