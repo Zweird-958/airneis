@@ -1,9 +1,11 @@
+import { Id } from "./Common"
+
 export enum UserRoles {
   ADMIN = "ADMIN",
   USER = "USER",
 }
 export type JwtPayload = {
-  id: number
+  id: Id
   role: UserRoles
 }
 export type RawJwt = {

@@ -1,6 +1,8 @@
 import { ChevronLeft, ChevronRight, LucideIcon } from "lucide-react"
 import { ButtonHTMLAttributes } from "react"
 
+import { Image } from "@airneis/types"
+
 import { cn } from "@/utils/cn"
 
 type SideButtonProps = {
@@ -41,13 +43,8 @@ const BulletButton = ({ active, onClick, ...props }: BulletButtonProps) => (
   />
 )
 
-type image = {
-  id: string
-  url: string
-}
-
 type CarouselMenuProps = {
-  images: image[]
+  images: Image[]
   currentImageIndex: number
   handleDotClick: (index: number) => () => void
   handlePrevious: () => void

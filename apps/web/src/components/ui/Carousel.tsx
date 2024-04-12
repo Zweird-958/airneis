@@ -3,16 +3,13 @@
 import Image from "next/image"
 import { useState } from "react"
 
+import { Image as ImageType } from "@airneis/types"
+
 import CarouselMenu from "@/components/ui/CarouselMenu"
 import { cn } from "@/utils/cn"
 
-type image = {
-  id: string
-  url: string
-}
-
 type CarouselProps = {
-  images: image[]
+  images: ImageType[]
   className?: string
 }
 
