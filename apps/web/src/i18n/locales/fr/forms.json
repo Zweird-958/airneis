@@ -4,8 +4,7 @@
   "name": "Nom",
   "description": "Description",
   "image": {
-    "label": "Image",
-    "description": "URL de l'image"
+    "label": "Sélectionner une image"
   },
   "create": "Créer",
   "email": "Email",

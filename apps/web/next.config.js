@@ -10,6 +10,11 @@ const nextConfig = {
         hostname: "www.ikea.com",
         port: "",
       },
+      {
+        protocol: process.env.S3_PROTOCOL,
+        hostname: process.env.S3_HOST,
+        port: process.env.S3_PORT,
+      },
     ],
   },
 }
