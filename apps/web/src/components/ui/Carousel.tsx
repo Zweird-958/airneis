@@ -8,12 +8,12 @@ import { Image as ImageType } from "@airneis/types"
 import CarouselMenu from "@/components/ui/CarouselMenu"
 import { cn } from "@/utils/cn"
 
-type CarouselProps = {
+type Props = {
   images: ImageType[]
   className?: string
 }
 
-const Carousel = ({ images, className }: CarouselProps) => {
+const Carousel = ({ images, className }: Props) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const handleDotClick = (index: number) => () => {
     setCurrentImageIndex(index)
