@@ -48,7 +48,7 @@ npm run db migration:up
 ### Initialiser le bucket S3
 
 ```bash
-npx dotenv -- bash -c 'curl -X PUT http://$S3_URL:$S3_PORT/$S3_BUCKET'
+npx dotenv -- bash -c 'curl -X PUT $S3_URL/$S3_BUCKET'
 ```
 
 ### Démarrer les applications
