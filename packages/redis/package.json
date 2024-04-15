@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@airneis/schemas": "^0.1.0",
-    "redis": "^4.6.13"
+    "ioredis": "^5.3.2"
   },
   "devDependencies": {
     "typescript": "^5.3.3"
