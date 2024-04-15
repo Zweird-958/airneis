@@ -11,7 +11,7 @@ type Props<TFieldValues extends FieldValues> = {
   secureTextEntry: boolean
 }
 
-export const FormField = <TFieldValues extends FieldValues>({
+const FormField = <TFieldValues extends FieldValues>({
   control,
   name,
   placeholder,
@@ -38,3 +38,5 @@ export const FormField = <TFieldValues extends FieldValues>({
     {errors && <Text className="text-red-500">{errors}</Text>}
   </View>
 )
+
+export default FormField

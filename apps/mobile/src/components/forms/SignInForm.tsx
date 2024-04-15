@@ -9,8 +9,8 @@ import { z } from "zod"
 
 import { signInSchema } from "@airneis/schemas"
 
-import { Button } from "@/components/ui/Button"
-import { FormField } from "@/components/ui/Form/FormField"
+import Button from "@/components/ui/Button"
+import FormField from "@/components/ui/Form/FormField"
 import useLocale from "@/hooks/useLocale"
 import useSession from "@/hooks/useSession"
 import api from "@/utils/api"
