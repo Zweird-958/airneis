@@ -1,8 +1,9 @@
 import { DeleteObjectCommand, PutObjectCommand } from "@airneis/s3"
-import { imageSchema, imageUrlSchema } from "@airneis/schemas"
+import { imageUrlSchema } from "@airneis/schemas"
 
 import env from "../env"
 import { createTRPCRouter, publicProcedure } from "../trpc"
+import { imageSchema } from "../utils/schemas"
 
 const imagesRouter = createTRPCRouter({
   create: publicProcedure
