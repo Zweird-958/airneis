@@ -4,8 +4,12 @@ import { Pressable, Text, TextInput, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
 import LocaleSelector from "@/components/LocaleSelector"
+import useLocale from "@/hooks/useLocale"
 
 const Index = () => {
+  const {
+    translations: { common },
+  } = useLocale()
   const router = useRouter()
   const [category, setCategory] = useState("")
   const handleGoToCategory = () => {
@@ -29,7 +33,7 @@ const Index = () => {
           value={category}
         />
         <Pressable onPress={handleGoToCategory}>
-          <Text>Go to category</Text>
+          <Text>{common.ok}</Text>
         </Pressable>
       </View>
     </SafeAreaView>
