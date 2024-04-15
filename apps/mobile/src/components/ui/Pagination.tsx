@@ -4,13 +4,13 @@ import { Pressable, Text, View } from "react-native"
 
 import config from "@/utils/config"
 
-const paginationVariants = cva(
+const paginationButtonVariants = cva(
   "flex justify-center items-center rounded-default sm:w-12 sm:h-12 w-10 h-10",
   {
     variants: {
       color: {
-        primary: "bg-primary text-primary-foreground",
-        disabled: "bg-disabled text-disabled-foreground",
+        primary: "bg-primary",
+        disabled: "bg-disabled",
       },
     },
     defaultVariants: {
@@ -18,11 +18,23 @@ const paginationVariants = cva(
     },
   },
 )
+const paginationTextVariants = cva("", {
+  variants: {
+    color: {
+      primary: "text-primary-foreground",
+      disabled: "text-disabled-foreground",
+    },
+  },
+  defaultVariants: {
+    color: "primary",
+  },
+})
 
 type PaginationItemProps = {
   page: number
   className?: string
-} & VariantProps<typeof paginationVariants>
+} & VariantProps<typeof paginationButtonVariants> &
+  VariantProps<typeof paginationTextVariants>
 
 export const PaginationItem = ({
   page,
@@ -38,10 +50,10 @@ export const PaginationItem = ({
   return (
     <Pressable
       {...props}
-      className={paginationVariants({ className, color })}
+      className={paginationButtonVariants({ className, color })}
       onPress={handleClick}
     >
-      <Text>{page}</Text>
+      <Text className={paginationTextVariants({ color })}>{page}</Text>
     </Pressable>
   )
 }
