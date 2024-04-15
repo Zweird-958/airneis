@@ -16,15 +16,17 @@ const useSession = () => {
   }
 
   useEffect(() => {
-    const payload = JSON.stringify(
-      SecureStore.getItemAsync(config.session.localStorageKey),
-    )
+    ;(async () => {
+      const payload = JSON.stringify(
+        await SecureStore.getItemAsync(config.session.localStorageKey),
+      )
 
-    if (!payload) {
-      return
-    }
+      if (!payload) {
+        return
+      }
 
-    setSession(JSON.parse(payload))
+      setSession(JSON.parse(payload))
+    })()
   }, [setSession])
 
   return { session, signIn }

@@ -19,7 +19,7 @@ export default function Index() {
         data={data?.result}
         renderItem={({ item }) => <Text>{item.name}</Text>}
       />
-      {session && <Text>{session}</Text>}
+      {session && <Text>{JSON.stringify(session)}</Text>}
     </SafeAreaView>
   )
 }
