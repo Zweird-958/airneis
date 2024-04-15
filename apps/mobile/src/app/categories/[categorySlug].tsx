@@ -2,13 +2,14 @@ import { useLocalSearchParams } from "expo-router"
 import { FlatList, Image, Text, View } from "react-native"
 
 import ProductCard from "@/components/products/ProductCard"
+import LoadingView from "@/components/ui/LoadingView"
 import { Pagination } from "@/components/ui/Pagination"
 import useLocale from "@/hooks/useLocale"
 import api from "@/utils/api"
 
 const Category = () => {
   const {
-    translations: { categories, common },
+    translations: { categories },
   } = useLocale()
   const { categorySlug, page } = useLocalSearchParams<{
     categorySlug: string
@@ -21,7 +22,7 @@ const Category = () => {
   })
 
   if (isLoading) {
-    return <Text>{common.loading}</Text>
+    return <LoadingView />
   }
 
   if (error || !data) {
