@@ -1,3 +1,5 @@
+import { sharedConfig } from "@airneis/config"
+
 import env from "@/env"
 
 const getBaseUrl = () => {
@@ -11,4 +13,4 @@ const getBaseUrl = () => {
 
   return `http://localhost:${env.PORT}`
 }
-export const getUrl = () => `${getBaseUrl()}/api/trpc`
+export const getUrl = () => `${getBaseUrl()}${sharedConfig.apiEndpoint}`
