@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import * as SecureStore from "expo-secure-store"
 import { JwtPayload } from "packages/types"
 import { useEffect } from "react"

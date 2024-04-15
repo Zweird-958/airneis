@@ -24,7 +24,7 @@ export const FormField = <TFieldValues extends FieldValues>({
       control={control}
       render={({ field: { onChange, onBlur, value } }) => (
         <TextInput
-          className="border-2 border-gray-300 rounded-md p-2"
+          className="border-2 border-gray-300 rounded-md p-2 my-2"
           onBlur={onBlur}
           onChangeText={onChange}
           value={value}

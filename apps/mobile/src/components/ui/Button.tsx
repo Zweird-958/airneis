@@ -1,5 +1,5 @@
 import React from "react"
-import { Pressable, StyleSheet, Text } from "react-native"
+import { Pressable, Text } from "react-native"
 
 interface ButtonProps {
   label: string
@@ -8,21 +8,13 @@ interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = (props) => {
   const { label, onPress } = props
-  const styles = StyleSheet.create({
-    button: {
-      backgroundColor: "blue",
-      padding: 10,
-      borderRadius: 5,
-      alignItems: "center",
-    },
-    text: {
-      color: "white",
-    },
-  })
 
   return (
-    <Pressable style={styles.button} onPress={onPress}>
-      <Text>{label}</Text>
+    <Pressable
+      onPress={onPress}
+      className="bg-primary p-4 my-2 rounded-md text-center"
+    >
+      <Text className="text-white">{label}</Text>
     </Pressable>
   )
 }
