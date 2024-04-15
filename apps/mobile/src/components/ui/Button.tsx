@@ -6,15 +6,13 @@ interface ButtonProps {
   onPress: () => void
 }
 
-export const Button: React.FC<ButtonProps> = (props) => {
-  const { label, onPress } = props
+const Button = ({ label, onPress }: ButtonProps) => (
+  <Pressable
+    onPress={onPress}
+    className="bg-primary p-4 my-2 rounded-md text-center"
+  >
+    <Text className="text-white">{label}</Text>
+  </Pressable>
+)
 
-  return (
-    <Pressable
-      onPress={onPress}
-      className="bg-primary p-4 my-2 rounded-md text-center"
-    >
-      <Text className="text-white">{label}</Text>
-    </Pressable>
-  )
-}
+export default Button
