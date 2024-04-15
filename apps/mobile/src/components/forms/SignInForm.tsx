@@ -26,7 +26,7 @@ export const SignInForm: React.FC = () => {
     defaultValues: { email: "", password: "" },
   })
   const {
-    translations: { common },
+    translations: { forms },
   } = useLocale()
   const { signIn } = useSession()
   const { mutate } = api.sessions.create.useMutation()
@@ -45,7 +45,7 @@ export const SignInForm: React.FC = () => {
       <FormField
         control={control}
         name="email"
-        placeholder={common.email}
+        placeholder={forms.email}
         errors={errors.email?.message}
         type="email"
         secureTextEntry={false}
@@ -53,7 +53,7 @@ export const SignInForm: React.FC = () => {
       <FormField
         control={control}
         name="password"
-        placeholder={common.password}
+        placeholder={forms.password}
         errors={errors.password?.message}
         type="text"
         secureTextEntry={true}

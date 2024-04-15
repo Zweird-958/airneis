@@ -4,11 +4,11 @@ import useLocale from "@/hooks/useLocale"
 
 const SignIn = () => {
   const {
-    translations: { common },
+    translations: { forms },
   } = useLocale()
 
   return (
-    <FormContainer title={common.signIn}>
+    <FormContainer title={forms.signIn}>
       <SignInForm />
     </FormContainer>
   )
