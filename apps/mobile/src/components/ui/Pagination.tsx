@@ -59,31 +59,27 @@ export const PaginationItem = ({
 }
 
 type PaginationProps = {
-  page?: string
+  page: number
   totalPages: number
 }
 
-export const Pagination = ({ page, totalPages }: PaginationProps) => {
-  const pageParsed = page ? parseInt(page, 10) : null
-
-  return (
-    <View className="flex-row justify-center gap-4">
-      {Array.from(
-        { length: config.pagination.step },
-        (_, i) => (pageParsed ?? totalPages) - 1 - i,
-      )
-        .sort()
-        .map((prev) => prev > 0 && <PaginationItem key={prev} page={prev} />)}
-      {pageParsed && <PaginationItem page={pageParsed} color="disabled" />}
-      {Array.from(
-        { length: config.pagination.step },
-        (_, i) => (pageParsed ? pageParsed + 1 : totalPages) + i,
-      )
-        .sort()
-        .map(
-          (next) =>
-            next <= totalPages && <PaginationItem key={next} page={next} />,
-        )}
-    </View>
-  )
-}
+export const Pagination = ({ page, totalPages }: PaginationProps) => (
+  <View className="flex-row justify-center gap-4">
+    {Array.from(
+      { length: config.pagination.step },
+      (_, i) => (page ?? totalPages) - 1 - i,
+    )
+      .sort()
+      .map((prev) => prev > 0 && <PaginationItem key={prev} page={prev} />)}
+    <PaginationItem page={page} color="disabled" />
+    {Array.from(
+      { length: config.pagination.step },
+      (_, i) => (page ? page + 1 : totalPages) + i,
+    )
+      .sort()
+      .map(
+        (next) =>
+          next <= totalPages && <PaginationItem key={next} page={next} />,
+      )}
+  </View>
+)

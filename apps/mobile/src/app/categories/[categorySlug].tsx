@@ -14,9 +14,10 @@ const Category = () => {
     categorySlug: string
     page?: string
   }>()
+  const pageParsed = page ? parseInt(page, 10) : 1
   const { data, isLoading, error } = api.categories.get.useQuery({
     slug: categorySlug,
-    page: page ? parseInt(page, 10) : 1,
+    page: pageParsed,
   })
 
   if (isLoading) {
@@ -55,7 +56,7 @@ const Category = () => {
           )}
         />
       </View>
-      <Pagination page={page} totalPages={totalPages} />
+      <Pagination page={pageParsed} totalPages={totalPages} />
     </View>
   )
 }
