@@ -11,7 +11,7 @@ const Button = ({ label, onPress }: ButtonProps) => (
     onPress={onPress}
     className="bg-primary p-4 my-2 rounded-md text-center"
   >
-    <Text className="text-white">{label}</Text>
+    <Text className="text-primary-foreground">{label}</Text>
   </Pressable>
 )
 
