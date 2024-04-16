@@ -28,13 +28,13 @@ const Index = () => {
         Airneis
       </Text>
       <LocaleSelector />
+      {session && <Text>{JSON.stringify(session)}</Text>}
       <View className="flex-row items-center gap-4 px-4">
         <TextInput
           className="border-2 rounded-default p-2 flex-1"
           onChangeText={setCategory}
           value={category}
         />
-        {session && <Text>{JSON.stringify(session)}</Text>}
         <Pressable onPress={handleGoToCategory}>
           <Text>{common.ok}</Text>
         </Pressable>
