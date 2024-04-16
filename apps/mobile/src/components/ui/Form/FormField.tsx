@@ -35,7 +35,7 @@ const FormField = <TFieldValues extends FieldValues>({
       )}
       name={name as Path<TFieldValues>}
     />
-    {errors && <Text className="text-red-500">{errors}</Text>}
+    {errors && <Text className="color-danger">{errors}</Text>}
   </View>
 )
 
