@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight, LucideIcon } from "lucide-react"
-import { ButtonHTMLAttributes } from "react"
+import React, { ButtonHTMLAttributes } from "react"
 
 import { Image } from "@airneis/types"
 
@@ -46,7 +46,7 @@ const BulletButton = ({ active, onClick, ...props }: BulletButtonProps) => (
 type CarouselMenuProps = {
   images: Image[]
   currentImageIndex: number
-  handleDotClick: (index: number) => () => void
+  handleDotClick: (event: React.MouseEvent<HTMLButtonElement>) => void
   handlePrevious: () => void
   handleNext: () => void
 }
@@ -64,7 +64,8 @@ const CarouselMenu = ({
         <BulletButton
           key={id}
           active={currentImageIndex === index}
-          onClick={handleDotClick(index)}
+          onClick={handleDotClick}
+          data-index={index}
         />
       ))}
     </div>

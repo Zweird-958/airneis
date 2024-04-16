@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState } from "react"
+import React, { useState } from "react"
 
 import { Image as ImageType } from "@airneis/types"
 
@@ -15,7 +15,8 @@ type Props = {
 
 const Carousel = ({ images, className }: Props) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const handleDotClick = (index: number) => () => {
+  const handleDotClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const index = parseInt(event.currentTarget.dataset.index || "0", 10)
     setCurrentImageIndex(index)
   }
   const handlePrevious = () => {
