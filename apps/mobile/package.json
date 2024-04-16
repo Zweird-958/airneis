@@ -14,8 +14,6 @@
     "@airneis/api": "^0.1.0",
     "@airneis/schemas": "^0.1.0",
     "@airneis/utils": "^0.1.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.23.3",
-    "@babel/plugin-transform-named-capturing-groups-regex": "^7.22.5",
     "@expo/vector-icons": "^14.0.0",
     "@react-navigation/drawer": "^6.6.9",
     "@react-navigation/native": "^6.1.9",
