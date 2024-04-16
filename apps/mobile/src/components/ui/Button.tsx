@@ -7,11 +7,8 @@ interface ButtonProps {
 }
 
 const Button = ({ label, onPress }: ButtonProps) => (
-  <Pressable
-    onPress={onPress}
-    className="bg-primary p-4 my-2 rounded-md text-center"
-  >
-    <Text className="text-primary-foreground">{label}</Text>
+  <Pressable onPress={onPress} className="bg-primary p-4 my-2 rounded-md">
+    <Text className="text-primary-foreground text-center">{label}</Text>
   </Pressable>
 )
 

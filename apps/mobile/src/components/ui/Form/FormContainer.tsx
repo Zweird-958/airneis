@@ -8,8 +8,8 @@ interface FormContainerProps {
 
 const FormContainer: React.FC<FormContainerProps> = ({ title, children }) => (
   <View className=" flex-1">
-    <Text className="text-center p-4 size-24">{title}</Text>
-    <View className="p-4">{children}</View>
+    <Text className="text-center p-4 text-2xl">{title}</Text>
+    <View className="px-4">{children}</View>
   </View>
 )
 
