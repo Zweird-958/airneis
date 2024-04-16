@@ -1,7 +1,7 @@
 import { getSingleProductSchema } from "@airneis/schemas"
 
 import { createTRPCRouter, publicProcedure } from "../trpc"
-import formatPrice from "../utils/formatPrice"
+import formatProduct from "../utils/formatProduct"
 
 const productsRouter = createTRPCRouter({
   all: publicProcedure.query(() => ({
@@ -19,18 +19,7 @@ const productsRouter = createTRPCRouter({
       )
 
       return {
-        result: {
-          id: product.id,
-          name: product.name[lang],
-          description: product.description[lang],
-          price: formatPrice(lang, product.price),
-          outOfStock: product.stock === 0,
-          images: product.images.map(({ id, url }) => ({ id, url })),
-          materials: product.materials.map(({ id, name }) => ({
-            id,
-            name: name[lang],
-          })),
-        },
+        result: formatProduct(product, lang, "product"),
       }
     }),
 })

@@ -86,7 +86,9 @@ const categoriesRouter = createTRPCRouter({
         const result = {
           result: {
             imageUrl: `${env.S3_URL}/${env.S3_BUCKET}/${category.image.url}`,
-            products: products.map((product) => formatProduct(product, lang)),
+            products: products.map((product) =>
+              formatProduct(product, lang, "category"),
+            ),
             name: category.name[lang],
             description: category.description[lang],
           },
