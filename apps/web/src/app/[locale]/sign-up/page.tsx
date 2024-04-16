@@ -7,7 +7,7 @@ const SignUp = async ({ params: { locale } }: PageProps) => {
   const { t } = await useTranslation(locale, "forms")
 
   return (
-    <FormLayout labelForm={t("signUp")}>
+    <FormLayout labelForm={t("signUp.title")}>
       <SignUpForm />
     </FormLayout>
   )

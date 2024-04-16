@@ -16,5 +16,11 @@
   "signIn": {
     "title": "Sign In",
     "description": "Sign in to your account"
+  },
+  "validateAccount": {
+    "loading": "Validating your account...",
+    "success": "Your account has been validated successfully!",
+    "error": "An error occured while validating your account. Please try again later.",
+    "redirect": "Redirecting to the sign-in page in {count}"
   }
 }
