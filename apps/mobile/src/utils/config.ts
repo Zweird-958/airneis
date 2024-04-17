@@ -1,3 +1,4 @@
+import { sharedConfig } from "packages/config"
 import { z } from "zod"
 
 import env from "@/env"
@@ -14,7 +15,7 @@ const config = schema.parse({
   pagination: {
     step: 2,
   },
-  apiUrl: `${env.EXPO_PUBLIC_HOST_SERVER_URL}/api/trpc`,
+  apiUrl: `${env.EXPO_PUBLIC_HOST_SERVER_URL}${sharedConfig.apiEndpoint}`,
 })
 
 export default config
