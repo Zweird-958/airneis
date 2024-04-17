@@ -1,5 +1,6 @@
-import { sharedConfig } from "packages/config"
 import { z } from "zod"
+
+import { sharedConfig } from "@airneis/config"
 
 import env from "@/env"
 
