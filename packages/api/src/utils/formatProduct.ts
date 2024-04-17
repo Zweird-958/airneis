@@ -20,7 +20,6 @@ const util = (product: Product, lang: Locale) => {
     },
     product: {
       ...base,
-      outOfStock: product.stock === 0,
       description: product.description[lang],
       images: product.images.map(({ id, url }) => ({ id, url })),
       materials: product.materials.map(({ id, name }) => ({
