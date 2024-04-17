@@ -27,7 +27,7 @@ const handler = async (req: NextRequest) => {
     ?.split(";")[0]
   const langCookie = req.cookies.get(sharedConfig.localeCookieKey)?.value
   const response = await fetchRequestHandler({
-    endpoint: sharedConfig.apiEndpoint,
+    endpoint: sharedConfig.apiPath,
     router: appRouter,
     req,
     createContext: () =>

@@ -13,4 +13,4 @@ const getBaseUrl = () => {
 
   return `http://localhost:${env.PORT}`
 }
-export const getUrl = () => `${getBaseUrl()}${sharedConfig.apiEndpoint}`
+export const getUrl = () => `${getBaseUrl()}${sharedConfig.apiPath}`
