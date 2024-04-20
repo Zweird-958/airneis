@@ -60,8 +60,8 @@ const sessionsRouter = createTRPCRouter({
       return jwt
     },
   ),
-  delete: publicProcedure.mutation(async () => {
-    await cookies().set(config.security.jwt.cookie.key, "", {
+  delete: publicProcedure.mutation(() => {
+    cookies().set(config.security.jwt.cookie.key, "", {
       path: "/",
       sameSite: "strict",
       httpOnly: true,

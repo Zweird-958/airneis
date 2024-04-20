@@ -1,11 +1,11 @@
 import { TRPCError } from "@trpc/server"
-import { createTRPCRouter, publicProcedure } from "packages/api/src/trpc"
+import { adminProcedure, createTRPCRouter } from "packages/api/src/trpc"
 import { Locale } from "packages/config"
 
 import { createMaterialSchema } from "@airneis/schemas"
 
 const materialsRouter = createTRPCRouter({
-  create: publicProcedure
+  create: adminProcedure
     .input(createMaterialSchema)
     .mutation(async ({ ctx, input: { name } }) => {
       const materialExists = await ctx.entities.material.findOne({
