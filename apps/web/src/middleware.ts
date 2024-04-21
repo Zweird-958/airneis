@@ -2,6 +2,7 @@ import { match } from "@formatjs/intl-localematcher"
 import Negotiator from "negotiator"
 import { NextRequest, NextResponse } from "next/server"
 
+import getSession from "@airneis/api/getSession"
 import { sharedConfig } from "@airneis/config"
 import { localeSchema } from "@airneis/schemas"
 import type { Locale } from "@airneis/types"
@@ -27,6 +28,9 @@ export const middleware = (request: NextRequest) => {
     url,
   } = request
 
+  /**
+   * Language detection and redirection
+   */
   if (
     !sharedConfig.languageKeys.some((lang) => pathname.startsWith(`/${lang}`))
   ) {
@@ -43,6 +47,18 @@ export const middleware = (request: NextRequest) => {
 
   if (langInReferer && cookie?.value !== langInReferer) {
     response.cookies.set(sharedConfig.localeCookieKey, langInReferer)
+  }
+
+  /**
+   * Session handling and route protection
+   */
+  const session = getSession()
+
+  if (
+    /\/\w{2}\/dashboard.*/u.exec(pathname)?.length &&
+    session?.user.role !== "ADMIN"
+  ) {
+    return NextResponse.redirect(new URL("/404", url))
   }
 
   return response
