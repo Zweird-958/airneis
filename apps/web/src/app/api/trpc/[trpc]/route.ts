@@ -32,6 +32,7 @@ const handler = async (req: NextRequest) => {
     req,
     createContext: () =>
       createTRPCContext(
+        req,
         localeSchema
           .catch(localeFallbackSchema.parse(langCookie))
           .parse(langSetCookie),

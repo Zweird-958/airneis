@@ -1,16 +1,19 @@
 import { initTRPC } from "@trpc/server"
+import { NextRequest } from "next/server"
 import superjson from "superjson"
 
 import { em, entities } from "@airneis/db"
 import { resend } from "@airneis/email"
 import { keys, redis } from "@airneis/redis"
 import { s3 } from "@airneis/s3"
+import { stripe } from "@airneis/stripe/server"
 import { Locale } from "@airneis/types"
 
 import withAuth from "./middlewares/withAuth"
 import withOrm from "./middlewares/withOrm"
 
-export const createTRPCContext = (lang: Locale) => ({
+export const createTRPCContext = (req: NextRequest, lang: Locale) => ({
+  req,
   em,
   entities,
   s3,
@@ -18,6 +21,7 @@ export const createTRPCContext = (lang: Locale) => ({
   cacheKeys: keys,
   lang,
   resend,
+  stripe,
 })
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
