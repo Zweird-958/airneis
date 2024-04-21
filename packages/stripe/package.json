@@ -2,12 +2,16 @@
   "name": "@airneis/stripe",
   "version": "0.1.0",
   "private": true,
-  "main": "index.ts",
+  "exports": {
+    "./client": "./src/utils/client.ts",
+    "./server": "./src/utils/server.ts"
+  },
   "scripts": {
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@stripe/stripe-js": "^3.3.0"
+    "@stripe/stripe-js": "^3.3.0",
+    "stripe": "^15.3.0"
   },
   "devDependencies": {
     "typescript": "^5.3.3"
