@@ -24,8 +24,8 @@ const getSession = () => {
     ) as RawJwt
 
     return payload
-  } catch (err) {
-    // If this fails, is means the session is invalid, so we can safely ignore it
+  } catch {
+    // If this fails, it means the session is invalid, so we can safely ignore the error
     return null
   }
 }
