@@ -1,3 +1,3 @@
-import { Image as DbImage } from "@airneis/db"
+import { Image as ImageEntity } from "@airneis/db"
 
-export type Image = Pick<DbImage, "id" | "url">
+export type Image = Pick<ImageEntity, "id" | "url">
