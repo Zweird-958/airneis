@@ -28,7 +28,7 @@ export class Product extends SoftBaseEntity<Product, "priority"> {
   @Property({ type: "integer", nullable: false })
   price: number
 
-  @Property({ type: "string", nullable: false, unique: true })
+  @Property({ type: "text", nullable: false, unique: true })
   slug: string
 
   @Property({ type: "integer", nullable: true, default: null })
