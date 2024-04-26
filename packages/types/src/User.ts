@@ -3,24 +3,17 @@ export enum UserRoles {
   USER = "USER",
 }
 export type id = `${string}-${string}-${string}-${string}-${string}`
+export type RawJwtBase<TPayload> = {
+  iat: number
+  exp: number
+  payload: TPayload
+}
 export type JwtPayload = {
   user: {
     id: id
     role: UserRoles
   }
 }
-export type RawJwt<TPayload = JwtPayload> = {
-  iat: number
-  exp: number
-  payload: TPayload
-}
-export type CookieRawJwt = RawJwt<string>
-export type ValidationAccountJwt = {
-  iat: number
-  exp: number
-  payload: {
-    user: {
-      id: id
-    }
-  }
-}
+export type RawJwt = RawJwtBase<JwtPayload>
+export type CookieRawJwt = RawJwtBase<string>
+export type ValidationAccountJwt = RawJwtBase<{ user: { id: id } }>
