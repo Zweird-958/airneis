@@ -2,11 +2,11 @@ import { DeleteObjectCommand, PutObjectCommand } from "@airneis/s3"
 import { imageUrlSchema } from "@airneis/schemas"
 
 import env from "../env"
-import { createTRPCRouter, publicProcedure } from "../trpc"
+import { adminProcedure, createTRPCRouter } from "../trpc"
 import { imageSchema } from "../utils/schemas"
 
 const imagesRouter = createTRPCRouter({
-  create: publicProcedure
+  create: adminProcedure
     .input(imageSchema)
     .mutation(async ({ ctx: { s3 }, input: { buffer, type, folderName } }) => {
       const name = Date.now().toString()
@@ -22,7 +22,7 @@ const imagesRouter = createTRPCRouter({
 
       return `${folderName}/${name}`
     }),
-  delete: publicProcedure
+  delete: adminProcedure
     .input(imageUrlSchema)
     .mutation(async ({ ctx: { s3 }, input }) => {
       await s3.send(
