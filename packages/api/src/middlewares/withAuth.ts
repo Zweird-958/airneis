@@ -17,7 +17,9 @@ const withAuth = (t: tRPCInit, minimumRole: keyof typeof UserRoles) =>
       throw new TRPCError({ code: "FORBIDDEN" })
     }
 
-    return next({ ctx })
+
+
+    return next({ ctx: { ...ctx, session } })
   })
 
 export default withAuth
