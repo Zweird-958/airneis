@@ -27,6 +27,9 @@ export const middleware = (request: NextRequest) => {
     url,
   } = request
 
+  /**
+   * Language detection and redirection
+   */
   if (
     !sharedConfig.languageKeys.some((lang) => pathname.startsWith(`/${lang}`))
   ) {
