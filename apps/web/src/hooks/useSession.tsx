@@ -10,12 +10,22 @@ import config from "@/utils/config"
 const useSession = () => {
   const { session, setSession } = useSessionStore()
   const { mutateAsync } = api.sessions.delete.useMutation()
+  const { mutate: cartMutate } = api.carts.saveLocale.useMutation({
+    onSettled: () => localStorage.removeItem(config.cart.localStorageKey),
+  })
   const signIn = (jwt: string) => {
     localStorage.setItem(config.session.localStorageKey, jwt)
 
     const { payload } = jsonwebtoken.decode(jwt) as RawJwt
-
     setSession(payload)
+
+    const localeCart = localStorage.getItem(config.cart.localStorageKey)
+
+    if (!localeCart) {
+      return
+    }
+
+    cartMutate(JSON.parse(localeCart))
   }
   const signOut = useCallback(async () => {
     await mutateAsync()
