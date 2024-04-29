@@ -7,7 +7,7 @@ import type { Locale, Product } from "@airneis/types"
 import config from "../config"
 import env from "../env"
 import { createTRPCRouter, publicProcedure } from "../trpc"
-import formatProduct from "../utils/formatProduct"
+import formatProductFor from "../utils/formatProductFor"
 
 type GetCategoryResult = {
   result: {
@@ -87,7 +87,7 @@ const categoriesRouter = createTRPCRouter({
           result: {
             imageUrl: `${env.S3_URL}/${env.S3_BUCKET}/${category.image.url}`,
             products: products.map((product) =>
-              formatProduct(product, lang, "category"),
+              formatProductFor.category(product, lang),
             ),
             name: category.name[lang],
             description: category.description[lang],
