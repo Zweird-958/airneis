@@ -6,16 +6,15 @@
     "node": "20.9.0"
   },
   "scripts": {
-    "web": "npm run dev -w \"apps/web\"",
-    "mobile:ios": "npm run ios -w \"apps/mobile\"",
-    "mobile:android": "npm run android -w \"apps/mobile\"",
-    "db": "npm run db -w \"packages/db\"",
+    "web": "pnpm run --filter web dev",
+    "mobile:ios": "pnpm run --filter mobile ios ",
+    "mobile:android": "pnpm run --filter mobile android",
+    "db": "pnpm run --filter db db",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier -c .",
     "format:fix": "prettier -w .",
-    "typecheck": "npm run typecheck -ws --if-present",
-    "check": "npm run lint && npm run typecheck && npm run format",
+    "check": "pnpm run lint && pnpm run typecheck && pnpm run format",
     "clear": "git clean -xdf node_modules apps/web/.next apps/mobile/.expo && rm -f package-lock.json",
     "env-symlink": "ln -sf $PWD/.env ./apps/web && ln -sf $PWD/.env ./apps/mobile"
   },

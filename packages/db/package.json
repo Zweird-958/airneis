@@ -8,8 +8,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@airneis/config": "^0.1.0",
     "@mikro-orm/core": "^6.1.5",
-    "@mikro-orm/postgresql": "^6.1.5"
+    "@mikro-orm/postgresql": "^6.1.5",
+    "dotenv": "^16.4.5",
+    "slugify": "^1.6.6",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@airneis/types": "^0.1.0",

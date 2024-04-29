@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@airneis/api": "^0.1.0",
+    "@airneis/config": "workspace:^0.1.0",
     "@airneis/schemas": "^0.1.0",
     "@airneis/utils": "^0.1.0",
     "@expo/vector-icons": "^14.0.0",
@@ -19,6 +20,7 @@
     "@react-navigation/native": "^6.1.9",
     "@tanstack/react-query": "^4.36.1",
     "@trpc/react-query": "^10.45.0",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "expo": "~50.0.8",
     "expo-font": "~11.10.3",
@@ -44,6 +46,7 @@
     "zustand": "^4.5.1"
   },
   "devDependencies": {
+    "@airneis/types": "workspace:^0.1.0",
     "@babel/core": "^7.23.9",
     "@types/react": "~18.2.52",
     "react-test-renderer": "18.2.0",

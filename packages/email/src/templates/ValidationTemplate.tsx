@@ -12,7 +12,7 @@ import {
 } from "@react-email/components"
 import * as React from "react"
 
-import { Locale } from "@airneis/types"
+import { Locale } from "@airneis/config"
 
 import baseConfig from "../../../../tailwind.config"
 import { translations } from "../translations"

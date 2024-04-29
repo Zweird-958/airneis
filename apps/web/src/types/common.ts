@@ -1,4 +1,4 @@
-import { Locale } from "@airneis/types"
+import { Locale } from "@airneis/config"
 
 export type PageProps = {
   params: {

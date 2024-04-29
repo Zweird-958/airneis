@@ -4,7 +4,7 @@ import NextLink, { LinkProps } from "next/link"
 import { useParams } from "next/navigation"
 import { ReactNode } from "react"
 
-import type { Locale } from "@airneis/types"
+import type { Locale } from "@airneis/config"
 
 type Props = {
   children: ReactNode

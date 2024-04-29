@@ -12,7 +12,7 @@ import {
 } from "react-i18next"
 
 import { sharedConfig } from "@airneis/config"
-import { Locale } from "@airneis/types"
+import { Locale } from "@airneis/config"
 
 import { Namespace } from "@/utils/config"
 

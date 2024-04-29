@@ -1,8 +1,9 @@
 import { TRPCError } from "@trpc/server"
 import slugify from "slugify"
 
+import type { Locale } from "@airneis/config"
 import { createCategorySchema, getCategorySchema } from "@airneis/schemas"
-import type { Locale, Product } from "@airneis/types"
+import type { Product } from "@airneis/types"
 
 import config from "../config"
 import env from "../env"

@@ -1,11 +1,11 @@
 import { initTRPC } from "@trpc/server"
 import superjson from "superjson"
 
+import { Locale } from "@airneis/config"
 import { em, entities } from "@airneis/db"
 import { resend } from "@airneis/email"
 import { keys, redis } from "@airneis/redis"
 import { s3 } from "@airneis/s3"
-import { Locale } from "@airneis/types"
 
 import withAuth from "./middlewares/withAuth"
 import withOrm from "./middlewares/withOrm"

@@ -3,8 +3,8 @@ import Negotiator from "negotiator"
 import { NextRequest, NextResponse } from "next/server"
 
 import { sharedConfig } from "@airneis/config"
+import type { Locale } from "@airneis/config"
 import { localeSchema } from "@airneis/schemas"
-import type { Locale } from "@airneis/types"
 
 const getLocale = ({ headers, cookies }: NextRequest) =>
   localeSchema

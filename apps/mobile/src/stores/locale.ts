@@ -1,7 +1,7 @@
 import { create } from "zustand"
 
 import { sharedConfig } from "@airneis/config"
-import type { Locale } from "@airneis/types"
+import type { Locale } from "@airneis/config"
 
 import { translations as defaultTranslation } from "@/utils/locale/getTranslations"
 

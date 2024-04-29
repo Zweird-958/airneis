@@ -1,5 +1,5 @@
+import { Locale } from "@airneis/config"
 import { Product } from "@airneis/db"
-import { Locale } from "@airneis/types"
 
 import config from "../config"
 

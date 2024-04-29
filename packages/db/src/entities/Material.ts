@@ -1,6 +1,6 @@
 import { Collection, Entity, ManyToMany, Property } from "@mikro-orm/core"
 
-import { Locale } from "@airneis/types"
+import { Locale } from "@airneis/config"
 
 import { BaseEntity } from "./BaseEntity"
 import { Product } from "./Product"

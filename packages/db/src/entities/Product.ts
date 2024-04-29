@@ -6,7 +6,7 @@ import {
   Property,
 } from "@mikro-orm/core"
 
-import { Locale } from "@airneis/types"
+import { Locale } from "@airneis/config"
 
 import { Category } from "./Category"
 import { Image } from "./Image"
