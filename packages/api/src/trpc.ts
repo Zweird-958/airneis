@@ -1,7 +1,7 @@
 import { initTRPC } from "@trpc/server"
 import superjson from "superjson"
 
-import { em, entities } from "@airneis/db"
+import { em, entities, raw } from "@airneis/db"
 import { resend } from "@airneis/email"
 import { keys, redis } from "@airneis/redis"
 import { s3 } from "@airneis/s3"
@@ -12,6 +12,7 @@ import withOrm from "./middlewares/withOrm"
 export const createTRPCContext = (lang: Locale) => ({
   em,
   entities,
+  raw,
   s3,
   redis,
   cacheKeys: keys,
