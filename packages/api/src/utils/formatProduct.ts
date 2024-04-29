@@ -1,3 +1,5 @@
+import getImageUrl from "packages/api/src/utils/getImageUrl"
+
 import { Product } from "@airneis/db"
 import { Locale } from "@airneis/types"
 
@@ -9,7 +11,7 @@ const formatProduct = (
 ) => ({
   id,
   outOfStock: stock === 0,
-  imagesUrl: images.map(({ url }) => url),
+  imagesUrl: images.map(({ url }) => getImageUrl(url)),
   name: name[lang],
   priority,
   price: new Intl.NumberFormat(lang, {

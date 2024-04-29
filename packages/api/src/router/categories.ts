@@ -1,11 +1,11 @@
 import { TRPCError } from "@trpc/server"
+import getImageUrl from "packages/api/src/utils/getImageUrl"
 import slugify from "slugify"
 
 import { createCategorySchema, getCategorySchema } from "@airneis/schemas"
 import type { Locale, Product } from "@airneis/types"
 
 import config from "../config"
-import env from "../env"
 import { createTRPCRouter, publicProcedure } from "../trpc"
 import formatProduct from "../utils/formatProduct"
 
@@ -85,7 +85,7 @@ const categoriesRouter = createTRPCRouter({
         )
         const result = {
           result: {
-            imageUrl: `${env.S3_URL}/${env.S3_BUCKET}/${category.image.url}`,
+            imageUrl: getImageUrl(category.image.url),
             products: products.map((product) => formatProduct(product, lang)),
             name: category.name[lang],
             description: category.description[lang],
