@@ -8,8 +8,7 @@ import {
   type Rel,
 } from "@mikro-orm/core"
 
-import { OrderStatus } from "@airneis/types"
-
+import { OrderStatus } from "../types/Order"
 import { Address } from "./Address"
 import { BaseEntity } from "./BaseEntity"
 import { OrderProduct } from "./OrderProduct"

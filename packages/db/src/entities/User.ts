@@ -1,7 +1,6 @@
 import { Collection, Entity, Enum, OneToMany, Property } from "@mikro-orm/core"
 
-import { UserRoles } from "@airneis/types"
-
+import { UserRoles } from "../types/User"
 import { Address } from "./Address"
 import { Cart } from "./Cart"
 import { Order } from "./Order"
