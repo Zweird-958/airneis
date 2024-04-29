@@ -37,7 +37,9 @@ export class CategorySeeder extends Seeder {
   async run(em: EntityManager) {
     const upload = uploadImage(em)
     const categoryImage = await upload("categories", config.images.categories)
-    const productImage = await upload("products", config.images.products)
+    const productsImages = await Promise.all(
+      config.images.products.map((image) => upload("products", image)),
+    )
 
     let priority = 0
 
@@ -47,7 +49,7 @@ export class CategorySeeder extends Seeder {
         category.products.set(
           new ProductFactory(em)
             .each((product) => {
-              product.images.set([productImage])
+              product.images.set(productsImages)
               product.priority = priority
               priority += 1
             })
