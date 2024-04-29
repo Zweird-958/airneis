@@ -3,8 +3,8 @@ import { httpBatchLink } from "@trpc/react-query"
 import { ReactNode, useState } from "react"
 import superjson from "superjson"
 
-import env from "@/env"
 import api from "@/utils/api"
+import config from "@/utils/config"
 
 type Props = {
   children: ReactNode
@@ -18,7 +18,7 @@ const TRPCProvider = (props: Props) => {
       transformer: superjson,
       links: [
         httpBatchLink({
-          url: `${env.EXPO_PUBLIC_HOST_SERVER_URL}/api/trpc`,
+          url: config.apiUrl,
         }),
       ],
     }),

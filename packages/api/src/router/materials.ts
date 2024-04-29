@@ -1,5 +1,5 @@
 import { TRPCError } from "@trpc/server"
-import { adminProcedure, createTRPCRouter } from "packages/api/src/trpc"
+import { adminProcedure, createTRPCRouter } from "../trpc"
 import { Locale } from "packages/config"
 
 import { createMaterialSchema } from "@airneis/schemas"
