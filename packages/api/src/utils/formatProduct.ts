@@ -1,4 +1,4 @@
-import getImageUrl from "packages/api/src/utils/getImageUrl"
+import getImageUrl from "./getImageUrl"
 
 import { Product } from "@airneis/db"
 import { Locale } from "@airneis/types"
