@@ -3,35 +3,35 @@ import { Locale } from "@airneis/types"
 
 import formatPrice from "./formatPrice"
 
-const getBase = (p: Product, lang: Locale) => ({
-  id: p.id,
-  name: p.name[lang],
-  outOfStock: p.stock === 0,
-  price: formatPrice(lang, p.price),
+const getBase = (product: Product, lang: Locale) => ({
+  id: product.id,
+  name: product.name[lang],
+  outOfStock: product.stock === 0,
+  price: formatPrice(lang, product.price),
 })
-const category = (p: Product, lang: Locale) => ({
-  ...getBase(p, lang),
-  slug: p.slug,
-  priority: p.priority,
-  imagesUrl: p.images.map(({ url }) => url),
+const category = (product: Product, lang: Locale) => ({
+  ...getBase(product, lang),
+  slug: product.slug,
+  priority: product.priority,
+  imagesUrl: product.images.map(({ url }) => url),
 })
-const product = (p: Product, lang: Locale) => ({
-  ...getBase(p, lang),
-  description: p.description[lang],
-  images: p.images.map(({ id, url }) => ({ id, url })),
-  materials: p.materials.map(({ id, name }) => ({
+const single = (product: Product, lang: Locale) => ({
+  ...getBase(product, lang),
+  description: product.description[lang],
+  images: product.images.map(({ id, url }) => ({ id, url })),
+  materials: product.materials.map(({ id, name }) => ({
     id,
     name: name[lang],
   })),
 })
-const similar = (p: Product, lang: Locale) => ({
-  ...getBase(p, lang),
-  slug: p.slug,
-  imagesUrl: p.images.map(({ url }) => url),
+const similar = (product: Product, lang: Locale) => ({
+  ...getBase(product, lang),
+  slug: product.slug,
+  imagesUrl: product.images.map(({ url }) => url),
 })
 const formatProductFor = {
   category,
-  product,
+  single,
   similar,
 }
 

@@ -53,7 +53,7 @@ const productsRouter = createTRPCRouter({
 
       return {
         result: {
-          ...formatProductFor.product(product, lang),
+          ...formatProductFor.single(product, lang),
           similarProducts: similarProducts.map((similarProduct) =>
             formatProductFor.similar(similarProduct, lang),
           ),
