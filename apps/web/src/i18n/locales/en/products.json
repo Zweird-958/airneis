@@ -1,4 +1,5 @@
 {
   "outOfStock": "Out of stock",
-  "addToCart": "Add to cart"
+  "addToCart": "Add to cart",
+  "similar": "{count, plural, zero {No similar product} one {Similar product} other {Similar products}}"
 }
