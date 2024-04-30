@@ -8,9 +8,9 @@ import { useTranslation } from "@/i18n"
 const NotFound = async () => {
   /**
    * Next.js doesn't provide custom params (e.g. `locale`) in not-found pages.
-   * Becaues of that, we we need to get creative.
+   * Becaues of that, we need to get creative.
    *
-   * Here we use the pathname header to get the current locale.
+   * Here we use the pathname header defined by the middleware to get the current locale.
    */
   const pathname = headers().get(sharedConfig.pathnameHeaderKey)
   const lang = localeFallbackSchema.parse(pathname?.split("/")[1])
