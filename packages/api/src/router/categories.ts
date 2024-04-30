@@ -1,14 +1,13 @@
 import { TRPCError } from "@trpc/server"
-import getImageUrl from "../utils/getImageUrl"
 import slugify from "slugify"
 
 import { createCategorySchema, getCategorySchema } from "@airneis/schemas"
 import type { Locale, Product } from "@airneis/types"
 
 import config from "../config"
-import env from "../env"
 import { adminProcedure, createTRPCRouter, publicProcedure } from "../trpc"
 import formatProduct from "../utils/formatProduct"
+import getImageUrl from "../utils/getImageUrl"
 
 type GetCategoryResult = {
   result: {
