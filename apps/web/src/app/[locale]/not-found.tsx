@@ -1,20 +1,9 @@
-import { headers } from "next/headers"
-
-import { sharedConfig } from "@airneis/config"
-import { localeFallbackSchema } from "@airneis/schemas"
-
 import { useTranslation } from "@/i18n"
+import getLocale from "@/utils/locale/getLocale"
 
 const NotFound = async () => {
-  /**
-   * Next.js doesn't provide custom params (e.g. `locale`) in not-found pages.
-   * Becaues of that, we need to get creative.
-   *
-   * Here we use the pathname header defined by the middleware to get the current locale.
-   */
-  const pathname = headers().get(sharedConfig.pathnameHeaderKey)
-  const lang = localeFallbackSchema.parse(pathname?.split("/")[1])
-  const { t } = await useTranslation(lang, "common")
+  const locale = getLocale()
+  const { t } = await useTranslation(locale, "common")
 
   return (
     <div>

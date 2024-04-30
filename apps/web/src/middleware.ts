@@ -48,8 +48,6 @@ export const middleware = (request: NextRequest) => {
     response.cookies.set(sharedConfig.localeCookieKey, langInReferer)
   }
 
-  response.headers.set(sharedConfig.pathnameHeaderKey, pathname)
-
   return response
 }
 
