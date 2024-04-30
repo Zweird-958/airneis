@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 
-import { stripe } from "@airneis/stripe/server"
+import { stripeServer } from "@airneis/stripe"
 
 type Props = {
   searchParams: { sessionId: string }
@@ -11,7 +11,7 @@ const Page = async ({ searchParams: { sessionId } }: Props) => {
     notFound()
   }
 
-  const session = await stripe.checkout.sessions
+  const session = await stripeServer.checkout.sessions
     .retrieve(sessionId)
     .catch(() => null)
 

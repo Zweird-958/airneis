@@ -2,10 +2,7 @@
   "name": "@airneis/stripe",
   "version": "0.1.0",
   "private": true,
-  "exports": {
-    "./client": "./src/utils/client.ts",
-    "./server": "./src/utils/server.ts"
-  },
+  "main": "index.ts",
   "scripts": {
     "typecheck": "tsc --noEmit"
   },
