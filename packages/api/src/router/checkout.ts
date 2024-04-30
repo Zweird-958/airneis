@@ -33,7 +33,7 @@ const checkoutRouter = createTRPCRouter({
                 description: product.description[lang],
                 images: product.images.map((image) => image.url),
               },
-              unit_amount: product.price * 100,
+              unit_amount: product.price,
             },
           },
         ],
