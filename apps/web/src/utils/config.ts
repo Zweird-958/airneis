@@ -6,6 +6,7 @@ const namespaces = [
   "categories",
   "zodErrors",
   "products",
+  "materials",
 ] as const
 const schema = z.object({
   session: z.object({

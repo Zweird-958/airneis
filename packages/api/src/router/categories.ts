@@ -6,7 +6,7 @@ import type { Locale, Product } from "@airneis/types"
 
 import config from "../config"
 import env from "../env"
-import { createTRPCRouter, publicProcedure } from "../trpc"
+import { adminProcedure, createTRPCRouter, publicProcedure } from "../trpc"
 import formatProductFor from "../utils/formatProductFor"
 
 type GetCategoryResult = {
@@ -23,7 +23,7 @@ type GetCategoryResult = {
 }
 
 const categoriesRouter = createTRPCRouter({
-  create: publicProcedure
+  create: adminProcedure
     .input(createCategorySchema)
     .mutation(async ({ ctx, input: { name, description, imageUrl } }) => {
       const categoryExists = await ctx.entities.category.findOne({
