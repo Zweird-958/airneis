@@ -7,16 +7,33 @@ import { authedProcedure, createTRPCRouter } from "../trpc"
 const checkoutRouter = createTRPCRouter({
   createSession: authedProcedure
     .use(withOrigin)
-    .mutation(async ({ ctx: { stripe, lang, origin } }) => {
+    .mutation(async ({ ctx: { stripe, lang, origin, entities } }) => {
+      const product = await entities.product.findOne(
+        { stock: { $gt: 1 } },
+        { populate: ["images"] },
+      )
+      const quantity = 2
+
+      if (!product) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "No products available",
+        })
+      }
+
       const checkoutSession = await stripe.checkout.sessions.create({
         mode: "payment",
         line_items: [
           {
-            quantity: 2,
+            quantity,
             price_data: {
               currency: config.currency.toLowerCase(),
-              product_data: { name: "Table" },
-              unit_amount: 2000,
+              product_data: {
+                name: product.name[lang],
+                description: product.description[lang],
+                images: product.images.map((image) => image.url),
+              },
+              unit_amount: product.price * 100,
             },
           },
         ],
