@@ -1,5 +1,5 @@
 import { TRPCError } from "@trpc/server"
-import getImageUrl from "packages/api/src/utils/getImageUrl"
+import getImageUrl from "../utils/getImageUrl"
 import slugify from "slugify"
 
 import { createCategorySchema, getCategorySchema } from "@airneis/schemas"
