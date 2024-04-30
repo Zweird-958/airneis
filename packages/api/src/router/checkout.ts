@@ -1,20 +1,13 @@
 import { TRPCError } from "@trpc/server"
 
 import config from "../config"
+import withOrigin from "../middlewares/withOrigin"
 import { authedProcedure, createTRPCRouter } from "../trpc"
 
 const checkoutRouter = createTRPCRouter({
-  createSession: authedProcedure.mutation(
-    async ({ ctx: { req, stripe, lang } }) => {
-      const origin = req.headers.get("origin")
-
-      if (!origin) {
-        throw new TRPCError({
-          code: "INTERNAL_SERVER_ERROR",
-          message: "Origin header is missing",
-        })
-      }
-
+  createSession: authedProcedure
+    .use(withOrigin)
+    .mutation(async ({ ctx: { stripe, lang, origin } }) => {
       const checkoutSession = await stripe.checkout.sessions.create({
         mode: "payment",
         line_items: [
@@ -39,8 +32,7 @@ const checkoutRouter = createTRPCRouter({
       }
 
       return checkoutSession.url
-    },
-  ),
+    }),
 })
 
 export default checkoutRouter
