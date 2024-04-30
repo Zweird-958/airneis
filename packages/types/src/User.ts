@@ -4,7 +4,7 @@ export enum UserRoles {
   ADMIN = "ADMIN",
   USER = "USER",
 }
-export type Id = Pick<User, "id">["id"]
+export type Id = User["id"]
 export type RawJwtBase<TPayload> = {
   iat: number
   exp: number
