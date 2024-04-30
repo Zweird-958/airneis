@@ -27,7 +27,7 @@ const checkoutRouter = createTRPCRouter({
           {
             quantity,
             price_data: {
-              currency: config.currency.toLowerCase(),
+              currency: config.currency,
               product_data: {
                 name: product.name[lang],
                 description: product.description[lang],
