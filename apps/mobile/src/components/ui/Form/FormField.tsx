@@ -4,7 +4,7 @@ import { InputModeOptions, Text, TextInput, View } from "react-native"
 
 type Props<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>
-  name: string
+  name: Path<TFieldValues>
   placeholder: string
   errors?: string
   type: InputModeOptions
@@ -33,7 +33,7 @@ const FormField = <TFieldValues extends FieldValues>({
           secureTextEntry={secureTextEntry}
         />
       )}
-      name={name as Path<TFieldValues>}
+      name={name}
     />
     {errors && <Text className="color-danger">{errors}</Text>}
   </View>
