@@ -9,6 +9,7 @@ const schema = z.object({
   DATABASE_PORT: z.coerce.number(),
   DATABASE_USERNAME: z.string(),
   DATABASE_PASSWORD: z.string(),
+  S3_BUCKET: z.string(),
 })
 const env = schema.parse({
   DATABASE_HOST: process.env.DATABASE_HOST,
@@ -16,6 +17,7 @@ const env = schema.parse({
   DATABASE_PORT: process.env.DATABASE_PORT,
   DATABASE_USERNAME: process.env.DATABASE_USERNAME,
   DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
+  S3_BUCKET: process.env.S3_BUCKET,
 })
 
 export default env
