@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-
-/* eslint-disable capitalized-comments */
 import { router } from "expo-router"
 import React from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
@@ -31,7 +28,6 @@ export const SignInForm: React.FC = () => {
   const { signIn } = useSession()
   const { mutate } = api.sessions.create.useMutation()
   const onSubmit: SubmitHandler<SignInFormSchema> = (values) => {
-    console.log(values)
     mutate(values, {
       onSuccess: (data) => {
         signIn(data.payload)
