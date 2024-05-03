@@ -6,25 +6,14 @@ import {
 
 import useLocale from "@/hooks/useLocale"
 import useSession from "@/hooks/useSession"
+import { headerLink } from "@/utils/layout/headerLink"
 
 const DrawerContent = (props: DrawerContentComponentProps) => {
   const {
     translations: { common },
   } = useLocale()
   const { session } = useSession()
-  const DRAWER_ITEMS = [
-    {
-      label: common.home,
-      screen: "index",
-      visibleOn: "both",
-    },
-    {
-      label: common.signIn,
-      screen: "sign-in",
-      visibleOn: "unAuth",
-    },
-  ]
-  const visibleHeaderLinks = DRAWER_ITEMS.filter(
+  const visibleHeaderLinks = headerLink.filter(
     ({ visibleOn }) =>
       visibleOn === "both" ||
       (session ? visibleOn === "auth" : visibleOn === "unAuth"),
@@ -35,7 +24,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
       {visibleHeaderLinks.map(({ label, screen }) => (
         <DrawerItem
           key={label}
-          label={label}
+          label={common[label as keyof typeof common]}
           onPress={() => props.navigation.navigate(screen)}
         />
       ))}
