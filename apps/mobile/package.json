@@ -4,10 +4,10 @@
   "private": true,
   "main": "expo-router/entry",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "start": "expo start --clear",
+    "android": "expo start --android --clear",
+    "ios": "expo start --ios --clear",
+    "web": "expo start --web --clear",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -40,6 +40,7 @@
     "react-native-screens": "~3.29.0",
     "react-native-web": "~0.19.10",
     "superjson": "^2.2.1",
+    "tailwind-merge": "^2.3.0",
     "zod": "^3.22.4",
     "zustand": "^4.5.1"
   },
