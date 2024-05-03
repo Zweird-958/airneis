@@ -6,7 +6,7 @@ type Props<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>
   name: string
   placeholder: string
-  errors: string | undefined
+  errors?: string
   type: InputModeOptions
   secureTextEntry: boolean
 }
