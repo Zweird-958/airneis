@@ -2,6 +2,7 @@ import { addToCartSchema, cartSchema } from "@airneis/schemas"
 import { Id, Product } from "@airneis/types"
 
 import { authedProcedure, createTRPCRouter } from "../trpc"
+import formatProduct from "../utils/formatProduct"
 
 const cartsRouter = createTRPCRouter({
   addToCart: authedProcedure
@@ -36,12 +37,15 @@ const cartsRouter = createTRPCRouter({
         await em.flush()
       },
     ),
-  get: authedProcedure.query(async ({ ctx: { entities, session } }) => {
+  get: authedProcedure.query(async ({ ctx: { entities, session, lang } }) => {
     const user = await entities.user.findOneOrFail({ id: session.user.id })
-    const cart = await entities.cart.find({ user })
+    const cart = await entities.cart.find(
+      { user },
+      { populate: ["product", "product.images"] },
+    )
 
-    return cart.map(({ product: { id }, quantity }) => ({
-      id,
+    return cart.map(({ product, quantity }) => ({
+      product: formatProduct(product, lang),
       quantity,
     }))
   }),
