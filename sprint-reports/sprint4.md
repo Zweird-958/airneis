@@ -1,4 +1,4 @@
-# Sprint `[08/04-05/05]`
+# Sprint `[01/04-28/04]`
 
 SHAPING THE PROJECT
 
