@@ -1,4 +1,7 @@
+import { getSingleProductSchema } from "@airneis/schemas"
+
 import { createTRPCRouter, publicProcedure } from "../trpc"
+import formatProduct from "../utils/formatProduct"
 
 const productsRouter = createTRPCRouter({
   all: publicProcedure.query(() => ({
@@ -7,6 +10,18 @@ const productsRouter = createTRPCRouter({
       { id: 2, name: "Product 2" },
     ],
   })),
+  getSingle: publicProcedure
+    .input(getSingleProductSchema)
+    .query(async ({ ctx: { entities, lang }, input: { slug } }) => {
+      const product = await entities.product.findOneOrFail(
+        { slug },
+        { populate: ["images", "materials"] },
+      )
+
+      return {
+        result: formatProduct(product, lang, "product"),
+      }
+    }),
 })
 
 export default productsRouter

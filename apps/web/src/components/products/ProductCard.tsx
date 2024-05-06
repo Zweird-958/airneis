@@ -12,7 +12,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 
   return (
     <Link
-      href={`/products/${product.id}`}
+      href={`/products/${product.slug}`}
       className="h-64 flex flex-col rounded-default bg-card sm:w-80 w-full"
     >
       <div className="w-full h-52 relative">

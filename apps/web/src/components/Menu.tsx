@@ -28,7 +28,7 @@ const Menu = () => {
         </Link>
       ))}
       {session && <Button onClick={signOut}>{t("header.signOut")}</Button>}
-      {!device?.isAboveTablet && (
+      {!device?.isAboveLaptop && (
         <>
           {footerLink.map(({ href, common }) => (
             <Link key={href} href={href}>
