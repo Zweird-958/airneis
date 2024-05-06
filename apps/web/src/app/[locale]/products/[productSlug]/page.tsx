@@ -1,7 +1,5 @@
 import AddToCartButton from "@/components/products/AddToCartButton"
-import Button from "@/components/ui/Button"
 import Carousel from "@/components/ui/Carousel"
-import { useTranslation } from "@/i18n"
 import api from "@/trpc/server"
 import { PageProps } from "@/types/common"
 
