@@ -38,6 +38,6 @@ Add a product to the cart.
 
 Gets the cart.
 
-### Save Locale
+### Save Local
 
-Save locale cart to database.
+Save local cart to database.
