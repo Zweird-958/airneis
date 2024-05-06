@@ -12,7 +12,7 @@ const AddToCartButton = ({ id, outOfStock }: Props) => {
   const { t } = useTranslation("products")
   const { addToCart } = useCart()
   const handleAddToCart = () => {
-    addToCart(id, 1)
+    addToCart(id)
   }
 
   return (

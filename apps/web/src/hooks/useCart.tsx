@@ -12,7 +12,7 @@ const useCart = () => {
   const { data: cartData } = api.carts.get.useQuery()
   const { mutate } = api.carts.addToCart.useMutation({ onError })
   const { cart, setCart, addToCart } = useCartStore()
-  const handleAddToCart = (productId: string, quantity: number) => {
+  const handleAddToCart = (productId: string, quantity: number = 1) => {
     if (session) {
       mutate(
         { productId, quantity },
