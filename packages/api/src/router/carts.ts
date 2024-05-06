@@ -24,7 +24,7 @@ const cartsRouter = createTRPCRouter({
           cartExists.quantity += quantity
           await em.flush()
 
-          return
+          return true
         }
 
         entities.cart.create({
@@ -34,6 +34,8 @@ const cartsRouter = createTRPCRouter({
         })
 
         await em.flush()
+
+        return true
       },
     ),
   get: authedProcedure.query(async ({ ctx: { entities, session } }) => {
@@ -62,10 +64,11 @@ const cartsRouter = createTRPCRouter({
           $in: products,
         },
       })
-      const productNotInCart = products.filter((product) =>
-        productsInCart.find(
-          ({ product: cartProduct }) => cartProduct.id === product.id,
-        ),
+      const productsNotInCart = products.filter(
+        (product) =>
+          !productsInCart.find(
+            ({ product: cartProduct }) => cartProduct.id !== product.id,
+          ),
       )
 
       for (const product of productsInCart) {
@@ -80,7 +83,7 @@ const cartsRouter = createTRPCRouter({
         product.quantity = localeProduct.quantity
       }
 
-      for (const product of productNotInCart) {
+      for (const product of productsNotInCart) {
         const localeProduct = localeCart.find(({ id }) => id === product.id)
 
         if (!localeProduct) {
@@ -95,6 +98,8 @@ const cartsRouter = createTRPCRouter({
       }
 
       await em.flush()
+
+      return true
     }),
 })
 
