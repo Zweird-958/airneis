@@ -27,3 +27,17 @@ Gets a category with its products.
 #### Possible errors
 
 - `NOT_FOUND` if the category does not exist.
+
+## Cart
+
+### Add to cart
+
+Add a product to the cart.
+
+### Get
+
+Gets the cart.
+
+### Save Locale
+
+Save locale cart to database.
