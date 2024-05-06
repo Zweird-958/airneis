@@ -47,15 +47,15 @@ const cartsRouter = createTRPCRouter({
       quantity,
     }))
   }),
-  saveLocale: authedProcedure
+  saveLocal: authedProcedure
     .input(cartSchema)
-    .mutation(async ({ ctx: { entities, em, session }, input: localeCart }) => {
+    .mutation(async ({ ctx: { entities, em, session }, input: localCart }) => {
       const user = await entities.user.findOneOrFail({
         id: session.user.id,
       })
       const products = await entities.product.find({
         id: {
-          $in: localeCart.map(({ id }) => id as Id),
+          $in: localCart.map(({ id }) => id as Id),
         },
       })
       const productsInCart = await entities.cart.find({
@@ -72,27 +72,27 @@ const cartsRouter = createTRPCRouter({
       )
 
       for (const product of productsInCart) {
-        const localeProduct = localeCart.find(
+        const localProduct = localCart.find(
           ({ id }) => id === product.product.id,
         )
 
-        if (!localeProduct) {
+        if (!localProduct) {
           continue
         }
 
-        product.quantity = localeProduct.quantity
+        product.quantity = localProduct.quantity
       }
 
       for (const product of productsNotInCart) {
-        const localeProduct = localeCart.find(({ id }) => id === product.id)
+        const localProduct = localCart.find(({ id }) => id === product.id)
 
-        if (!localeProduct) {
+        if (!localProduct) {
           continue
         }
 
         entities.cart.create({
           product,
-          quantity: localeProduct.quantity,
+          quantity: localProduct.quantity,
           user,
         })
       }

@@ -10,7 +10,7 @@ import config from "@/utils/config"
 const useSession = () => {
   const { session, setSession } = useSessionStore()
   const { mutateAsync } = api.sessions.delete.useMutation()
-  const { mutate: cartMutate } = api.carts.saveLocale.useMutation({
+  const { mutate: cartMutate } = api.carts.saveLocal.useMutation({
     onSettled: () => localStorage.removeItem(config.cart.localStorageKey),
   })
   const signIn = (jwt: string) => {
