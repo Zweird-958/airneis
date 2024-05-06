@@ -9,7 +9,7 @@ import { sleep } from "@airneis/utils"
 
 import config from "../config"
 import env from "../env"
-import { createTRPCRouter, publicProcedure } from "../trpc"
+import { authedProcedure, createTRPCRouter, publicProcedure } from "../trpc"
 
 const sessionsRouter = createTRPCRouter({
   create: publicProcedure.input(signInSchema).mutation(
@@ -19,7 +19,7 @@ const sessionsRouter = createTRPCRouter({
         entities: { user: UserEntity },
       },
     }) => {
-      const user = await UserEntity.findOne({ email })
+      const user = await UserEntity.findOne({ email, isActive: true })
 
       if (!user) {
         await sleep(config.security.jwt.hashingDuration)
@@ -60,8 +60,8 @@ const sessionsRouter = createTRPCRouter({
       return jwt
     },
   ),
-  delete: publicProcedure.mutation(async () => {
-    await cookies().set(config.security.jwt.cookie.key, "", {
+  delete: authedProcedure.mutation(() => {
+    cookies().set(config.security.jwt.cookie.key, "", {
       path: "/",
       sameSite: "strict",
       httpOnly: true,

@@ -8,7 +8,7 @@ import type { Locale } from "@airneis/types"
 
 type Props = {
   children: ReactNode
-  className: string
+  className?: string
 } & LinkProps
 
 const Link = ({ href, ...props }: Props) => {
