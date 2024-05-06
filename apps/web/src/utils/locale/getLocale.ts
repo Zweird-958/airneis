@@ -9,11 +9,10 @@ const getLocale = () => {
     ?.split(`${sharedConfig.localeCookieKey}=`)[1]
     ?.split(";")[0]
   const langCookie = cookies().get(sharedConfig.localeCookieKey)?.value
-  const lang = localeSchema
+
+  return localeSchema
     .catch(localeFallbackSchema.parse(langCookie))
     .parse(langSetCookie)
-
-  return lang
 }
 
 export default getLocale
