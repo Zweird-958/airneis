@@ -1,3 +1,5 @@
+import { TRPCError } from "@trpc/server"
+
 import { getSingleProductSchema } from "@airneis/schemas"
 
 import { createTRPCRouter, publicProcedure } from "../trpc"
@@ -13,10 +15,17 @@ const productsRouter = createTRPCRouter({
   getSingle: publicProcedure
     .input(getSingleProductSchema)
     .query(async ({ ctx: { entities, lang }, input: { slug } }) => {
-      const product = await entities.product.findOneOrFail(
+      const product = await entities.product.findOne(
         { slug },
         { populate: ["images", "materials"] },
       )
+
+      if (!product) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Product not found",
+        })
+      }
 
       return {
         result: formatProduct(product, lang, "product"),
