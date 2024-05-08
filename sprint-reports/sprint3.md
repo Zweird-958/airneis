@@ -1,4 +1,4 @@
-# Sprint `[05/03-07/04]`
+# Sprint `[04/03-31/04]`
 
 PROJECT STARTING POINT
 
