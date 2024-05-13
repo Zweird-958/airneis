@@ -22,7 +22,10 @@ const util = (product: Product, lang: Locale) => {
     product: {
       ...base,
       description: product.description[lang],
-      images: product.images.map(({ id, url }) => ({ id, url })),
+      images: product.images.map(({ id, url }) => ({
+        id,
+        url: getImageUrl(url),
+      })),
       materials: product.materials.map(({ id, name }) => ({
         id,
         name: name[lang],
