@@ -3,6 +3,7 @@ import { hash } from "bcrypt"
 import jsonwebtoken, { JsonWebTokenError } from "jsonwebtoken"
 import React from "react"
 
+import { getBaseUrl } from "@airneis/config"
 import { ValidationTemplate, translations } from "@airneis/email"
 import { signUpSchema, validationAccountSchema } from "@airneis/schemas"
 import { ValidationAccountJwt } from "@airneis/types"
@@ -58,7 +59,7 @@ const usersRouter = createTRPCRouter({
             <ValidationTemplate
               name={firstName}
               lang={lang}
-              href={`${env.VERCEL_URL}/${lang}/users/validate-account/${jwt}`}
+              href={`${getBaseUrl()}/${lang}/users/validate-account/${jwt}`}
             />
           ),
         })

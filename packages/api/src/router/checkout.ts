@@ -1,13 +1,13 @@
 import { TRPCError } from "@trpc/server"
 
+import { getBaseUrl } from "@airneis/config"
+
 import config from "../config"
-import withOrigin from "../middlewares/withOrigin"
 import { authedProcedure, createTRPCRouter } from "../trpc"
 
 const checkoutRouter = createTRPCRouter({
-  createSession: authedProcedure
-    .use(withOrigin)
-    .mutation(async ({ ctx: { stripe, lang, origin, entities } }) => {
+  createSession: authedProcedure.mutation(
+    async ({ ctx: { stripe, lang, entities } }) => {
       const product = await entities.product.findOne(
         { stock: { $gt: 1 } },
         { populate: ["images"] },
@@ -37,8 +37,8 @@ const checkoutRouter = createTRPCRouter({
             },
           },
         ],
-        success_url: `${origin}/${lang}/result?sessionId={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${origin}/${lang}/result?sessionId={CHECKOUT_SESSION_ID}`,
+        success_url: `${getBaseUrl()}/${lang}/result?sessionId={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${getBaseUrl()}/${lang}/result?sessionId={CHECKOUT_SESSION_ID}`,
       })
 
       if (!checkoutSession.url) {
@@ -49,7 +49,8 @@ const checkoutRouter = createTRPCRouter({
       }
 
       return checkoutSession.url
-    }),
+    },
+  ),
 })
 
 export default checkoutRouter

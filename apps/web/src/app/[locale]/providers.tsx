@@ -5,8 +5,9 @@ import { httpBatchLink } from "@trpc/react-query"
 import { ReactNode, useState } from "react"
 import superjson from "superjson"
 
+import { getApiUrl, sharedConfig } from "@airneis/config"
+
 import api from "@/trpc/client"
-import { getUrl } from "@/trpc/shared"
 
 type Props = {
   children: ReactNode
@@ -20,7 +21,10 @@ const TRPCProvider = (props: Props) => {
       transformer: superjson,
       links: [
         httpBatchLink({
-          url: getUrl(),
+          url: getApiUrl(),
+          headers: () => ({
+            [sharedConfig.api.source.key]: sharedConfig.api.source.webClient,
+          }),
         }),
       ],
     }),

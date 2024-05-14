@@ -24,7 +24,7 @@ export const OPTIONS = () => {
 const handler = async (req: NextRequest) => {
   const locale = getLocale()
   const response = await fetchRequestHandler({
-    endpoint: sharedConfig.apiPath,
+    endpoint: sharedConfig.api.path,
     router: appRouter,
     req,
     createContext: () => createTRPCContext(req, locale),
