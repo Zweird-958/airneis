@@ -268,7 +268,9 @@
           "unique": true
         },
         {
-          "columnNames": ["slug"],
+          "columnNames": [
+            "slug"
+          ],
           "composite": false,
           "keyName": "categories_slug_unique",
           "constraint": true,
@@ -590,6 +592,15 @@
           "nullable": false,
           "mappedType": "integer"
         },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "text"
+        },
         "priority": {
           "name": "priority",
           "type": "int",
@@ -604,6 +615,16 @@
       "name": "products",
       "schema": "public",
       "indexes": [
+        {
+          "columnNames": [
+            "slug"
+          ],
+          "composite": false,
+          "keyName": "products_slug_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
         {
           "keyName": "products_pkey",
           "columnNames": [

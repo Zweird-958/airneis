@@ -61,18 +61,26 @@ const categoriesRouter = createTRPCRouter({
       async ({
         ctx: { entities, lang, redis, cacheKeys },
         input: { slug, page },
-      }) => {
-        const cacheKey = cacheKeys.categories(slug, page)
+      }): Promise<GetCategoryResult> => {
+        const cacheKey = cacheKeys.categories(lang, slug, page)
         const cache = await redis.get(cacheKey)
 
         if (cache) {
-          return JSON.parse(cache) as GetCategoryResult
+          return JSON.parse(cache)
         }
 
-        const category = await entities.category.findOneOrFail(
+        const category = await entities.category.findOne(
           { slug },
           { populate: ["image"] },
         )
+
+        if (!category) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Category not found",
+          })
+        }
+
         const [products, count] = await entities.product.findAndCount(
           { categories: { slug } },
           {
@@ -85,8 +93,10 @@ const categoriesRouter = createTRPCRouter({
         )
         const result = {
           result: {
+            products: products.map((product) =>
+              formatProduct(product, lang, "category"),
+            ),
             imageUrl: getImageUrl(category.image.url),
-            products: products.map((product) => formatProduct(product, lang)),
             name: category.name[lang],
             description: category.description[lang],
           },

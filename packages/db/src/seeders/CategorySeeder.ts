@@ -1,3 +1,4 @@
+import { faker } from "@faker-js/faker"
 import type { EntityManager } from "@mikro-orm/core"
 import { Seeder } from "@mikro-orm/seeder"
 import fs from "node:fs/promises"
@@ -7,6 +8,7 @@ import { PutObjectCommand, s3 } from "@airneis/s3"
 
 import env from "../env"
 import { CategoryFactory } from "../factories/CategoryFactory"
+import { MaterialFactory } from "../factories/MaterialFactory"
 import { ProductFactory } from "../factories/ProductFactory"
 import config from "../utils/config"
 import { Image } from "./../entities/Image"
@@ -40,6 +42,7 @@ export class CategorySeeder extends Seeder {
     const productsImages = await Promise.all(
       config.images.products.map((image) => upload("products", image)),
     )
+    const materials = new MaterialFactory(em).make(10)
 
     let priority = 0
 
@@ -52,6 +55,15 @@ export class CategorySeeder extends Seeder {
               product.images.set(productsImages)
               product.priority = priority
               priority += 1
+              product.materials.set(
+                materials.slice(
+                  faker.number.int({ min: 0, max: materials.length / 2 }),
+                  faker.number.int({
+                    min: materials.length / 2,
+                    max: materials.length,
+                  }),
+                ),
+              )
             })
             .make(15),
         )
