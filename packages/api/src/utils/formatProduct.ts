@@ -2,6 +2,7 @@ import { Product } from "@airneis/db"
 import { Locale } from "@airneis/types"
 
 import formatPrice from "./formatPrice"
+import getImageUrl from "./getImageUrl"
 
 const util = (product: Product, lang: Locale) => {
   const base = {
@@ -16,12 +17,15 @@ const util = (product: Product, lang: Locale) => {
       ...base,
       slug: product.slug,
       priority: product.priority,
-      imagesUrl: product.images.map(({ url }) => url),
+      imagesUrl: product.images.map(({ url }) => getImageUrl(url)),
     },
     product: {
       ...base,
       description: product.description[lang],
-      images: product.images.map(({ id, url }) => ({ id, url })),
+      images: product.images.map(({ id, url }) => ({
+        id,
+        url: getImageUrl(url),
+      })),
       materials: product.materials.map(({ id, name }) => ({
         id,
         name: name[lang],
