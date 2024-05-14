@@ -1,3 +1,5 @@
+import { TRPCError } from "@trpc/server"
+
 import { addToCartSchema, cartSchema } from "@airneis/schemas"
 import { Id, Product } from "@airneis/types"
 
@@ -11,10 +13,24 @@ const cartsRouter = createTRPCRouter({
         ctx: { entities, em, session },
         input: { productId, quantity },
       }) => {
-        const user = await entities.user.findOneOrFail({ id: session.user.id })
-        const product = await entities.product.findOneOrFail({
+        const user = await entities.user.findOne({ id: session.user.id })
+
+        if (!user) {
+          throw new TRPCError({
+            code: "UNAUTHORIZED",
+          })
+        }
+
+        const product = await entities.product.findOne({
           id: productId as Product["id"],
         })
+
+        if (!product) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+          })
+        }
+
         const cartExists = await entities.cart.findOne({
           user,
           product,
@@ -39,7 +55,14 @@ const cartsRouter = createTRPCRouter({
       },
     ),
   get: authedProcedure.query(async ({ ctx: { entities, session } }) => {
-    const user = await entities.user.findOneOrFail({ id: session.user.id })
+    const user = await entities.user.findOne({ id: session.user.id })
+
+    if (!user) {
+      throw new TRPCError({
+        code: "UNAUTHORIZED",
+      })
+    }
+
     const cart = await entities.cart.find({ user })
 
     return cart.map(({ product: { id }, quantity }) => ({
