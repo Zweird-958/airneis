@@ -1,16 +1,15 @@
-import { Locale, ProductDetail as Product } from "@airneis/types"
+import { Locale, ProductDetails as Product } from "@airneis/types"
 
 import Button from "@/components/ui/Button"
 import Carousel from "@/components/ui/Carousel"
 import { useTranslation } from "@/i18n"
 
-const ProductDetail = async ({
-  product,
-  locale,
-}: {
+type Props = {
   product: Product
   locale: Locale
-}) => {
+}
+
+const ProductDetails = async ({ product, locale }: Props) => {
   const { description, images, name, outOfStock, price, materials } = product
   const { t } = await useTranslation(locale, "products")
 
@@ -45,4 +44,4 @@ const ProductDetail = async ({
   )
 }
 
-export default ProductDetail
+export default ProductDetails

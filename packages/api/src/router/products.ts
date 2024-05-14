@@ -1,14 +1,16 @@
 import { TRPCError } from "@trpc/server"
 
 import { getSingleProductSchema } from "@airneis/schemas"
-import { ProductDetails } from "@airneis/types"
+import { Product, ProductDetails } from "@airneis/types"
 
 import { createTRPCRouter, publicProcedure } from "../trpc"
 import formatProductFor from "../utils/formatProductFor"
 import getSimilarProducts from "../utils/getSimilarProducts"
 
 type GetSingleProductResult = {
-  result: ProductDetails
+  result: {
+    similarProducts: Product[]
+  } & ProductDetails
 }
 
 const productsRouter = createTRPCRouter({

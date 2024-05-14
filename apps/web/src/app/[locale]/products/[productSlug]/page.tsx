@@ -1,5 +1,5 @@
 import ProductCard from "@/components/products/ProductCard"
-import ProductDetail from "@/components/products/ProductDetail"
+import ProductDetails from "@/components/products/ProductDetails"
 import { useTranslation } from "@/i18n"
 import api from "@/trpc/server"
 import { PageProps } from "@/types/common"
@@ -18,7 +18,7 @@ const Page = async ({ params: { productSlug: slug, locale } }: Props) => {
 
   return (
     <div className="m-4 p-4 flex flex-col gap-20 bg-card rounded-default">
-      <ProductDetail product={product} locale={locale} />
+      <ProductDetails product={product} locale={locale} />
       <div className="p-4 flex flex-wrap justify-center bg-background rounded-default gap-3">
         <h3 className="w-full text-center font-semibold text-lg uppercase">
           {t("similar", { count: similarProducts.length })}

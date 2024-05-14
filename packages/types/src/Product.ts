@@ -19,5 +19,4 @@ export type ProductDetails = {
   description: string
   images: Image[]
   materials: Material[]
-  similarProducts: Product[]
 } & Base
