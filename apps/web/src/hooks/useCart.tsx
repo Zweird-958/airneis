@@ -10,9 +10,9 @@ const useCart = () => {
   const { onError } = useErrorHandler()
   const { session } = useSession()
   const { data: cartData } = api.carts.get.useQuery()
-  const { mutate } = api.carts.addToCart.useMutation({ onError })
+  const { mutate } = api.carts.add.useMutation({ onError })
   const { cart, setCart, addToCart } = useCartStore()
-  const handleAddToCart = (productId: string, quantity: number = 1) => {
+  const handleAdd = (productId: string, quantity: number = 1) => {
     if (session) {
       mutate(
         { productId, quantity },
@@ -55,7 +55,7 @@ const useCart = () => {
     }
   }, [cart, cartData, session, setCart])
 
-  return { cart, addToCart: handleAddToCart }
+  return { cart, addToCart: handleAdd }
 }
 
 export default useCart

@@ -6,7 +6,7 @@ import { Id, Product } from "@airneis/types"
 import { authedProcedure, createTRPCRouter } from "../trpc"
 
 const cartsRouter = createTRPCRouter({
-  addToCart: authedProcedure
+  add: authedProcedure
     .input(addToCartSchema)
     .mutation(
       async ({
