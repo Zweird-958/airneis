@@ -1,8 +1,10 @@
+import { User } from "@airneis/db"
+
 export enum UserRoles {
   ADMIN = "ADMIN",
   USER = "USER",
 }
-export type Id = `${string}-${string}-${string}-${string}-${string}`
+export type Id = User["id"]
 export type RawJwtBase<TPayload> = {
   iat: number
   exp: number
