@@ -42,7 +42,7 @@ Gets a single product based on its slug.
 
 ### Add to cart
 
-Add a product to the cart.
+Adds a product to the cart.
 
 ### Get
 
@@ -50,4 +50,4 @@ Gets the cart.
 
 ### Save Local
 
-Save local cart to database.
+Saves the local cart to the database.
