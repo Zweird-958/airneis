@@ -1,17 +1,18 @@
-import { Locale, ProductDetails as Product } from "@airneis/types"
+"use client"
+
+import { ProductDetails as Product } from "@airneis/types"
 
 import Button from "@/components/ui/Button"
 import Carousel from "@/components/ui/Carousel"
-import { useTranslation } from "@/i18n"
+import { useTranslation } from "@/i18n/client"
 
 type Props = {
-  product: Product
-  locale: Locale
+  product: Omit<Product, "similarProducts">
 }
 
-const ProductDetails = async ({ product, locale }: Props) => {
+const ProductDetails = ({ product }: Props) => {
   const { description, images, name, outOfStock, price, materials } = product
-  const { t } = await useTranslation(locale, "products")
+  const { t } = useTranslation("products")
 
   return (
     <div className="flex flex-col lg:flex-row gap-4">
