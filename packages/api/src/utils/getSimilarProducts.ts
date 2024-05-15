@@ -9,8 +9,7 @@ const getSimilarProducts = async (
 ) => {
   const limit = config.products.limitSimilarProducts
   const categories = product.categories.map((category) => category.id)
-
-  let similarProducts = await productEntity.find(
+  const similarProducts = await productEntity.find(
     {
       id: { $ne: product.id },
       categories,
@@ -24,8 +23,7 @@ const getSimilarProducts = async (
   )
 
   if (similarProducts.length < limit) {
-    similarProducts = [
-      ...similarProducts,
+    similarProducts.push(
       ...(await productEntity.find(
         {
           id: { $ne: product.id },
@@ -38,7 +36,7 @@ const getSimilarProducts = async (
           populate: ["images"],
         },
       )),
-    ]
+    )
   }
 
   return similarProducts
