@@ -1,5 +1,7 @@
+import common from "@/locales/en/common"
+
 type HeaderLink = {
-  label: string
+  label: keyof typeof common
   screen: string
   visibleOn: "auth" | "unAuth" | "both"
 }[]

@@ -4,14 +4,10 @@ import {
   DrawerItem,
 } from "@react-navigation/drawer"
 
-import useLocale from "@/hooks/useLocale"
 import useSession from "@/hooks/useSession"
 import { headerLink } from "@/utils/layout/headerLink"
 
 const DrawerContent = (props: DrawerContentComponentProps) => {
-  const {
-    translations: { common },
-  } = useLocale()
   const { session } = useSession()
   const visibleHeaderLinks = headerLink.filter(
     ({ visibleOn }) =>
@@ -24,7 +20,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
       {visibleHeaderLinks.map(({ label, screen }) => (
         <DrawerItem
           key={label}
-          label={common[label as keyof typeof common]}
+          label={label}
           onPress={() => props.navigation.navigate(screen)}
         />
       ))}
