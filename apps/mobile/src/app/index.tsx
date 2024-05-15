@@ -5,14 +5,12 @@ import { SafeAreaView } from "react-native-safe-area-context"
 
 import LocaleSelector from "@/components/LocaleSelector"
 import useLocale from "@/hooks/useLocale"
-import useSession from "@/hooks/useSession"
 
 const Index = () => {
   const {
     translations: { common },
   } = useLocale()
   const router = useRouter()
-  const { session } = useSession()
   const [category, setCategory] = useState("")
   const handleGoToCategory = () => {
     if (!category) {
@@ -28,7 +26,6 @@ const Index = () => {
         Airneis
       </Text>
       <LocaleSelector />
-      {session && <Text>{JSON.stringify(session)}</Text>}
       <View className="flex-row items-center gap-4 px-4">
         <TextInput
           className="border-2 rounded-default p-2 flex-1"
