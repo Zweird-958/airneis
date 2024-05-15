@@ -1,6 +1,6 @@
 "use client"
 
-import { Product } from "packages/types"
+import { Product } from "@airneis/types"
 
 import Button from "@/components/ui/Button"
 import useCart from "@/hooks/useCart"
