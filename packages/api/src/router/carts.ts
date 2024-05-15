@@ -103,7 +103,7 @@ const cartsRouter = createTRPCRouter({
           continue
         }
 
-        product.quantity = localProduct.quantity
+        product.quantity += localProduct.quantity
       }
 
       for (const product of productsNotInCart) {
