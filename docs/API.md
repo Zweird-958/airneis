@@ -55,7 +55,7 @@ Gets the cart.
 
 #### Possible errors
 
-- `UNAUTHORIZED` if the user is not signed in.
+- `UNAUTHORIZED` if the user is not signed in or does not exists.
 
 ### Save Local
 
