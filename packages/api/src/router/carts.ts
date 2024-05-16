@@ -3,27 +3,19 @@ import { TRPCError } from "@trpc/server"
 import { addToCartSchema, cartSchema } from "@airneis/schemas"
 import { Id, Product } from "@airneis/types"
 
-import { authedProcedure, createTRPCRouter } from "../trpc"
+import withUser from "../middlewares/withUser"
+import { authedProcedure } from "../procedures"
+import { createTRPCRouter } from "../trpc"
 
 const cartsRouter = createTRPCRouter({
   add: authedProcedure
+    .use(withUser)
     .input(addToCartSchema)
     .mutation(
       async ({
-        ctx: { entities, em, session },
+        ctx: { entities, em, user },
         input: { productId, quantity },
       }) => {
-        const user = await entities.user.findOne({
-          id: session.user.id,
-          deletedAt: null,
-        })
-
-        if (!user) {
-          throw new TRPCError({
-            code: "UNAUTHORIZED",
-          })
-        }
-
         const product = await entities.product.findOne({
           id: productId as Product["id"],
         })
@@ -66,19 +58,9 @@ const cartsRouter = createTRPCRouter({
     }))
   }),
   saveLocal: authedProcedure
+    .use(withUser)
     .input(cartSchema)
-    .mutation(async ({ ctx: { entities, em, session }, input: localCart }) => {
-      const user = await entities.user.findOne({
-        id: session.user.id,
-        deletedAt: null,
-      })
-
-      if (!user) {
-        throw new TRPCError({
-          code: "UNAUTHORIZED",
-        })
-      }
-
+    .mutation(async ({ ctx: { entities, em, user }, input: localCart }) => {
       const products = await entities.product.find({
         id: {
           $in: localCart.map(({ id }) => id as Id),

@@ -2,10 +2,10 @@ import { TRPCError } from "@trpc/server"
 
 import { UserRoles } from "@airneis/types"
 
-import { tRPCInit } from "../trpc"
+import { t } from "../trpc"
 import getSession from "../utils/getSession"
 
-const withAuth = (t: tRPCInit, minimumRole: keyof typeof UserRoles) =>
+const withAuth = (minimumRole: keyof typeof UserRoles) =>
   t.middleware(({ ctx, next }) => {
     const session = getSession()
 
