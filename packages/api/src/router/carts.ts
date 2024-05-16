@@ -3,13 +3,11 @@ import { TRPCError } from "@trpc/server"
 import { addToCartSchema, cartSchema } from "@airneis/schemas"
 import { Id, Product } from "@airneis/types"
 
-import withUser from "../middlewares/withUser"
 import { authedProcedure } from "../procedures"
 import { createTRPCRouter } from "../trpc"
 
 const cartsRouter = createTRPCRouter({
   add: authedProcedure
-    .use(withUser)
     .input(addToCartSchema)
     .mutation(
       async ({
@@ -58,7 +56,6 @@ const cartsRouter = createTRPCRouter({
     }))
   }),
   saveLocal: authedProcedure
-    .use(withUser)
     .input(cartSchema)
     .mutation(async ({ ctx: { entities, em, user }, input: localCart }) => {
       const products = await entities.product.find({
