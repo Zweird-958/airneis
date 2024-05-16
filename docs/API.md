@@ -47,7 +47,7 @@ Adds a product to the cart.
 #### Possible errors
 
 - `NOT_FOUND` if the requested product does not exist.
-- `UNAUTHORIZED` if the user is not signed in.
+- `UNAUTHORIZED` if the user is not signed in or does not exists.
 
 ### Get
 
@@ -63,4 +63,4 @@ Saves the local cart to the database.
 
 #### Possible errors
 
-- `UNAUTHORIZED` if the user is not signed in.
+- `UNAUTHORIZED` if the user is not signed in or does not exists.
