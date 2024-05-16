@@ -22,7 +22,7 @@ const useCartStore = create<CartStore>((set) => ({
         return { ...state, cart: [{ id: productId, quantity }] }
       }
 
-      const productInCart = cart.find((item) => item.id === productId)
+      const productInCart = cart.find(({ id }) => id === productId)
 
       if (productInCart) {
         return {
