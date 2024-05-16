@@ -40,14 +40,27 @@ Gets a single product based on its slug.
 
 ## Cart
 
-### Add to cart
+### Add
 
 Adds a product to the cart.
+
+#### Possible errors
+
+- `NOT_FOUND` if the requested product does not exist.
+- `UNAUTHORIZED` if the user is not signed in.
 
 ### Get
 
 Gets the cart.
 
+#### Possible errors
+
+- `UNAUTHORIZED` if the user is not signed in.
+
 ### Save Local
 
 Saves the local cart to the database.
+
+#### Possible errors
+
+- `UNAUTHORIZED` if the user is not signed in.
