@@ -34,13 +34,13 @@ const cartsRouter = createTRPCRouter({
           })
         }
 
-        const cartExists = await entities.cart.findOne({
+        const productInCart = await entities.cart.findOne({
           user,
           product,
         })
 
-        if (cartExists) {
-          cartExists.quantity += quantity
+        if (productInCart) {
+          productInCart.quantity += quantity
           await em.flush()
 
           return true
