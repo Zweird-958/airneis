@@ -92,8 +92,8 @@ const cartsRouter = createTRPCRouter({
       })
       const productsNotInCart = products.filter(
         (product) =>
-          !productsInCart.find(
-            ({ product: cartProduct }) => cartProduct.id !== product.id,
+          !productsInCart.some(
+            ({ product: cartProduct }) => cartProduct.id === product.id,
           ),
       )
 
