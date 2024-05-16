@@ -26,10 +26,6 @@ const useCart = () => {
     addToLocalStorage(cart)
   }
   const addToLocalStorage = (localCart: typeof cart) => {
-    if (session) {
-      return
-    }
-
     localStorage.setItem(config.cart.localStorageKey, JSON.stringify(localCart))
   }
 
