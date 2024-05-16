@@ -13,7 +13,10 @@ const cartsRouter = createTRPCRouter({
         ctx: { entities, em, session },
         input: { productId, quantity },
       }) => {
-        const user = await entities.user.findOne({ id: session.user.id })
+        const user = await entities.user.findOne({
+          id: session.user.id,
+          deletedAt: null,
+        })
 
         if (!user) {
           throw new TRPCError({
