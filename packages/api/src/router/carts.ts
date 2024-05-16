@@ -68,9 +68,17 @@ const cartsRouter = createTRPCRouter({
   saveLocal: authedProcedure
     .input(cartSchema)
     .mutation(async ({ ctx: { entities, em, session }, input: localCart }) => {
-      const user = await entities.user.findOneOrFail({
+      const user = await entities.user.findOne({
         id: session.user.id,
+        deletedAt: null,
       })
+
+      if (!user) {
+        throw new TRPCError({
+          code: "UNAUTHORIZED",
+        })
+      }
+
       const products = await entities.product.find({
         id: {
           $in: localCart.map(({ id }) => id as Id),
