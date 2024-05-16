@@ -16,7 +16,7 @@ type CartStore = {
 const useCartStore = create<CartStore>((set) => ({
   cart: null,
   setCart: (cart) => set({ cart }),
-  addToCart: (productId: Product["id"], quantity: number) =>
+  addToCart: (productId, quantity) =>
     set(({ cart, ...state }) => {
       if (!cart) {
         return { ...state, cart: [{ id: productId, quantity }] }
