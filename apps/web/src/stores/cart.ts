@@ -27,15 +27,15 @@ const useCartStore = create<CartStore>((set) => ({
       if (productInCart) {
         return {
           ...state,
-          cart: cart.map((item) => {
-            if (item.id === productId) {
+          cart: cart.map((product) => {
+            if (product.id === productId) {
               return {
-                ...item,
-                quantity: item.quantity + quantity,
+                ...product,
+                quantity: product.quantity + quantity,
               }
             }
 
-            return item
+            return product
           }),
         }
       }
