@@ -58,15 +58,7 @@ const cartsRouter = createTRPCRouter({
       },
     ),
   get: authedProcedure.query(async ({ ctx: { entities, session } }) => {
-    const user = await entities.user.findOne({ id: session.user.id })
-
-    if (!user) {
-      throw new TRPCError({
-        code: "UNAUTHORIZED",
-      })
-    }
-
-    const cart = await entities.cart.find({ user })
+    const cart = await entities.cart.find({ user: { id: session.user.id } })
 
     return cart.map(({ product: { id }, quantity }) => ({
       id,
