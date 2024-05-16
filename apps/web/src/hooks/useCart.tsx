@@ -1,5 +1,7 @@
 import { useEffect } from "react"
 
+import { Product } from "@airneis/types"
+
 import useErrorHandler from "@/hooks/useErrorHandler"
 import useSession from "@/hooks/useSession"
 import useCartStore from "@/stores/cart"
@@ -12,7 +14,7 @@ const useCart = () => {
   const { data: cartData } = api.carts.get.useQuery()
   const { mutate } = api.carts.add.useMutation({ onError })
   const { cart, setCart, addToCart } = useCartStore()
-  const handleAdd = (productId: string, quantity = 1) => {
+  const handleAdd = (productId: Product["id"], quantity = 1) => {
     if (session) {
       mutate(
         { productId, quantity },
