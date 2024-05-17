@@ -1,8 +1,10 @@
 import { TRPCError } from "@trpc/server"
-import { adminProcedure, createTRPCRouter } from "../trpc"
 import { Locale } from "packages/config"
 
 import { createMaterialSchema } from "@airneis/schemas"
+
+import { adminProcedure } from "../procedures"
+import { createTRPCRouter } from "../trpc"
 
 const materialsRouter = createTRPCRouter({
   create: adminProcedure

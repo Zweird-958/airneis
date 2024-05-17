@@ -2,17 +2,16 @@
 
 import { ProductDetails as Product } from "@airneis/types"
 
-import Button from "@/components/ui/Button"
+import AddToCartButton from "@/components/products/AddToCartButton"
 import Carousel from "@/components/ui/Carousel"
-import { useTranslation } from "@/i18n/client"
 
 type Props = {
   product: Omit<Product, "similarProducts">
 }
 
 const ProductDetails = ({ product }: Props) => {
-  const { description, images, name, outOfStock, price, materials } = product
-  const { t } = useTranslation("products")
+  const { description, images, name, outOfStock, price, materials, id } =
+    product
 
   return (
     <div className="flex flex-col lg:flex-row gap-4">
@@ -37,9 +36,7 @@ const ProductDetails = ({ product }: Props) => {
           )}
           <p className="whitespace-pre-line">{description}</p>
         </div>
-        <Button disabled={outOfStock} className="font-medium uppercase">
-          {outOfStock ? t("outOfStock") : t("addToCart")}
-        </Button>
+        <AddToCartButton id={id} outOfStock={outOfStock} />
       </div>
     </div>
   )

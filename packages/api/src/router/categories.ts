@@ -5,7 +5,8 @@ import { createCategorySchema, getCategorySchema } from "@airneis/schemas"
 import type { Locale, Product } from "@airneis/types"
 
 import config from "../config"
-import { adminProcedure, createTRPCRouter, publicProcedure } from "../trpc"
+import { adminProcedure, publicProcedure } from "../procedures"
+import { createTRPCRouter } from "../trpc"
 import formatProductFor from "../utils/formatProductFor"
 import getImageUrl from "../utils/getImageUrl"
 
