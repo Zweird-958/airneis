@@ -6,7 +6,7 @@ import AddToCartButton from "@/components/products/AddToCartButton"
 import Carousel from "@/components/ui/Carousel"
 
 type Props = {
-  product: Omit<Product, "similarProducts">
+  product: Omit<Product, "similarProducts" | "categories">
 }
 
 const ProductDetails = ({ product }: Props) => {
@@ -24,10 +24,10 @@ const ProductDetails = ({ product }: Props) => {
           </div>
           {materials.length > 1 && (
             <div className="flex flex-wrap gap-2">
-              {materials.map(({ id, name: materialName }) => (
+              {materials.map(({ id: materialId, name: materialName }) => (
                 <span
                   className="w-fit px-2 py-0.5 font-light text-xs bg-primary/10 rounded-default border border-primary"
-                  key={id}
+                  key={materialId}
                 >
                   {materialName}
                 </span>

@@ -20,4 +20,5 @@ export type ProductDetails = {
   images: Image[]
   materials: Material[]
   similarProducts: Product[]
+  categories: ProductEntity["id"][]
 } & Base

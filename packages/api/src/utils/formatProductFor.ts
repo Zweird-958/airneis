@@ -1,5 +1,5 @@
 import { Product } from "@airneis/db"
-import { Locale } from "@airneis/types"
+import { Locale, ProductDetails } from "@airneis/types"
 
 import formatPrice from "./formatPrice"
 import getImageUrl from "./getImageUrl"
@@ -16,7 +16,10 @@ const category = (product: Product, lang: Locale) => ({
   priority: product.priority,
   imagesUrl: product.images.map(({ url }) => getImageUrl(url)),
 })
-const single = (product: Product, lang: Locale) => ({
+const single = (
+  product: Product,
+  lang: Locale,
+): Omit<ProductDetails, "similarProducts"> => ({
   ...getBase(product, lang),
   description: product.description[lang],
   images: product.images.map(({ id, url }) => ({ id, url: getImageUrl(url) })),
@@ -24,6 +27,7 @@ const single = (product: Product, lang: Locale) => ({
     id,
     name: name[lang],
   })),
+  categories: product.categories.map(({ id }) => id),
 })
 const similar = (product: Product, lang: Locale) => ({
   ...getBase(product, lang),
