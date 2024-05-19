@@ -12,6 +12,10 @@
   "password": "Mot de passe",
   "firstName": "Prénom",
   "lastName": "Nom",
+  "contact": {
+    "title": "Contact",
+    "success": "Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais."
+  },
   "signIn": "Se connecter",
   "signUp": {
     "title": "Inscription",

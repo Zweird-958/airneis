@@ -12,6 +12,10 @@
   "password": "Password",
   "firstName": "First name",
   "lastName": "Last name",
+  "contact": {
+    "title": "Contact",
+    "success": "Your message was sent successfully. We will get back to you as soon as possible."
+  },
   "signIn": "Sign In",
   "signUp": {
     "title": "Sign up",

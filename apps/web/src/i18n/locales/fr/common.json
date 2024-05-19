@@ -4,6 +4,7 @@
   "client": "Client",
   "header": {
     "home": "Accueil",
+    "contact": "Contact",
     "signIn": "Se connecter",
     "signOut": "Se déconnecter",
     "signUp": "S'inscrire"
