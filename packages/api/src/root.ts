@@ -1,3 +1,4 @@
+import cartsRouter from "./router/carts"
 import categoriesRouter from "./router/categories"
 import contactRouter from "./router/contact"
 import imagesRouter from "./router/images"
@@ -15,6 +16,7 @@ export const appRouter = createTRPCRouter({
   sessions: sessionsRouter,
   images: imagesRouter,
   contact: contactRouter,
+  carts: cartsRouter,
 })
 
 export type AppRouter = typeof appRouter

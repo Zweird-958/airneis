@@ -1,6 +1,5 @@
-import Button from "@/components/ui/Button"
+import AddToCartButton from "@/components/products/AddToCartButton"
 import Carousel from "@/components/ui/Carousel"
-import { useTranslation } from "@/i18n"
 import api from "@/trpc/server"
 import { PageProps } from "@/types/common"
 
@@ -10,11 +9,18 @@ type Props = PageProps & {
   }
 }
 
-const Page = async ({ params: { productSlug: slug, locale } }: Props) => {
+const Page = async ({ params: { productSlug: slug } }: Props) => {
   const {
-    result: { description, images, name, outOfStock, price, materials },
+    result: {
+      description,
+      images,
+      name,
+      outOfStock,
+      price,
+      materials,
+      id: productId,
+    },
   } = await api.products.getSingle.query({ slug })
-  const { t } = await useTranslation(locale, "products")
 
   return (
     <div className="m-4 p-4 bg-card rounded-default flex flex-col lg:flex-row gap-4">
@@ -43,9 +49,7 @@ const Page = async ({ params: { productSlug: slug, locale } }: Props) => {
             ))}
           </div>
         </div>
-        <Button disabled={outOfStock} className="font-medium uppercase">
-          {outOfStock ? t("outOfStock") : t("addToCart")}
-        </Button>
+        <AddToCartButton id={productId} outOfStock={outOfStock} />
       </div>
     </div>
   )
