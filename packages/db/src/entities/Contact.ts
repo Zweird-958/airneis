@@ -2,8 +2,8 @@ import { Entity, Property } from "@mikro-orm/core"
 
 import { BaseEntity } from "./BaseEntity"
 
-@Entity({ tableName: "messages" })
-export class Message extends BaseEntity {
+@Entity({ tableName: "contact" })
+export class Contact extends BaseEntity {
   @Property({ type: "text", nullable: false })
   email: string
 

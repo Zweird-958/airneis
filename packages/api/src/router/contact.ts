@@ -1,14 +1,14 @@
 import { adminProcedure, createTRPCRouter } from "packages/api/src/trpc"
 
-import { createMessageSchema } from "@airneis/schemas"
+import { createContactSchema } from "@airneis/schemas"
 
 import { publicProcedure } from "../trpc"
 
 const contactRouter = createTRPCRouter({
   create: publicProcedure
-    .input(createMessageSchema)
+    .input(createContactSchema)
     .mutation(async ({ ctx, input: { email, subject, description } }) => {
-      ctx.entities.message.create({
+      ctx.entities.contact.create({
         email,
         subject,
         description,
@@ -19,9 +19,9 @@ const contactRouter = createTRPCRouter({
       return true
     }),
   get: adminProcedure.query(async ({ ctx }) => {
-    const messages = await ctx.entities.message.find({})
+    const contacts = await ctx.entities.contact.find({})
 
-    return messages
+    return contacts
   }),
 })
 

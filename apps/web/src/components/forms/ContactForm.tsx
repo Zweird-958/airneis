@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { toast } from "sonner"
 
-import { CreateMessageInput, createMessageSchema } from "@airneis/schemas"
+import { CreateContactInput, createContactSchema } from "@airneis/schemas"
 
 import DescriptionField from "@/components/forms/fields/DescriptionField"
 import EmailField from "@/components/forms/fields/EmailField"
@@ -16,8 +16,8 @@ import { useTranslation } from "@/i18n/client"
 import api from "@/trpc/client"
 
 const ContactForm = () => {
-  const form = useForm<CreateMessageInput>({
-    resolver: zodResolver(createMessageSchema),
+  const form = useForm<CreateContactInput>({
+    resolver: zodResolver(createContactSchema),
     defaultValues: {
       email: "",
       subject: "",
@@ -33,7 +33,7 @@ const ContactForm = () => {
       form.reset()
     },
   })
-  const onSubmit: SubmitHandler<CreateMessageInput> = (values) => {
+  const onSubmit: SubmitHandler<CreateContactInput> = (values) => {
     mutate(values)
   }
 

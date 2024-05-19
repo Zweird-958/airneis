@@ -475,11 +475,11 @@
           "mappedType": "text"
         }
       },
-      "name": "messages",
+      "name": "contact",
       "schema": "public",
       "indexes": [
         {
-          "keyName": "messages_pkey",
+          "keyName": "contact_pkey",
           "columnNames": [
             "id"
           ],

@@ -1,10 +1,10 @@
 import { emailSchema } from "packages/schemas/src/users"
 import { z } from "zod"
 
-export const createMessageSchema = z.object({
+export const createContactSchema = z.object({
   email: emailSchema,
   subject: z.string(),
   description: z.string(),
 })
 
-export type CreateMessageInput = z.infer<typeof createMessageSchema>
+export type CreateContactInput = z.infer<typeof createContactSchema>
