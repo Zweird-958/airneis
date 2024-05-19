@@ -1,8 +1,7 @@
-import { adminProcedure, createTRPCRouter } from "packages/api/src/trpc"
-
 import { createContactSchema } from "@airneis/schemas"
 
-import { publicProcedure } from "../trpc"
+import { adminProcedure, publicProcedure } from "../procedures"
+import { createTRPCRouter } from "../trpc"
 
 const contactRouter = createTRPCRouter({
   create: publicProcedure
