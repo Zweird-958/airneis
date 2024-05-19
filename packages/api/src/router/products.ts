@@ -3,7 +3,8 @@ import { TRPCError } from "@trpc/server"
 import { getSingleProductSchema } from "@airneis/schemas"
 import { ProductDetails } from "@airneis/types"
 
-import { createTRPCRouter, publicProcedure } from "../trpc"
+import { publicProcedure } from "../procedures"
+import { createTRPCRouter } from "../trpc"
 import formatProduct from "../utils/formatProduct"
 
 type GetSingleProductResult = {

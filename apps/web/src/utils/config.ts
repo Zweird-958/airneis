@@ -19,6 +19,9 @@ const schema = z.object({
   pagination: z.object({
     step: z.number().min(1).default(1),
   }),
+  cart: z.object({
+    localStorageKey: z.string(),
+  }),
 })
 const config = schema.parse({
   session: {
@@ -30,6 +33,9 @@ const config = schema.parse({
   },
   pagination: {
     step: 2,
+  },
+  cart: {
+    localStorageKey: "cart",
   },
 })
 export type Namespace = z.infer<typeof schema>["locale"]["defaultNamespace"]
