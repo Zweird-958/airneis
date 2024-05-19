@@ -9,7 +9,7 @@
     "web": "npm run dev -w \"apps/web\"",
     "mobile:ios": "npm run ios -w \"apps/mobile\"",
     "mobile:android": "npm run android -w \"apps/mobile\"",
-    "db": "npm run db -w \"packages/db\"",
+    "db": "dotenv -e .env -- npm run db -w \"packages/db\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier -c .",
