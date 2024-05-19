@@ -3,6 +3,7 @@
   "username": "Nom d'utilisateur",
   "name": "Nom",
   "description": "Description",
+  "subject": "Sujet",
   "image": {
     "label": "Sélectionner une image"
   },
