@@ -1,7 +1,7 @@
 import { Control, FieldValues, Path } from "react-hook-form"
 
 import { FormField, FormItem } from "@/components/ui/Form"
-import Input from "@/components/ui/Input"
+import TextArea from "@/components/ui/TextArea"
 import { useTranslation } from "@/i18n/client"
 
 type Props<TFieldValues extends FieldValues> = {
@@ -19,7 +19,7 @@ const DescriptonField = <TFieldValues extends FieldValues>({
       name={"description" as Path<TFieldValues>}
       render={({ field }) => (
         <FormItem label={t("description")}>
-          <Input {...field} />
+          <TextArea {...field} />
         </FormItem>
       )}
     />
