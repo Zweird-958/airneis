@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-import { Product } from "@airneis/types"
+import { ProductDetails } from "@airneis/types"
 
 import useErrorHandler from "@/hooks/useErrorHandler"
 import useSession from "@/hooks/useSession"
@@ -12,9 +12,9 @@ const useCart = () => {
   const { onError } = useErrorHandler()
   const { session } = useSession()
   const { data: cartData } = api.carts.get.useQuery()
-  const { mutate } = api.carts.addToCart.useMutation({ onError })
+  const { mutate } = api.carts.add.useMutation({ onError })
   const { cart, setCart, addToCart } = useCartStore()
-  const handleAddToCart = (product: Product, quantity: number) => {
+  const handleAdd = (product: ProductDetails, quantity = 1) => {
     if (session) {
       mutate(
         { productId: product.id, quantity },
@@ -28,10 +28,6 @@ const useCart = () => {
     addToLocalStorage(cart)
   }
   const addToLocalStorage = (localCart: typeof cart) => {
-    if (session) {
-      return
-    }
-
     localStorage.setItem(config.cart.localStorageKey, JSON.stringify(localCart))
   }
 
@@ -57,7 +53,7 @@ const useCart = () => {
     }
   }, [cart, cartData, session, setCart])
 
-  return { cart, addToCart: handleAddToCart }
+  return { cart, addToCart: handleAdd }
 }
 
 export default useCart

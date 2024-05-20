@@ -1,31 +1,40 @@
+import { TRPCError } from "@trpc/server"
+
 import { addToCartSchema, cartSchema } from "@airneis/schemas"
 import { Id, Product } from "@airneis/types"
 
-import { authedProcedure, createTRPCRouter } from "../trpc"
+import { authedProcedure } from "../procedures"
+import { createTRPCRouter } from "../trpc"
 import formatProduct from "../utils/formatProduct"
 
 const cartsRouter = createTRPCRouter({
-  addToCart: authedProcedure
+  add: authedProcedure
     .input(addToCartSchema)
     .mutation(
       async ({
-        ctx: { entities, em, session },
+        ctx: { entities, em, user },
         input: { productId, quantity },
       }) => {
-        const user = await entities.user.findOneOrFail({ id: session.user.id })
-        const product = await entities.product.findOneOrFail({
+        const product = await entities.product.findOne({
           id: productId as Product["id"],
         })
-        const cartExists = await entities.cart.findOne({
+
+        if (!product) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+          })
+        }
+
+        const productInCart = await entities.cart.findOne({
           user,
           product,
         })
 
-        if (cartExists) {
-          cartExists.quantity += quantity
+        if (productInCart) {
+          productInCart.quantity += quantity
           await em.flush()
 
-          return
+          return true
         }
 
         entities.cart.create({
@@ -35,6 +44,8 @@ const cartsRouter = createTRPCRouter({
         })
 
         await em.flush()
+
+        return true
       },
     ),
   get: authedProcedure.query(async ({ ctx: { entities, session, lang } }) => {
@@ -45,19 +56,16 @@ const cartsRouter = createTRPCRouter({
     )
 
     return cart.map(({ product, quantity }) => ({
-      product: formatProduct(product, lang),
+      product: formatProduct(product, lang, "product"),
       quantity,
     }))
   }),
-  saveLocale: authedProcedure
+  saveLocal: authedProcedure
     .input(cartSchema)
-    .mutation(async ({ ctx: { entities, em, session }, input: localeCart }) => {
-      const user = await entities.user.findOneOrFail({
-        id: session.user.id,
-      })
+    .mutation(async ({ ctx: { entities, em, user }, input: localCart }) => {
       const products = await entities.product.find({
         id: {
-          $in: localeCart.map(({ id }) => id as Id),
+          $in: localCart.map(({ id }) => id as Id),
         },
       })
       const productsInCart = await entities.cart.find({
@@ -66,39 +74,42 @@ const cartsRouter = createTRPCRouter({
           $in: products,
         },
       })
-      const productNotInCart = products.filter((product) =>
-        productsInCart.find(
-          ({ product: cartProduct }) => cartProduct.id === product.id,
-        ),
+      const productsNotInCart = products.filter(
+        (product) =>
+          !productsInCart.some(
+            ({ product: cartProduct }) => cartProduct.id === product.id,
+          ),
       )
 
       for (const product of productsInCart) {
-        const localeProduct = localeCart.find(
+        const localProduct = localCart.find(
           ({ id }) => id === product.product.id,
         )
 
-        if (!localeProduct) {
+        if (!localProduct) {
           continue
         }
 
-        product.quantity = localeProduct.quantity
+        product.quantity += localProduct.quantity
       }
 
-      for (const product of productNotInCart) {
-        const localeProduct = localeCart.find(({ id }) => id === product.id)
+      for (const product of productsNotInCart) {
+        const localProduct = localCart.find(({ id }) => id === product.id)
 
-        if (!localeProduct) {
+        if (!localProduct) {
           continue
         }
 
         entities.cart.create({
           product,
-          quantity: localeProduct.quantity,
+          quantity: localProduct.quantity,
           user,
         })
       }
 
       await em.flush()
+
+      return true
     }),
 })
 

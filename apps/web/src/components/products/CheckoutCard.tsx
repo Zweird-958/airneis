@@ -1,10 +1,10 @@
 import { Trash2 } from "lucide-react"
 import Image from "next/image"
 
-import { Product } from "@airneis/types"
+import { ProductDetails } from "@airneis/types"
 
 type Props = {
-  product: Product
+  product: ProductDetails
   quantity: number
 }
 
@@ -14,8 +14,8 @@ const CheckoutCard = ({ product, quantity }: Props) => (
       <Image
         layout="fill"
         className="object-cover rounded-default"
-        src={product.imagesUrl[0]}
-        alt={product.imagesUrl[0]}
+        src={product.images[0].url}
+        alt={product.images[0].url}
       />
     </div>
     <div className="basis-1/3 justify-between flex flex-col">

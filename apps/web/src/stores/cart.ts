@@ -1,22 +1,22 @@
 import { create } from "zustand"
 
-import { Product } from "@airneis/types"
+import { ProductDetails } from "@airneis/types"
 
 type Cart = {
-  product: Product
+  product: ProductDetails
   quantity: number
 }[]
 
 type CartStore = {
   cart: Cart | null
   setCart: (cart: Cart | null) => void
-  addToCart: (product: Product, quantity: number) => void
+  addToCart: (product: ProductDetails, quantity: number) => void
 }
 
 const useCartStore = create<CartStore>((set) => ({
   cart: null,
   setCart: (cart) => set({ cart }),
-  addToCart: (product: Product, quantity: number) =>
+  addToCart: (product, quantity) =>
     set(({ cart, ...state }) => {
       if (!cart) {
         return { ...state, cart: [{ product, quantity }] }
@@ -29,15 +29,15 @@ const useCartStore = create<CartStore>((set) => ({
       if (productInCart) {
         return {
           ...state,
-          cart: cart.map((item) => {
-            if (item.product.id === product.id) {
+          cart: cart.map(({ product: { id } }) => {
+            if (id === product.id) {
               return {
-                ...item,
-                quantity: item.quantity + quantity,
+                product,
+                quantity: productInCart.quantity + quantity,
               }
             }
 
-            return item
+            return { product, quantity }
           }),
         }
       }
