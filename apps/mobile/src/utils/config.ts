@@ -16,7 +16,7 @@ const config = schema.parse({
   pagination: {
     step: 2,
   },
-  apiUrl: `${env.EXPO_PUBLIC_HOST_SERVER_URL}${sharedConfig.api.path}`,
+  apiUrl: `${env.EXPO_PUBLIC_HOST_SERVER_URL}${sharedConfig.apiPath}`,
 })
 
 export default config

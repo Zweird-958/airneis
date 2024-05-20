@@ -3,8 +3,6 @@ import { httpBatchLink } from "@trpc/react-query"
 import { ReactNode, useState } from "react"
 import superjson from "superjson"
 
-import { sharedConfig } from "@airneis/config"
-
 import api from "@/utils/api"
 import config from "@/utils/config"
 
@@ -21,9 +19,6 @@ const TRPCProvider = (props: Props) => {
       links: [
         httpBatchLink({
           url: config.apiUrl,
-          headers: () => ({
-            [sharedConfig.api.source.key]: sharedConfig.api.source.mobile,
-          }),
         }),
       ],
     }),

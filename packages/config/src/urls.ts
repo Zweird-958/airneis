@@ -10,4 +10,4 @@ export const getBaseUrl = () => {
   return env.VERCEL_URL ?? `http://localhost:${env.PORT}`
 }
 
-export const getApiUrl = () => `${getBaseUrl()}${sharedConfig.api.path}`
+export const getApiUrl = () => `${getBaseUrl()}${sharedConfig.apiPath}`
