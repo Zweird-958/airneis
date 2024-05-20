@@ -12,8 +12,7 @@ import { Locale } from "@airneis/types"
 import withAuth from "./middlewares/withAuth"
 import withOrm from "./middlewares/withOrm"
 
-export const createTRPCContext = (req: NextRequest, lang: Locale) => ({
-  req,
+export const createTRPCContext = (lang: Locale) => ({
   em,
   entities,
   s3,
@@ -23,12 +22,8 @@ export const createTRPCContext = (req: NextRequest, lang: Locale) => ({
   resend,
   stripe: stripeServer,
 })
-const t = initTRPC.context<typeof createTRPCContext>().create({
+export const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
 })
-export type tRPCInit = typeof t
 export const { createCallerFactory } = t
 export const createTRPCRouter = t.router
-export const publicProcedure = t.procedure.use(withOrm(t))
-export const authedProcedure = publicProcedure.use(withAuth(t, "USER"))
-export const adminProcedure = publicProcedure.use(withAuth(t, "ADMIN"))

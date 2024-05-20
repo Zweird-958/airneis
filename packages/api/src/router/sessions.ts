@@ -9,7 +9,8 @@ import { sleep } from "@airneis/utils"
 
 import config from "../config"
 import env from "../env"
-import { authedProcedure, createTRPCRouter, publicProcedure } from "../trpc"
+import { authedProcedure, publicProcedure } from "../procedures"
+import { createTRPCRouter } from "../trpc"
 
 const sessionsRouter = createTRPCRouter({
   create: publicProcedure.input(signInSchema).mutation(

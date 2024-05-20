@@ -5,17 +5,14 @@ import { useState } from "react"
 
 import Menu from "@/components/Menu"
 import Link from "@/components/ui/Link"
+import useCart from "@/hooks/useCart"
 
-type Props = {
-  filledCart?: boolean
-}
-
-const Header = (props: Props) => {
-  const { filledCart = false } = props
+const Header = () => {
   const [displayMenu, setDisplayMenu] = useState(false)
   const handleMenu = () => {
     setDisplayMenu(!displayMenu)
   }
+  const { cart } = useCart()
 
   return (
     <header className="sticky top-0 bg-background w-full border-b z-10">
@@ -27,10 +24,10 @@ const Header = (props: Props) => {
               <Search className="hover:cursor-pointer" />
             </li>
             <li className="relative">
-              <Link href={"/cart"}>
+              <Link href={"/checkout/cart"}>
                 <ShoppingCart />
-                {filledCart && (
-                  <div className="absolute top-0 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full" />
+                {cart && cart.length > 0 && (
+                  <div className="absolute top-0 -right-1 w-2.5 h-2.5 bg-primary rounded-full" />
                 )}
               </Link>
             </li>

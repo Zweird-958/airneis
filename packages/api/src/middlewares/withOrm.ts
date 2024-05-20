@@ -1,8 +1,9 @@
 import { RequestContext } from "@airneis/db"
 
-import { tRPCInit } from "../trpc"
+import { t } from "../trpc"
 
-const withOrm = (t: tRPCInit) =>
-  t.middleware(({ ctx: { em }, next }) => RequestContext.create(em, next))
+const withOrm = t.middleware(({ ctx: { em }, next }) =>
+  RequestContext.create(em, next),
+)
 
 export default withOrm

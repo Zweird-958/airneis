@@ -11,7 +11,8 @@ import { sleep } from "@airneis/utils"
 
 import config from "../config"
 import env from "../env"
-import { createTRPCRouter, publicProcedure } from "../trpc"
+import { publicProcedure } from "../procedures"
+import { createTRPCRouter } from "../trpc"
 
 const usersRouter = createTRPCRouter({
   create: publicProcedure
