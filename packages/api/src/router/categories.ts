@@ -95,7 +95,7 @@ const categoriesRouter = createTRPCRouter({
         const result = {
           result: {
             products: products.map((product) =>
-              formatProduct(product, lang, "category"),
+              formatProduct({ product }, lang, "category"),
             ),
             imageUrl: getImageUrl(category.image.url),
             name: category.name[lang],

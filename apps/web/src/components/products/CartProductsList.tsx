@@ -3,12 +3,14 @@
 import CheckoutCard from "@/components/products/CheckoutCard"
 import useCart from "@/hooks/useCart"
 import { useTranslation } from "@/i18n/client"
+import api from "@/trpc/client"
 
 const CartProductsList = () => {
-  const { cart } = useCart()
   const { t } = useTranslation("checkout")
+  const { cart } = useCart()
+  const { data } = api.carts.checkout.useQuery(cart ?? [])
 
-  if (!cart) {
+  if (!data) {
     return (
       <div className="mx-auto rounded-default bg-card p-6 w-fit">
         <p>{t("cart.empty")}</p>
@@ -16,8 +18,12 @@ const CartProductsList = () => {
     )
   }
 
-  return cart.map(({ product, quantity }) => (
-    <CheckoutCard key={product.id} product={product} quantity={quantity} />
+  return data.result.map((product) => (
+    <CheckoutCard
+      key={product.id}
+      product={product}
+      quantity={product.quantity}
+    />
   ))
 }
 

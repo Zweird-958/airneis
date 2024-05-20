@@ -20,3 +20,8 @@ export type ProductDetails = {
   images: Image[]
   materials: Material[]
 } & Base
+
+export type CheckoutProduct = {
+  quantity: number
+} & Pick<ProductDetails, "description" | "images"> &
+  Base

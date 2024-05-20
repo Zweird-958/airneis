@@ -14,3 +14,10 @@ export const addToCartSchema = z.object({
   productId: productIdSchema,
   quantity: quantitySchema,
 })
+
+export const checkoutSchema = z.array(
+  z.object({
+    id: productIdSchema,
+    quantity: quantitySchema,
+  }),
+)

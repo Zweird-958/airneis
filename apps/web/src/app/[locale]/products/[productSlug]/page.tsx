@@ -10,8 +10,17 @@ type Props = PageProps & {
 }
 
 const Page = async ({ params: { productSlug: slug } }: Props) => {
-  const { result: product } = await api.products.getSingle.query({ slug })
-  const { description, images, name, price, materials } = product
+  const {
+    result: {
+      description,
+      images,
+      name,
+      outOfStock,
+      price,
+      materials,
+      id: productId,
+    },
+  } = await api.products.getSingle.query({ slug })
 
   return (
     <div className="m-4 p-4 bg-card rounded-default flex flex-col lg:flex-row gap-4">
@@ -40,7 +49,7 @@ const Page = async ({ params: { productSlug: slug } }: Props) => {
             ))}
           </div>
         </div>
-        <AddToCartButton product={product} />
+        <AddToCartButton id={productId} outOfStock={outOfStock} />
       </div>
     </div>
   )

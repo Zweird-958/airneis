@@ -45,7 +45,7 @@ const productsRouter = createTRPCRouter({
         }
 
         const result = {
-          result: formatProduct(product, lang, "product"),
+          result: formatProduct({ product }, lang, "product"),
         }
 
         await redis.set(cacheKey, JSON.stringify(result))

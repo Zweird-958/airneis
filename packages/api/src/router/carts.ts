@@ -1,9 +1,9 @@
 import { TRPCError } from "@trpc/server"
 
-import { addToCartSchema, cartSchema } from "@airneis/schemas"
+import { addToCartSchema, cartSchema, checkoutSchema } from "@airneis/schemas"
 import { Id, Product } from "@airneis/types"
 
-import { authedProcedure } from "../procedures"
+import { authedProcedure, publicProcedure } from "../procedures"
 import { createTRPCRouter } from "../trpc"
 import formatProduct from "../utils/formatProduct"
 
@@ -48,15 +48,11 @@ const cartsRouter = createTRPCRouter({
         return true
       },
     ),
-  get: authedProcedure.query(async ({ ctx: { entities, session, lang } }) => {
-    const user = await entities.user.findOneOrFail({ id: session.user.id })
-    const cart = await entities.cart.find(
-      { user },
-      { populate: ["product", "product.images"] },
-    )
+  get: authedProcedure.query(async ({ ctx: { entities, user } }) => {
+    const cart = await entities.cart.find({ user })
 
-    return cart.map(({ product, quantity }) => ({
-      product: formatProduct(product, lang, "product"),
+    return cart.map(({ product: { id }, quantity }) => ({
+      id,
       quantity,
     }))
   }),
@@ -110,6 +106,31 @@ const cartsRouter = createTRPCRouter({
       await em.flush()
 
       return true
+    }),
+  checkout: publicProcedure
+    .input(checkoutSchema)
+    .query(async ({ ctx: { entities, lang }, input: cart }) => {
+      const products = await entities.product.find(
+        {
+          id: {
+            $in: cart.map(({ id }) => id as Id),
+          },
+        },
+        { populate: ["images", "materials"] },
+      )
+
+      return {
+        result: products.map((product) =>
+          formatProduct(
+            {
+              product,
+              quantity: cart.find(({ id }) => id === product.id)?.quantity,
+            },
+            lang,
+            "checkout",
+          ),
+        ),
+      }
     }),
 })
 
