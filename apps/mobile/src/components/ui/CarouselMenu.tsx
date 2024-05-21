@@ -1,5 +1,5 @@
-import { ChevronLeft, ChevronRight, LucideIcon } from "lucide-react"
-import React, { ButtonHTMLAttributes } from "react"
+import { ChevronLeft, ChevronRight, LucideIcon } from "lucide-react-native"
+import { Pressable, PressableProps, View } from "react-native"
 
 import { Image } from "@airneis/types"
 import { cn } from "@airneis/utils"
@@ -7,37 +7,37 @@ import { cn } from "@airneis/utils"
 type SideButtonProps = {
   Icon: LucideIcon
   direction: "left" | "right"
-} & ButtonHTMLAttributes<HTMLButtonElement>
+} & PressableProps
 
 const SideButton = ({
   Icon,
   direction,
-  onClick,
+  onPress,
   ...props
 }: SideButtonProps) => (
-  <button
+  <Pressable
     className={cn(
-      "absolute top-1/2 transform -translate-y-1/2 bg-card rounded-full text-black hover:ring hover:ring-primary active:ring-0 transition duration-150 ease-out p-1.5 md:p-2",
+      "absolute top-1/2 transform -translate-y-1/2 bg-card p-1.5 rounded-full",
       direction === "left" ? "left-4" : "right-4",
     )}
-    onClick={onClick}
+    onPress={onPress}
     {...props}
   >
-    <Icon className="w-4 h-4" />
-  </button>
+    <Icon color="hsl(0 0% 0%)" size={16} />
+  </Pressable>
 )
 
 type BulletButtonProps = {
   active: boolean
-} & ButtonHTMLAttributes<HTMLButtonElement>
+} & PressableProps
 
-const BulletButton = ({ active, onClick, ...props }: BulletButtonProps) => (
-  <button
+const BulletButton = ({ active, onPress, ...props }: BulletButtonProps) => (
+  <Pressable
     className={cn(
       "w-4 h-4 rounded-full border-2 border-primary",
       active ? "bg-primary" : "bg-card",
     )}
-    onClick={onClick}
+    onPress={onPress}
     {...props}
   />
 )
@@ -45,7 +45,7 @@ const BulletButton = ({ active, onClick, ...props }: BulletButtonProps) => (
 type CarouselMenuProps = {
   images: Image[]
   currentImageIndex: number
-  handleDotClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+  handleDotClick: (index: number) => () => void
   handlePrevious: () => void
   handleNext: () => void
 }
@@ -58,18 +58,17 @@ const CarouselMenu = ({
   handleNext,
 }: CarouselMenuProps) => (
   <>
-    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+    <View className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-row gap-2">
       {images.map(({ id }, index) => (
         <BulletButton
           key={id}
           active={currentImageIndex === index}
-          onClick={handleDotClick}
-          data-index={index}
+          onPress={handleDotClick(index)}
         />
       ))}
-    </div>
-    <SideButton Icon={ChevronLeft} direction="left" onClick={handlePrevious} />
-    <SideButton Icon={ChevronRight} direction="right" onClick={handleNext} />
+    </View>
+    <SideButton Icon={ChevronLeft} direction="left" onPress={handlePrevious} />
+    <SideButton Icon={ChevronRight} direction="right" onPress={handleNext} />
   </>
 )
 

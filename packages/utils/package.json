@@ -9,5 +9,9 @@
   "devDependencies": {
     "@airneis/types": "^0.1.0",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.3.0"
   }
 }

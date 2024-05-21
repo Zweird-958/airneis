@@ -1,8 +1,9 @@
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react"
 
+import { cn } from "@airneis/utils"
+
 import Label from "@/components/ui/Label"
-import { cn } from "@/utils/cn"
 
 import { useFormField } from "."
 

@@ -11,7 +11,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   } = useLocale()
   const router = useRouter()
   const handleClick = () => {
-    router.push(`/products/${product.id}`)
+    router.push(`/products/${product.slug}`)
   }
 
   return (

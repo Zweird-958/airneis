@@ -1,22 +1,21 @@
-"use client"
-
-import Image from "next/image"
 import React, { useState } from "react"
+import { Image, View } from "react-native"
 
 import { Image as ImageType } from "@airneis/types"
-import { cn } from "@airneis/utils"
 
 import CarouselMenu from "@/components/ui/CarouselMenu"
 
 type Props = {
   images: ImageType[]
-  className?: string
 }
 
-const Carousel = ({ images, className }: Props) => {
+const Carousel = ({ images }: Props) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const handleDotClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const index = parseInt(event.currentTarget.dataset.index || "0", 10)
+  const handleDotClick = (index: number) => () => {
+    if (index === currentImageIndex) {
+      return
+    }
+
     setCurrentImageIndex(index)
   }
   const handlePrevious = () => {
@@ -29,18 +28,11 @@ const Carousel = ({ images, className }: Props) => {
   }
 
   return (
-    <div
-      className={cn(
-        "w-full aspect-square md:max-h-[700px] relative",
-        className,
-      )}
-    >
+    <View className="w-full h-72 relative">
       <Image
         src={images[currentImageIndex].url}
         alt={`image_${images[currentImageIndex].id}`}
-        className="object-cover rounded-default"
-        fill
-        priority
+        className="object-cover rounded-default flex-1"
       />
 
       {images.length > 1 && (
@@ -52,7 +44,7 @@ const Carousel = ({ images, className }: Props) => {
           handleNext={handleNext}
         />
       )}
-    </div>
+    </View>
   )
 }
 
