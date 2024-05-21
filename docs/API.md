@@ -64,3 +64,7 @@ Saves the local cart to the database.
 #### Possible errors
 
 - `UNAUTHORIZED` if the user is not signed in or does not exists.
+
+### Checkout
+
+Gets the cart with complete product information.
