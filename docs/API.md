@@ -65,12 +65,12 @@ Saves the local cart to the database.
 
 - `UNAUTHORIZED` if the user is not signed in or does not exists.
 
+### Checkout
+
+Gets the cart with complete product information.
+
 ## Contact
 
 ### Create
 
 Adds all information for contact enterprise.
-
-### Checkout
-
-Gets the cart with complete product information.
