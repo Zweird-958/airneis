@@ -1,7 +1,8 @@
 import { HTMLAttributes, forwardRef, useMemo } from "react"
 
+import { cn } from "@airneis/utils"
+
 import { useTranslation } from "@/i18n/client"
-import { cn } from "@/utils/cn"
 
 import { useFormField } from "."
 

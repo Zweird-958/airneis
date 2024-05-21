@@ -4,9 +4,9 @@ import Image from "next/image"
 import React, { useState } from "react"
 
 import { Image as ImageType } from "@airneis/types"
+import { cn } from "@airneis/utils"
 
 import CarouselMenu from "@/components/ui/CarouselMenu"
-import { cn } from "@/utils/cn"
 
 type Props = {
   images: ImageType[]

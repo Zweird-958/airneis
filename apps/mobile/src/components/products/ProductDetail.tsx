@@ -1,10 +1,10 @@
 import { Pressable, Text, View } from "react-native"
 
 import { ProductDetail as Product } from "@airneis/types"
+import { cn } from "@airneis/utils"
 
 import Carousel from "@/components/ui/Carousel"
 import useLocale from "@/hooks/useLocale"
-import { cn } from "@/utils/cn"
 
 const ProductDetail = ({ product }: { product: Product }) => {
   const {

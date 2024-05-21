@@ -2,8 +2,7 @@ import { ChevronLeft, ChevronRight, LucideIcon } from "lucide-react"
 import React, { ButtonHTMLAttributes } from "react"
 
 import { Image } from "@airneis/types"
-
-import { cn } from "@/utils/cn"
+import { cn } from "@airneis/utils"
 
 type SideButtonProps = {
   Icon: LucideIcon
