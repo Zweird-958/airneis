@@ -1,12 +1,16 @@
 import { Pressable, Text, View } from "react-native"
 
-import { ProductDetail as Product } from "@airneis/types"
+import { ProductDetails as Product } from "@airneis/types"
 import { cn } from "@airneis/utils"
 
 import Carousel from "@/components/ui/Carousel"
 import useLocale from "@/hooks/useLocale"
 
-const ProductDetail = ({ product }: { product: Product }) => {
+const ProductDetails = ({
+  product,
+}: {
+  product: Omit<Product, "similarProducts" | "categories">
+}) => {
   const {
     translations: { products },
   } = useLocale()
@@ -25,10 +29,10 @@ const ProductDetail = ({ product }: { product: Product }) => {
           </View>
           {materials.length > 1 && (
             <View className="flex flex-row flex-wrap gap-2">
-              {materials.map(({ id, name: materialName }) => (
+              {materials.map(({ id: materialId, name: materialName }) => (
                 <Text
                   className="w-fit px-2 py-0.5 font-light text-xs bg-primary/10 rounded-default border border-primary"
-                  key={id}
+                  key={materialId}
                 >
                   {materialName}
                 </Text>
@@ -53,4 +57,4 @@ const ProductDetail = ({ product }: { product: Product }) => {
   )
 }
 
-export default ProductDetail
+export default ProductDetails

@@ -1,7 +1,7 @@
 import { useLocalSearchParams } from "expo-router"
 import { Text, View } from "react-native"
 
-import ProductDetail from "@/components/products/ProductDetail"
+import ProductDetails from "@/components/products/ProductDetails"
 import LoadingView from "@/components/ui/LoadingView"
 import useLocale from "@/hooks/useLocale"
 import api from "@/utils/api"
@@ -29,7 +29,7 @@ const Product = () => {
 
   return (
     <View className="m-4 p-4 bg-card rounded-default">
-      <ProductDetail product={product} />
+      <ProductDetails product={product} />
     </View>
   )
 }
