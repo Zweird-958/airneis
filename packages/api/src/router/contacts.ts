@@ -3,7 +3,7 @@ import { createContactSchema } from "@airneis/schemas"
 import { adminProcedure, publicProcedure } from "../procedures"
 import { createTRPCRouter } from "../trpc"
 
-const contactRouter = createTRPCRouter({
+const contactsRouter = createTRPCRouter({
   create: publicProcedure
     .input(createContactSchema)
     .mutation(async ({ ctx, input: { email, subject, description } }) => {
@@ -24,4 +24,4 @@ const contactRouter = createTRPCRouter({
   }),
 })
 
-export default contactRouter
+export default contactsRouter
