@@ -5,6 +5,7 @@ SHAPING THE PROJECT
 ## Positive reviews
 
 - Review 1
+
   - Description: `Project taking shape`
   - Commitment:
     - Who: `Julien + Léon`
@@ -12,6 +13,7 @@ SHAPING THE PROJECT
     - When: `sprint4`
 
 - Review 2
+
   - Description: `Mobile-related US`
   - Commitment:
     - Who: `Bruno`
@@ -19,6 +21,7 @@ SHAPING THE PROJECT
     - When: `sprint4`
 
 - Review 3
+
   - Description: `No more code added or modified in a PR`
   - Commitment:
     - Who: `Bruno`
@@ -26,6 +29,7 @@ SHAPING THE PROJECT
     - When: `sprint4`
 
 - Review 4
+
   - Description: `Project's base is solid`
   - Commitment:
     - Who: `Bruno`
@@ -42,6 +46,7 @@ SHAPING THE PROJECT
 ## Negative reviews
 
 - Review 1
+
   - Description: `npm-related problems`
   - Commitment:
     - Who: `Julien + Vitor`
@@ -49,6 +54,7 @@ SHAPING THE PROJECT
     - When: `sprint4`
 
 - Review 2
+
   - Description: `PRs review time`
   - Commitment:
     - Who: `Vitor + Bruno`
@@ -56,6 +62,7 @@ SHAPING THE PROJECT
     - When: `sprint4`
 
 - Review 3
+
   - Description: `Mobile development not stable`
   - Commitment:
     - Who: `Bruno`

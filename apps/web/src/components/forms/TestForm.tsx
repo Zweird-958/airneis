@@ -2,12 +2,12 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { SubmitHandler, useForm } from "react-hook-form"
+import { toast } from "sonner"
 import { z } from "zod"
 
 import UsernameField from "@/components/forms/fields/UsernameField"
 import Button from "@/components/ui/Button"
 import { Form } from "@/components/ui/Form"
-import { toast } from "sonner"
 
 const testSchema = z.object({
   username: z
