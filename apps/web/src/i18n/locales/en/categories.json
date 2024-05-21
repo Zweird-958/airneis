@@ -2,7 +2,6 @@
   "create": "Create category",
   "created": "Category created",
   "empty": "There are no products in this category yet.",
-  "created": "Category created",
   "errors": {
     "imageRequired": "The image is required",
     "image": "An error occurred while uploading the image",

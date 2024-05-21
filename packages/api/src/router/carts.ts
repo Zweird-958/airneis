@@ -3,8 +3,9 @@ import { TRPCError } from "@trpc/server"
 import { addToCartSchema, cartSchema } from "@airneis/schemas"
 import { Id, Product } from "@airneis/types"
 
-import { authedProcedure } from "../procedures"
+import { authedProcedure, publicProcedure } from "../procedures"
 import { createTRPCRouter } from "../trpc"
+import formatProductFor from "../utils/formatProductFor"
 
 const cartsRouter = createTRPCRouter({
   add: authedProcedure
@@ -47,8 +48,8 @@ const cartsRouter = createTRPCRouter({
         return true
       },
     ),
-  get: authedProcedure.query(async ({ ctx: { entities, session } }) => {
-    const cart = await entities.cart.find({ user: { id: session.user.id } })
+  get: authedProcedure.query(async ({ ctx: { entities, user } }) => {
+    const cart = await entities.cart.find({ user })
 
     return cart.map(({ product: { id }, quantity }) => ({
       id,
@@ -105,6 +106,28 @@ const cartsRouter = createTRPCRouter({
       await em.flush()
 
       return true
+    }),
+  checkout: publicProcedure
+    .input(cartSchema)
+    .query(async ({ ctx: { entities, lang }, input: cart }) => {
+      const products = await entities.product.find(
+        {
+          id: {
+            $in: cart.map(({ id }) => id as Id),
+          },
+        },
+        { populate: ["images", "materials"] },
+      )
+
+      return {
+        result: products.map((product) =>
+          formatProductFor.checkout(
+            product,
+            lang,
+            cart.find(({ id }) => id === product.id)?.quantity,
+          ),
+        ),
+      }
     }),
 })
 
