@@ -14,7 +14,7 @@ const CheckoutCard = ({ product, quantity }: Props) => (
       <Image
         layout="fill"
         className="object-cover rounded-default"
-        src={product.images[0].url}
+        src={product.imageUrl}
         alt={product.name}
       />
     </div>
