@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server"
-import { Locale } from "packages/config"
 
+import { Locale } from "@airneis/config"
 import { createMaterialSchema } from "@airneis/schemas"
 
 import { adminProcedure } from "../procedures"
