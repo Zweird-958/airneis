@@ -9,7 +9,7 @@ type Props = {
 }
 
 const CheckoutCard = ({ product, quantity }: Props) => (
-  <div className="flex gap-4 max-w-[700px] h-32 sm:h-52">
+  <div className="flex gap-4 max-w-[700px] h-32 md:h-52">
     <div className="w-full max-w-52 relative">
       <Image
         layout="fill"
@@ -20,7 +20,7 @@ const CheckoutCard = ({ product, quantity }: Props) => (
     </div>
     <div className="basis-1/3 justify-between flex flex-col">
       <h2 className="line-clamp-1 font-semibold">{product.name}</h2>
-      <h3 className="line-clamp-[4] sm:line-clamp-[7]">
+      <h3 className="line-clamp-[4] md:line-clamp-[7]">
         {product.description}
       </h3>
     </div>
