@@ -12,7 +12,7 @@ const Product = () => {
   } = useLocale()
   const { productSlug: slug } = useLocalSearchParams<{ productSlug: string }>()
   const { data, isLoading, isError, error } = api.products.getSingle.useQuery({
-    slug,
+    slug: slug ?? "",
   })
 
   if (isLoading) {

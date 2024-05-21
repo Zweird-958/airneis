@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
 
-import { cn } from "@/utils/cn"
+import { cn } from "@airneis/utils"
 
 type Props = {
   className?: string
