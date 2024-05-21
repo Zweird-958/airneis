@@ -68,3 +68,9 @@ Saves the local cart to the database.
 ### Checkout
 
 Gets the cart with complete product information.
+
+## Contact
+
+### Create
+
+Adds all information for contact enterprise.
