@@ -11,7 +11,7 @@ const contactsRouter = createTRPCRouter({
         ctx: { entities, em },
         input: { email, subject, description },
       }) => {
-        entities.contacts.create({
+        entities.contact.create({
           email,
           subject,
           description,
