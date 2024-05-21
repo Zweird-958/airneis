@@ -7,7 +7,7 @@ import type { Locale, Product } from "@airneis/types"
 import config from "../config"
 import { adminProcedure, publicProcedure } from "../procedures"
 import { createTRPCRouter } from "../trpc"
-import formatProduct from "../utils/formatProduct"
+import formatProductFor from "../utils/formatProductFor"
 import getImageUrl from "../utils/getImageUrl"
 
 type GetCategoryResult = {
@@ -95,7 +95,7 @@ const categoriesRouter = createTRPCRouter({
         const result = {
           result: {
             products: products.map((product) =>
-              formatProduct({ product }, lang, "category"),
+              formatProductFor.category(product, lang),
             ),
             imageUrl: getImageUrl(category.image.url),
             name: category.name[lang],

@@ -5,10 +5,11 @@ import { ProductDetails } from "@airneis/types"
 
 import { publicProcedure } from "../procedures"
 import { createTRPCRouter } from "../trpc"
-import formatProduct from "../utils/formatProduct"
+import formatProductFor from "../utils/formatProductFor"
+import getSimilarProducts from "../utils/getSimilarProducts"
 
 type GetSingleProductResult = {
-  result: ProductDetails
+  result: Omit<ProductDetails, "categories">
 }
 
 const productsRouter = createTRPCRouter({
@@ -18,41 +19,62 @@ const productsRouter = createTRPCRouter({
       { id: 2, name: "Product 2" },
     ],
   })),
-  getSingle: publicProcedure
-    .input(getSingleProductSchema)
-    .query(
-      async ({
-        ctx: { entities, lang, redis, cacheKeys },
-        input: { slug },
-      }): Promise<GetSingleProductResult> => {
-        const cacheKey = cacheKeys.product(lang, slug)
-        const cachedProduct = await redis.get(cacheKey)
+  getSingle: publicProcedure.input(getSingleProductSchema).query(
+    async ({
+      ctx: {
+        entities: { product: productEntity },
+        lang,
+        redis,
+        cacheKeys,
+        raw,
+      },
+      input: { slug },
+    }): Promise<GetSingleProductResult> => {
+      const cacheKey = cacheKeys.product(lang, slug)
+      const cachedProduct = await redis.get(cacheKey)
+      let product: Omit<ProductDetails, "similarProducts"> | null = null
 
-        if (cachedProduct) {
-          return JSON.parse(cachedProduct)
-        }
-
-        const product = await entities.product.findOne(
+      if (cachedProduct) {
+        product = JSON.parse(cachedProduct) as Omit<
+          ProductDetails,
+          "similarProducts"
+        >
+      } else {
+        const dbProduct = await productEntity.findOne(
           { slug },
-          { populate: ["images", "materials"] },
+          { populate: ["images", "materials", "categories"] },
         )
 
-        if (!product) {
+        if (!dbProduct) {
           throw new TRPCError({
             code: "NOT_FOUND",
             message: "Product not found",
           })
         }
 
-        const result = {
-          result: formatProduct({ product }, lang, "product"),
-        }
+        product = formatProductFor.single(dbProduct, lang)
 
-        await redis.set(cacheKey, JSON.stringify(result))
+        await redis.set(cacheKey, JSON.stringify(product))
+      }
 
-        return result
-      },
-    ),
+      const similarProducts = await getSimilarProducts(
+        { id: product.id, categories: product.categories },
+        productEntity,
+        raw,
+      )
+      // To avoid sending the categories to the client
+      const { categories: _, ...formatedProduct } = product
+
+      return {
+        result: {
+          ...formatedProduct,
+          similarProducts: similarProducts.map((similarProduct) =>
+            formatProductFor.similar(similarProduct, lang),
+          ),
+        },
+      }
+    },
+  ),
 })
 
 export default productsRouter

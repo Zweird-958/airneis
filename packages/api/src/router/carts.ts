@@ -5,7 +5,7 @@ import { Id, Product } from "@airneis/types"
 
 import { authedProcedure, publicProcedure } from "../procedures"
 import { createTRPCRouter } from "../trpc"
-import formatProduct from "../utils/formatProduct"
+import formatProductFor from "../utils/formatProductFor"
 
 const cartsRouter = createTRPCRouter({
   add: authedProcedure
@@ -121,13 +121,10 @@ const cartsRouter = createTRPCRouter({
 
       return {
         result: products.map((product) =>
-          formatProduct(
-            {
-              product,
-              quantity: cart.find(({ id }) => id === product.id)?.quantity,
-            },
+          formatProductFor.checkout(
+            product,
             lang,
-            "checkout",
+            cart.find(({ id }) => id === product.id)?.quantity,
           ),
         ),
       }
