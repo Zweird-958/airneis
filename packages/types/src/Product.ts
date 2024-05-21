@@ -3,18 +3,22 @@ import { Product as ProductEntity } from "@airneis/db"
 import { Image } from "./Image"
 import { Material } from "./Material"
 
-export type Product = {
-  price: string
+export type Base = {
+  id: ProductEntity["id"]
   name: string
   outOfStock: boolean
-  imagesUrl: string[]
-} & Pick<ProductEntity, "id" | "slug">
+  price: string
+}
 
-export type ProductDetail = {
-  price: string
-  name: string
-  outOfStock: boolean
+export type Product = {
+  slug: ProductEntity["slug"]
+  imagesUrl: string[]
+} & Base
+
+export type ProductDetails = {
   description: string
   images: Image[]
   materials: Material[]
-} & Pick<ProductEntity, "id">
+  similarProducts: Product[]
+  categories: ProductEntity["id"][]
+} & Base

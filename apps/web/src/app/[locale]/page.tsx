@@ -1,6 +1,7 @@
 import GenericsShowcase from "@/components/GenericsShowcase"
 import LocaleSelector from "@/components/LocaleSelector"
 import ProductList from "@/components/ProductList"
+import StripeShowcase from "@/components/StripeDemo"
 import Test from "@/components/Test"
 import TestForm from "@/components/forms/TestForm"
 import { useTranslation } from "@/i18n"
@@ -30,6 +31,8 @@ const Home = async ({ params: { locale } }: PageProps) => {
       <GenericsShowcase />
       <hr className="my-4" />
       <TestForm />
+      <hr className="my-4" />
+      <StripeShowcase />
     </div>
   )
 }

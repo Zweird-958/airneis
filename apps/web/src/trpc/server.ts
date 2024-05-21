@@ -4,14 +4,13 @@ import "server-only"
 import superjson from "superjson"
 
 import { AppRouter } from "@airneis/api"
-
-import { getUrl } from "@/trpc/shared"
+import { getApiUrl } from "@airneis/config"
 
 const api = createTRPCProxyClient<AppRouter>({
   transformer: superjson,
   links: [
     httpBatchLink({
-      url: getUrl(),
+      url: getApiUrl(),
       headers() {
         const newHeaders = new Map(headers())
 
