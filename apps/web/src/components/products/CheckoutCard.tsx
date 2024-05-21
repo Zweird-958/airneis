@@ -15,7 +15,7 @@ const CheckoutCard = ({ product, quantity }: Props) => (
         layout="fill"
         className="object-cover rounded-default"
         src={product.images[0].url}
-        alt={product.images[0].url}
+        alt={product.name}
       />
     </div>
     <div className="basis-1/3 justify-between flex flex-col">
