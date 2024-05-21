@@ -2,6 +2,7 @@ import initORM from "./src/utils/initORM"
 
 export const { em, entities } = await initORM()
 export { RequestContext } from "@mikro-orm/core"
+export { SqlEntityRepository, raw } from "@mikro-orm/postgresql"
 
 export * from "./src/entities/Address"
 export * from "./src/entities/Cart"
