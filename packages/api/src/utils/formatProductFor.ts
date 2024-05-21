@@ -38,6 +38,7 @@ const checkout = (product: Product, lang: Locale, quantity = 1) => ({
   ...getBase(product, lang, quantity),
   description: product.description[lang],
   imageUrl: getImageUrl(product.images[0].url),
+  quantity,
 })
 const formatProductFor = {
   category,

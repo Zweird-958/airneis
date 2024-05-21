@@ -19,11 +19,7 @@ const CartProductsList = () => {
   }
 
   return data.result.map((product) => (
-    <CheckoutCard
-      key={product.id}
-      product={product}
-      quantity={product.quantity}
-    />
+    <CheckoutCard key={product.id} product={product} />
   ))
 }
 
