@@ -34,14 +34,14 @@ const Category = async ({
 
     return (
       <div className="flex flex-col gap-8 pb-2 items-center">
-        <div className="w-full relative h-52 sm:h-72">
+        <div className="w-full relative h-52 md:h-72">
           <Image
             src={category.imageUrl}
             layout="fill"
             className="object-cover blur-xs"
             alt={category.name}
           />
-          <h1 className="absolute top-1/2 transform -translate-y-1/2 text-center w-full px-2 sm:text-xl font-bold">
+          <h1 className="absolute top-1/2 transform -translate-y-1/2 text-center w-full px-2 md:text-xl font-bold">
             {category.name}
           </h1>
         </div>
