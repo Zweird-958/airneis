@@ -22,3 +22,9 @@ export type ProductDetails = {
   similarProducts: Product[]
   categories: ProductEntity["id"][]
 } & Base
+
+export type CheckoutProduct = {
+  quantity: number
+  imageUrl: string
+} & Pick<ProductDetails, "description"> &
+  Base

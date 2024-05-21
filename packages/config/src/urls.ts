@@ -1,6 +1,5 @@
-import { sharedConfig } from "@airneis/config"
-
 import env from "./env"
+import { sharedConfig } from "./shared"
 
 export const getBaseUrl = () => {
   if (typeof window !== "undefined") {
