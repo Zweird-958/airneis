@@ -24,10 +24,10 @@ export const OPTIONS = () => {
 const handler = async (req: NextRequest) => {
   const locale = getLocale()
   const response = await fetchRequestHandler({
-    endpoint: sharedConfig.api.path,
+    endpoint: sharedConfig.apiPath,
     router: appRouter,
     req,
-    createContext: () => createTRPCContext(req, locale),
+    createContext: () => createTRPCContext(locale),
   })
 
   setCorsHeaders(response)

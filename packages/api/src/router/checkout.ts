@@ -3,7 +3,8 @@ import { TRPCError } from "@trpc/server"
 import { getBaseUrl } from "@airneis/config"
 
 import config from "../config"
-import { authedProcedure, createTRPCRouter } from "../trpc"
+import { authedProcedure } from "../procedures"
+import { createTRPCRouter } from "../trpc"
 
 const checkoutRouter = createTRPCRouter({
   createSession: authedProcedure.mutation(
