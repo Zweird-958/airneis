@@ -1,6 +1,6 @@
 import { createContactSchema } from "@airneis/schemas"
 
-import { adminProcedure, publicProcedure } from "../procedures"
+import { publicProcedure } from "../procedures"
 import { createTRPCRouter } from "../trpc"
 
 const contactsRouter = createTRPCRouter({
@@ -11,7 +11,7 @@ const contactsRouter = createTRPCRouter({
         ctx: { entities, em },
         input: { email, subject, description },
       }) => {
-        entities.contact.create({
+        entities.contacts.create({
           email,
           subject,
           description,
@@ -22,11 +22,6 @@ const contactsRouter = createTRPCRouter({
         return true
       },
     ),
-  get: adminProcedure.query(async ({ ctx: { entities } }) => {
-    const contacts = await entities.contact.find({})
-
-    return contacts
-  }),
 })
 
 export default contactsRouter
