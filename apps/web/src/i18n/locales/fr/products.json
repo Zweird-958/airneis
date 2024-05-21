@@ -1,4 +1,5 @@
 {
   "outOfStock": "En rupture",
-  "addToCart": "Ajouter au panier"
+  "addToCart": "Ajouter au panier",
+  "similar": "{count, plural, zero {Aucun produit similaire} one {Produit similaire} other {Produits similaires}}"
 }

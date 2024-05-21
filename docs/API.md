@@ -32,9 +32,9 @@ Gets a category with its products based on its slug and the requested page.
 
 ### Get single
 
-Gets a single product based on its slug.
+Gets a single product based on its slug with similar products associated with it.
 
-### Possible errors
+#### Possible errors
 
 - `NOT_FOUND` if the requested product does not exist.
 
