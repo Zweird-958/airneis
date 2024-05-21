@@ -69,4 +69,4 @@ Saves the local cart to the database.
 
 ### Create
 
-add all information for contact enterprise
+Adds all information for contact enterprise.
