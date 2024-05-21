@@ -1,5 +1,6 @@
 import cartsRouter from "./router/carts"
 import categoriesRouter from "./router/categories"
+import checkoutRouter from "./router/checkout"
 import contactsRouter from "./router/contacts"
 import imagesRouter from "./router/images"
 import materialsRouter from "./router/materials"
@@ -16,6 +17,7 @@ export const appRouter = createTRPCRouter({
   sessions: sessionsRouter,
   images: imagesRouter,
   contacts: contactsRouter,
+  checkout: checkoutRouter,
   carts: cartsRouter,
 })
 

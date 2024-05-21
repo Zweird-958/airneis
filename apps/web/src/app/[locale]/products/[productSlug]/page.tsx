@@ -1,5 +1,6 @@
-import AddToCartButton from "@/components/products/AddToCartButton"
-import Carousel from "@/components/ui/Carousel"
+import ProductCard from "@/components/products/ProductCard"
+import ProductDetails from "@/components/products/ProductDetails"
+import { useTranslation } from "@/i18n"
 import api from "@/trpc/server"
 import { PageProps } from "@/types/common"
 
@@ -9,47 +10,22 @@ type Props = PageProps & {
   }
 }
 
-const Page = async ({ params: { productSlug: slug } }: Props) => {
+const Page = async ({ params: { productSlug: slug, locale } }: Props) => {
   const {
-    result: {
-      description,
-      images,
-      name,
-      outOfStock,
-      price,
-      materials,
-      id: productId,
-    },
+    result: { similarProducts, ...product },
   } = await api.products.getSingle.query({ slug })
+  const { t } = await useTranslation(locale, "products")
 
   return (
-    <div className="m-4 p-4 bg-card rounded-default flex flex-col lg:flex-row gap-4">
-      <Carousel images={images} className="lg:w-1/2" />
-      <div className="flex flex-col gap-8 justify-between lg:w-1/2">
-        <div className="flex flex-col gap-4 ">
-          <div className="flex justify-between font-semibold text-lg lg:text-xl gap-8">
-            <h2>{name.toUpperCase()}</h2>
-            <span>{price}</span>
-          </div>
-          {materials.length > 1 && (
-            <div className="flex flex-wrap gap-2">
-              {materials.map(({ id, name: materialName }) => (
-                <span
-                  className="w-fit px-2 py-0.5 font-light text-xs bg-primary/10 rounded-default border border-primary"
-                  key={id}
-                >
-                  {materialName}
-                </span>
-              ))}
-            </div>
-          )}
-          <div className="flex flex-col gap-4 text-justify">
-            {description.split("\n\n").map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-          </div>
-        </div>
-        <AddToCartButton id={productId} outOfStock={outOfStock} />
+    <div className="m-4 p-4 flex flex-col gap-20 bg-card rounded-default">
+      <ProductDetails product={product} />
+      <div className="p-4 flex flex-wrap justify-center bg-background rounded-default gap-3">
+        <h3 className="w-full text-center font-semibold text-lg uppercase">
+          {t("similar", { count: similarProducts.length })}
+        </h3>
+        {similarProducts.map((similarProduct) => (
+          <ProductCard key={similarProduct.id} product={similarProduct} />
+        ))}
       </div>
     </div>
   )
