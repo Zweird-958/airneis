@@ -9,7 +9,7 @@ type Props = {
 }
 
 const CheckoutCard = ({ product, quantity }: Props) => (
-  <div key={product.id} className="flex gap-4 max-w-[700px] h-32 sm:h-52">
+  <div className="flex gap-4 max-w-[700px] h-32 sm:h-52">
     <div className="w-full max-w-52 relative">
       <Image
         layout="fill"
