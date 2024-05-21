@@ -2,6 +2,7 @@ import Image from "next/image"
 import { notFound } from "next/navigation"
 
 import ProductsList from "@/components/products/ProductsList"
+import Card from "@/components/ui/Card"
 import { Pagination } from "@/components/ui/Pagination"
 import { useTranslation } from "@/i18n"
 import api from "@/trpc/server"
@@ -49,9 +50,9 @@ const Category = async ({
         <div className="flex flex-col gap-8 max-w-[63.5rem] px-4 items-center">
           <h2 className="text-center">{category.description}</h2>
           {category.products.length === 0 && (
-            <div className="bg-card p-4 rounded-default">
+            <Card>
               <p className="text-center">{t("empty")}</p>
-            </div>
+            </Card>
           )}
           <ProductsList products={category.products} />
 
