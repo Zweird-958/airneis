@@ -26,7 +26,7 @@ const ContactForm = () => {
   })
   const { t } = useTranslation("forms")
   const { onError } = useErrorHandler()
-  const { mutate } = api.contact.create.useMutation({
+  const { mutate } = api.contacts.create.useMutation({
     onError,
     onSuccess: () => {
       toast.success(t("contact.success"), { duration: 5000 })

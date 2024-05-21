@@ -8,6 +8,7 @@
     "label": "Choose an image"
   },
   "create": "Create",
+  "send": "Send",
   "email": "Email",
   "password": "Password",
   "firstName": "First name",
