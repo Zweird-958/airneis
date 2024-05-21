@@ -6,19 +6,24 @@ import { createTRPCRouter } from "../trpc"
 const contactsRouter = createTRPCRouter({
   create: publicProcedure
     .input(createContactSchema)
-    .mutation(async ({ ctx, input: { email, subject, description } }) => {
-      ctx.entities.contact.create({
-        email,
-        subject,
-        description,
-      })
+    .mutation(
+      async ({
+        ctx: { entities, em },
+        input: { email, subject, description },
+      }) => {
+        entities.contact.create({
+          email,
+          subject,
+          description,
+        })
 
-      await ctx.em.flush()
+        await em.flush()
 
-      return true
-    }),
-  get: adminProcedure.query(async ({ ctx }) => {
-    const contacts = await ctx.entities.contact.find({})
+        return true
+      },
+    ),
+  get: adminProcedure.query(async ({ ctx: { entities } }) => {
+    const contacts = await entities.contact.find({})
 
     return contacts
   }),
