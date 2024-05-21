@@ -37,7 +37,7 @@ const similar = (product: Product, lang: Locale) => ({
 const checkout = (product: Product, lang: Locale, quantity = 1) => ({
   ...getBase(product, lang, quantity),
   description: product.description[lang],
-  imageUrl: product.images[0].url,
+  imageUrl: getImageUrl(product.images[0].url),
 })
 const formatProductFor = {
   category,
