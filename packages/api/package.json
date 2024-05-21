@@ -12,10 +12,11 @@
   "dependencies": {
     "@airneis/config": "^0.1.0",
     "@airneis/db": "^0.1.0",
-    "@airneis/redis": "^0.1.0",
     "@airneis/email": "^0.1.0",
+    "@airneis/redis": "^0.1.0",
     "@airneis/s3": "^0.1.0",
     "@airneis/schemas": "^0.1.0",
+    "@airneis/stripe": "^0.1.0",
     "@trpc/client": "^10.45.0",
     "@trpc/server": "^10.45.0",
     "bcrypt": "^5.1.1",
