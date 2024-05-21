@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server"
 
-import { addToCartSchema, cartSchema, checkoutSchema } from "@airneis/schemas"
+import { addToCartSchema, cartSchema } from "@airneis/schemas"
 import { Id, Product } from "@airneis/types"
 
 import { authedProcedure, publicProcedure } from "../procedures"
@@ -108,7 +108,7 @@ const cartsRouter = createTRPCRouter({
       return true
     }),
   checkout: publicProcedure
-    .input(checkoutSchema)
+    .input(cartSchema)
     .query(async ({ ctx: { entities, lang }, input: cart }) => {
       const products = await entities.product.find(
         {
