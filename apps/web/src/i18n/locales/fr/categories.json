@@ -6,5 +6,10 @@
     "imageRequired": "Une image est requise",
     "image": "Une erreur s'est produite lors de l'envoi de l'image",
     "create": "Une erreur s'est produite lors de la création de la catégorie"
+  },
+  "notFound": {
+    "title": "Catégorie non trouvée",
+    "description": "La catégorie que vous recherchez n'existe pas ou a été supprimée.",
+    "back": "Retour à la page d'accueil"
   }
 }
