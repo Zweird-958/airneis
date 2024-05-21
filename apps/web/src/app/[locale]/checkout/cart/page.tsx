@@ -7,7 +7,7 @@ const Cart = async ({ params: { locale } }: PageProps) => {
 
   return (
     <div className="p-4 flex flex-col gap-4">
-      <h1 className="text-2xl font-semibold sm:text-center">
+      <h1 className="text-2xl font-semibold md:text-center">
         {t("cart.title")}
       </h1>
       <CartProductsList />
