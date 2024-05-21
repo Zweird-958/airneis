@@ -25,5 +25,6 @@ export type ProductDetails = {
 
 export type CheckoutProduct = {
   quantity: number
-} & Pick<ProductDetails, "description" | "images"> &
+  imageUrl: string
+} & Pick<ProductDetails, "description"> &
   Base
