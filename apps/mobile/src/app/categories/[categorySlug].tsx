@@ -12,12 +12,12 @@ const Category = () => {
     translations: { categories },
   } = useLocale()
   const { categorySlug, page } = useLocalSearchParams<{
-    categorySlug: string
+    categorySlug?: string
     page?: string
   }>()
   const pageParsed = page ? parseInt(page, 10) : 1
   const { data, isLoading, error } = api.categories.get.useQuery({
-    slug: categorySlug,
+    slug: categorySlug ?? "",
     page: pageParsed,
   })
 

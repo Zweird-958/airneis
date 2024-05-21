@@ -3,7 +3,8 @@ import { NextRequest } from "next/server"
 
 import { appRouter, createTRPCContext } from "@airneis/api"
 import { sharedConfig } from "@airneis/config"
-import { localeFallbackSchema, localeSchema } from "@airneis/schemas"
+
+import getLocale from "@/utils/locale/getLocale"
 
 const setCorsHeaders = (res: Response) => {
   res.headers.set("Access-Control-Allow-Origin", "*")
@@ -21,21 +22,12 @@ export const OPTIONS = () => {
   return response
 }
 const handler = async (req: NextRequest) => {
-  const setCookie = req.headers.get("Set-Cookie")
-  const langSetCookie = setCookie
-    ?.split(`${sharedConfig.localeCookieKey}=`)[1]
-    ?.split(";")[0]
-  const langCookie = req.cookies.get(sharedConfig.localeCookieKey)?.value
+  const locale = getLocale()
   const response = await fetchRequestHandler({
-    endpoint: "/api/trpc",
+    endpoint: sharedConfig.apiPath,
     router: appRouter,
     req,
-    createContext: () =>
-      createTRPCContext(
-        localeSchema
-          .catch(localeFallbackSchema.parse(langCookie))
-          .parse(langSetCookie),
-      ),
+    createContext: () => createTRPCContext(locale),
   })
 
   setCorsHeaders(response)

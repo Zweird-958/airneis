@@ -15,6 +15,9 @@ const schema = z.object({
       hashingDuration: z.number(),
     }),
   }),
+  products: z.object({
+    limitSimilarProducts: z.number().min(1),
+  }),
 })
 const config = schema.parse({
   pagination: {
@@ -30,6 +33,9 @@ const config = schema.parse({
       },
       hashingDuration: 1000,
     },
+  },
+  products: {
+    limitSimilarProducts: 6,
   },
 })
 

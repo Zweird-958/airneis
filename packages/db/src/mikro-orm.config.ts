@@ -5,10 +5,10 @@ import { SeedManager } from "@mikro-orm/seeder"
 import { Address } from "./entities/Address"
 import { Cart } from "./entities/Cart"
 import { Category } from "./entities/Category"
+import { Contact } from "./entities/Contact"
 import { DeliveryCountry } from "./entities/DeliveryCountry"
 import { Image } from "./entities/Image"
 import { Material } from "./entities/Material"
-import { Message } from "./entities/Message"
 import { Order } from "./entities/Order"
 import { OrderProduct } from "./entities/OrderProduct"
 import { Product } from "./entities/Product"
@@ -28,7 +28,7 @@ export default defineConfig({
     DeliveryCountry,
     Image,
     Material,
-    Message,
+    Contact,
     Order,
     OrderProduct,
     Product,
