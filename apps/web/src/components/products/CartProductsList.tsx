@@ -10,7 +10,7 @@ const CartProductsList = () => {
   const { cart } = useCart()
   const { data } = api.carts.checkout.useQuery(cart ?? [])
 
-  if (!data) {
+  if (!data || data.result.length === 0) {
     return (
       <div className="mx-auto rounded-default bg-card p-6 w-fit">
         <p>{t("cart.empty")}</p>
