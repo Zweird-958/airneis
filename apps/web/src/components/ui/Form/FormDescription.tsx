@@ -1,6 +1,6 @@
 import { HTMLAttributes, forwardRef } from "react"
 
-import { cn } from "@/utils/cn"
+import { cn } from "@airneis/utils"
 
 import { useFormField } from "."
 

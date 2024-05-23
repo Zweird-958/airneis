@@ -1,18 +1,17 @@
-import { Locale, ProductDetail as Product } from "@airneis/types"
+"use client"
 
-import Button from "@/components/ui/Button"
+import { ProductDetails as Product } from "@airneis/types"
+
+import AddToCartButton from "@/components/products/AddToCartButton"
 import Carousel from "@/components/ui/Carousel"
-import { useTranslation } from "@/i18n"
 
-const ProductDetail = async ({
-  product,
-  locale,
-}: {
-  product: Product
-  locale: Locale
-}) => {
-  const { description, images, name, outOfStock, price, materials } = product
-  const { t } = await useTranslation(locale, "products")
+type Props = {
+  product: Omit<Product, "similarProducts" | "categories">
+}
+
+const ProductDetails = ({ product }: Props) => {
+  const { description, images, name, outOfStock, price, materials, id } =
+    product
 
   return (
     <div className="flex flex-col lg:flex-row gap-4">
@@ -25,10 +24,10 @@ const ProductDetail = async ({
           </div>
           {materials.length > 1 && (
             <div className="flex flex-wrap gap-2">
-              {materials.map(({ id, name: materialName }) => (
+              {materials.map(({ id: materialId, name: materialName }) => (
                 <span
                   className="w-fit px-2 py-0.5 font-light text-xs bg-primary/10 rounded-default border border-primary"
-                  key={id}
+                  key={materialId}
                 >
                   {materialName}
                 </span>
@@ -37,12 +36,10 @@ const ProductDetail = async ({
           )}
           <p className="whitespace-pre-line">{description}</p>
         </div>
-        <Button disabled={outOfStock} className="font-medium uppercase">
-          {outOfStock ? t("outOfStock") : t("addToCart")}
-        </Button>
+        <AddToCartButton id={id} outOfStock={outOfStock} />
       </div>
     </div>
   )
 }
 
-export default ProductDetail
+export default ProductDetails

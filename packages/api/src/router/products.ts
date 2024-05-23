@@ -1,8 +1,16 @@
-import { getSingleProductSchema } from "@airneis/schemas"
+import { TRPCError } from "@trpc/server"
 
-import config from "../config"
-import { createTRPCRouter, publicProcedure } from "../trpc"
+import { getSingleProductSchema } from "@airneis/schemas"
+import { ProductDetails } from "@airneis/types"
+
+import { publicProcedure } from "../procedures"
+import { createTRPCRouter } from "../trpc"
 import formatProductFor from "../utils/formatProductFor"
+import getSimilarProducts from "../utils/getSimilarProducts"
+
+type GetSingleProductResult = {
+  result: Omit<ProductDetails, "categories">
+}
 
 const productsRouter = createTRPCRouter({
   all: publicProcedure.query(() => ({
@@ -11,55 +19,62 @@ const productsRouter = createTRPCRouter({
       { id: 2, name: "Product 2" },
     ],
   })),
-  getSingle: publicProcedure
-    .input(getSingleProductSchema)
-    .query(async ({ ctx: { entities, lang, raw }, input: { slug } }) => {
-      const product = await entities.product.findOneOrFail(
-        { slug },
-        { populate: ["images", "materials", "categories"] },
-      )
-      const limit = config.products.limitSimilarProducts
-      const categories = product.categories.map((category) => category.id)
-      let similarProducts = await entities.product.find(
-        {
-          id: { $ne: product.id },
-          categories,
-          stock: { $gt: 0 },
-        },
-        {
-          limit,
-          orderBy: { [raw("RANDOM()")]: "" },
-          populate: ["images"],
-        },
-      )
+  getSingle: publicProcedure.input(getSingleProductSchema).query(
+    async ({
+      ctx: {
+        entities: { product: productEntity },
+        lang,
+        redis,
+        cacheKeys,
+        raw,
+      },
+      input: { slug },
+    }): Promise<GetSingleProductResult> => {
+      const cacheKey = cacheKeys.product(lang, slug)
+      const cachedProduct = await redis.get(cacheKey)
+      let product: Omit<ProductDetails, "similarProducts"> | null = null
 
-      if (similarProducts.length < limit) {
-        similarProducts = [
-          ...similarProducts,
-          ...(await entities.product.find(
-            {
-              id: { $ne: product.id },
-              categories,
-              stock: { $eq: 0 },
-            },
-            {
-              limit: limit - similarProducts.length,
-              orderBy: { [raw("RANDOM()")]: "" },
-              populate: ["images"],
-            },
-          )),
-        ]
+      if (cachedProduct) {
+        product = JSON.parse(cachedProduct) as Omit<
+          ProductDetails,
+          "similarProducts"
+        >
+      } else {
+        const dbProduct = await productEntity.findOne(
+          { slug },
+          { populate: ["images", "materials", "categories"] },
+        )
+
+        if (!dbProduct) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Product not found",
+          })
+        }
+
+        product = formatProductFor.single(dbProduct, lang)
+
+        await redis.set(cacheKey, JSON.stringify(product))
       }
+
+      const similarProducts = await getSimilarProducts(
+        { id: product.id, categories: product.categories },
+        productEntity,
+        raw,
+      )
+      // To avoid sending the categories to the client
+      const { categories: _, ...formatedProduct } = product
 
       return {
         result: {
-          ...formatProductFor.single(product, lang),
+          ...formatedProduct,
           similarProducts: similarProducts.map((similarProduct) =>
             formatProductFor.similar(similarProduct, lang),
           ),
         },
       }
-    }),
+    },
+  ),
 })
 
 export default productsRouter

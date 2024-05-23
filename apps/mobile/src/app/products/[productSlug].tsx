@@ -3,7 +3,7 @@ import { Text, View } from "react-native"
 import { ScrollView } from "react-native-gesture-handler"
 
 import ProductCard from "@/components/products/ProductCard"
-import ProductDetail from "@/components/products/ProductDetail"
+import ProductDetails from "@/components/products/ProductDetails"
 import LoadingView from "@/components/ui/LoadingView"
 import useLocale from "@/hooks/useLocale"
 import api from "@/utils/api"
@@ -14,7 +14,7 @@ const Product = () => {
   } = useLocale()
   const { productSlug: slug } = useLocalSearchParams<{ productSlug: string }>()
   const { data, isLoading, isError, error } = api.products.getSingle.useQuery({
-    slug,
+    slug: slug ?? "",
   })
 
   if (isLoading) {
@@ -32,7 +32,7 @@ const Product = () => {
   return (
     <ScrollView>
       <View className="m-4 p-4 flex flex-col gap-20 bg-card rounded-default">
-        <ProductDetail product={product} />
+        <ProductDetails product={product} />
         {similarProducts.length > 0 && (
           <View className="p-4 flex flex-wrap justify-center bg-background rounded-default gap-3">
             <Text className="w-full text-center font-semibold text-lg uppercase">

@@ -1,10 +1,11 @@
-# Sprint `[05/03-07/04]`
+# Sprint `[04/03-31/04]`
 
 PROJECT STARTING POINT
 
 ## Positive reviews
 
 - Review 1
+
   - Description: `PRs review time decreased`
   - Commitment:
     - Who: `Vitor + Julien + Bruno`
@@ -12,6 +13,7 @@ PROJECT STARTING POINT
     - When: `sprint3`
 
 - Review 2
+
   - Description: `US done throughout the sprint`
   - Commitment:
     - Who: `Vitor`
@@ -19,6 +21,7 @@ PROJECT STARTING POINT
     - When: `sprint3`
 
 - Review 3
+
   - Description: `Better communication between team members`
   - Commitment:
     - Who: `Bruno`
@@ -26,6 +29,7 @@ PROJECT STARTING POINT
     - When: `sprint3`
 
 - Review 4
+
   - Description: `Tech stack now well understood`
   - Commitment:
     - Who: `Bruno`
@@ -42,6 +46,7 @@ PROJECT STARTING POINT
 ## Negative reviews
 
 - Review 1
+
   - Description: `PRs are not tested`
   - Commitment:
     - Who: `Julien`
@@ -49,6 +54,7 @@ PROJECT STARTING POINT
     - When: `sprint3`
 
 - Review 2
+
   - Description: `PRs are not well described or explained`
   - Commitment:
     - Who: `Julien`
@@ -56,6 +62,7 @@ PROJECT STARTING POINT
     - When: `sprint3`
 
 - Review 3
+
   - Description: `Slow pace`
   - Commitment:
     - Who: `Vitor`
@@ -63,6 +70,7 @@ PROJECT STARTING POINT
     - When: `sprint3`
 
 - Review 4
+
   - Description: `Mobile development is harder than expected`
   - Commitment:
     - Who: `Léon + Julien`
@@ -70,6 +78,7 @@ PROJECT STARTING POINT
     - When: `sprint3`
 
 - Review 5
+
   - Description: `Some PRs are way too big`
   - Commitment:
     - Who: `Bruno + Vitor`

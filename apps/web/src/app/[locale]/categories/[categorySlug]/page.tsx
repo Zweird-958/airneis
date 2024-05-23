@@ -1,6 +1,8 @@
 import Image from "next/image"
+import { notFound } from "next/navigation"
 
-import ProductCard from "@/components/products/ProductCard"
+import ProductsList from "@/components/products/ProductsList"
+import Card from "@/components/ui/Card"
 import { Pagination } from "@/components/ui/Pagination"
 import { useTranslation } from "@/i18n"
 import api from "@/trpc/server"
@@ -20,50 +22,51 @@ const Category = async ({
   searchParams: { page },
 }: Props) => {
   const pageParsed = parseInt(page ?? "1", 10)
-  const {
-    result: category,
-    meta: { totalPages },
-  } = await api.categories.get.query({
-    slug: categorySlug,
-    page: pageParsed,
-  })
   const { t } = await useTranslation(locale, "categories")
 
-  return (
-    <div className="flex flex-col gap-8 pb-2 items-center">
-      <div className="w-full relative h-52 md:h-72">
-        <Image
-          src={category.imageUrl}
-          layout="fill"
-          className="object-cover blur-xs"
-          alt={category.name}
-        />
-        <h1 className="absolute top-1/2 transform -translate-y-1/2 text-center w-full px-2 md:text-xl font-bold">
-          {category.name}
-        </h1>
-      </div>
+  try {
+    const {
+      result: category,
+      meta: { totalPages },
+    } = await api.categories.get.query({
+      slug: categorySlug,
+      page: pageParsed,
+    })
 
-      <div className="flex flex-col gap-8 max-w-[63.5rem] px-4 items-center">
-        <h2 className="text-center">{category.description}</h2>
-        {category.products.length === 0 && (
-          <div className="bg-card p-4 rounded-default">
-            <p className="text-center">{t("empty")}</p>
-          </div>
-        )}
-        <div className="flex flex-wrap justify-center gap-3">
-          {category.products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+    return (
+      <div className="flex flex-col gap-8 pb-2 items-center">
+        <div className="w-full relative h-52 md:h-72">
+          <Image
+            src={category.imageUrl}
+            layout="fill"
+            className="object-cover blur-xs"
+            alt={category.name}
+          />
+          <h1 className="absolute top-1/2 transform -translate-y-1/2 text-center w-full px-2 md:text-xl font-bold">
+            {category.name}
+          </h1>
         </div>
 
-        <Pagination
-          page={pageParsed <= totalPages ? pageParsed : null}
-          href={`/categories/${categorySlug}`}
-          totalPages={totalPages}
-        />
+        <div className="flex flex-col gap-8 max-w-[63.5rem] px-4 items-center">
+          <h2 className="text-center">{category.description}</h2>
+          {category.products.length === 0 && (
+            <Card>
+              <p className="text-center">{t("empty")}</p>
+            </Card>
+          )}
+          <ProductsList products={category.products} />
+
+          <Pagination
+            page={pageParsed <= totalPages ? pageParsed : null}
+            href={`/categories/${categorySlug}`}
+            totalPages={totalPages}
+          />
+        </div>
       </div>
-    </div>
-  )
+    )
+  } catch (error) {
+    return notFound()
+  }
 }
 
 export default Category

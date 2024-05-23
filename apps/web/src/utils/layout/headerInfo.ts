@@ -11,6 +11,11 @@ export const headerLink: HeaderLink = [
     visibleOn: "both",
   },
   {
+    href: "/contact",
+    common: "contact",
+    visibleOn: "both",
+  },
+  {
     href: "/sign-in",
     common: "signIn",
     visibleOn: "unAuth",

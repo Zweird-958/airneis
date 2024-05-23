@@ -7,10 +7,10 @@ import {
 import { Address } from "../entities/Address"
 import { Cart } from "../entities/Cart"
 import { Category } from "../entities/Category"
+import { Contact } from "../entities/Contact"
 import { DeliveryCountry } from "../entities/DeliveryCountry"
 import { Image } from "../entities/Image"
 import { Material } from "../entities/Material"
-import { Message } from "../entities/Message"
 import { Order } from "../entities/Order"
 import { OrderProduct } from "../entities/OrderProduct"
 import { Product } from "../entities/Product"
@@ -28,7 +28,7 @@ interface Services {
     deliveryCountry: EntityRepository<DeliveryCountry>
     image: EntityRepository<Image>
     material: EntityRepository<Material>
-    message: EntityRepository<Message>
+    contact: EntityRepository<Contact>
     order: EntityRepository<Order>
     orderProduct: EntityRepository<OrderProduct>
     product: EntityRepository<Product>
@@ -52,7 +52,7 @@ const initORM = async () => {
       deliveryCountry: orm.em.getRepository(DeliveryCountry),
       image: orm.em.getRepository(Image),
       material: orm.em.getRepository(Material),
-      message: orm.em.getRepository(Message),
+      contact: orm.em.getRepository(Contact),
       order: orm.em.getRepository(Order),
       orderProduct: orm.em.getRepository(OrderProduct),
       product: orm.em.getRepository(Product),

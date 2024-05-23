@@ -1,10 +1,11 @@
-# Sprint `[01/02-04/03]`
+# Sprint `[01/02-03/03]`
 
 PROJECT STARTING POINT
 
 ## Positive reviews
 
 - Review 1
+
   - Description: `Better code reviews`
   - Commitment:
     - Who: `Julien`
@@ -12,6 +13,7 @@ PROJECT STARTING POINT
     - When: `sprint2`
 
 - Review 2
+
   - Description: `Better task management`
   - Commitment:
     - Who: `Vitor`
@@ -19,6 +21,7 @@ PROJECT STARTING POINT
     - When: `sprint2`
 
 - Review 3
+
   - Description: `Better communication between team members compared to last sprint`
   - Commitment:
     - Who: `Bruno`
@@ -26,6 +29,7 @@ PROJECT STARTING POINT
     - When: `sprint2`
 
 - Review 4
+
   - Description: `Best practices and rules are now followed correctly`
   - Commitment:
     - Who: `Bruno`
@@ -42,6 +46,7 @@ PROJECT STARTING POINT
 ## Negative reviews
 
 - Review 1
+
   - Description: `Tasks started late in the sprint`
   - Commitment:
     - Who: `Julien`
@@ -49,6 +54,7 @@ PROJECT STARTING POINT
     - When: `sprint2`
 
 - Review 2
+
   - Description: `Some PRs stay open for too long`
   - Commitment:
     - Who: `Julien + Bruno + Vitor`
@@ -65,6 +71,7 @@ PROJECT STARTING POINT
 ## Ideas
 
 - Idea 1
+
   - Description: `Create a logo for the project`
   - Commitment:
     - Who: `Julien`
@@ -72,6 +79,7 @@ PROJECT STARTING POINT
     - When: `sprint3`
 
 - Idea 2
+
   - Description: `Set ourselves a deadline of 3 to 4 days to review pull requests`
   - Commitment:
     - Who: `Bruno`

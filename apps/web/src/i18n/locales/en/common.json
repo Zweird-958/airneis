@@ -4,6 +4,7 @@
   "client": "Client",
   "header": {
     "home": "Home",
+    "contact": "Contact",
     "signIn": "Sign In",
     "signOut": "Sign Out",
     "signUp": "Sign Up"
@@ -22,5 +23,9 @@
     "success": "Your account has been validated successfully!",
     "error": "An error occured while validating your account. Please try again later.",
     "redirect": "Redirecting to the sign-in page in {count}"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist."
   }
 }

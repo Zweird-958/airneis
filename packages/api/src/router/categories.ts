@@ -5,9 +5,10 @@ import { createCategorySchema, getCategorySchema } from "@airneis/schemas"
 import type { Locale, Product } from "@airneis/types"
 
 import config from "../config"
-import env from "../env"
-import { adminProcedure, createTRPCRouter, publicProcedure } from "../trpc"
+import { adminProcedure, publicProcedure } from "../procedures"
+import { createTRPCRouter } from "../trpc"
 import formatProductFor from "../utils/formatProductFor"
+import getImageUrl from "../utils/getImageUrl"
 
 type GetCategoryResult = {
   result: {
@@ -61,18 +62,26 @@ const categoriesRouter = createTRPCRouter({
       async ({
         ctx: { entities, lang, redis, cacheKeys },
         input: { slug, page },
-      }) => {
-        const cacheKey = cacheKeys.categories(slug, page)
+      }): Promise<GetCategoryResult> => {
+        const cacheKey = cacheKeys.categories(lang, slug, page)
         const cache = await redis.get(cacheKey)
 
         if (cache) {
-          return JSON.parse(cache) as GetCategoryResult
+          return JSON.parse(cache)
         }
 
-        const category = await entities.category.findOneOrFail(
+        const category = await entities.category.findOne(
           { slug },
           { populate: ["image"] },
         )
+
+        if (!category) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Category not found",
+          })
+        }
+
         const [products, count] = await entities.product.findAndCount(
           { categories: { slug } },
           {
@@ -85,10 +94,10 @@ const categoriesRouter = createTRPCRouter({
         )
         const result = {
           result: {
-            imageUrl: `${env.S3_URL}/${env.S3_BUCKET}/${category.image.url}`,
             products: products.map((product) =>
               formatProductFor.category(product, lang),
             ),
+            imageUrl: getImageUrl(category.image.url),
             name: category.name[lang],
             description: category.description[lang],
           },

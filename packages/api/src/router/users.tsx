@@ -3,6 +3,7 @@ import { hash } from "bcrypt"
 import jsonwebtoken, { JsonWebTokenError } from "jsonwebtoken"
 import React from "react"
 
+import { getBaseUrl } from "@airneis/config"
 import { ValidationTemplate, translations } from "@airneis/email"
 import { signUpSchema, validationAccountSchema } from "@airneis/schemas"
 import { ValidationAccountJwt } from "@airneis/types"
@@ -10,7 +11,8 @@ import { sleep } from "@airneis/utils"
 
 import config from "../config"
 import env from "../env"
-import { createTRPCRouter, publicProcedure } from "../trpc"
+import { publicProcedure } from "../procedures"
+import { createTRPCRouter } from "../trpc"
 
 const usersRouter = createTRPCRouter({
   create: publicProcedure
@@ -58,7 +60,7 @@ const usersRouter = createTRPCRouter({
             <ValidationTemplate
               name={firstName}
               lang={lang}
-              href={`${env.VERCEL_URL}/${lang}/users/validate-account/${jwt}`}
+              href={`${getBaseUrl()}/${lang}/users/validate-account/${jwt}`}
             />
           ),
         })
