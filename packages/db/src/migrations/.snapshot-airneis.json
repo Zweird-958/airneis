@@ -1,5 +1,7 @@
 {
-  "namespaces": ["public"],
+  "namespaces": [
+    "public"
+  ],
   "name": "public",
   "tables": [
     {
@@ -157,7 +159,9 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["name"],
+          "columnNames": [
+            "name"
+          ],
           "composite": false,
           "keyName": "delivery_countries_name_unique",
           "constraint": true,
@@ -166,7 +170,9 @@
         },
         {
           "keyName": "delivery_countries_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -179,12 +185,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     },
@@ -237,7 +250,9 @@
       "indexes": [
         {
           "keyName": "images_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -250,12 +265,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     },
@@ -334,7 +356,9 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["name"],
+          "columnNames": [
+            "name"
+          ],
           "composite": false,
           "keyName": "categories_name_unique",
           "constraint": true,
@@ -342,7 +366,9 @@
           "unique": true
         },
         {
-          "columnNames": ["slug"],
+          "columnNames": [
+            "slug"
+          ],
           "composite": false,
           "keyName": "categories_slug_unique",
           "constraint": true,
@@ -351,7 +377,9 @@
         },
         {
           "keyName": "categories_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -362,9 +390,13 @@
       "foreignKeys": {
         "categories_image_id_foreign": {
           "constraintName": "categories_image_id_foreign",
-          "columnNames": ["image_id"],
+          "columnNames": [
+            "image_id"
+          ],
           "localTableName": "public.categories",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.images",
           "updateRule": "cascade"
         }
@@ -373,12 +405,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     },
@@ -430,7 +469,9 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["name"],
+          "columnNames": [
+            "name"
+          ],
           "composite": false,
           "keyName": "materials_name_unique",
           "constraint": true,
@@ -439,7 +480,9 @@
         },
         {
           "keyName": "materials_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -452,12 +495,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     },
@@ -528,7 +578,9 @@
       "indexes": [
         {
           "keyName": "messages_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -541,12 +593,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     },
@@ -655,7 +714,9 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["slug"],
+          "columnNames": [
+            "slug"
+          ],
           "composite": false,
           "keyName": "products_slug_unique",
           "constraint": true,
@@ -664,7 +725,9 @@
         },
         {
           "keyName": "products_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -677,12 +740,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     },
@@ -712,7 +782,10 @@
       "indexes": [
         {
           "keyName": "link_materials_products_pkey",
-          "columnNames": ["material_id", "product_id"],
+          "columnNames": [
+            "material_id",
+            "product_id"
+          ],
           "composite": true,
           "constraint": true,
           "primary": true,
@@ -723,18 +796,26 @@
       "foreignKeys": {
         "link_materials_products_material_id_foreign": {
           "constraintName": "link_materials_products_material_id_foreign",
-          "columnNames": ["material_id"],
+          "columnNames": [
+            "material_id"
+          ],
           "localTableName": "public.link_materials_products",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.materials",
           "deleteRule": "cascade",
           "updateRule": "cascade"
         },
         "link_materials_products_product_id_foreign": {
           "constraintName": "link_materials_products_product_id_foreign",
-          "columnNames": ["product_id"],
+          "columnNames": [
+            "product_id"
+          ],
           "localTableName": "public.link_materials_products",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.products",
           "deleteRule": "cascade",
           "updateRule": "cascade"
@@ -744,12 +825,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     },
@@ -779,7 +867,10 @@
       "indexes": [
         {
           "keyName": "link_images_products_pkey",
-          "columnNames": ["product_id", "image_id"],
+          "columnNames": [
+            "product_id",
+            "image_id"
+          ],
           "composite": true,
           "constraint": true,
           "primary": true,
@@ -790,18 +881,26 @@
       "foreignKeys": {
         "link_images_products_product_id_foreign": {
           "constraintName": "link_images_products_product_id_foreign",
-          "columnNames": ["product_id"],
+          "columnNames": [
+            "product_id"
+          ],
           "localTableName": "public.link_images_products",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.products",
           "deleteRule": "cascade",
           "updateRule": "cascade"
         },
         "link_images_products_image_id_foreign": {
           "constraintName": "link_images_products_image_id_foreign",
-          "columnNames": ["image_id"],
+          "columnNames": [
+            "image_id"
+          ],
           "localTableName": "public.link_images_products",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.images",
           "deleteRule": "cascade",
           "updateRule": "cascade"
@@ -811,12 +910,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     },
@@ -846,7 +952,10 @@
       "indexes": [
         {
           "keyName": "link_categories_products_pkey",
-          "columnNames": ["category_id", "product_id"],
+          "columnNames": [
+            "category_id",
+            "product_id"
+          ],
           "composite": true,
           "constraint": true,
           "primary": true,
@@ -857,18 +966,26 @@
       "foreignKeys": {
         "link_categories_products_category_id_foreign": {
           "constraintName": "link_categories_products_category_id_foreign",
-          "columnNames": ["category_id"],
+          "columnNames": [
+            "category_id"
+          ],
           "localTableName": "public.link_categories_products",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.categories",
           "deleteRule": "cascade",
           "updateRule": "cascade"
         },
         "link_categories_products_product_id_foreign": {
           "constraintName": "link_categories_products_product_id_foreign",
-          "columnNames": ["product_id"],
+          "columnNames": [
+            "product_id"
+          ],
           "localTableName": "public.link_categories_products",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.products",
           "deleteRule": "cascade",
           "updateRule": "cascade"
@@ -878,12 +995,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     },
@@ -987,7 +1111,10 @@
           "nullable": false,
           "nativeEnumName": "user_roles",
           "default": "'USER'",
-          "enumItems": ["ADMIN", "USER"],
+          "enumItems": [
+            "ADMIN",
+            "USER"
+          ],
           "mappedType": "enum"
         }
       },
@@ -995,7 +1122,9 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": ["email"],
+          "columnNames": [
+            "email"
+          ],
           "composite": false,
           "keyName": "users_email_unique",
           "constraint": true,
@@ -1004,7 +1133,9 @@
         },
         {
           "keyName": "users_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -1017,12 +1148,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     },
@@ -1061,7 +1199,10 @@
       "indexes": [
         {
           "keyName": "carts_pkey",
-          "columnNames": ["user_id", "product_id"],
+          "columnNames": [
+            "user_id",
+            "product_id"
+          ],
           "composite": true,
           "constraint": true,
           "primary": true,
@@ -1072,17 +1213,25 @@
       "foreignKeys": {
         "carts_user_id_foreign": {
           "constraintName": "carts_user_id_foreign",
-          "columnNames": ["user_id"],
+          "columnNames": [
+            "user_id"
+          ],
           "localTableName": "public.carts",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.users",
           "updateRule": "cascade"
         },
         "carts_product_id_foreign": {
           "constraintName": "carts_product_id_foreign",
-          "columnNames": ["product_id"],
+          "columnNames": [
+            "product_id"
+          ],
           "localTableName": "public.carts",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.products",
           "updateRule": "cascade"
         }
@@ -1091,12 +1240,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     },
@@ -1225,7 +1381,9 @@
       "indexes": [
         {
           "keyName": "addresses_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -1236,17 +1394,25 @@
       "foreignKeys": {
         "addresses_country_id_foreign": {
           "constraintName": "addresses_country_id_foreign",
-          "columnNames": ["country_id"],
+          "columnNames": [
+            "country_id"
+          ],
           "localTableName": "public.addresses",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.delivery_countries",
           "updateRule": "cascade"
         },
         "addresses_user_id_foreign": {
           "constraintName": "addresses_user_id_foreign",
-          "columnNames": ["user_id"],
+          "columnNames": [
+            "user_id"
+          ],
           "localTableName": "public.addresses",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.users",
           "updateRule": "cascade"
         }
@@ -1255,12 +1421,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     },
@@ -1306,7 +1479,11 @@
           "primary": false,
           "nullable": false,
           "nativeEnumName": "order_status",
-          "enumItems": ["CANCELLED", "ONGOING", "DELIVERED"],
+          "enumItems": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ],
           "mappedType": "enum"
         },
         "total": {
@@ -1360,7 +1537,9 @@
       "indexes": [
         {
           "keyName": "orders_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -1371,25 +1550,37 @@
       "foreignKeys": {
         "orders_delivery_address_id_foreign": {
           "constraintName": "orders_delivery_address_id_foreign",
-          "columnNames": ["delivery_address_id"],
+          "columnNames": [
+            "delivery_address_id"
+          ],
           "localTableName": "public.orders",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.addresses",
           "updateRule": "cascade"
         },
         "orders_billing_address_id_foreign": {
           "constraintName": "orders_billing_address_id_foreign",
-          "columnNames": ["billing_address_id"],
+          "columnNames": [
+            "billing_address_id"
+          ],
           "localTableName": "public.orders",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.addresses",
           "updateRule": "cascade"
         },
         "orders_user_id_foreign": {
           "constraintName": "orders_user_id_foreign",
-          "columnNames": ["user_id"],
+          "columnNames": [
+            "user_id"
+          ],
           "localTableName": "public.orders",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.users",
           "updateRule": "cascade"
         }
@@ -1398,12 +1589,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     },
@@ -1451,7 +1649,10 @@
       "indexes": [
         {
           "keyName": "link_orders_products_pkey",
-          "columnNames": ["order_id", "product_id"],
+          "columnNames": [
+            "order_id",
+            "product_id"
+          ],
           "composite": true,
           "constraint": true,
           "primary": true,
@@ -1462,17 +1663,25 @@
       "foreignKeys": {
         "link_orders_products_order_id_foreign": {
           "constraintName": "link_orders_products_order_id_foreign",
-          "columnNames": ["order_id"],
+          "columnNames": [
+            "order_id"
+          ],
           "localTableName": "public.link_orders_products",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.orders",
           "updateRule": "cascade"
         },
         "link_orders_products_product_id_foreign": {
           "constraintName": "link_orders_products_product_id_foreign",
-          "columnNames": ["product_id"],
+          "columnNames": [
+            "product_id"
+          ],
           "localTableName": "public.link_orders_products",
-          "referencedColumnNames": ["id"],
+          "referencedColumnNames": [
+            "id"
+          ],
           "referencedTableName": "public.products",
           "updateRule": "cascade"
         }
@@ -1481,12 +1690,19 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": ["ADMIN", "USER"]
+          "items": [
+            "ADMIN",
+            "USER"
+          ]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+          "items": [
+            "CANCELLED",
+            "ONGOING",
+            "DELIVERED"
+          ]
         }
       }
     }
@@ -1495,12 +1711,19 @@
     "user_roles": {
       "name": "user_roles",
       "schema": "public",
-      "items": ["ADMIN", "USER"]
+      "items": [
+        "ADMIN",
+        "USER"
+      ]
     },
     "order_status": {
       "name": "order_status",
       "schema": "public",
-      "items": ["CANCELLED", "ONGOING", "DELIVERED"]
+      "items": [
+        "CANCELLED",
+        "ONGOING",
+        "DELIVERED"
+      ]
     }
   }
 }
