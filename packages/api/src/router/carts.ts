@@ -129,6 +129,48 @@ const cartsRouter = createTRPCRouter({
         ),
       }
     }),
+
+  update: authedProcedure
+    .input(addToCartSchema)
+    .mutation(
+      async ({
+        ctx: { entities, em, user },
+        input: { productId, quantity },
+      }) => {
+        const product = await entities.product.findOne({
+          id: productId as Product["id"],
+        })
+
+        if (!product) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+          })
+        }
+
+        const productInCart = await entities.cart.findOne({
+          user,
+          product,
+        })
+
+        if (!productInCart) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+          })
+        }
+
+        if (quantity <= 0) {
+          await em.removeAndFlush(productInCart)
+
+          return true
+        }
+
+        productInCart.quantity = quantity
+
+        await em.flush()
+
+        return true
+      },
+    ),
 })
 
 export default cartsRouter

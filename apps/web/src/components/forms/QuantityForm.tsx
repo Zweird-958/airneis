@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { CheckoutProduct } from "packages/types"
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 
 import { UpdateQuantityInput, updateQuantitySchema } from "@airneis/schemas"
@@ -45,6 +45,10 @@ const QuantityForm = ({ quantity, id }: Props) => {
       }, DEBOUNCE_QUANTITY_TIME)
     }
   }
+
+  useEffect(() => {
+    form.setValue("quantity", quantity)
+  }, [form, quantity])
 
   return (
     <Form

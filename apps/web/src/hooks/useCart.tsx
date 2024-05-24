@@ -11,12 +11,16 @@ import config from "@/utils/config"
 const useCart = () => {
   const { onError } = useErrorHandler()
   const { session } = useSession()
-  const { data: cartData } = api.carts.get.useQuery()
-  const { mutate } = api.carts.add.useMutation({ onError })
   const { cart, setCart, addToCart, updateQuantity } = useCartStore()
+  const { data: cartData, refetch: refetchCart } = api.carts.get.useQuery()
+  const { mutate: addMutate } = api.carts.add.useMutation({ onError })
+  const { mutate: updateMutate } = api.carts.update.useMutation({
+    onError,
+    onSuccess: () => refetchCart(),
+  })
   const handleAdd = (productId: Product["id"], quantity = 1) => {
     if (session) {
-      mutate(
+      addMutate(
         { productId, quantity },
         { onSuccess: () => addToCart(productId, quantity) },
       )
@@ -29,6 +33,13 @@ const useCart = () => {
   }
   const addToLocalStorage = (localCart: typeof cart) => {
     localStorage.setItem(config.cart.localStorageKey, JSON.stringify(localCart))
+  }
+  const handleUpdate = (productId: Product["id"], quantity: number) => {
+    if (session) {
+      updateMutate({ productId, quantity })
+    }
+
+    updateQuantity(productId, quantity)
   }
 
   useEffect(() => {
@@ -53,7 +64,7 @@ const useCart = () => {
     }
   }, [cart, cartData, session, setCart])
 
-  return { cart, addToCart: handleAdd, updateQuantity }
+  return { cart, addToCart: handleAdd, updateQuantity: handleUpdate }
 }
 
 export default useCart
