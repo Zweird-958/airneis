@@ -1,5 +1,6 @@
-import { emailSchema } from "packages/schemas/src/users"
 import { z } from "zod"
+
+import { emailSchema } from "@airneis/schemas"
 
 export const createContactSchema = z.object({
   email: emailSchema,

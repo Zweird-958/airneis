@@ -1,11 +1,11 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { CheckoutProduct } from "packages/types"
 import { useEffect, useRef } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 
 import { UpdateQuantityInput, updateQuantitySchema } from "@airneis/schemas"
+import { CheckoutProduct } from "@airneis/types"
 
 import QuantityField from "@/components/forms/fields/QuantityField"
 import { Form } from "@/components/ui/Form"
