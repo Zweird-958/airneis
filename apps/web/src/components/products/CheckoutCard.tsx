@@ -1,14 +1,18 @@
+"use client"
+
 import { Trash2 } from "lucide-react"
 import Image from "next/image"
 
 import { CheckoutProduct } from "@airneis/types"
+
+import QuantityForm from "@/components/forms/QuantityForm"
 
 type Props = {
   product: CheckoutProduct
 }
 
 const CheckoutCard = ({ product }: Props) => {
-  const { imageUrl, name, description, price, quantity } = product
+  const { imageUrl, name, description, price, quantity, id } = product
 
   return (
     <div className="flex gap-4 max-w-[700px] h-32 md:h-52">
@@ -26,7 +30,7 @@ const CheckoutCard = ({ product }: Props) => {
       </div>
       <div className="flex flex-col justify-between items-center">
         <p className="font-semibold">{price}</p>
-        <p>{quantity}</p>
+        <QuantityForm quantity={quantity} id={id} />
         <Trash2 />
       </div>
     </div>

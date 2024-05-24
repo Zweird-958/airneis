@@ -13,7 +13,7 @@ const useCart = () => {
   const { session } = useSession()
   const { data: cartData } = api.carts.get.useQuery()
   const { mutate } = api.carts.add.useMutation({ onError })
-  const { cart, setCart, addToCart } = useCartStore()
+  const { cart, setCart, addToCart, updateQuantity } = useCartStore()
   const handleAdd = (productId: Product["id"], quantity = 1) => {
     if (session) {
       mutate(
@@ -53,7 +53,7 @@ const useCart = () => {
     }
   }, [cart, cartData, session, setCart])
 
-  return { cart, addToCart: handleAdd }
+  return { cart, addToCart: handleAdd, updateQuantity }
 }
 
 export default useCart
