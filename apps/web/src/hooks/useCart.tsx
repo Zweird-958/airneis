@@ -8,16 +8,21 @@ import useCartStore from "@/stores/cart"
 import api from "@/trpc/client"
 import config from "@/utils/config"
 
-const useCart = () => {
+const useApiCart = () => {
   const { onError } = useErrorHandler()
-  const { session } = useSession()
-  const { cart, setCart, addToCart, updateQuantity } = useCartStore()
   const { data: cartData, refetch: refetchCart } = api.carts.get.useQuery()
   const { mutate: addMutate } = api.carts.add.useMutation({ onError })
   const { mutate: updateMutate } = api.carts.update.useMutation({
     onError,
     onSuccess: () => refetchCart(),
   })
+
+  return { cartData, addMutate, updateMutate }
+}
+const useCart = () => {
+  const { session } = useSession()
+  const { cart, setCart, addToCart, updateQuantity } = useCartStore()
+  const { cartData, addMutate, updateMutate } = useApiCart()
   const handleAdd = (productId: Product["id"], quantity = 1) => {
     if (session) {
       addMutate(
@@ -36,7 +41,12 @@ const useCart = () => {
   }
   const handleUpdate = (productId: Product["id"], quantity: number) => {
     if (session) {
-      updateMutate({ productId, quantity })
+      updateMutate(
+        { productId, quantity },
+        { onSuccess: () => updateQuantity(productId, quantity) },
+      )
+
+      return
     }
 
     updateQuantity(productId, quantity)
