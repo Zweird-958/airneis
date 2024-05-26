@@ -46,7 +46,7 @@ const useCartStore = create<CartStore>((set) => ({
   updateQuantity: (productId, quantity) =>
     set(({ cart, ...state }) => {
       if (!cart) {
-        return state
+        return { ...state, cart }
       }
 
       if (quantity <= 0) {
