@@ -69,9 +69,7 @@
       "indexes": [
         {
           "keyName": "contacts_pkey",
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -84,19 +82,12 @@
         "user_roles": {
           "name": "user_roles",
           "schema": "public",
-          "items": [
-            "ADMIN",
-            "USER"
-          ]
+          "items": ["ADMIN", "USER"]
         },
         "order_status": {
           "name": "order_status",
           "schema": "public",
-          "items": [
-            "CANCELLED",
-            "ONGOING",
-            "DELIVERED"
-          ]
+          "items": ["CANCELLED", "ONGOING", "DELIVERED"]
         }
       }
     },

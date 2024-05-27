@@ -1,6 +1,8 @@
 import { useLocalSearchParams } from "expo-router"
 import { Text, View } from "react-native"
+import { ScrollView } from "react-native-gesture-handler"
 
+import ProductCard from "@/components/products/ProductCard"
 import ProductDetails from "@/components/products/ProductDetails"
 import LoadingView from "@/components/ui/LoadingView"
 import useLocale from "@/hooks/useLocale"
@@ -24,13 +26,27 @@ const Product = () => {
   }
 
   const {
-    result: { similarProducts: _, ...product },
+    result: { similarProducts, ...product },
   } = data
 
   return (
-    <View className="m-4 p-4 bg-card rounded-default">
-      <ProductDetails product={product} />
-    </View>
+    <ScrollView>
+      <View className="m-4 p-4 flex flex-col gap-20 bg-card rounded-default">
+        <ProductDetails product={product} />
+        {similarProducts.length > 0 && (
+          <View className="p-4 flex flex-wrap justify-center bg-background rounded-default gap-3">
+            <Text className="w-full text-center font-semibold text-lg uppercase">
+              {similarProducts.length === 1
+                ? products.similarOne
+                : products.similarOther}
+            </Text>
+            {similarProducts.map((similarProduct) => (
+              <ProductCard key={similarProduct.id} product={similarProduct} />
+            ))}
+          </View>
+        )}
+      </View>
+    </ScrollView>
   )
 }
 
