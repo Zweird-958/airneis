@@ -1,6 +1,7 @@
 import * as SecureStore from "expo-secure-store"
-import { JwtPayload } from "packages/types"
 import { useEffect } from "react"
+
+import { JwtPayload } from "@airneis/types"
 
 import useSessionStore from "@/stores/session"
 import config from "@/utils/config"

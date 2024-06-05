@@ -5,6 +5,7 @@ import ms from "ms"
 import { cookies } from "next/headers"
 
 import { signInSchema } from "@airneis/schemas"
+import { JwtPayload } from "@airneis/types"
 import { sleep } from "@airneis/utils"
 
 import config from "../config"
@@ -34,9 +35,11 @@ const sessionsRouter = createTRPCRouter({
         throw new TRPCError({ code: "UNAUTHORIZED" })
       }
 
-      const payload = {
-        id: user.id,
-        role: user.role,
+      const payload: JwtPayload = {
+        user: {
+          id: user.id,
+          role: user.role,
+        },
       }
       const jwt = jsonwebtoken.sign(
         {
