@@ -14,3 +14,9 @@ export const addToCartSchema = z.object({
   productId: productIdSchema,
   quantity: quantitySchema,
 })
+
+export const updateQuantitySchema = z.object({
+  quantity: z.coerce.number(),
+})
+
+export type UpdateQuantityInput = z.infer<typeof updateQuantitySchema>

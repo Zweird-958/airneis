@@ -12,8 +12,12 @@ import {
 
 export const FormItem = forwardRef<
   HTMLDivElement,
-  HTMLAttributes<HTMLDivElement> & { label?: string; description?: string }
->(({ className, children, label, description, ...props }, ref) => {
+  HTMLAttributes<HTMLDivElement> & {
+    label?: string
+    description?: string
+    hideError?: boolean
+  }
+>(({ className, children, label, description, hideError, ...props }, ref) => {
   const id = useId()
 
   return (
@@ -22,7 +26,7 @@ export const FormItem = forwardRef<
         {label && <FormLabel>{label}</FormLabel>}
         <FormControl>{children}</FormControl>
         {description && <FormDescription>{description}</FormDescription>}
-        <FormMessage />
+        {!hideError && <FormMessage />}
       </div>
     </FormItemContext.Provider>
   )

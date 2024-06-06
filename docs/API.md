@@ -69,6 +69,15 @@ Saves the local cart to the database.
 
 Gets the cart with complete product information.
 
+### Update
+
+Updates the quantity of a product inside the cart or removes it completely if quantity is 0.
+
+#### Possible errors
+
+- `NOT_FOUND` if the requested product does not exist.
+- `UNAUTHORIZED` if the user is not signed in or does not exists.
+
 ## Contact
 
 ### Create

@@ -1,35 +1,22 @@
 import { TRPCError } from "@trpc/server"
 
 import { addToCartSchema, cartSchema } from "@airneis/schemas"
-import { Id, Product } from "@airneis/types"
+import { Id } from "@airneis/types"
 
+import getProductInCart from "../middlewares/getProductInCart"
 import { authedProcedure, publicProcedure } from "../procedures"
 import { createTRPCRouter } from "../trpc"
 import formatProductFor from "../utils/formatProductFor"
 
 const cartsRouter = createTRPCRouter({
-  add: authedProcedure
+  add: publicProcedure
+    .use(getProductInCart)
     .input(addToCartSchema)
     .mutation(
       async ({
-        ctx: { entities, em, user },
-        input: { productId, quantity },
+        ctx: { entities, em, user, productInCart, product },
+        input: { quantity },
       }) => {
-        const product = await entities.product.findOne({
-          id: productId as Product["id"],
-        })
-
-        if (!product) {
-          throw new TRPCError({
-            code: "NOT_FOUND",
-          })
-        }
-
-        const productInCart = await entities.cart.findOne({
-          user,
-          product,
-        })
-
         if (productInCart) {
           productInCart.quantity += quantity
           await em.flush()
@@ -128,6 +115,28 @@ const cartsRouter = createTRPCRouter({
           ),
         ),
       }
+    }),
+  update: publicProcedure
+    .use(getProductInCart)
+    .input(addToCartSchema)
+    .mutation(async ({ ctx: { em, productInCart }, input: { quantity } }) => {
+      if (!productInCart) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+        })
+      }
+
+      if (quantity <= 0) {
+        await em.removeAndFlush(productInCart)
+
+        return true
+      }
+
+      productInCart.quantity = quantity
+
+      await em.flush()
+
+      return true
     }),
 })
 
