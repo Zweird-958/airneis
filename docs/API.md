@@ -71,7 +71,7 @@ Gets the cart with complete product information.
 
 ### Update
 
-Updates quantity of a product or remove it from the cart.
+Updates the quantity of a product inside the cart or removes it completely if quantity is 0.
 
 #### Possible errors
 
