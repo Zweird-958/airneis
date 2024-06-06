@@ -23,7 +23,7 @@ const QuantityForm = ({ quantity, id }: Props) => {
       quantity,
     },
   })
-  const onSubmit: SubmitHandler<UpdateQuantityInput> = ({
+  const handleSubmit: SubmitHandler<UpdateQuantityInput> = ({
     quantity: newQuantity,
   }) => {
     if (newQuantity === quantity) {
@@ -40,7 +40,7 @@ const QuantityForm = ({ quantity, id }: Props) => {
 
       setTimeout(() => {
         if (newQuantity === previousQuantity.current) {
-          form.handleSubmit(onSubmit)()
+          form.handleSubmit(handleSubmit)()
         }
       }, DEBOUNCE_QUANTITY_TIME)
     }
@@ -53,7 +53,7 @@ const QuantityForm = ({ quantity, id }: Props) => {
   return (
     <Form
       ctx={form}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
       onChange={handleChange}
       className="space-y-6"
     >
