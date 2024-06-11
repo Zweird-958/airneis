@@ -13,8 +13,7 @@ import useSession from "@/hooks/useSession"
 import api from "@/utils/api"
 
 type SignInFormSchema = z.infer<typeof signInSchema>
-
-export const SignInForm: React.FC = () => {
+const SignInForm: React.FC = () => {
   const {
     control,
     handleSubmit,
@@ -58,3 +57,5 @@ export const SignInForm: React.FC = () => {
     </View>
   )
 }
+
+export default SignInForm
