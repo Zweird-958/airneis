@@ -1,7 +1,7 @@
 import { TRPCError } from "@trpc/server"
 
 import { getSingleProductSchema, searchProductsSchema } from "@airneis/schemas"
-import { ProductDetails, SearchProduct } from "@airneis/types"
+import { ProductDetails } from "@airneis/types"
 
 import config from "../config"
 import { publicProcedure } from "../procedures"
@@ -81,11 +81,15 @@ const productsRouter = createTRPCRouter({
     .input(searchProductsSchema)
     .mutation(
       async ({ ctx: { meilisearch, indexes, lang }, input: { query } }) => {
-        const result = await meilisearch
-          .index(indexes.products)
-          .search<SearchProduct>(query, {
-            limit: config.products.limitSearchResults,
-          })
+        const productIndex = meilisearch.index(indexes.products)
+        await productIndex.updateSearchableAttributes([
+          "name",
+          "description",
+          "category",
+        ])
+        const result = await productIndex.search(query, {
+          limit: config.products.limitSearchResults,
+        })
 
         return {
           result: result.hits.map(
