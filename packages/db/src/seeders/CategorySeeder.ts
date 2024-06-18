@@ -70,8 +70,9 @@ export class CategorySeeder extends Seeder {
 
         category.products.set(products)
         const productsParsed = products.map(
-          ({ id, name, description, images }) => ({
+          ({ id, slug, name, description, images }) => ({
             id,
+            slug,
             name,
             description,
             category: category.name,

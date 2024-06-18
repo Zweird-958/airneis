@@ -32,4 +32,4 @@ export type CheckoutProduct = {
 export type SearchProduct = {
   category: Category["name"]
   imageUrl: string
-} & Pick<ProductEntity, "name" | "id" | "description">
+} & Pick<ProductEntity, "name" | "slug" | "id" | "description">

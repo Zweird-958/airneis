@@ -1,7 +1,7 @@
 import { TRPCError } from "@trpc/server"
 
 import { getSingleProductSchema, searchProductsSchema } from "@airneis/schemas"
-import { ProductDetails } from "@airneis/types"
+import { ProductDetails, SearchProduct } from "@airneis/types"
 
 import config from "../config"
 import { publicProcedure } from "../procedures"
@@ -87,7 +87,7 @@ const productsRouter = createTRPCRouter({
           "description",
           "category",
         ])
-        const result = await productIndex.search(query, {
+        const result = await productIndex.search<SearchProduct>(query, {
           limit: config.products.limitSearchResults,
         })
 

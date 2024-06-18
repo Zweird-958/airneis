@@ -4,11 +4,11 @@ import { Product, SearchProduct } from "@airneis/types"
 
 import Link from "@/components/ui/Link"
 
-type Props = { description: string } & Pick<Product, "id" | "name"> &
+type Props = { description: string } & Pick<Product, "slug" | "name"> &
   Pick<SearchProduct, "imageUrl">
 
-const SearchProductCard = ({ id, imageUrl, name, description }: Props) => (
-  <Link href={`/products/${id}`} key={id} className="flex gap-4 h-24">
+const SearchProductCard = ({ slug, imageUrl, name, description }: Props) => (
+  <Link href={`/products/${slug}`} key={slug} className="flex gap-4 h-24">
     <div className="min-w-24 h-full relative">
       <Image
         src={imageUrl}
