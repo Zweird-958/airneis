@@ -1,7 +1,7 @@
 import { TRPCError } from "@trpc/server"
 
-import { getSingleProductSchema } from "@airneis/schemas"
-import { ProductDetails } from "@airneis/types"
+import { getSingleProductSchema, searchProductsSchema } from "@airneis/schemas"
+import { ProductDetails, SearchProduct } from "@airneis/types"
 
 import { publicProcedure } from "../procedures"
 import { createTRPCRouter } from "../trpc"
@@ -75,6 +75,24 @@ const productsRouter = createTRPCRouter({
       }
     },
   ),
+  search: publicProcedure
+    .input(searchProductsSchema)
+    .query(
+      async ({ ctx: { meilisearch, indexes, lang }, input: { query } }) => {
+        const result = await meilisearch
+          .index(indexes.products)
+          .search<SearchProduct>(query)
+
+        return {
+          result: result.hits.map((hit) => ({
+            ...hit,
+            name: hit.name[lang],
+            description: hit.description[lang],
+            category: hit.category[lang],
+          })),
+        }
+      },
+    ),
 })
 
 export default productsRouter

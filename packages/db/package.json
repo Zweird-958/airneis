@@ -8,6 +8,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@airneis/meilisearch": "^0.1.0",
     "@airneis/s3": "^0.1.0",
     "@mikro-orm/core": "^6.1.5",
     "@mikro-orm/postgresql": "^6.1.5"

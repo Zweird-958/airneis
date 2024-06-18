@@ -4,6 +4,7 @@ import { Seeder } from "@mikro-orm/seeder"
 import fs from "node:fs/promises"
 import path from "path"
 
+import { indexes, meilisearch } from "@airneis/meilisearch"
 import { PutObjectCommand, s3 } from "@airneis/s3"
 
 import env from "../env"
@@ -49,24 +50,33 @@ export class CategorySeeder extends Seeder {
     new CategoryFactory(em)
       .each((category) => {
         category.image = categoryImage
-        category.products.set(
-          new ProductFactory(em)
-            .each((product) => {
-              product.images.set(productsImages)
-              product.priority = priority
-              priority += 1
-              product.materials.set(
-                materials.slice(
-                  faker.number.int({ min: 0, max: materials.length / 2 }),
-                  faker.number.int({
-                    min: materials.length / 2,
-                    max: materials.length,
-                  }),
-                ),
-              )
-            })
-            .make(15),
-        )
+
+        const products = new ProductFactory(em)
+          .each((product) => {
+            product.images.set(productsImages)
+            product.priority = priority
+            priority += 1
+            product.materials.set(
+              materials.slice(
+                faker.number.int({ min: 0, max: materials.length / 2 }),
+                faker.number.int({
+                  min: materials.length / 2,
+                  max: materials.length,
+                }),
+              ),
+            )
+          })
+          .make(15)
+
+        category.products.set(products)
+        const productsParsed = products.map(({ id, name, description }) => ({
+          id,
+          name,
+          description,
+          category: category.name,
+        }))
+
+        meilisearch.index(indexes.products).addDocuments(productsParsed)
       })
       .make(10)
   }

@@ -1,4 +1,4 @@
-import { Product as ProductEntity } from "@airneis/db"
+import { Category, Product as ProductEntity } from "@airneis/db"
 
 import { Image } from "./Image"
 import { Material } from "./Material"
@@ -28,3 +28,7 @@ export type CheckoutProduct = {
   imageUrl: string
 } & Pick<ProductDetails, "description"> &
   Base
+
+export type SearchProduct = {
+  category: Category["name"]
+} & Pick<ProductEntity, "name" | "id" | "description">
