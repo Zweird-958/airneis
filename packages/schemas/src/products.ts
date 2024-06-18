@@ -7,5 +7,7 @@ export const getSingleProductSchema = z.object({
 })
 
 export const searchProductsSchema = z.object({
-  query: z.string(),
+  query: z.string().min(1),
 })
+
+export type SearchProductsInput = z.infer<typeof searchProductsSchema>

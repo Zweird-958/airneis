@@ -17,6 +17,7 @@ const schema = z.object({
   }),
   products: z.object({
     limitSimilarProducts: z.number().min(1),
+    limitSearchResults: z.number().min(1).max(20),
   }),
 })
 const config = schema.parse({
@@ -36,6 +37,7 @@ const config = schema.parse({
   },
   products: {
     limitSimilarProducts: 6,
+    limitSearchResults: 5,
   },
 })
 

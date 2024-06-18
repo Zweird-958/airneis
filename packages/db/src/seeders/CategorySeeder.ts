@@ -69,12 +69,15 @@ export class CategorySeeder extends Seeder {
           .make(15)
 
         category.products.set(products)
-        const productsParsed = products.map(({ id, name, description }) => ({
-          id,
-          name,
-          description,
-          category: category.name,
-        }))
+        const productsParsed = products.map(
+          ({ id, name, description, images }) => ({
+            id,
+            name,
+            description,
+            category: category.name,
+            imageUrl: images[0].url,
+          }),
+        )
 
         meilisearch.index(indexes.products).addDocuments(productsParsed)
       })
