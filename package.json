@@ -41,8 +41,5 @@
   "workspaces": [
     "packages/*",
     "apps/*"
-  ],
-  "dependencies": {
-    "lightningcss-win32-x64-msvc": "^1.25.1"
-  }
+  ]
 }
