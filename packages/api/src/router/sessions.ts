@@ -21,7 +21,10 @@ const sessionsRouter = createTRPCRouter({
         entities: { user: UserEntity },
       },
     }) => {
-      const user = await UserEntity.findOne({ email, isActive: true })
+      const user = await UserEntity.findOne({
+        email: email.toLowerCase(),
+        isActive: true,
+      })
 
       if (!user) {
         await sleep(config.security.jwt.hashingDuration)
