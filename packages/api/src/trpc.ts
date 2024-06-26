@@ -3,6 +3,7 @@ import superjson from "superjson"
 
 import { em, entities, raw } from "@airneis/db"
 import { resend } from "@airneis/email"
+import { indexes, meilisearch } from "@airneis/meilisearch"
 import { keys, redis } from "@airneis/redis"
 import { s3 } from "@airneis/s3"
 import { stripeServer } from "@airneis/stripe"
@@ -18,6 +19,8 @@ export const createTRPCContext = (lang: Locale) => ({
   lang,
   resend,
   stripe: stripeServer,
+  meilisearch,
+  indexes,
 })
 export const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,

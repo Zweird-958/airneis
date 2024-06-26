@@ -6,6 +6,7 @@ import { useState } from "react"
 import Menu from "@/components/Menu"
 import Link from "@/components/ui/Link"
 import useCart from "@/hooks/useCart"
+import useSearch from "@/hooks/useSearch"
 
 const Header = () => {
   const [displayMenu, setDisplayMenu] = useState(false)
@@ -13,6 +14,7 @@ const Header = () => {
     setDisplayMenu(!displayMenu)
   }
   const { cart } = useCart()
+  const { handleSearch } = useSearch()
 
   return (
     <header className="sticky top-0 bg-background w-full border-b z-10">
@@ -21,7 +23,7 @@ const Header = () => {
         <nav>
           <ul className="flex gap-4">
             <li>
-              <Search className="hover:cursor-pointer" />
+              <Search className="hover:cursor-pointer" onClick={handleSearch} />
             </li>
             <li className="relative">
               <Link href={"/checkout/cart"}>

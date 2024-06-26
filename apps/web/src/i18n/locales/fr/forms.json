@@ -24,5 +24,9 @@
   },
   "errors": {
     "unexpected": "Une erreur inattendue s'est produite"
+  },
+  "search": {
+    "placeholder": "Rechercher...",
+    "noResults": "Aucun produit trouvé"
   }
 }

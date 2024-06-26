@@ -1,0 +1,14 @@
+{
+  "name": "@airneis/meilisearch",
+  "version": "0.1.0",
+  "main": "index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "meilisearch": "^0.40.0"
+  }
+}

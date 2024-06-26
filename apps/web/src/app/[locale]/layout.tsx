@@ -4,6 +4,7 @@ import { Toaster } from "sonner"
 
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
+import SearchContainer from "@/components/SearchContainer"
 import type { PageProps } from "@/types/common"
 
 import "./globals.css"
@@ -43,6 +44,7 @@ const RootLayout = (props: Props) => {
           <Header />
           <main className="grow">{children}</main>
           <Footer />
+          <SearchContainer />
         </body>
       </html>
     </Providers>
