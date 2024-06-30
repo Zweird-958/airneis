@@ -5,6 +5,7 @@ import ms from "ms"
 import { cookies } from "next/headers"
 
 import { signInSchema } from "@airneis/schemas"
+import { JwtPayload } from "@airneis/types"
 import { sleep } from "@airneis/utils"
 
 import config from "../config"
@@ -20,7 +21,10 @@ const sessionsRouter = createTRPCRouter({
         entities: { user: UserEntity },
       },
     }) => {
-      const user = await UserEntity.findOne({ email, isActive: true })
+      const user = await UserEntity.findOne({
+        email: email.toLowerCase(),
+        isActive: true,
+      })
 
       if (!user) {
         await sleep(config.security.jwt.hashingDuration)
@@ -34,14 +38,15 @@ const sessionsRouter = createTRPCRouter({
         throw new TRPCError({ code: "UNAUTHORIZED" })
       }
 
+      const payload: JwtPayload = {
+        user: {
+          id: user.id,
+          role: user.role,
+        },
+      }
       const jwt = jsonwebtoken.sign(
         {
-          payload: {
-            user: {
-              id: user.id,
-              role: user.role,
-            },
-          },
+          payload,
         },
         env.JWT_SECRET,
         { expiresIn: config.security.jwt.expiresIn },
@@ -58,7 +63,7 @@ const sessionsRouter = createTRPCRouter({
         expires: Date.now() + ms(config.security.jwt.expiresIn),
       })
 
-      return jwt
+      return { jwt, payload }
     },
   ),
   delete: authedProcedure.mutation(() => {

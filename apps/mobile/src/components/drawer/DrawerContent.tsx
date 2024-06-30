@@ -5,24 +5,26 @@ import {
 } from "@react-navigation/drawer"
 
 import useLocale from "@/hooks/useLocale"
+import useSession from "@/hooks/useSession"
+import { headerLink } from "@/utils/layout/headerLink"
 
 const DrawerContent = (props: DrawerContentComponentProps) => {
+  const { session } = useSession()
   const {
     translations: { common },
   } = useLocale()
-  const DRAWER_ITEMS = [
-    {
-      label: common.home,
-      screen: "index",
-    },
-  ]
+  const visibleHeaderLinks = headerLink.filter(
+    ({ visibleOn }) =>
+      visibleOn === "both" ||
+      (session ? visibleOn === "auth" : visibleOn === "unAuth"),
+  )
 
   return (
     <DrawerContentScrollView>
-      {DRAWER_ITEMS.map(({ label, screen }) => (
+      {visibleHeaderLinks.map(({ label, screen }) => (
         <DrawerItem
           key={label}
-          label={label}
+          label={common[label]}
           onPress={() => props.navigation.navigate(screen)}
         />
       ))}

@@ -30,7 +30,7 @@ const SignInForm = () => {
   const { mutate } = api.sessions.create.useMutation({
     onError,
     onSuccess: (data) => {
-      signIn(data)
+      signIn(data.jwt)
       router.push("/")
     },
   })

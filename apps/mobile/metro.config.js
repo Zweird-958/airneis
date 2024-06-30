@@ -13,6 +13,7 @@ config.resolver.nodeModulesPaths = [
   path.resolve(projectRoot, "node_modules"),
   path.resolve(workspaceRoot, "node_modules"),
 ]
+config.resolver.sourceExts = ["js", "jsx", "ts", "tsx", "json"]
 
 module.exports = withNativeWind(config, {
   input: "./src/globals.css",
