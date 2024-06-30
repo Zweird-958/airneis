@@ -1,6 +1,6 @@
-# Sprint `[29/04-26/05]`
+# Sprint `[27/05-30/06]`
 
-SHAPING THE PROJECT
+END OF PROJECT
 
 ## Positive reviews
 
