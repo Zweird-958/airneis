@@ -30,7 +30,7 @@ const SignInForm: React.FC = () => {
     mutate(values, {
       onSuccess: (data) => {
         signIn(data.payload)
-        router.replace("/")
+        router.navigate("/")
       },
     })
   }
