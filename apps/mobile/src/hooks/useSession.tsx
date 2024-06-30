@@ -18,8 +18,8 @@ const useSession = () => {
 
   useEffect(() => {
     ;(async () => {
-      const payload = JSON.stringify(
-        await SecureStore.getItemAsync(config.session.localStorageKey),
+      const payload = await SecureStore.getItemAsync(
+        config.session.localStorageKey,
       )
 
       if (!payload) {
